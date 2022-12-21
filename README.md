@@ -11,8 +11,10 @@ Notebook for javascript experimentation (in the browser). Features:
 1. Clone this repository on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the the app online, you can put the folder in web directory of the server and use the link to index.html.
 3. You can also try the git hosted version (wtihout downloading anything) here: https://gopi-suvanam.github.io/jsnb/index.html
-4. For hello-world notebook check out: https://gopi-suvanam.github.io/jsnb#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
-5. You can download more examples from the folder examples/
+
+## Sample notebooks
+1. For hello-world notebook check out: https://gopi-suvanam.github.io/jsnb#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
+2. You can download more examples from the folder examples/
 
 ## Keyboard Shortcuts
 - Ctrl-Enter/Cmd-Enter: Run the current cell and go to next cell
