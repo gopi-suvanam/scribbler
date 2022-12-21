@@ -1,19 +1,18 @@
-# jsbook
-Notebook for javascript experimentation
-
+# JavaScript Notebook
+Notebook for javascript experimentation (in the browser). Features:
 1. Easy to use javascript experimentation tool.
 2. Runs without backend (node.js/npm/pip install/ngnix etc etc)
-3. Can be loaded from the web (i.e. behind a webserver) or from the file system   (certain features like WebRTC might require a server)
-4. UI to be close to jupyter notebook (for familiarity)
+3. Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
+4. UI is kept close to jupyter notebook (for familiarity)
 5. Uses minimal external libararies and no frameworks (i.e. Vanilla JS). This is to increase the speed
-6. Uses Codemirror for formatting the code area and pico Css for styling (https://picocss.com/)
+6. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
 
 ## Use cases
-1. Trying new libraries for testing and building
-2. Building reproducable research and sharing the results with others
+1. For trying new libraries for testing and building
+2. For building reproducable research and sharing the results with others
 
 ## Not to be used for:
-1. Production applications
+1. Production use cases
 2. As an alternative to webapps
 
 ## How to use?
