@@ -1,0 +1,120 @@
+﻿body{
+	background-color: white;
+	color:dark-grey;
+}
+article,textarea{
+ margin:10px;
+ padding:10px !important;
+ overflow:auto; 
+ max-height:300px;
+}
+nav{
+ 	margin:0px;
+ 	font-size:10px !important;
+ 	position: relative;
+		top: 0;
+}
+nav li{
+	padding:0px;
+}
+nav button{
+	padding:0px;
+	line-height:12px;
+}
+nav ul{
+	margin-left:10px !important;
+	margin-right:10px !important;
+}
+
+
+.CodeMirror {
+	font-family: Arial, monospace !important; 
+	font-size: 12px !important; 
+	border: 1px solid #d0d7de;
+		border-radius: 6px;
+	margin:10px;
+	height: auto !important;
+	max-height:300px;
+	overflow:scroll !important;
+}
+
+.cm-editor { height: 100% }
+.cm-scroller { overflow: auto }
+
+
+.error{
+	color:red;
+}
+
+.status{
+	width:29px;
+	float:left;
+	marging:0px;
+	font-size:12px;
+}
+.output{
+	float:left;
+	margin-left:10px;
+}
+
+.cell-menu{
+	float:right;
+	margin-bottom:-20px;
+	height:20px;
+	line-height:20px;
+	font-size:20px;
+	z-index:100;
+	position:relative;
+	top:5px;
+	right:0px;
+	margin-right:20px;
+	
+}
+
+#nb_name{
+	margin-left:5px ;	margin-right:5px ;
+	border:thin solid grey ;
+}
+
+#logo{
+	height:60px;
+	margin:0px;
+}
+
+/* Yellow Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --primary: #fdd835;
+  --primary-hover: #fbc02d;
+  --primary-focus: rgba(253, 216, 53, 0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+}
+
+/* Yellow Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: #fdd835;
+    --primary-hover: #ffeb3b;
+    --primary-focus: rgba(253, 216, 53, 0.25);
+    --primary-inverse: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* Yellow Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+  --primary: #fdd835;
+  --primary-hover: #ffeb3b;
+  --primary-focus: rgba(253, 216, 53, 0.25);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+}
+
+/* Yellow (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}

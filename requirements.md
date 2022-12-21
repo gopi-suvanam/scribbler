@@ -13,11 +13,14 @@
 - Code should run in the browser of the user
 - show output using show(var) or show_as_html(var)
 - Everything else can be done through libraries
+- Not using the webworker as webworker has a restriction of running behind http/https. In future can think of using webworker for hosted applications.
+- Asynchronous code execution is halmark of javascript so each cell can be run parallelly. Any asynchronous code within a cell will have to dsiplay errors on its own.
+- Reload for restarting the kernel
 
-## Use case
-1. try new libraries for testing and building
-2. Build reproducable research and share with others
+## Use cases
+1. Trying new libraries for testing and building
+2. Building reproducable research and sharing the results with others
 
 ## Not to be used for:
-1. Production aplpications
-2. Alternative to webapps
+1. Production applications
+2. As an alternative to webapps

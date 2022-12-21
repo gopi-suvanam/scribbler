@@ -1,0 +1,11 @@
+{
+  "metadata" : {
+     "name":"Starting JS Notebook Example",
+    "language_info": {
+        "name" : "JavaScipt",
+        "version": "8.0"
+    }
+  },
+  "jsnbversion":"v0.1",
+  "cells" : []
+}

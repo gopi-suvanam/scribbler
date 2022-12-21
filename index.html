@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,15 +8,74 @@
 		<script>global=globalThis</script>
 		<title>JSBook: Javascript Notebook</title>
 		<link rel="stylesheet" href="css/pico.min.css">
-		<style>
-			
-			.body{
-				background-color: white;
-				color:dark-grey;
-			}
+		<link rel="stylesheet" href="css/style.css">
+
+		
+		
+		<script src="codemirror/codemirror.js"></script>
+		<link rel="stylesheet" href="codemirror/codemirror.css">
+		<script src="codemirror/javascript.js"></script>
+		<script src="js/libs.js"></script>
+		<script src="js/controller.js"></script>
+
+
   </head>
-  <body >
-    <input type='textarea'></input>
-			
+  <body data-theme="light" >
+	
+	<nav>
+	  <ul>
+	    <li><img src='images/logo2.png' id="logo"/></li>
+	    <li><a id="nb_name" contentEditable="true">Untitled Notebook</a></li>
+	    <li role="list" dir="rtl">
+	      <a href="#" aria-haspopup="listbox">File</a>
+	      <ul role="listbox">
+	      
+	        <li><a>Upload a notebook</a></li>
+	        <li><a onclick="download_nb()">Download as notebook</a></li>
+	        <li><a>Download as HTML</a></li>
+	        <li><a>Download only output</a></li>
+	      </ul>
+	    </li>
+	    <li role="list" dir="rtl">
+	      <a href="#" aria-haspopup="listbox">Edit</a>
+	      <ul role="listbox">
+	        <li><a onclick="insert_cell()">Insert code cell</a></li>
+	        <li><a>Insert markdown cell</a></li>
+
+	      </ul>
+	    </li>
+	    <li role="list" dir="rtl">
+	      <a href="#" aria-haspopup="listbox">View</a>
+	      <ul role="listbox">
+	        <li><a onclick="toggle_dark_mode()">Toggle dark mode</a></li>
+
+	      </ul>
+	    </li>
+	  </ul>
+	  <ul>
+	    <li><a href="#" role="button" >Help</a></li>
+	  </ul>
+	</nav>
+	<hr>
+	<div id="code_block_template" style="display:none">
+		<div class="cell-menu">
+			<a   onclick="run(_block_id)">&#9658;</a>
+			<a   onclick="move_up(_block_id)">&#8593;</a>
+			<a  onclick="move_down(_block_id)">&#8595;</a>
+			<a   onclick="delete_cell(_block_id)">&#9747;</a>
+		</div>
+		<div id="input_block_id" class='code'></div>
+		<article>
+			<p class="status" id="status_block_id"></p>
+			<div class="output" id="output_block_id"></div>
+		</article>
+	</div>
+	
+	
+	<div style="width:98%" class='container' id='main'></div>	
+		
   </body>
+  <script>
+  	load_nb();
+  </script>
 </html>
