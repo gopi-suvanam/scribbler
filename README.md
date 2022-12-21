@@ -20,5 +20,5 @@ Notebook for javascript experimentation
 1. Clone this repository on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the the app online, you can put the folder in web directory of the server and use the link to index.html.
 3. You can also try the git hosted version (wtihout downloading anything) here: https://gopi-suvanam.github.io/jsnb/index.html
-4. 
-5. 
+4. For hello-world notebook check out: https://gopi-suvanam.github.io/jsnb/index.html#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
+5. You can download more examples from the folder examples/

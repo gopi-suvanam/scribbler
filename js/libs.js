@@ -91,3 +91,21 @@ downloadObjectAsJson=function(exportObj, exportName){
 	      
 
 	}
+	
+ read_file=function(url,callbk,failure){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+			 callbk(xhttp.responseText);
+		  }
+		else{
+		  
+		}
+	  };
+	  xhttp.open("GET", url, true);
+	  try{
+	  	xhttp.send();
+	  }catch(err){
+	  	failure(err)
+	  };
+ }

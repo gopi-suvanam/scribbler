@@ -147,9 +147,9 @@ download_nb=function(){
  	downloadObjectAsJson(nb,nb.metadata.name+'.jsnb');	
 }
 
-load_jsnb=function(file){
+load_jsnb=function(content){
 	try{
-		var nb=JSON.parse(file);
+		var nb=JSON.parse(content);
 		get_dom("nb_name").innerHTML=nb.metadata.name;
 		var main=get_dom("main");
 		var bkup_html=main.innerHTML;

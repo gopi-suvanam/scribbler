@@ -81,7 +81,11 @@
 		
   </body>
   <script>
-  	insert_cell('code');
+  	url=window.location.href.split("#")[1];
+  	if(url!=undefined & url.length>1)
+  	 read_file(url,load_jsnb,err=>{alert(err.message)});
+  	else insert_cell('code');
+  	
   	const file_loader = document.getElementById("upload_file");
   	
 	
@@ -94,6 +98,8 @@
 
   	
   	file_loader.addEventListener("change", handleFiles, false);
+  	
+
 	
   </script>
 </html>
