@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "name": "Hello world",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<strong>Welcome to JSNB - Javascript Notebook </strong> <br>\nExperiment and play in the browser using simple interface. Work on cells with html type or javascript. \n  <br> Next few cells give you the \"hello world\" application. For more details click on the Github button.\n  <br> Click on this cell to edit the html.",
+      "status": "",
+      "output": "<strong>Welcome to JSNB - Javascript Notebook </strong> <br>\nExperiment and play in the browser using simple interface. Work on cells with html type or javascript. \n  <br> Next few cells give you the \"hello world\" application. For more details click on the Github button.\n  <br> Click on this cell to edit the html.",
+      "type": "html"
+    },
+    {
+      "code": "hello=function(what){\n   show(\"hello \"+what); \n}\nshow(hello)",
+      "status": "[2]",
+      "output": "function(what){\n   show(\"hello \"+what); \n}",
+      "type": "code"
+    },
+    {
+      "code": "hello('world')",
+      "status": "[3]",
+      "output": "hello world",
+      "type": "code"
+    }
+  ]
+}

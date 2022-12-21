@@ -22,7 +22,7 @@ function waitForDom(id) {
             childList: true,
             subtree: true
         });
-    });x
+    });
 }
 
 
@@ -63,3 +63,31 @@ downloadObjectAsJson=function(exportObj, exportName){
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
   }
+  
+  downloadStringAsHTML=function(str, exportName){
+    var dataStr = "data:text/html;charset=utf-8," + encodeURIComponent(str);
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", exportName );
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
+  
+  
+  handleFiles=function() {
+	  const fileList = this.files; /* now you can work with the file list */
+	  let f = fileList[0];
+    
+    		let reader = new FileReader();
+    		reader.onload = (function(theFile) {
+        return function(e) {
+	          load_jsnb( e.target.result );
+	        };
+	      })(f);
+	
+	      // Read in the image file as a data URL.
+	      reader.readAsText(f);
+	      
+
+	}

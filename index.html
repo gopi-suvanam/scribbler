@@ -3,10 +3,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="icon" type="image/svg+xml" href="favicon.svg">
+		<link rel="icon"  href="images/logo2.png">
 		<meta name="description" content="A notebook for experimenting in JavaScript">
 		<script>global=globalThis</script>
-		<title>JSBook: Javascript Notebook</title>
+		<title>Javascript Notebook</title>
 		<link rel="stylesheet" href="css/pico.min.css">
 		<link rel="stylesheet" href="css/style.css">
 
@@ -17,6 +17,7 @@
 		<script src="codemirror/javascript.js"></script>
 		<script src="js/libs.js"></script>
 		<script src="js/controller.js"></script>
+		<script src="js/worker.js"></script>
 
 
   </head>
@@ -29,18 +30,19 @@
 	    <li role="list" dir="rtl">
 	      <a href="#" aria-haspopup="listbox">File</a>
 	      <ul role="listbox">
-	      
-	        <li><a>Upload a notebook</a></li>
+	        <li><a onclick="load_file_click()">Load a notebook</a> 
+	        <input style="display:none" type="file" id="upload_file"  />  
+	        </li>
 	        <li><a onclick="download_nb()">Download as notebook</a></li>
-	        <li><a>Download as HTML</a></li>
-	        <li><a>Download only output</a></li>
+	        <li><a onclick="download_html(false)">Download as HTML</a></li>
+	        <li><a onclick="download_html(true)">Download only output</a></li>
 	      </ul>
 	    </li>
 	    <li role="list" dir="rtl">
 	      <a href="#" aria-haspopup="listbox">Edit</a>
 	      <ul role="listbox">
-	        <li><a onclick="insert_cell()">Insert code cell</a></li>
-	        <li><a>Insert markdown cell</a></li>
+	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
+	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
 
 	      </ul>
 	    </li>
@@ -53,19 +55,22 @@
 	    </li>
 	  </ul>
 	  <ul>
-	    <li><a href="#" role="button" >Help</a></li>
+	    <li><a href="https://github.com/gopi-suvanam/jsnb" role="button" >Github</a></li>
 	  </ul>
 	</nav>
 	<hr>
 	<div id="code_block_template" style="display:none">
-		<div class="cell-menu">
-			<a   onclick="run(_block_id)">&#9658;</a>
-			<a   onclick="move_up(_block_id)">&#8593;</a>
-			<a  onclick="move_down(_block_id)">&#8595;</a>
-			<a   onclick="delete_cell(_block_id)">&#9747;</a>
+		<div id="cell_menu_block_id" class="cell-menu">
+			<input title="Toggle between code and html" id="cell_type_block_id" style="height:15px;" type="checkbox" checked="true" role="switch">
+			<a title="Run the cell: Shift-Enter"   onclick="run(_block_id)">&#9658;</a>
+			<a  title="Move the cell up"   onclick="move_up(_block_id)">&#8593;</a>
+			<a title="Move the cell down"    onclick="move_down(_block_id)">&#8595;</a>
+			<a  title="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
+			<a  title="Delete the cell"  onclick="delete_cell(_block_id)">&#9747;</a>
+			
 		</div>
-		<div id="input_block_id" class='code'></div>
-		<article>
+		<div id="input_block_id" tabindex="0"  class='code'></div>
+		<article id="result_block_id" onclick="open_editor(_block_id)">
 			<p class="status" id="status_block_id"></p>
 			<div class="output" id="output_block_id"></div>
 		</article>
@@ -76,6 +81,19 @@
 		
   </body>
   <script>
-  	load_nb();
+  	insert_cell('code');
+  	const file_loader = document.getElementById("upload_file");
+  	
+	
+	load_file_click=function(){
+	  if (file_loader) {
+	    file_loader.click();
+	  }
+	};
+
+
+  	
+  	file_loader.addEventListener("change", handleFiles, false);
+	
   </script>
 </html>
