@@ -7,15 +7,7 @@ Notebook for javascript experimentation (in the browser). Features:
 5. Uses minimal external libararies and no frameworks (i.e. Vanilla JS). This is to increase the speed
 6. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
 
-## Use cases
-1. For trying new libraries for testing and building
-2. For building reproducable research and sharing the results with others
-
-## Not to be used for:
-1. Production use cases
-2. As an alternative to webapps
-
-## How to use?
+## How to use
 1. Clone this repository on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the the app online, you can put the folder in web directory of the server and use the link to index.html.
 3. You can also try the git hosted version (wtihout downloading anything) here: https://gopi-suvanam.github.io/jsnb/index.html
@@ -27,3 +19,13 @@ Notebook for javascript experimentation (in the browser). Features:
 - Shift-Enter': Run the current cell
 - Ctrl-Del: Delete all code in the cell
 - Alt-Enter/Option-Enter: Insert new cell
+
+## Use cases
+1. For trying new libraries for testing and building
+2. For building reproducable research and sharing the results with others
+
+## Not to be used for:
+1. Production use cases
+2. As an alternative to webapps
+
+
