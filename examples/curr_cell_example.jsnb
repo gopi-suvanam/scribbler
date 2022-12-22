@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Example for curr_cell",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<b>Sample notebook to show usage of curr_cell()</b>",
+      "status": "",
+      "output": "<b>Sample notebook to show usage of curr_cell()</b>",
+      "type": "html"
+    },
+    {
+      "code": "cc=curr_cell()\ncc.parentNode.style.backgroundColor='red'\ncc.style.color='white'\nshow(\"Trying something new\")",
+      "status": "[7]",
+      "output": "Trying something new",
+      "type": "code"
+    }
+  ]
+}
