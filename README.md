@@ -1,4 +1,4 @@
-# JavaScript Notebook
+# JavaScript Notebook (JSNB)
 Notebook for javascript experimentation (in the browser). Features:
 1. Easy to use javascript experimentation tool.
 2. Runs without backend (node.js/npm/pip install/ngnix etc etc)
@@ -16,7 +16,7 @@ Notebook for javascript experimentation (in the browser). Features:
 ## Sample notebooks
 1. For hello-world notebook check out: https://gopi-suvanam.github.io/jsnb#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
 2. For an example of using Plotly graphs check out: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Plotly%20Example.jsnb
-3. You can download more examples from the folder examples/
+3. You can download more examples from the folder examples/ in the repository.
 
 ## Keyboard Shortcuts
 - Ctrl-Enter/Cmd-Enter: Run the current cell and go to next cell
@@ -32,4 +32,9 @@ Notebook for javascript experimentation (in the browser). Features:
 1. Production use cases
 2. As an alternative to webapps
 
+## How is different from Jsfiddle/codepen etc?
+- JSNB is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
+- JSNB can have multiple cells so it can create long documents.
+- Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
+- JSNB can also be used for scientific computation using several open source javascript libraries.
 

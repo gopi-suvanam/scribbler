@@ -37,6 +37,7 @@ nav a{
 		border-radius: 6px;
 	margin:10px;
 	height: auto !important;
+	min-height:50px !important;
 	overflow:scroll !important;
 }
 
@@ -79,9 +80,11 @@ nav a{
 }
 
 
+
 .cell-menu a{
 
 	color:darkgray ;
+	margin:5px;
 	
 }
 
@@ -93,6 +96,25 @@ nav a{
 #logo{
 	height:60px;
 	margin:0px;
+}
+
+@media (max-width: 600px) {
+  .cell-menu {
+	display: block;
+    margin-bottom: 5px;
+    float: unset;
+    position: unset;
+    top: unset;
+    right: unset;
+    
+    }
+    .container{
+    	padding:3px;
+    }
+    .CodeMirror,article,textarea{
+    	margin:2px;
+    	padding:2px;
+    }
 }
 
 /* Yellow Light scheme (Default) */
