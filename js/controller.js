@@ -35,6 +35,14 @@ move_down=function(i){
 	curr.parentNode.insertBefore(curr, next.nextSibling)
 }
 
+goto_next_cell=function(i){
+	curr=get_dom("block"+i);
+	next=curr.nextSibling;
+	if(next==null) return;
+	next_block_id=next.id.replace("block","");
+	goto_input_cell(next_block_id);
+	
+}
 goto_input_cell=function(i){
 	if(!get_dom("cell_type"+i).checked){
 		input_dom=get_dom("input"+i)
@@ -85,9 +93,9 @@ insert_cell=function(type,after){
 			     matchBrackets: true,
 			     highlightMatches: true,
 			     extraKeys: {
-			          'Ctrl-Enter': (cm) => { run(i);goto_input_cell(i+1)},
-			          'Cmd-Enter': (cm) => {run(i); goto_input_cell(i+1)},
-			          'Shift-Enter': (cm) => {run(i); },
+			          'Ctrl-Enter': (cm) => { run(i)},
+			          'Cmd-Enter': (cm) => {run(i)},
+			          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
 			          'Ctrl-Del': (cm) => {delete_cell(i); },
 			          'Alt-Enter': (cm) => {insert_cell('code',i);}			     
 			          }
@@ -101,6 +109,7 @@ insert_cell=function(type,after){
 	  		get_dom('cell_menu'+i).childNodes[0].checked=false;
 	  		get_dom('result'+i).style.display='block';
 	  		get_dom('input'+i).style.display='none';
+	  		get_dom('status'+i).style.display='none';
 	  	}
 	  	cm.focus();
 		cm.setCursor(1,0);
@@ -110,8 +119,6 @@ insert_cell=function(type,after){
 	
 
 	status_data.num_blocks=i+1;
-
-
 
 }
 

@@ -22,8 +22,8 @@ Notebook for javascript experimentation (in the browser). Features:
 3. You can download more examples from the folder examples/ in the repository.
 
 ## Keyboard Shortcuts
-- Ctrl-Enter/Cmd-Enter: Run the current cell and go to next cell
-- Shift-Enter': Run the current cell
+- Ctrl-Enter/Cmd-Enter: Run the current cell
+- Shift-Enter': Run the current cell and go to next cell
 - Ctrl-Del: Delete all code in the cell
 - Alt-Enter/Option-Enter: Insert new cell
 
