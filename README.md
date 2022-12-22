@@ -23,7 +23,7 @@ Notebook for javascript experimentation (in the browser). Features:
 
 ## Use cases
 1. For trying new libraries for testing and building
-2. For building reproducable research and sharing the results with others
+2. For building reproducible research and sharing the results with others
 
 ## Not to be used for:
 1. Production use cases

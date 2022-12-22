@@ -37,8 +37,11 @@ nav a{
 		border-radius: 6px;
 	margin:10px;
 	height: auto !important;
-	max-height:300px;
 	overflow:scroll !important;
+}
+
+.CodeMirror-scroll{
+	max-height:300px;
 }
 
 .cm-editor { height: 100% }
