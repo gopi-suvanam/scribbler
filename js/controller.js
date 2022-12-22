@@ -72,7 +72,7 @@ insert_cell=function(type,after){
 
 	waitForDom("input"+i).then(input_div => {
 	
-		editors[i] = new CodeMirror(function(node){input_div.appendChild(node);
+		cm = new CodeMirror(function(node){input_div.appendChild(node);
 		}, {
 		  value: "",
 		   tabSize: 4,
@@ -102,6 +102,9 @@ insert_cell=function(type,after){
 	  		get_dom('result'+i).style.display='block';
 	  		get_dom('input'+i).style.display='none';
 	  	}
+	  	cm.focus();
+		cm.setCursor(1,0);
+	  	editors[i]=cm;
 
 	});
 	
