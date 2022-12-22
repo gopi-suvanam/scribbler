@@ -15,15 +15,27 @@
       "type": "html"
     },
     {
-      "code": "hello=function(what){\n   show(\"hello \"+what); \n}\nshow(hello)",
-      "status": "[1]",
-      "output": "function(what){\n   show(\"hello \"+what); \n}",
+      "code": "hello=function(what){\n   show(\"Hello \"+what); \n}\nshow(hello)",
+      "status": "[8]",
+      "output": "function(what){\n   show(\"Hello \"+what); \n}",
       "type": "code"
     },
     {
-      "code": "hello('<span style=\"color:green\">world</span>')",
-      "status": "[6]",
-      "output": "hello <span style=\"color:green\">world</span>",
+      "code": "hello('<span style=\"color:green\">World</span>')",
+      "status": "[9]",
+      "output": "Hello <span style=\"color:green\">World</span>",
+      "type": "code"
+    },
+    {
+      "code": "Or you could just do: show(\"Hello World\")",
+      "status": "",
+      "output": "Or you could just do: show(\"Hello World\")",
+      "type": "html"
+    },
+    {
+      "code": "show(\"Hello World\")",
+      "status": "[10]",
+      "output": "Hello World",
       "type": "code"
     }
   ]
