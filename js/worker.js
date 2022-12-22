@@ -42,3 +42,17 @@ run=function(_block_id){
 	console.log("Finished cell ",_block_id)
 }
 
+run_all=function(){
+	var main=get_dom("main");
+	blocks=main.childNodes;
+	blocks.forEach(x=>{
+		try{
+			run(x.id.replace('block',""))
+		}catch(err){
+			console.log(err.stack)
+		}
+	});
+	
+	
+}
+
