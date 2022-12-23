@@ -42,7 +42,7 @@ Notebook for javascript experimentation (in the browser). Features:
 1. Production use cases
 2. As an alternative to webapps
 
-## How is different from Jsfiddle/codepen etc?
+## How is JSNB different from Jsfiddle/codepen etc?
 - JSNB is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
 - JSNB can have multiple cells so it can create long documents.
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
