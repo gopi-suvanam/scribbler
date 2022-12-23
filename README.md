@@ -11,10 +11,17 @@ Notebook for javascript experimentation (in the browser). Features:
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the the app online, you can put the folder in web directory of the server and use the link to index.html.
 3. You can also try the git hosted version (without downloading anything) here: https://gopi-suvanam.github.io/jsnb/#
-4. A notebook downloaded as json (has a default extension of .jsnb) can be loaded back into the app.
-5. A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://gopi-suvanam.github.io/jsnb/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
-6. For adding more functionality import an external library through import(...) or by adding <script> element.
-7. There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
+
+## Features
+- The notebook consists of cells. Each cell will have user inputter html/code. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
+- There are two types of cells: code and html. The type of cell can be toggled using a switch in the cell menu.
+- To get the output of a cell press play ► button the cell menu.
+- For code cells input and output are both shown. For html cells, input is hidden and opens up if you click the output.
+- The cell menu also has buttons for moving the cell up ↑, down ↓, adding a new cell ✛ and deleting the current cell ☓.
+- A notebook downloaded as json (has a default extension of .jsnb) can be loaded back into the app. The notebook or only the output can also be downloaded as html.
+- A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://gopi-suvanam.github.io/jsnb/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
+- There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
+- For adding more functionality import an external library through import(...) or by adding <script> element.
 
 ## Sample notebooks
 1. A hello-world notebook: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
