@@ -2,23 +2,23 @@
 Notebook for javascript experimentation (in the browser). Features:
 1. Easy to use javascript experimentation tool.
 2. Runs without backend (node.js/npm/pip install/ngnix etc etc)
-3. Can be loaded from the web (i.e. behind a webserver) or from the file system   (certain features like WebRTC might require a server)
-4. UI is similar close to jupyter notebook (for the sake familiarity for python developers)
-5. Uses minimal external libraries and no frameworks (i.e. Vanilla JS). This is to increase the speed6. 
+3. Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
+4. UI is similar/close to jupyter notebook (for the sake familiarity for python developers)
+5. Uses minimal external libraries and no frameworks (i.e. Vanilla JS). This is to increase the speed. 
 6. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
 
 ## How to use
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
-2. If you want to host the the app online, you can put the folder in web directory of the server and use the link to index.html.
-3. You can also try the git hosted version (without downloading anything) here: https://gopi-suvanam.github.io/jsnb/#
+2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
+3. You can also try the git-hosted version (without downloading anything) here: https://gopi-suvanam.github.io/jsnb/#
 
 ## Features
-- The notebook consists of cells. Each cell will have user inputter html/code. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
+- The notebook consists of cells. Each cell will have user inputted html/code and an output. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
 - There are two types of cells: code and html. The type of cell can be toggled using a switch in the cell menu.
-- To get the output of a cell press play ► button the cell menu.
+- To get the output of a cell press play ► button on the cell menu (or Cmd/Ctrl-Enter on keyboard after selecting the cell).
 - For code cells input and output are both shown. For html cells, input is hidden and opens up if you click the output.
 - The cell menu also has buttons for moving the cell up ↑, down ↓, adding a new cell ✛ and deleting the current cell ☓.
-- A notebook downloaded as json (has a default extension of .jsnb) can be loaded back into the app. The notebook or only the output can also be downloaded as html.
+- A notebook can be downloaded as json (has a default extension of .jsnb). IT can be loaded back into the app. The notebook or only the output can also be downloaded as html.
 - A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://gopi-suvanam.github.io/jsnb/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
 - There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
 - For adding more functionality import an external library through import(...) or by adding <script> element.
