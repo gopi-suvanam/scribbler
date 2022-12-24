@@ -15,14 +15,14 @@
       "type": "html"
     },
     {
-      "code": "large_num=10000000;\nshow(\"Taking sum of 1/x and comaring with log() for a large number:\"+large_num)\nshow(\" using for loop<br>\")\nsum_1=num=>{\n  sum=0;\n  for(ix=1;ix<num;ix++){\n   sum+=1/ix; \n  }\n  return(sum);\n}\nshow(sum_1(large_num));\nshow(\"<br>\");\nshow(Math.log(large_num))",
-      "status": "[13]<br><span style=\"font-size:8px\">4.512s<span></span></span>",
-      "output": "Taking sum of 1/x and comaring with log() for a large number:10000000 using for loop<br>16.69531126585727<br>16.11809565095832",
+      "code": "large_num=10000000;\nshow(\"Taking sum of 1/x and comparing with log() for a large number:\"+large_num)\nshow(\" using for loop<br>\")\nsum_1=num=>{\n  sum=0;\n  for(ix=1;ix<num;ix++){\n   sum+=1/ix; \n  }\n  return(sum);\n}\nshow(sum_1(large_num));\nshow(\"<br>\");\nshow(Math.log(large_num))",
+      "status": "[1]<br><span style=\"font-size:8px\">4.54s<span></span></span>",
+      "output": "Taking sum of 1/x and comparing with log() for a large number:10000000 using for loop<br>16.69531126585727<br>16.11809565095832",
       "type": "code"
     },
     {
       "code": "show(\"Taking sum of 1/x for a large number:\"+large_num)\nshow(\" using map-reduce<br>\")\nsum_2=num=>{\n return  [...Array(num-1).keys()].map(x=>1/(x+1)).reduce(\n  (accumulator, currentValue) => accumulator + currentValue,0\n)\n}\nshow(sum_2(large_num));\nshow(\"<br>\");\nshow(Math.log(large_num))",
-      "status": "[17]<br><span style=\"font-size:8px\">2.435s<span></span></span>",
+      "status": "[2]<br><span style=\"font-size:8px\">2.689s<span></span></span>",
       "output": "Taking sum of 1/x for a large number:10000000 using map-reduce<br>16.69531126585727<br>16.11809565095832",
       "type": "code"
     }
