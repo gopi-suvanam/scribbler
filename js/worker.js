@@ -15,14 +15,19 @@ run=function(_block_id){
 	code=editors[_block_id].getValue()
 	try{
 		if(get_dom("cell_type"+_block_id).checked){
+		
 			get_dom("result"+_block_id).style.display = "block";
 			
 			
 			get_dom("status"+_block_id).style.display="block";
-			
+			const start_time_eval = Date.now();
 			eval(code)
+			const end_time_eval = Date.now();
+			var execution_time=end_time_eval - start_time_eval;
+			
 			status_data.block_run+=1;
-			get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']'
+			execution_time=execution_time>1000?execution_time/1000.0+'s':execution_time+'ms'
+			get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>'
 		}
 		else{
 			get_dom("status"+_block_id).innerHTML='';
