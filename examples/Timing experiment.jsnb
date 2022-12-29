@@ -9,20 +9,20 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<strong>Timing Experiment</strong>",
+      "code": "<strong>Timing Experiment</strong><br>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (form 1 to n) ~ log(n).",
       "status": "",
-      "output": "<strong>Timing Experiment</strong>",
+      "output": "<strong>Timing Experiment</strong><br>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (form 1 to n) ~ log(n).",
       "type": "html"
     },
     {
-      "code": "large_num=10000000;\nshow(\"Taking sum of 1/x and comparing with log() for a large number:\"+large_num)\nshow(\" using for loop<br>\")\nsum_1=num=>{\n  sum=0;\n  for(ix=1;ix<num;ix++){\n   sum+=1/ix; \n  }\n  return(sum);\n}\nshow(sum_1(large_num));\nshow(\"<br>\");\nshow(Math.log(large_num))",
-      "status": "[3]<br><span style=\"font-size:8px\">5.632s<span></span></span>",
-      "output": "Taking sum of 1/x and comparing with log() for a large number:10000000 using for loop<br>16.69531126585727<br>16.11809565095832",
+      "code": "large_num=10000000;\nshow(\"Taking sum of 1/x and comparing with Math.log() for a large number:\"+large_num)\nshow(\" using for loop<br>\")\nsum_1=num=>{\n  sum=0;\n  for(ix=1;ix<num;ix++){\n   sum+=1/ix; \n  }\n  return(sum);\n}\nshow(sum_1(large_num));\nshow(\"<br>\");\nshow(Math.log(large_num))",
+      "status": "[3]<br><span style=\"font-size:8px\">4.495s<span></span></span>",
+      "output": "Taking sum of 1/x and comparing with Math.log() for a large number:10000000 using for loop<br>16.69531126585727<br>16.11809565095832",
       "type": "code"
     },
     {
       "code": "show(\"Taking sum of 1/x for a large number:\"+large_num)\nshow(\" using map-reduce<br>\")\nsum_2=num=>{\n return  [...Array(num-1).keys()].reduce(\n  (accumulator, x) => accumulator + 1/(1+x),0\n)\n}\nshow(sum_2(large_num));\nshow(\"<br>\");\nshow(Math.log(large_num))",
-      "status": "[6]<br><span style=\"font-size:8px\">935ms<span></span></span>",
+      "status": "[5]<br><span style=\"font-size:8px\">1.062s<span></span></span>",
       "output": "Taking sum of 1/x for a large number:10000000 using map-reduce<br>16.69531126585727<br>16.11809565095832",
       "type": "code"
     }

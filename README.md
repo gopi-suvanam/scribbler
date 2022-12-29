@@ -25,8 +25,10 @@ Notebook for javascript experimentation (in the browser). Features:
 
 ## Sample notebooks
 1. A hello-world notebook: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
-2. An example of using Plotly graphs: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Plotly%20Example.jsnb
-3. You can download more examples from the folder examples/ in the repository.
+2. Using Plotly graphs: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Plotly%20Example.jsnb
+3. Evaluating performance of code: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Timing%20experiment.jsnb
+4. Using curr_cell function to format the output cell: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/curr_cell_example.jsnb
+5. More examples will be added in the folder examples/ in the repository.
 
 ## Keyboard Shortcuts
 - Ctrl-Enter/Cmd-Enter: Run the current cell
