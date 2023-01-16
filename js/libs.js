@@ -4,6 +4,12 @@
 
 get_dom=id=>document.getElementById(id);
 
+load_script = function(url){
+	var script = document.createElement('script');
+	script.src = url;
+	document.head.appendChild(script);
+
+}
 
 function waitForDom(id) {
     return new Promise(resolve => {
