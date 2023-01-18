@@ -46,15 +46,13 @@
 
 	      </ul>
 	    </li>
-	    <li role="list" dir="rtl">
-	      <a href="#" aria-haspopup="listbox">Run</a>
-	      <ul role="listbox">
-	        <li><a onclick="run_all()">Run all</a></li>
-
-	      </ul>
-	    </li>
+	    
 	  </ul>
 	  <ul>
+	    <li >
+	      <a href="#" onclick="run_all()" role="button" style="margin-right:5px">&#9658;</a>
+
+	    </li>
 	    <li><a href="https://github.com/gopi-suvanam/jsnb" role="button" >Github</a></li>
 	  </ul>
 	</nav>
@@ -69,7 +67,7 @@
 			<a  title="Delete the cell"  onclick="delete_cell(_block_id)">&#9747;</a>
 			
 		</div>
-		<div id="input_block_id" tabindex="0"  class='code'></div>
+		<div id="input_block_id" tabindex="0" onfocusout="unfocus_editor(_block_id)" class='code'></div>
 		<article id="result_block_id" onclick="open_editor(_block_id)">
 			<p class="status" id="status_block_id"></p>
 			<div class="output" id="output_block_id"></div>
