@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "WebTorrent Example",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h3>WebTorrent Example</h3>\nThis notebook loads a P2P file using WebTorrent library (which used WebRTC in the background). WebRTC may not work if JSNB be is not hosted (i.e. loads as file:///)<br>\n<div>\n  <span id=\"download\"></span><br>\n  <span id=\"tdownload\"></span><br>\n  <span id=\"sdownload\"></span><br>\n  <span id=\"pdownload\"></span><br>\n  <span id=\"hash\"></span>\n</div>\n<hr/>\n<style>\nvideo {\n  width: 100% height: 100%\n}\n</style>",
+      "status": "",
+      "output": "<h3>WebTorrent Example</h3>\nThis notebook loads a P2P file using WebTorrent library (which used WebRTC in the background). WebRTC may not work if JSNB be is not hosted (i.e. loads as file:///)<br>\n<div>\n  <span id=\"download\"></span><br>\n  <span id=\"tdownload\"></span><br>\n  <span id=\"sdownload\"></span><br>\n  <span id=\"pdownload\"></span><br>\n  <span id=\"hash\"></span>\n</div>\n<hr>",
+      "type": "html"
+    },
+    {
+      "code": "load_script(\"https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js\")\nvar client = new WebTorrent();\nvar magnetURI = 'magnet:?xt=urn:btih:6a9759bffd5c0af65319979fb7832189f4f3c35d&dn=sintel.mp4&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&tr=wss%3A%2F%2Ftracker.webtorrent.io&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fsintel-1024-surround.mp4';\n\nclient.add(magnetURI, function(torrent) {\n  // Got torrent metadata!\n  console.log('Client is downloading:', torrent.infoHash);\n  document.getElementById('hash').textContent = 'Client downloading: ' + torrent.infoHash;\n  torrent.files.forEach(function(file) {\n    torrent.on('download', function(bytes) {\n      document.getElementById('download').textContent = 'just downloaded: ' + bytesToSize(bytes);\n      document.getElementById('tdownload').textContent = 'total downloaded: ' + bytesToSize(torrent.downloaded);\n      document.getElementById('sdownload').textContent = 'download speed: ' + bytesToSize(torrent.downloadSpeed);\n      document.getElementById('pdownload').textContent = 'progress: ' + toPercentage(torrent.progress);\n    });\n    // Display the file by appending it to the DOM. Supports video, audio, images, and\n    // more. Specify a container element (CSS selector or reference to DOM node).\n    file.appendTo(curr_cell())\n  })\n})\n\nfunction bytesToSize(bytes) {\n  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];\n  if (bytes === 0) return '0 Bytes';\n  var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));\n  return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];\n}\n\nfunction toPercentage(dec) {\n  dec = dec.toString();\n  var a = dec.split(\".\");\n  dec = a[1];\n  dec = dec.substr(0, 4);\n  return dec = (dec / 100) + \"%\";\n}\n",
+      "status": "[1]<br><span style=\"font-size:8px\">6ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    }
+  ]
+}
