@@ -6,7 +6,6 @@ article,textarea{
  margin:10px;
  padding:10px !important;
  overflow:auto; 
- max-height:300px;
 }
 
 nav{
