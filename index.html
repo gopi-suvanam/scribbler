@@ -79,8 +79,8 @@
 		
   </body>
   <script>
-  	url=window.location.href.split("#")[1];
-  	if(url!=undefined & url.length>1)
+  	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
+  	if(url!=undefined && url.length>1)
   	 read_file(url,load_jsnb,err=>{alert(err.message)});
   	else insert_cell('code');
   	

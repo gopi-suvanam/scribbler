@@ -105,8 +105,9 @@ insert_cell=function(type,after){
 			          'Ctrl-Enter': (cm) => { run(i)},
 			          'Cmd-Enter': (cm) => {run(i)},
 			          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
-			          'Ctrl-Del': (cm) => {delete_cell(i); },
-			          'Alt-Enter': (cm) => {insert_cell('code',i);}			     
+			          'Alt-Enter': (cm) => {insert_cell('code',i);},
+			           'Alt-R':(cm)=>{run_all()},	
+			           'Alt-D':(cm)=>{delete_cell(i)},			     
 			          }
 		});
 		
