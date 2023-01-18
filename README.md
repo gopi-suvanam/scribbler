@@ -11,6 +11,8 @@ Notebook for javascript experimentation (in the browser). Features:
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
 3. You can also try the git-hosted version (without downloading anything) here: https://gopi-suvanam.github.io/jsnb/#
+4. A hello-world notebook: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
+5. More examples will be added in the folder examples/ in the repository. Check the README in that folder for links.
 
 ## Features
 - The notebook consists of cells. Each cell will have user inputted html/code and an output. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
@@ -23,12 +25,6 @@ Notebook for javascript experimentation (in the browser). Features:
 - There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
 - For adding more functionality import an external library through import(...) or by adding <script> element.
 
-## Sample notebooks
-1. A hello-world notebook: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
-2. Using Plotly graphs: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Plotly%20Example.jsnb
-3. Evaluating performance of code: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Timing%20experiment.jsnb
-4. Using curr_cell function to format the output cell: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/curr_cell_example.jsnb
-5. More examples will be added in the folder examples/ in the repository.
 
 ## Keyboard Shortcuts
 - Ctrl-Enter/Cmd-Enter: Run the current cell
