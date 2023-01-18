@@ -13,6 +13,7 @@ nav{
  	font-size:10px !important;
  	position: relative;
 		top: 0;
+	border-bottom:thin solid grey;
 }
 nav li{
 	padding:0px;
@@ -25,11 +26,13 @@ nav ul{
 	margin-left:10px !important;
 	margin-right:10px !important;
 }
-
 nav a{
-	font-size:12px;
-	line-height:20px;
+	color:grey
 }
+footer span{
+	font-size:12px;
+}
+
 .CodeMirror {
 	font-family: Arial, monospace !important; 
 	font-size: 12px !important; 
@@ -44,6 +47,7 @@ nav a{
 .CodeMirror-scroll{
 	max-height:300px;
 }
+
 
 .cm-editor { height: 100% }
 .cm-scroller { overflow: auto }
