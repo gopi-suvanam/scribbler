@@ -1,4 +1,6 @@
-﻿## Links to example Notebooks in this Repo
+﻿## Links to example Notebooks saved in this Repo
+ 
+ These notebooks are stored and served from Git-hub pages
 
 1. [Hello-world](https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb)
 2. [Plotly graphs](https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Plotly%20Example.jsnb)
