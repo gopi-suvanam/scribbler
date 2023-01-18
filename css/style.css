@@ -8,6 +8,7 @@ article,textarea{
  overflow:auto; 
  max-height:300px;
 }
+
 nav{
  	margin:0px;
  	font-size:10px !important;
@@ -98,7 +99,7 @@ footer span{
 }
 
 #logo{
-	height:60px;
+	height:50px;
 	margin:0px;
 }
 
