@@ -3,9 +3,8 @@ Notebook for javascript experimentation (in the browser). Features:
 1. Easy to use javascript experimentation tool.
 2. Runs without backend (node.js/npm/pip install/ngnix etc etc)
 3. Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
-4. UI is similar/close to jupyter notebook (for the sake familiarity for python developers)
-5. Uses minimal external libraries and no frameworks (i.e. Vanilla JS). This is to increase the speed. 
-6. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
+4. UI is similar/close to jupyter notebook (for the sake familiarity for python developers). Has a minimalistic UI to put focus on user generated code/content.
+5. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
 
 ## How to use
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
