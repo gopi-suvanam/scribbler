@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<b>Sample notebook to show usage of curr_cell()</b><br>\nPlay the next cell (using play button or Shift-Enter) to see the effect.",
+      "code": "<b>Sample notebook to show usage of curr_cell()</b><br>\nPlay the next cell (using play button or Shift-Enter) to see the effect. curr_cell function is added to the notebook as identifying the element to modify it is not easy exogenously.",
       "status": "",
-      "output": "<b>Sample notebook to show usage of curr_cell()</b><br>\nPlay the next cell (using play button or Shift-Enter) to see the effect.",
+      "output": "<b>Sample notebook to show usage of curr_cell()</b><br>\nPlay the next cell (using play button or Shift-Enter) to see the effect. curr_cell function is added to the notebook as identifying the element to modify it is not easy exogenously.",
       "type": "html"
     },
     {

@@ -38,5 +38,6 @@
       "output": "The second cell should have been updated with a graph",
       "type": "code"
     }
-  ]
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb"
 }
