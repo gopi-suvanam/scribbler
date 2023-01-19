@@ -18,6 +18,8 @@
 		<script src="js/libs.js"></script>
 		<script src="js/controller.js"></script>
 		<script src="js/worker.js"></script>
+		<script src="js/github.js"></script>
+		<script src="js/modal.js"></script>
 
 
   </head>
@@ -28,14 +30,18 @@
 	    <li><img src='images/logo2.png' id="logo"/></li>
 	    <li><a id="nb_name" contentEditable="true">Untitled Notebook</a></li>
 	    <li role="list" dir="rtl">
+	    
 	      <a href="#" aria-haspopup="listbox">File</a>
 	      <ul role="listbox">
+	      	
 	        <li><a onclick="load_file_click()">Load a notebook</a> 
 	        <input style="display:none" type="file" id="upload_file"  />  
 	        </li>
+	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub Export/Import</a></li>
 	        <li><a onclick="download_nb()">Download as notebook</a></li>
 	        <li><a onclick="download_html(false)">Download as HTML</a></li>
 	        <li><a onclick="download_html(true)">Download only output</a></li>
+	        <li><a onclick="download_js()">Download as JS</a></li>
 	      </ul>
 	    </li>
 	    <li role="list" dir="rtl">
@@ -43,7 +49,6 @@
 	      <ul role="listbox">
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
-
 	      </ul>
 	    </li>
 	    
@@ -77,8 +82,29 @@
 	
 	<div style="width:98%" class='container' id='main'></div>	
 	<hr style="margin-top:20px">
+	
+	<dialog id="git-import-export">
+	  <article>
+	    <h5>Load your code from GitHub</h5>
+	    <p>
+	      Load a JSNB from public repositories on GitHub or private repositories where you have access. Will require access token. <a>How to get access token?</a>
+	    </p>
+	    <input type='text' onchange="update_owner()" id='token' placeholder='Access Token'></input>
+	    <input type='text' onchange="update_repos()" id='user' placeholder='Owner'></input>
+	    <input list='repos' id='repo' placeholder='Repo'></input><datalist id='repos'></datalist>
+	    <input type='text' id='path' placeholder='Path'></input>
+
+	      <a href="#" data-target="git-import-export" onClick="toggleModal(event)" role="button" class="secondary">Cancel</a>
+	      <a href="#"  onclick="upload_to_git()" role="button">Push to Git</a>
+	      <a href="#" onclick="load_from_git()" role="button">Load from Git</a>
+
+	  </article>
+	</dialog>
+	
+
+	
 	<footer style="padding:0px;text-align:center">
-	<span style="margin:auto">Created with <span style="color:red">&hearts;</span> for JavaScript</span>
+		<span style="margin:auto">Created with <span style="color:red">&hearts;</span> for JavaScript</span>
 	</footer>	
   </body>
   <script>

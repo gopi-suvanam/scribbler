@@ -7,6 +7,7 @@ article,textarea{
  padding:10px !important;
  overflow:auto; 
  font-size:12px;
+ 
 }
 
 nav{
@@ -33,7 +34,9 @@ nav a{
 footer span{
 	font-size:12px;
 }
-
+ul[role=listbox]{
+	font-size:12px !important;
+}
 .CodeMirror {
 	font-family: Arial, monospace !important; 
 	font-size: 12px !important; 
@@ -102,7 +105,14 @@ footer span{
 	height:60px;
 	margin:0px;
 }
-
+p{
+	font-size:12px;
+}
+input{
+	font-size:12px;
+	padding:5px !important;
+	line-height:20px;
+}
 @media (max-width: 600px) {
   .cell-menu {
 	display: block;

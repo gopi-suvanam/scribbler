@@ -11,6 +11,20 @@ load_script = function(url){
 
 }
 
+import_module=function(module,features){
+	var script = document.createElement('script');
+	script.type="module";
+	if(features==null) import(module);
+	else {script.innerHTML = `import {${features.join(',')}} from "${module}";`; }
+
+	document.head.appendChild(script);
+	
+	script.onerror = () => {
+	      console.error("Failed to load module script with URL " + url);
+
+	  };
+}
+
 function waitForDom(id) {
     return new Promise(resolve => {
 	        if (get_dom(id)) {
@@ -56,7 +70,8 @@ blank_nb={
     }
   },
   "jsnbversion":"v0.1",
-  "cells" : []
+  "cells" : [],
+  "source":"https://github.com/gopi-suvanam/jsnb"
 }
 
 
