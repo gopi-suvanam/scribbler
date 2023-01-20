@@ -6,6 +6,14 @@ Notebook for javascript experimentation (in the browser). Features:
 4. UI is similar/close to jupyter notebook (for the sake familiarity for python developers). Has a minimalistic UI to put focus on user generated code/content.
 5. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
 
+## Table of contents
+<!-- toc -->
+- [How to use](#How to use)
+- [Features]
+- [Keyboard Shortcuts]
+- [Usecases]
+- [Vs. xyz]
+
 ## How to use
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
@@ -26,18 +34,27 @@ Notebook for javascript experimentation (in the browser). Features:
 
 
 ## Keyboard Shortcuts
+These shortcuts work when a code cell is in focus:
 - Ctrl-Enter/Cmd-Enter: Run the current cell
 - Shift-Enter': Run the current cell and go to next cell
 - Alt-Enter/Option-Enter: Insert new cell
 - Alt-D/Option-D: Delete the current cell (no undo at the moment, so be careful)
+- Alt/Option-Up Arrow: Move the cell up
+- Alt/Option-Up Down: Move the cell down
+
+
+These shortcust are global
 - Alt-R/Option-R: Run all the cells
+- Ctrl-G: Import from/Push to GitHub
+- Ctrl-S: Download the jsnb to local machine
+- Ctrl-O: Load a jsnb from local machine
 
 
 ## Use cases
 1. For trying new libraries for testing and building
 2. For building reproducible research and sharing the results with others
 
-## Not to be used for:
+Not to be used for:
 1. Production use cases
 2. As an alternative to webapps
 

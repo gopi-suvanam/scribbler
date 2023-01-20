@@ -2,10 +2,10 @@
 run=function(_block_id){
 	console.log("Running cell ",_block_id)
 	
-	show =function(x){
+	var show =function(x){
 		show_in_dom(x,"output"+_block_id)
 	}
-	curr_cell=function(){
+	var curr_cell=function(){
 		return get_dom("output"+_block_id);
 	}
 	console.log("hi ",get_dom("cell_type"+_block_id).checked)

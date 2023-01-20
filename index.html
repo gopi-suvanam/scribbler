@@ -34,11 +34,9 @@
 	      <a href="#" aria-haspopup="listbox">File</a>
 	      <ul role="listbox">
 	      	
-	        <li><a onclick="load_file_click()">Load a notebook</a> 
-	        <input style="display:none" type="file" id="upload_file"  />  
-	        </li>
-	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub Export/Import</a></li>
-	        <li><a onclick="download_nb()">Download as notebook</a></li>
+	        <li><a onclick="load_file_click()">Open (Ctrl-O)</a><input style="display:none" type="file" id="upload_file"  /></li>
+	        <li><a onclick="download_nb()">Download (Ctr-S)</a></li>
+	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
 	        <li><a onclick="download_html(false)">Download as HTML</a></li>
 	        <li><a onclick="download_html(true)">Download only output</a></li>
 	        <li><a onclick="download_js()">Download as JS</a></li>
@@ -55,7 +53,7 @@
 	  </ul>
 	  <ul>
 	    <li >
-	      <a href="#" onclick="run_all()" role="button" style="margin-right:5px">&#9658;</a>
+	      <a href="#" data-tooltip="Run all: Alt/Option-R" onclick="run_all()" role="button" style="margin-right:5px">&#9658;</a>
 
 	    </li>
 	    <li><a href="https://github.com/gopi-suvanam/jsnb" role="button" >Github</a></li>
@@ -64,12 +62,12 @@
 
 	<div id="code_block_template" style="display:none">
 		<div id="cell_menu_block_id" class="cell-menu">
-			<input title="Toggle between code and html" id="cell_type_block_id" style="height:15px;" type="checkbox" checked="true" role="switch">
-			<a title="Run the cell: Shift-Enter"   onclick="run(_block_id)">&#9658;</a>
-			<a  title="Move the cell up"   onclick="move_up(_block_id)">&#8593;</a>
-			<a title="Move the cell down"    onclick="move_down(_block_id)">&#8595;</a>
-			<a  title="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
-			<a  title="Delete the cell"  onclick="delete_cell(_block_id)">&#9747;</a>
+			<input title="Toggle between code and html" id="cell_type_block_id" style="height:15px;" type="checkbox" checked="true" role="switch"></input>
+			<a data-tooltip="Run the cell: Cmd/Ctrl-Enter"   onclick="run(_block_id)">&#9658;</a>
+			<a  data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#8593;</a>
+			<a data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="move_down(_block_id)">&#8595;</a>
+			<a  data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
+			<a  data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
 			
 		</div>
 		<div id="input_block_id" tabindex="0" onfocusout="unfocus_editor(_block_id)" class='code'></div>
@@ -128,6 +126,25 @@
   	
   	file_loader.addEventListener("change", handleFiles, false);
   	
+  	document.onkeyup = function(e) {
+	  if (e.ctrlKey && e.key === 's') {
+	    download_nb();
+	  } else if (e.ctrlKey && e.key === 'g') {
+	    openModal(get_dom('git-import-export'));
+	  } else if (e.ctrlKey && e.key === 'o') {
+	    load_file_click()
+			
+	  }
+	  else if (e.altKey && e.key === '®') {
+	    run_all()
+			
+	  }
+	  else if (e.altKey && e.key === 'r') {
+	    run_all()
+			
+	  }
+	};
+	  	
 
 	
   </script>

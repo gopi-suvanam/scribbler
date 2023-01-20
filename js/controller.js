@@ -35,13 +35,21 @@ move_up=function(i){
 	curr=get_dom("block"+i)
 	prev=curr.previousSibling
 	curr.parentNode.insertBefore(curr,prev);
+	
+	input_dom=get_dom("input"+i)
+	cm=input_dom.childNodes[0].CodeMirror;
+	cm.focus();
+	cm.setCursor(1,0)
 }
 move_down=function(i){
 	curr=get_dom("block"+i)
 	next=curr.nextSibling
-	console.log(next.id);
-	
 	curr.parentNode.insertBefore(curr, next.nextSibling)
+	
+	input_dom=get_dom("input"+i)
+	cm=input_dom.childNodes[0].CodeMirror;
+	cm.focus();
+	cm.setCursor(1,0)
 }
 
 goto_next_cell=function(i){
@@ -106,8 +114,10 @@ insert_cell=function(type,after){
 			          'Cmd-Enter': (cm) => {run(i)},
 			          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
 			          'Alt-Enter': (cm) => {insert_cell('code',i);},
-			           'Alt-R':(cm)=>{run_all()},	
-			           'Alt-D':(cm)=>{delete_cell(i)},			     
+			           //'Alt-R':(cm)=>{run_all()},	
+			           'Alt-D':(cm)=>{delete_cell(i)},	
+			           'Alt-Up':(cm)=>{move_up(i)},	
+			           'Alt-Down':(cm)=>{move_down(i)},		     
 			          }
 		});
 		
