@@ -13,7 +13,8 @@ Notebook for javascript experimentation (in the browser). Features:
 - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Exporting-Importing](#exporting-importing)
 3. [Use cases](#use-cases)
-4. [Vs. xyz](#how-is-jsnb-different)
+4. [Collaboration](#collaboration)
+5. [Vs. xyz](#how-is-jsnb-different)
 
 ## Getting Started
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
@@ -63,6 +64,14 @@ These shortcust are global
 Not to be used for:
 1. Production use cases
 2. As an alternative to webapps
+
+## Collaboration
+The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collbortion is still possible through:
+1. Download and share JSNB files.
+2. Use github for storing JSNB files. Make the repo public or add collaborators. The notebooks built on JSNB can be directly be synced on to GitHub using an access token.
+3. Files in public GitHub repos can be directly accessed as: https://gopi-suvanam.github.io/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
+4. If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://gopi-suvanam.github.io/jsnb/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
+5. Map a cloud drive or LAN drive onto local machine and load from/download to the drive. Share the drive with collaborators.
 
 ## How is JSNB different
 - JSNB is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
