@@ -1,5 +1,6 @@
-# Done
-## UI
+# Roadmap for JSNB
+## Done
+### UI
 - UI could be similar to Jupyter Notebook
 - There will be cells with results
 - Output could be saved as html
@@ -8,7 +9,7 @@
 - Cells can be code and comment cells.. Comment cells will be markdown display
 - Github integration for storing: done through Access Token. Can think of alternative authentication mechanisms.
 
-## Feartures
+### Feartures
 - Ability to import .js files dynamically
 - Use variables (global) across the cells
 - Ability to save the whole notebook as a file.. with .nb extension
@@ -17,17 +18,20 @@
 - Asynchronous code execution is halmark of javascript so each cell can be run parallelly. Any asynchronous code within a cell will have to dsiplay errors on its own.
 - Reload for restarting the kernel
 
-# To Do
-## UI
+## To Do
+### UI
 - Cut-copy-paste whole cells
 - Ctrl-Z
 - Dark mode
 - Sleeker menu
+- More keyboard shortcuts
 
-## Features
-- Store temporarily in browser cache
+### Features
+- Store temporarily in browser cache (indexeddb)
 - Mimic static import (browser/deno style)
 - Mimi node style import/require
 - Use GPU where possible
 - Restart kernel/inturrept kernel features
+- More collaboration features (like share a link etc.)
+
 
