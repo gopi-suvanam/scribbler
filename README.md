@@ -8,11 +8,11 @@ Notebook for javascript experimentation (in the browser). Features:
 
 ## Table of contents
 <!-- toc -->
-- [How to use](#How to use)
-- [Features]
-- [Keyboard Shortcuts]
-- [Usecases]
-- [Vs. xyz]
+- [How to use](#how-to-use)
+- [Features](#features)
+- [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Use cases](#use-cases)
+- [Vs. xyz](#how-is-jsnb-different)
 
 ## How to use
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
@@ -58,7 +58,7 @@ Not to be used for:
 1. Production use cases
 2. As an alternative to webapps
 
-## How is JSNB different from Jsfiddle/codepen etc?
+## How is JSNB different
 - JSNB is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
 - JSNB can have multiple cells so it can create long documents.
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
