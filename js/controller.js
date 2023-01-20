@@ -6,8 +6,10 @@
 
 var editors={}
 
-open_editor=function(i){
-	if(!get_dom("cell_type"+i).checked){
+toggle_editor=function(i){
+	if(get_dom("cell_type"+i).checked) return;
+	
+	{
 		input_dom=get_dom("input"+i)
 		input_dom.style.display = "block";
 		get_dom("cell_menu"+i).style.display = "block";
@@ -19,10 +21,11 @@ open_editor=function(i){
 	}
 }
 unfocus_editor=function(i){
-	if(!get_dom("cell_type"+i).checked){
+	if(get_dom("cell_type"+i).checked) return;
+	{
 		input_dom=get_dom("input"+i)
 		input_dom.style.display = "none";
-		get_dom("cell_menu"+i).style.display = "none";
+		//get_dom("cell_menu"+i).style.display = "none";
 		get_dom("result"+i).style.display = "block";
 		
 	}
@@ -86,8 +89,8 @@ insert_cell=function(type,after){
 	var div = document.createElement('div');
   	div.innerHTML = block_html; 
   	div.setAttribute('id','block'+i);
-  	
-  	
+
+  	//
   	if(after==undefined){
   		get_dom("main").appendChild(div);
   		
@@ -123,13 +126,15 @@ insert_cell=function(type,after){
 		
 		
 		if(type=='code'){
-  			get_dom('cell_menu'+i).childNodes[0].checked=true;
+  			get_dom('cell_type'+i).checked=true;
 	  	}
 	  	else{
-	  		get_dom('cell_menu'+i).childNodes[0].checked=false;
+	  		console.log(i,type);
+	  		get_dom('cell_type'+i).checked=false;
 	  		get_dom('result'+i).style.display='block';
 	  		get_dom('input'+i).style.display='none';
 	  		get_dom('status'+i).style.display='none';
+	  		get_dom("cell_menu"+i).style.display = "none";
 	  	}
 	  	cm.focus();
 		cm.setCursor(1,0);

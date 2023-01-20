@@ -61,17 +61,20 @@
 	</nav>
 
 	<div id="code_block_template" style="display:none">
-		<div id="cell_menu_block_id" class="cell-menu">
+	<!--unfocus_editor(_block_id)-->
+		<div  id="cell_menu_block_id" class="cell-menu">
 			<a data-tooltip="Toggle between code and html"> <input  id="cell_type_block_id" style="height:15px;" type="checkbox" checked="true" role="switch"></input></a>
 			<a data-tooltip="Run the cell: Cmd/Ctrl-Enter"   onclick="run(_block_id)">&#9658;</a>
-			<a  data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#8593;</a>
+			<a data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#8593;</a>
 			<a data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="move_down(_block_id)">&#8595;</a>
-			<a  data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
-			<a  data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
+			<a data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
+			<a data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
 			
 		</div>
-		<div id="input_block_id" tabindex="0" onfocusout="unfocus_editor(_block_id)" class='code'></div>
-		<article id="result_block_id" onclick="open_editor(_block_id)">
+		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'>
+		
+		</div>
+		<article id="result_block_id" onclick="toggle_editor(_block_id)">
 			<p class="status" id="status_block_id"></p>
 			<div class="output" id="output_block_id"></div>
 		</article>

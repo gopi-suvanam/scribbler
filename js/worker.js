@@ -20,6 +20,9 @@ run=function(_block_id){
 			
 			
 			get_dom("status"+_block_id).style.display="block";
+			
+			get_dom("output"+_block_id).style.display="block";
+			get_dom("input"+_block_id).style.display = "block";
 			const start_time_eval = Date.now();
 			eval(code)
 			const end_time_eval = Date.now();
