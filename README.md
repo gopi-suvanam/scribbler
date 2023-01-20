@@ -1,20 +1,21 @@
 # JavaScript Notebook (JSNB)
 Notebook for javascript experimentation (in the browser). Features:
-1. Easy to use javascript experimentation tool.
-2. Runs without backend (node.js/npm/pip install/ngnix etc etc)
-3. Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
-4. UI is similar/close to jupyter notebook (for the sake familiarity for python developers). Has a minimalistic UI to put focus on user generated code/content.
-5. Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
+- Easy to use javascript experimentation tool.
+- Runs without backend (node.js/npm/pip install/ngnix etc etc)
+- Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
+- UI is similar/close to jupyter notebook (for the sake familiarity for python developers). Has a minimalistic UI to put focus on user generated code/content.
+- Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
 
 ## Table of contents
 <!-- toc -->
-- [How to use](#how-to-use)
-- [Features](#features)
+1. [Getting Started](#getting-started)
+2. [Features](#features)
 - [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Use cases](#use-cases)
-- [Vs. xyz](#how-is-jsnb-different)
+- [Exporting-Importing](#exporting-importing)
+3. [Use cases](#use-cases)
+4. [Vs. xyz](#how-is-jsnb-different)
 
-## How to use
+## Getting Started
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
 3. You can also try the git-hosted version (without downloading anything) here: https://gopi-suvanam.github.io/jsnb/#
@@ -33,7 +34,7 @@ Notebook for javascript experimentation (in the browser). Features:
 - For adding more functionality import an external library through import(...) or by adding <script> element.
 
 
-## Keyboard Shortcuts
+### Keyboard Shortcuts
 These shortcuts work when a code cell is in focus:
 - Ctrl-Enter/Cmd-Enter: Run the current cell
 - Shift-Enter': Run the current cell and go to next cell
@@ -49,6 +50,13 @@ These shortcust are global
 - Ctrl-S: Download the jsnb to local machine
 - Ctrl-O: Load a jsnb from local machine
 
+### Exporting-Importing
+- A notebook can be downloaded (Ctrl-S) as a .jsnb file and can be loaded (Ctrl-O) later.
+- A file on GitHub repo can be loaded into the JSNB file. The repo has to be public or you should be a collaborator.
+- A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
+- GitHub operations will require an [access token from GitHub](#https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
+- The output of a notebook can be downloaded as an HTML file (with code or wothout code)
+- The code of a notebook can be downloaded as a JavaScript file
 
 ## Use cases
 1. For trying new libraries for testing and building
