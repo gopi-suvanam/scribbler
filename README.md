@@ -66,7 +66,7 @@ Not to be used for:
 2. As an alternative to webapps
 
 ## Collaboration
-The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collbortion is still possible through:
+The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collabortion is still possible through:
 1. Download and share JSNB files.
 2. Use github for storing JSNB files. Make the repo public or add collaborators. The notebooks built on JSNB can be directly be synced on to GitHub using an access token.
 3. Files in public GitHub repos can be directly accessed as: https://gopi-suvanam.github.io/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
