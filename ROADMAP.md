@@ -6,6 +6,7 @@
 - HTML output can be shown both as code and as html doc 
 - Add/delete cells
 - Cells can be code and comment cells.. Comment cells will be markdown display
+- Github integration for storing: done through Access Token. Can think of alternative authentication mechanisms.
 
 ## Feartures
 - Ability to import .js files dynamically
@@ -21,12 +22,12 @@
 - Cut-copy-paste whole cells
 - Ctrl-Z
 - Dark mode
+- Sleeker menu
 
 ## Features
-- Github integration for storing 
 - Store temporarily in browser cache
-- Mimic static import
-- Mimic node/deno
-- Use GPU
-- Restart kernel/inturrent kernel features
+- Mimic static import (browser/deno style)
+- Mimi node style import/require
+- Use GPU where possible
+- Restart kernel/inturrept kernel features
 
