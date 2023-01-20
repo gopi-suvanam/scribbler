@@ -2,10 +2,10 @@
 run=function(_block_id){
 	console.log("Running cell ",_block_id)
 	
-	var show =function(x){
+	/*var show =function(x){
 		show_in_dom(x,"output"+_block_id)
-	}
-	var curr_cell=function(){
+	}*/
+	curr_cell=function(){
 		return get_dom("output"+_block_id);
 	}
 	console.log("hi ",get_dom("cell_type"+_block_id).checked)
@@ -24,7 +24,8 @@ run=function(_block_id){
 			get_dom("output"+_block_id).style.display="block";
 			get_dom("input"+_block_id).style.display = "block";
 			const start_time_eval = Date.now();
-			eval(code)
+			show_string=`show=x=>show_in_dom(x,"output"+${_block_id});`;
+			Function(show_string+code)(); // This is where the magic happens.
 			const end_time_eval = Date.now();
 			var execution_time=end_time_eval - start_time_eval;
 			

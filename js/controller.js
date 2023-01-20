@@ -167,12 +167,13 @@ get_nb=function(){
  	
  	
  	blocks.forEach(x=>{
+ 		var _block_id=x.id.replace("block","")
  		var menu=x.childNodes[0];
 	 	var code=x.childNodes[1].childNodes[0].CodeMirror.getValue();
 	 	var result=x.childNodes[2];
 	 	var status=result.childNodes[0].innerHTML;
 	 	var output=result.childNodes[1].innerHTML;
-	 	var type=menu.childNodes[0].checked?'code':'html';
+	 	var type=get_dom("cell_type"+_block_id).checked?'code':'html';
 	 	nb.cells.push({code:code,status:status,output:output,type:type})
 	 	
  	});
