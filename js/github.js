@@ -1,7 +1,6 @@
 ﻿var parse_response=async response => {
         const isJson = response.headers.get('content-type')?.includes('application/json');
-        const data = isJson ? await response.json() : null;
-	console.log(response)
+        const data = isJson ? await response.json() : await response.text();
         // check for error response
         if (!response.ok) {
             // get error message from body or default to response status
@@ -148,6 +147,12 @@ load_from_git=function(){
 		nb=>{
 			load_jsnb(nb);
 			closeModal(get_dom('git-import-export'));
+			const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
+			const nextTitle = 'JavaScript Notebook';
+			const nextState = { additionalInformation: 'Updated the URL with JS' };
+			window.history.pushState(nextState, nextTitle, nextURL);
+
+			
 		}
 	)
 	.catch(error=>alert("Error: "+error));
@@ -155,6 +160,35 @@ load_from_git=function(){
 		
 }
 
+ initialize_from_git= async function(link){
+	var i = link.indexOf('/');
+	var user = link.slice(0,i); 
+	var rest = link.slice(i+1);
+	
+	var i = rest.indexOf('/');
+	var repo = rest.slice(0,i);
+	var path = rest.slice(i+1);
+	
+	get_dom("user").value=user;
+	get_dom("repo").value=repo;
+	get_dom("path").value=path;
+	
+	
+	url=`https://raw.githubusercontent.com/${user}/${repo}/main/${path}`;
+	
+	 try{
+		 var response= await fetch(url, {method: 'GET'});
+		 console.log(response);
+		  var data=await parse_response(response);
+		load_jsnb(data);
+	}catch(error){
+		console.log(error);
+		openModal(get_dom('git-import-export'));
+	}
+			  
+  
+	
+}
 upload_to_git=function(){
 	file_details={}
 	file_details['source']='github';
@@ -170,6 +204,11 @@ upload_to_git=function(){
 	.then(x=>{
 		alert("Successfully pushed");
 		closeModal(get_dom('git-import-export'));
+			const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
+			const nextTitle = 'JavaScript Notebook';
+			const nextState = { additionalInformation: 'Updated the URL with JS' };
+			window.history.pushState(nextState, nextTitle, nextURL);
+
 		})
 	.catch(error=>{alert("Error: "+error)})
 	
