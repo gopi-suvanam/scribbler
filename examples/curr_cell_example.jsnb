@@ -1,24 +1,12 @@
 {
   "metadata": {
-    "name": "Example for curr_cell",
+    "name": "Untitled Notebook",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
     }
   },
   "jsnbversion": "v0.1",
-  "cells": [
-    {
-      "code": "<b>Sample notebook to show usage of curr_cell()</b><br>\nPlay the next cell (using play button or Shift-Enter) to see the effect. curr_cell function is added to the notebook as identifying the element to modify it is not easy exogenously.",
-      "status": "",
-      "output": "<b>Sample notebook to show usage of curr_cell()</b><br>\nPlay the next cell (using play button or Shift-Enter) to see the effect. curr_cell function is added to the notebook as identifying the element to modify it is not easy exogenously.",
-      "type": "html"
-    },
-    {
-      "code": "cc=curr_cell()\ncc.parentNode.style.backgroundColor='red'\ncc.style.color='white'\nshow(\"Trying something new\")",
-      "status": "[2]<br><span style=\"font-size:8px\">0ms<span></span></span>",
-      "output": "Trying something new",
-      "type": "code"
-    }
-  ]
+  "cells": [],
+  "source": "https://github.com/gopi-suvanam/jsnb"
 }
