@@ -1,10 +1,10 @@
 # JavaScript Notebook (JSNB)
-Notebook for javascript experimentation (in the browser). Features:
+Notebook for javascript experimentation (in the browser). [Try here]([https://gopi-suvanam.github.io/jsnb/#](https://gopi-suvanam:gopi-suvanam/jsnb/#github.io/jsnb/examples/Hello%20world.jsnb)). Features:
 - Easy to use javascript experimentation tool.
 - Runs without backend (node.js/npm/pip install/ngnix etc etc)
 - Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
 - UI is similar/close to jupyter notebook (for the sake familiarity for python developers). Has a minimalistic UI to put focus on user generated code/content.
-- Uses Codemirror for formatting the code area and Pico CSS for styling (https://picocss.com/)
+- Uses Codemirror for formatting the code area and Pico CSS for styling.
 
 ## Table of contents
 <!-- toc -->
