@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Untitled Notebook",
+    "name": "Ethereum API using Metamask",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -9,21 +9,21 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<strong>Accessing Ethereum Blockchain using Metamask </strong> <br>\nThis shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser.",
+      "code": "<strong>Accessing Ethereum Blockchain using Metamask </strong> <br>\nThis notebook shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser. Run the next cell to connect to Metamask and then run the cell after that.",
       "status": "",
-      "output": "<strong>Accessing Ethereum Blockchain using Metamask </strong> <br>\nThis shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser.",
+      "output": "<strong>Accessing Ethereum Blockchain using Metamask </strong> <br>\nThis notebook shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser. Run the next cell to connect to Metamask and then run the cell after that.",
       "type": "html"
     },
     {
       "code": "ethereum.request({ method: 'eth_requestAccounts' }).then(accounts=>{\n account = accounts[0];\n  show(account);\n})",
-      "status": "[-]",
-      "output": "<p class=\"error\">ethereum is not defined</p>",
+      "status": "[1]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "0xd79740980530b4f78690aee6c3171cad4ba38f54",
       "type": "code"
     },
     {
-      "code": "ethereum.request({\n  \"jsonrpc\":\"2.0\",\n  \"method\":\"eth_getBalance\"\n  ,\"params\":[account, \"latest\"],\n  \"id\":1}).then(x=>show(parseInat(x,16)/1000000000000000000+' Eth'))\n\n",
-      "status": "[-]",
-      "output": "<p class=\"error\">ethereum is not defined</p>",
+      "code": "ethereum.request({\n  \"jsonrpc\":\"2.0\",\n  \"method\":\"eth_getBalance\"\n  ,\"params\":[account, \"latest\"],\n  \"id\":1}).then(x=>show(parseInt(x,16)/1000000000000000000+' Eth'))\n\n",
+      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "1.3216367734327719 Eth",
       "type": "code"
     }
   ],

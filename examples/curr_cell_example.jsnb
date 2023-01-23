@@ -16,9 +16,10 @@
     },
     {
       "code": "cc=curr_cell()\ncc.parentNode.style.backgroundColor='red'\ncc.style.color='white'\nshow(\"Trying something new\")",
-      "status": "[2]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[1]<br><span style=\"font-size:8px\">4ms<span></span></span>",
       "output": "Trying something new",
       "type": "code"
     }
-  ]
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb"
 }
