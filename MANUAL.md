@@ -1,5 +1,5 @@
 # Manual for JSNB
-TOC
+## TOC
 1. [Installing](#installing)
 2. [Cells](#cells)
 3. [Cell Menu](#cell-menu)
