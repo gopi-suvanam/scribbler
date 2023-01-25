@@ -7,7 +7,7 @@
 5. [Edit Menu](#edit-menu)
 6. [URL Structure](#url-structure)
 7. [Special Functions](#special-functions)
-8. [Keyboard Shortcuts](#key-board-shortcuts)
+8. [Keyboard Shortcuts](#keyboard-shortcuts)
 ## Installing
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub and used directly from file system by opening index.html. 
 - The folder can be put behind a websrver to serve statically. There is no requirement of any backend framework (node/python etc). 
