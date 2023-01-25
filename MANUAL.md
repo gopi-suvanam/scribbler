@@ -35,7 +35,7 @@ The edit menu consists of:
 - The URL of Github pages deployment is https://gopi-suvanam.github.io/jsnb/. 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
 - Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb will "GET" the file https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb and load it into JSNB. The file has to be available publicly to load in this fashion. 
-- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : https://gopi-suvanam.github.io/jsnb/github:gopi-suvanam/jsnb/examples/Hello%20world.jsnb. If the repo is public, JSNB will try to GET it and load it, else GitHub authentication dialoge will pop up. 
+- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : https://gopi-suvanam.github.io/jsnb/#github:gopi-suvanam/jsnb/examples/Hello%20world.jsnb. If the repo is public, JSNB will try to GET it and load it, else GitHub authentication dialoge will pop up. 
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 ## Special Functions
 There are two special functions:
