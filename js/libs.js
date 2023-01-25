@@ -1,5 +1,8 @@
 ﻿show_in_dom=function(x,output){
-	document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+String(x)
+	if (typeof(x)=='object') 
+	document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+JSON.stringify(x,undefined,2)+"<br>";
+	else 
+	document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+String(x)+"<br>";;
 }
 
 get_dom=id=>document.getElementById(id);
@@ -15,7 +18,13 @@ import_module=function(module,features){
 	var script = document.createElement('script');
 	script.type="module";
 	if(features==null) import(module);
-	else {script.innerHTML = `import {${features.join(',')}} from "${module}";`; }
+	else {
+		script.innerHTML = `import {${Object.keys(features).join(',')}} from "${module}";`; 
+		Object.keys(features).forEach(x=>{
+			script.innerHTML+=`window['${features[x]}']=${x};` 
+		})
+		
+	}
 
 	document.head.appendChild(script);
 	
@@ -23,6 +32,7 @@ import_module=function(module,features){
 	      console.error("Failed to load module script with URL " + url);
 
 	  };
+	  console.log(script.outerHTML);
 }
 
 function waitForDom(id) {
