@@ -27,9 +27,9 @@
       "type": "code"
     },
     {
-      "code": "Or you could write a fucntion to do that.",
+      "code": "Or to show off you could write a fucntion to do that.",
       "status": "",
-      "output": "Or you could write a fucntion to do that.",
+      "output": "Or to show off you could write a fucntion to do that.",
       "type": "html"
     },
     {
@@ -39,9 +39,9 @@
       "type": "code"
     },
     {
-      "code": "And ofcourse you can make the world greener!",
+      "code": "And of course you can make the world greener! ",
       "status": "",
-      "output": "And ofcourse you can make the world greener!",
+      "output": "And of course you can make the world greener! ",
       "type": "html"
     },
     {
