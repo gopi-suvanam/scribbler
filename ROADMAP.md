@@ -8,11 +8,13 @@
 - Add/delete cells
 - Cells can be code and comment cells.. Comment cells will be markdown display
 - Github integration for storing: done through Access Token. Can think of alternative authentication mechanisms.
+- Mimic static import (browser/deno style)
+
 
 ### Feartures
 - Ability to import .js files dynamically
-- Use variables (global) across the cells
-- Ability to save the whole notebook as a file.. with .nb extension
+- Use global variables across the cells
+- Ability to save the whole notebook as a file.. with .jsnb extension
 - Code should run in the browser of the user
 - Show output using show(var)
 - Asynchronous code execution is halmark of javascript so each cell can be run parallelly. Any asynchronous code within a cell will have to dsiplay errors on its own.
@@ -27,11 +29,10 @@
 - More keyboard shortcuts
 
 ### Features
-- Store temporarily in browser cache (indexeddb)
-- Mimic static import (browser/deno style)
-- Mimi node style import/require
+- Store files temporarily in browser cache (indexeddb)
+- Mimic node style import/require
 - Use GPU where possible
 - Restart kernel/inturrept kernel features
-- More collaboration features (like share a link etc.)
+- More collaboration features (like share a link,store in google drive etc.)
 
 
