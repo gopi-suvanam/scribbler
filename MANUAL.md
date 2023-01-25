@@ -9,7 +9,10 @@
 7. [Special Functions](#special-functions)
 8. [Key-board Shortcuts](#key-board-shortcuts)
 ## Installing
-The tool does not require any special installation. It can be downloaded and used directly from file system by opening index.html. The folder can be put behind a websrver to serve statically. There is no requirement of any backend framework (node/python etc). Some external libraries and features like WebRTC, Blockchain wallets may work only when the tool is hosted behind a server i.e. served through http and not as file:///. 
+- The tool does not require any special installation. It can be downloaded/cloned from GitHub and used directly from file system by opening index.html. 
+- The folder can be put behind a websrver to serve statically. There is no requirement of any backend framework (node/python etc). 
+- Some external libraries and features like WebRTC, Blockchain wallets may work only when the tool is hosted behind a server i.e. served through http and not as file:///. 
+- Github pages hosted version is available here: https://gopi-suvanam.github.io/jsnb/#
 ## Cells
 - The whole notebook is divided into cells. 
 - Each cell can be of two types: html or code (JavaScript). 
