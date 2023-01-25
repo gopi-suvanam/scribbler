@@ -50,6 +50,7 @@ These shortcuts work when a code cell is in focus:
 - Alt-D/Option-D: Delete the current cell (no undo at the moment, so be careful)
 - Alt/Option-Up Arrow: Move the cell up
 - Alt/Option-Up Down: Move the cell down
+
 These shortcuts are global
 - Alt-R/Option-R: Run all the cells
 - Ctrl-G: Import from/Push to GitHub
