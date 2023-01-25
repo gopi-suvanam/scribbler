@@ -71,7 +71,8 @@ These shortcuts are global
 - Ctrl-O: Load a jsnb from local machine
 ## Using external libraries
 External libraries can be used using two specially built functions:
-  1. load_script(url) to load the url as script. 
+  1. load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
   2. import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
-Additionally, dynamic import from ES6 can be used to load a module.
+  3. Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
+  4. More ways including nodejs style require() is coming soon.
   
