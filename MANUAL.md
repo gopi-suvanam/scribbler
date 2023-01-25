@@ -7,7 +7,7 @@
 5. [Edit Menu](#edit-menu)
 6. [URL Structure](#url-structure)
 7. [Special Functions](#special-functions)
-8. [Key-board Shortcuts](#key-board-shortcuts)
+8. [Keyboard Shortcuts](#key-board-shortcuts)
 ## Installing
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub and used directly from file system by opening index.html. 
 - The folder can be put behind a websrver to serve statically. There is no requirement of any backend framework (node/python etc). 
@@ -54,7 +54,7 @@ There are two special functions:
   1. show(..). This function displays the object in the output cell. 
   2. curr_cell(). This function returns the element corresponding to the output <div> of the current code cell. 
 Both these functions might behave differentyl when called from within asynchronous code.
-## Key-board Shortcuts
+## Keyboard Shortcuts
 These shortcuts work when a code cell is in focus:
 - Ctrl-Enter/Cmd-Enter: Run the current cell
 - Shift-Enter': Run the current cell and go to next cell
