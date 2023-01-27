@@ -1,4 +1,4 @@
-# Manual for JSNB
+# DOCS for JSNB
 ## TOC
 1. [Installing](#installing)
 2. [Cells](#cells)
