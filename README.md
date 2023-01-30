@@ -15,6 +15,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
 5. [Vs. xyz](#how-is-jsnb-different)
+6. [Links](#links)
 
 ## Getting Started
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
@@ -78,4 +79,11 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - JSNB can have multiple cells so it can create long documents.
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
 - JSNB can also be used for scientific computation using several open source javascript libraries.
+
+## Links
+Additional documentation for JSNB:
+1. [Docs](https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md)
+2. [Code-docs](https://github.com/gopi-suvanam/jsnb/blob/main/CODE-DOCS.md)
+3. [Roadmap](https://github.com/gopi-suvanam/jsnb/blob/main/ROADMAP.md)
+4. [Sample Notebooks](https://github.com/gopi-suvanam/jsnb/blob/main/examples/README.md)
 
