@@ -15,7 +15,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
 5. [Vs. xyz](#how-is-jsnb-different)
-6. [Links](#links)
+6. [Additional Resources](#links)
 
 ## Getting Started
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
