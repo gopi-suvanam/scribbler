@@ -22,14 +22,14 @@
     },
     {
       "code": "show(\"Hello World\")",
-      "status": "[6]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[7]<br><span style=\"font-size:8px\">0ms<span></span></span>",
       "output": "Hello World<br>",
       "type": "code"
     },
     {
-      "code": "Or to show off you could write a fucntion to do that.",
+      "code": "<b>Or to show off you could write a fucntion to do that.</b>",
       "status": "",
-      "output": "Or to show off you could write a fucntion to do that.",
+      "output": "<b>Or to show off you could write a fucntion to do that.</b>",
       "type": "html"
     },
     {
@@ -39,9 +39,9 @@
       "type": "code"
     },
     {
-      "code": "And of course you can make the world greener! ",
+      "code": "<b>And of course you can make the world greener! </b>",
       "status": "",
-      "output": "And of course you can make the world greener! ",
+      "output": "<b>And of course you can make the world greener! </b>",
       "type": "html"
     },
     {
