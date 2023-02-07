@@ -24,7 +24,7 @@ run=function(_block_id){
 			get_dom("output"+_block_id).style.display="block";
 			get_dom("input"+_block_id).style.display = "block";
 			const start_time_eval = Date.now();
-			show_string=`show=x=>show_in_dom(x,"output"+${_block_id});`;
+			show_string=`show=(...args)=>show_in_dom("output"+${_block_id},...args);`;
 			Function(show_string+code)(); // This is where the magic happens.
 			const end_time_eval = Date.now();
 			var execution_time=end_time_eval - start_time_eval;

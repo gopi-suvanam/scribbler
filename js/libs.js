@@ -1,8 +1,12 @@
-﻿show_in_dom=function(x,output){
-	if (typeof(x)=='object') 
-	document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+JSON.stringify(x,undefined,2)+"<br>";
-	else 
-	document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+String(x)+"<br>";;
+﻿show_in_dom=function(output,...objs){
+	for(var i=0;i<objs.length;i+=1){
+		obj=objs[i];
+		if (typeof(obj)=='object') 
+		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+JSON.stringify(obj,undefined,2)+" ";
+		else 
+		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+String(obj)+" ";
+	}
+	if(objs.length>0) document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<br>";
 }
 
 get_dom=id=>document.getElementById(id);
@@ -13,6 +17,16 @@ load_script = function(url){
 	document.head.appendChild(script);
 
 }
+
+reload_script = function(url){
+	var script = document.createElement('script');
+	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
+	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
+	script.src = url;
+	document.head.appendChild(script);
+
+}
+
 
 import_module=function(module,features){
 	var script = document.createElement('script');
