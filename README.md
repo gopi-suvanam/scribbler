@@ -34,6 +34,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 - A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://gopi-suvanam.github.io/jsnb/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
 - There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
 - For adding more functionality import an external library through import(...) or by adding <script> element.
+- D3JS (for data manipulation and charting), Plotly (for plots) and sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using reload_script.
 
 ### Keyboard Shortcuts
 These shortcuts work when a code cell is in focus:
