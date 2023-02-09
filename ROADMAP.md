@@ -27,6 +27,7 @@
 - Dark mode
 - Sleeker menu
 - More keyboard shortcuts
+- Make it more responsive
 
 ### Features
 - Store files temporarily in browser cache (indexeddb)
@@ -34,5 +35,5 @@
 - Use GPU where possible
 - Restart kernel/inturrept kernel features
 - More collaboration features (like share a link,store in google drive etc.)
-
+- Auto-suggestion
 
