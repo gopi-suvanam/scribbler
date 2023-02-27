@@ -9,21 +9,21 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "reload_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\")\n",
-      "status": "[113]<br><span style=\"font-size:8px\">1ms<span></span></span>",
-      "output": "1 <br>",
+      "code": "load_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\")\n",
+      "status": "[44]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "",
       "type": "code"
     },
     {
       "code": "(async ()=>{\n   node = await Ipfs.create()\n  const results = await node.add('=^.^= meow meow')\n  const cid = results['cid']\n   show(\"CID\",cid)\n  data = await node.cat(cid)\n  show(data)\n\n})();",
-      "status": "[114]<br><span style=\"font-size:8px\">7ms<span></span></span>",
+      "status": "[45]<br><span style=\"font-size:8px\">10ms<span></span></span>",
       "output": "{} <br>",
       "type": "code"
     },
     {
-      "code": "(async ()=>{\n  \nconst flow=node.cat(\"QmRK8p9tgK52nxA9DBvb66nqh2rEzVpwq4kLsXkBC9MjRS\");\n  for await(const chunk of flow){\n\t\tshow(\"done fetching\");\n  \t show(chunk.toString().split(\",\").map(x=>String.fromCharCode(parseInt(x))).join(\"\"));\n  }\n  return \"\";\n})();",
-      "status": "[122]<br><span style=\"font-size:8px\">0ms<span></span></span>",
-      "output": "{} <br>done fetching <br>=^.^= meow meow <br>",
+      "code": "(async ()=>{\n  \nconst flow=node.cat(\"QmRK8p9tgK52nxA9DBvb66nqh2rEzVpwq4kLsXkBC9MjRS\");\n  for await(const chunk of flow){\n  \t show(chunk.toString().split(\",\").map(x=>String.fromCharCode(parseInt(x))).join(\"\"));\n  }\n})();",
+      "status": "[46]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "{} <br>=^.^= meow meow <br>CID {\n  \"/\": \"QmRK8p9tgK52nxA9DBvb66nqh2rEzVpwq4kLsXkBC9MjRS\"\n} <br>{} <br>",
       "type": "code"
     }
   ],
