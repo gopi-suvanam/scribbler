@@ -91,10 +91,13 @@ ul[role=listbox]{
 
 .cell-menu a{
 
-	color:darkgray ;
+	color:#fdd835 ;
 	margin:5px;
 	
 }
+
+
+
 
 #nb_name{
 	margin-left:5px ;	margin-right:5px ;
