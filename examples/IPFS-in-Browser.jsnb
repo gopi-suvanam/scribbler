@@ -9,21 +9,27 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
+      "code": "<h5>IPFS in Browser</h5>\nThis notebook explores accessing IPFS through ipfs-js in the browser.",
+      "status": "",
+      "output": "<h5>IPFS in Browser</h5>\nThis notebook explores accessing IPFS through ipfs-js in the browser.",
+      "type": "html"
+    },
+    {
       "code": "load_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\")\n",
-      "status": "[44]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "status": "[1]<br><span style=\"font-size:8px\">6ms<span></span></span>",
       "output": "",
       "type": "code"
     },
     {
       "code": "(async ()=>{\n   node = await Ipfs.create()\n  const results = await node.add('=^.^= meow meow')\n  const cid = results['cid']\n   show(\"CID\",cid)\n  data = await node.cat(cid)\n  show(data)\n\n})();",
-      "status": "[45]<br><span style=\"font-size:8px\">10ms<span></span></span>",
-      "output": "{} <br>",
+      "status": "[2]<br><span style=\"font-size:8px\">17ms<span></span></span>",
+      "output": "{} <br>CID {\n  \"/\": \"QmRK8p9tgK52nxA9DBvb66nqh2rEzVpwq4kLsXkBC9MjRS\"\n} <br>{} <br>",
       "type": "code"
     },
     {
       "code": "(async ()=>{\n  \nconst flow=node.cat(\"QmRK8p9tgK52nxA9DBvb66nqh2rEzVpwq4kLsXkBC9MjRS\");\n  for await(const chunk of flow){\n  \t show(chunk.toString().split(\",\").map(x=>String.fromCharCode(parseInt(x))).join(\"\"));\n  }\n})();",
-      "status": "[46]<br><span style=\"font-size:8px\">1ms<span></span></span>",
-      "output": "{} <br>=^.^= meow meow <br>CID {\n  \"/\": \"QmRK8p9tgK52nxA9DBvb66nqh2rEzVpwq4kLsXkBC9MjRS\"\n} <br>{} <br>",
+      "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "{} <br>=^.^= meow meow <br>",
       "type": "code"
     }
   ],
