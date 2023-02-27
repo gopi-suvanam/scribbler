@@ -1,4 +1,4 @@
-# JavaScript Notebook (JSNB) [Try here](https://gopi-suvanam.github.io/jsnb/#github:gopi-suvanam/jsnb/examples/Hello%20world.jsnb). 
+# JavaScript Notebook (JSNB) [Try here](https://gopi-suvanam.github.io/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
 Notebook for javascript experimentation (in the browser). Overview:
 - Easy to use javascript experimentation tool.
 - Runs without backend (node.js/npm/pip install/ngnix etc etc). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a server (I didnt want to use the word "serverless" as that word has been polluted by Amazon).
@@ -20,8 +20,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 ## Getting Started
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
-3. You can also try the git-hosted version (without downloading anything) here: https://gopi-suvanam.github.io/jsnb/#
-4. A hello-world notebook: https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello%20world.jsnb
+3. You can also try the git-hosted version (without downloading anything) here: [https://gopi-suvanam.github.io/jsnb/#](https://gopi-suvanam.github.io/jsnb/#)
+4. A hello-world notebook: [https://gopi-suvanam.github.io/jsnb/#/jsnb/examples/Hello-world.jsnb](https://gopi-suvanam.github.io/jsnb/#/jsnb/examples/Hello-world.jsnb)
 5. More examples will be added in the folder examples/ in the repository. Check the [README in that folder](/examples/README.md) for links.
 
 ## Features
@@ -55,7 +55,7 @@ These shortcust are global
 - A notebook can be downloaded (Ctrl-S) as a .jsnb file and can be loaded (Ctrl-O) later.
 - A file on GitHub repo can be loaded into the JSNB file. The repo has to be public or you should be a collaborator.
 - A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
-- GitHub operations will require an [access token from GitHub](#https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
+- GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
 - The output of a notebook can be downloaded as an HTML file (with code or wothout code)
 - The code of a notebook can be downloaded as a JavaScript file
 
