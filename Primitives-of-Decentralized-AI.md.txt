@@ -1,0 +1,5 @@
+﻿---
+title: Primitives of Decentralized AI
+layout: post
+description: We look at what is the most basic set of primitives from which generic decentralized AI platforms can be cosntructed. This is in continuation to our existing article on Primitives for Decentralized Computing.
+---
