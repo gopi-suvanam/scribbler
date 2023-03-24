@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "name": "Black-Scholes-Simulation",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "num_sims=10000000;\nmaximum=4000;\nminimum=1000;\nspot_price=Array.from({length: num_sims}, \n\t\t()=>Math.random()*(maximum-minimum)+minimum\n\t  )\nstrike_price=Array.from({length: num_sims}, \n\t\t()=>Math.random()*(maximum-minimum)+minimum\n\t  )\ntime_to_expiry=Array.from({length: num_sims}, \n\t\t()=>Math.random()\n\t  )\nrisk_free_rate=0.05;\nvolatility=Array.from({length: num_sims}, \n\t\t()=>Math.random()\n\t  )\noption_type=Array.from({length: num_sims}, \n\t\t()=>(Math.random()>0.5?'Call':'Put')\n\t  )\nvolatility.mean()",
+      "status": "[14]<br><span style=\"font-size:8px\">8.295s<span></span></span>",
+      "output": "0.5001075447845656 <br>",
+      "type": "code"
+    },
+    {
+      "code": "prices=[];\nfor(i=0;i<num_sims;i++)\n  if(option_type[i]=='Call')\n  prices.push(black_scholes.call_price(spot_price[i],strike_price[i],risk_free_rate,volatility[i],time_to_expiry[i])['price'] );\nelse\n  prices.push(black_scholes.put_price(spot_price[i],strike_price[i],risk_free_rate,volatility[i],time_to_expiry[i])['price'] );\nshow(prices.mean(),prices.length)",
+      "status": "[15]<br><span style=\"font-size:8px\">10.485s<span></span></span>",
+      "output": "618.3099542286328 10000000 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb"
+}
