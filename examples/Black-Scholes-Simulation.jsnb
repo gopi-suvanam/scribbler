@@ -9,21 +9,27 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "num_sims=10000000;\nmaximum=4000;\nminimum=1000;\nspot_price=Array.from({length: num_sims}, \n\t\t()=>Math.random()*(maximum-minimum)+minimum\n\t  )\nstrike_price=Array.from({length: num_sims}, \n\t\t()=>Math.random()*(maximum-minimum)+minimum\n\t  )\ntime_to_expiry=Array.from({length: num_sims}, \n\t\t()=>Math.random()\n\t  )\nrisk_free_rate=0.05;\nvolatility=Array.from({length: num_sims}, \n\t\t()=>Math.random()\n\t  )\noption_type=Array.from({length: num_sims}, \n\t\t()=>(Math.random()>0.5?'Call':'Put')\n\t  )\nvolatility.mean()",
-      "status": "[6]<br><span style=\"font-size:8px\">7.223s<span></span></span>",
-      "output": "0.5000694963701007 <br>",
+      "code": "num_sims=10000000;\nmaximum=4000;\nminimum=1000;\nspot_price=random.oned.uniform(num_sims,minimum,maximum)\nstrike_price=spot_price=random.oned.uniform(num_sims,minimum,maximum)\ntime_to_expiry=random.oned.uniform(num_sims,0,1)\nrisk_free_rate=0.05;\nvolatility=random.oned.uniform(num_sims,0.1,0.25)\noption_type=random.oned.choice(num_sims,['Call','Put'])\nvolatility.mean()",
+      "status": "[4]<br><span style=\"font-size:8px\">9.989s<span></span></span>",
+      "output": "0.17499649014558288 <br>",
       "type": "code"
     },
     {
       "code": "prices=[];\nfor(i=0;i<num_sims;i++)\nprices.push(black_scholes.option_price(option_type[i],spot_price[i],strike_price[i],risk_free_rate,volatility[i],time_to_expiry[i])['price'] );\nshow(prices.mean(),prices.length)",
-      "status": "[9]<br><span style=\"font-size:8px\">8.852s<span></span></span>",
-      "output": "617.7934711311543 10000000 <br>",
+      "status": "[5]<br><span style=\"font-size:8px\">8.872s<span></span></span>",
+      "output": "117.53629495543831 10000000 <br>",
       "type": "code"
     },
     {
       "code": "idx=range(0,num_sims,1)\nprices=idx.map(i=>black_scholes.option_price(option_type[i],spot_price[i],strike_price[i],risk_free_rate,volatility[i],time_to_expiry[i])['price'] )\nshow(prices.mean(),prices.length)",
-      "status": "[10]<br><span style=\"font-size:8px\">10.082s<span></span></span>",
-      "output": "617.7934711311543 10000000 <br>",
+      "status": "[6]<br><span style=\"font-size:8px\">6.54s<span></span></span>",
+      "output": "117.53629495543831 10000000 <br>",
+      "type": "code"
+    },
+    {
+      "code": "",
+      "status": "[-]",
+      "output": "<p class=\"error\">Invalid or unexpected token</p>",
       "type": "code"
     }
   ],
