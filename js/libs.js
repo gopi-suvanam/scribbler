@@ -1,12 +1,18 @@
-﻿show_in_dom=function(output,...objs){
+﻿window.MAX_LENGTH_TO_SHOW=10000;
+show_in_dom=function(output,...objs){
+	var to_show='';
 	for(var i=0;i<objs.length;i+=1){
 		obj=objs[i];
-		if (typeof(obj)=='object') 
-		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+JSON.stringify(obj,undefined,2)+" ";
-		else 
-		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+String(obj)+" ";
+		if (typeof(obj)=='object') to_show+=JSON.stringify(obj,undefined,2)+" ";
+		
+		else to_show+=String(obj)+" ";
 	}
-	if(objs.length>0) document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<br>";
+	if (to_show.length<MAX_LENGTH_TO_SHOW)
+		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+to_show;
+	else
+		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<p class='error'>Object too large to show.</p>";;
+
+	if(to_show.length>0) document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<br>";
 }
 
 get_dom=id=>document.getElementById(id);
