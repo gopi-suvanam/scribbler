@@ -58,6 +58,9 @@ run=function(_block_id){
 	}catch(err){
 		console.log(err.stack)
 		get_dom("result"+_block_id).style.display = "block";
+		if(typeof(err)=='string') 
+		get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err+"</p>";
+		else
 		get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err.message+"</p>";
 		get_dom("status"+_block_id).innerHTML='[-]'
 	}
