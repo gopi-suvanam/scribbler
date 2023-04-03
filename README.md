@@ -20,8 +20,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 ## Getting Started
 1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
 2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
-3. You can also try the git-hosted version (without downloading anything) here: [https://gopi-suvanam.github.io/jsnb/#](https://gopi-suvanam.github.io/jsnb/#)
-4. A hello-world notebook: [https://gopi-suvanam.github.io/jsnb/#/jsnb/examples/Hello-world.jsnb](https://gopi-suvanam.github.io/jsnb/#/jsnb/examples/Hello-world.jsnb)
+3. You can also try the git-hosted version (without downloading anything) here: [https://decentralized-intelligence.com/jsnb/#](https://gopi-suvanam.github.io/jsnb/#)
+4. A hello-world notebook: [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb](https://gopi-suvanam.github.io/jsnb/#/jsnb/examples/Hello-world.jsnb)
 5. More examples will be added in the folder examples/ in the repository. Check the [README in that folder](/examples/README.md) for links.
 
 ## Features
@@ -31,7 +31,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 - For code cells input and output are both shown. For html cells, input is hidden and opens up if you click the output.
 - The cell menu also has buttons for moving the cell up ↑, down ↓, adding a new cell ✛ and deleting the current cell ☓.
 - A notebook can be downloaded as json (has a default extension of .jsnb). IT can be loaded back into the app. The notebook or only the output can also be downloaded as html.
-- A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://gopi-suvanam.github.io/jsnb/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
+- A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://decentralized-intelligence.com/jsnb/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
 - There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
 - For adding more functionality import an external library through import(...) or by adding <script> element.
 - D3JS (for data manipulation and charting), Plotly (for plots) and sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using reload_script.
@@ -71,8 +71,8 @@ Not to be used for:
 The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collabortion is still possible through:
 1. Download and share JSNB files.
 2. Use github for storing JSNB files. Make the repo public or add collaborators. The notebooks built on JSNB can be directly be synced on to GitHub using an access token.
-3. Files in public GitHub repos can be directly accessed as: https://gopi-suvanam.github.io/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
-4. If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://gopi-suvanam.github.io/jsnb/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
+3. Files in public GitHub repos can be directly accessed as: https://decentralized-intelligence.com/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
+4. If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://decentralized-intelligence.com/jsnb/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
 5. Map a cloud drive or LAN drive onto local machine and load from/download to the drive. Share the drive with collaborators.
 
 ## How is JSNB different
