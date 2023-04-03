@@ -13,7 +13,7 @@
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub and used directly from file system by opening index.html. 
 - The folder can be put behind a websrver to serve statically. There is no requirement of any backend framework (node/python etc). 
 - Some external libraries and features like WebRTC, Blockchain wallets may work only when the tool is hosted behind a server i.e. served through http and not as file:///. 
-- Github pages hosted version is available here: https://gopi-suvanam.github.io/jsnb/#
+- Github pages hosted version is available here: https://decentralized-intelligence.com/jsnb/#
 ## Cells
 - The whole notebook is divided into cells. 
 - Each cell can be of two types: html or code (JavaScript). 
@@ -45,10 +45,10 @@ The edit menu consists of:
   1. Insert code cell: A blank code-type cell is inserted at the end of the current notebook
   2. Insert html cell: A blank html-type cell is inserted at the end of the current notebook
 ## URL Structure
-- The URL of Github pages deployment is https://gopi-suvanam.github.io/jsnb/. 
+- The URL of Github pages deployment is https://decentralized-intelligence.com/jsnb/. 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
-- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello-world.jsnb](https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/Hello-world.jsnb]) will "GET" the file https://gopi-suvanam.github.io/jsnb/examples/Hello-world.jsnb and load it into JSNB. The file has to be available publicly to load in this fashion. 
-- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://gopi-suvanam.github.io/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb](https://gopi-suvanam.github.io/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). If the repo is public, JSNB will try to GET it and load it, else GitHub authentication dialoge will pop up. 
+- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb]) will "GET" the file https://decentralized-intelligence.com/jsnb/examples/Hello-world.jsnb and load it into JSNB. The file has to be available publicly to load in this fashion. 
+- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). If the repo is public, JSNB will try to GET it and load it, else GitHub authentication dialoge will pop up. 
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 ## Special Functions
 There are two special functions:
@@ -75,5 +75,5 @@ External libraries can be used using two specially built functions:
   2. import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
   3. Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
   4. More ways including nodejs style require() is coming soon.
-  5. D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/AMM-Simulation.jsnb](https://gopi-suvanam.github.io/jsnb/#https://gopi-suvanam.github.io/jsnb/examples/AMM-Simulation.jsnb)
+  5. D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb)
   
