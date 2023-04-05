@@ -9,15 +9,15 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nExperiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. For more details checkout the Github repo. Please feel free to send in pull requests/issues.\nClick on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.",
+      "code": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nExperiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. Please feel free to send in pull requests/issues.\nClick on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.\nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>. ",
       "status": "",
-      "output": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nExperiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. For more details checkout the Github repo. Please feel free to send in pull requests/issues.\nClick on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.",
+      "output": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nExperiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. Please feel free to send in pull requests/issues.\nClick on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.\nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>. ",
       "type": "html"
     },
     {
-      "code": "You could simple do: show(\"Hello World\")",
+      "code": "<b>You could simple do: </b>",
       "status": "",
-      "output": "You could simple do: show(\"Hello World\")",
+      "output": "<b>You could simple do: </b>",
       "type": "html"
     },
     {
