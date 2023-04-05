@@ -31,7 +31,7 @@
 	    <li><img src='images/logo2.png' id="logo"/></li>
 	    <li><a id="nb_name" contentEditable="true">Untitled Notebook</a></li> <!-- Title of the notebook -->
 	    <li role="list" dir="rtl">
-	      <a href="#" aria-haspopup="listbox">File</a>
+	      <a role="button" tabindex="0" aria-haspopup="listbox">File</a>
 	      <ul role="listbox">
 	        <li><a href="." target="_blank">New </a></li>
 		<li><a onclick="load_file_click()">Open (Ctrl-O)</a><input style="display:none" type="file" id="upload_file"  /></li>
@@ -43,7 +43,7 @@
 	      </ul>
 	    </li>
 	    <li role="list" dir="rtl">
-	      <a href="#" aria-haspopup="listbox">Edit</a>
+	      <a role="button" tabindex="0" aria-haspopup="listbox">Edit</a>
 	      <ul role="listbox">
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
