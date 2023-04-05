@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" >
 	<head>
+		<!-- Meta data for SEO etc -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="icon"  href="images/logo2.png">
 		<meta name="description" content="A notebook for experimenting in JavaScript. Experiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.">
 		<script>global=globalThis</script>
 		<title>JSNB: JavaScript Notebook</title>
+		
+		<!-- Styling using pico.css and some custome css -->
 		<link rel="stylesheet" href="css/pico.min.css">
 		<link rel="stylesheet" href="css/style.css">
 
-		
-		
+		<!-- Codemirror for code box -->
 		<script src="codemirror/codemirror.js"></script>
 		<link rel="stylesheet" href="codemirror/codemirror.css">
-		<script src="codemirror/javascript.js"></script>
-		<script src="js/libs.js"></script>
-		<script src="js/controller.js"></script>
-		<script src="js/worker.js"></script>
-		<script src="js/github.js"></script>
-		<script src="js/modal.js"></script>
+		<script src="codemirror/javascript.js"></script> <!--For styling javascript code -->
 		
-		
-
-
+		<!-- Controllers and libs -->
+		<script src="js/libs.js"></script> <!-- libs for some functionality -->
+		<script src="js/controller.js"></script> <!-- Controls the UI -->
+		<script src="js/worker.js"></script> <!-- Runs the user generated code -->
+		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
+		<script src="js/modal.js"></script> <!-- Modal/popul handling -->
   </head>
   <body data-theme="light" >
-	
-	<nav>
+	<nav> <!-- Menu bar -->
 	  <ul>
 	    <li><img src='images/logo2.png' id="logo"/></li>
-	    <li><a id="nb_name" contentEditable="true">Untitled Notebook</a></li>
+	    <li><a id="nb_name" contentEditable="true">Untitled Notebook</a></li> <!-- Title of the notebook -->
 	    <li role="list" dir="rtl">
-	    
 	      <a href="#" aria-haspopup="listbox">File</a>
 	      <ul role="listbox">
-	      	
 	        <li><a onclick="load_file_click()">Open (Ctrl-O)</a><input style="display:none" type="file" id="upload_file"  /></li>
 	        <li><a onclick="download_nb()">Download (Ctr-S)</a></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
@@ -58,27 +55,18 @@
 	        <li><a href="https://github.com/gopi-suvanam/jsnb/blob/main/examples/README.md" target='_blank'>Sample Notebooks</a></li>
 	      </ul>
 	    </li>
-	    
-	    
 	  </ul>
 	  <ul>
-	    
-	   
 	    <li >
 	      <a href="#" data-tooltip="Run all: Alt/Option-R" onclick="run_all()" role="button" style="margin-right:5px">&#9658;</a>
-
 	    </li>
-	     <li>
-	   <a href="https://github.com/gopi-suvanam/jsnb/" role="button" >Github</a> 
-		<!--<a href="https://github.com/gopi-suvanam/jsnb/fork">
-        		<img style="position: absolute; top: 0; right: 0; border: 0;" 
-        		 width="149" height="149" 
-        		 src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149"
-        		alt="Fork me on GitHub">
-    		</a>	-->    </li>
+	    <li>
+	   	<a href="https://github.com/gopi-suvanam/jsnb/" role="button" >Github</a> 
+	    </li>
 	  </ul>
 	</nav>
 
+	<!-- Template code block. This html will be copied and udpated for each cell -->
 	<div id="code_block_template" style="display:none">
 		<div  id="cell_menu_block_id" class="cell-menu">
 			<a data-tooltip="Toggle between code and html"> 
@@ -91,20 +79,17 @@
 			<a data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
 			
 		</div>
-		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'>
-		
-		</div>
+		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'></div> 
 		<article style="display:block" id="result_block_id" onclick="toggle_editor(_block_id)">
 			<p class="status" id="status_block_id"></p>
 			<div class="output" id="output_block_id"></div>
 		</article>
 	</div>
 	
-	
-	<div style="width:98%" class='container' id='main'></div>	
+	<div style="width:98%" class='container' id='main'></div> <!-- All the cells go inside this div -->
 	<hr style="margin-top:20px">
 	
-	<dialog id="git-import-export">
+	<dialog id="git-import-export"> <!--Modal for Github export/import -->
 	  <article>
 	    <h5>Load your code from GitHub</h5>
 	    <p>
@@ -124,17 +109,15 @@
 	  </article>
 	</dialog>
 	
-
-	
 	<footer style="padding:0px;text-align:center">
 		<span style="margin:auto">Created with <span style="color:red">&hearts;</span> for JavaScript</span>
 	</footer>	
   </body>
   <script>
-  	insitialize_page();
-
-	
+  	insitialize_page(); <!-- Load the notebook or insert an empty cell -->
   </script>
+
+  <!-- Loading some libraries for power experience -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
   <script src="/di-libs/build/di-libs.js"></script>
