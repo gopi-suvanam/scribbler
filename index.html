@@ -34,7 +34,7 @@
 	      <a  tabindex="0" aria-haspopup="listbox">File</a>
 	      <ul role="listbox">
 	        <li><a href="." target="_blank">New </a></li>
-					<li><a onclick="load_file_click()">Open (Ctrl-O)</a><input style="display:none" type="file" id="upload_file"  /></li>
+		<li><a onclick="load_file_click()">Open (Ctrl-O)</a><input style="display:none" type="file" id="upload_file"  /></li>
 	        <li><a onclick="download_nb()">Download (Ctr-S)</a></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
 	        <li><a onclick="download_html(false)">Download as HTML</a></li>
@@ -59,7 +59,7 @@
 	  </ul>
 	  <ul>
 	    <li >
-	      <a data-tooltip="Run all: Alt/Option-R" onclick="run_all()" role="button" style="margin-right:5px">&#9658;</a>
+	      <a href="#" role="button" data-tooltip="Run all: Alt/Option-R" onclick="event.preventDefault();run_all()"  style="margin-right:5px">&#9658;</a>
 	    </li>
 	    <li>
 	   	<a href="https://github.com/gopi-suvanam/jsnb/" role="button" >Github</a> 
@@ -101,9 +101,9 @@
 	    <input list='repos' id='repo' placeholder='Repo'></input><datalist id='repos'></datalist>
 	    <input type='text' id='path' placeholder='Path'></input>
 
-	      <a tabindex="0" data-target="git-import-export" onClick="toggleModal(event)" role="button" class="secondary">Cancel</a>
-	      <a tabindex="0"  onclick="upload_to_git()" role="button">Push to Git</a>
-	      <a tabindex="0" onclick="load_from_git()" role="button">Load from Git</a>
+	      <a href="#" data-target="git-import-export" onClick="event.preventDefault();toggleModal(event)" role="button" class="secondary">Cancel</a>
+	      <a href="#" tabindex="0"   onclick="event.preventDefault();upload_to_git()" role="button">Push to Git</a>
+	      <a href="#" tabindex="0" onclick="event.preventDefault();load_from_git()" role="button">Load from Git</a>
 	     <footer>
 	     	<p>The app does not store the access token on any server. It is stored only on the local machine (browser) and used to send requests to GitHub API. <p>
 	     </footer>
