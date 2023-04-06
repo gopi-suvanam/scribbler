@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "name": "Black-Scholes",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h5>Black-Scholes Example</h5>\nThis notebook implements Black-Scholes formula in JavaScript.",
+      "status": "",
+      "output": "<h5>Black-Scholes Example</h5>\nThis notebook implements Black-Scholes formula in JavaScript.",
+      "type": "html"
+    },
+    {
+      "code": "ndist=function(z) {\n\t  return (1.0/(Math.sqrt(2*Math.PI)))*Math.exp(-0.5*z);\n\t}\nnormalcdf=function(X){   //Approximation for cumulative standard normal distribution.\n\t\tvar T=1/(1+.2316419*Math.abs(X));\n\t\tvar D=.3989423*Math.exp(-X*X/2);\n\t\tvar Prob=D*T*(.3193815+T*(-.3565638+T*(1.781478+T*(-1.821256+T*1.330274))));\n\t\tif (X>0) {\n\t\t\tProb=1-Prob\n\t\t}\n\t\treturn Prob\n\t} ",
+      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "function(X){   //Approximation for cumulative standard normal distribution.\n\t\tvar T=1/(1+.2316419*Math.abs(X));\n\t\tvar D=.3989423*Math.exp(-X*X/2);\n\t\tvar Prob=D*T*(.3193815+T*(-.3565638+T*(1.781478+T*(-1.821256+T*1.330274))));\n\t\tif (X&gt;0) {\n\t\t\tProb=1-Prob\n\t\t}\n\t\treturn Prob\n\t} <br>",
+      "type": "code"
+    },
+    {
+      "code": "black_scholes={}\nblack_scholes.call_price=function(S,K,r,v,t) { \n\t  var sqt = Math.sqrt(t);\n\t  d1 = (Math.log(S/K) + r*t)/(v*sqt) + 0.5*(v*sqt);\n\t  d2 = d1 - (v*sqt);\n\t  delta = normalcdf(d1);\n\t  Nd2 = normalcdf(d2);\n\t  ert = Math.exp(-r*t);\n\t  nd1 = ndist(d1);\n\t  result={}\n\t  result['price']=S*delta-K*ert *Nd2;\n\t  result['gamma'] = nd1/(S*v*sqt);\n\t  result['vega'] = S*sqt*nd1;\n\t  result['theta'] = -(S*v*nd1)/(2*sqt) - r*K*ert*Nd2;\n\t  result['rho'] = K*t*ert*Nd2;\n\t  return (result );\n\t} //end of black_scholes call\n\"Call option function\"",
+      "status": "[7]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Call option function <br>",
+      "type": "code"
+    },
+    {
+      "code": "S=100\nK=120\nr=0.05\nv=0.15\nt=1\nshow(\"Price and greeks of the Call option are:\",black_scholes.call_price(S,K,r,v,t))",
+      "status": "[6]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Price and greeks of the Call option are: {\n  \"price\": 1.6600104594693512,\n  \"gamma\": 0.03981876966140627,\n  \"vega\": 59.7281544921094,\n  \"theta\": -5.445569747020302,\n  \"rho\": 19.319163202241953\n} <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb"
+}
