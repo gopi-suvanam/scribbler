@@ -22,8 +22,8 @@
     },
     {
       "code": "show(\"Hello World\")",
-      "status": "[7]<br><span style=\"font-size:8px\">0ms<span></span></span>",
-      "output": "Hello World<br>",
+      "status": "[2]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "Hello World <br>",
       "type": "code"
     },
     {
@@ -33,9 +33,9 @@
       "type": "html"
     },
     {
-      "code": "hello=function(what){\n   show(\"Hello \"+what); \n}\nhello(\"world\")",
-      "status": "[8]<br><span style=\"font-size:8px\">0ms<span></span></span>",
-      "output": "Hello world<br>",
+      "code": "greet=function(who){\n   show(\"Hello \"+who); \n}\ngreet(\"world\")",
+      "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Hello world <br>",
       "type": "code"
     },
     {
@@ -45,9 +45,9 @@
       "type": "html"
     },
     {
-      "code": "hello('<span style=\"background-color:green;color:white\">World</span>')",
-      "status": "[9]<br><span style=\"font-size:8px\">0ms<span></span></span>",
-      "output": "Hello <span style=\"background-color:green;color:white\">World</span><br>",
+      "code": "greet('<span style=\"background-color:green;color:white\">World</span>')",
+      "status": "[4]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Hello <span style=\"background-color:green;color:white\">World</span> <br>",
       "type": "code"
     }
   ],
