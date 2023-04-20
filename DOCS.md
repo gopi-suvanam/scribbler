@@ -20,7 +20,7 @@
 - Each code cell will have an input block and an output block. 
 - When the cell is "played" the html cell will show the output as html and the code cell will show output in another block below the code. 
 - There will be a status show on the output block of the code cells. Status will show a number indicating the run sequence and time taken to run the cell. Status is left blank if there is an error. 
-- For html cells, to edit the html click on the output again (the cell has to be run/played to change the output). 
+- For html cells, to edit the html dbl-click on the output. Once the cell is edited the cell has to be run/played to change the output. 
 - Cells can be added, deleted and moved up/down. 
 - HTML cells can have <style> tags also inside them. 
 - All the elements created in html can be accessed in the code cells through document.getelementbyid or document.queryselector. jQuery style $() can also be used by loading/importing jQuery library (see [Using external libraries](#using-external-libraries)). 
