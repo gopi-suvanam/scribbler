@@ -24,6 +24,7 @@
 - Cells can be added, deleted and moved up/down. 
 - HTML cells can have <style> tags also inside them. 
 - All the elements created in html can be accessed in the code cells through document.getelementbyid or document.queryselector. jQuery style $() can also be used by loading/importing jQuery library (see [Using external libraries](#using-external-libraries)). 
+- Last evaluated expression of a code cell is displayed in the output. Ensure the last expression is not very large (like a large array or a function declaration).
 ## Cell Menu
 Certain operations can be done on cell-menu. The cell-menu is at top-right corner of the cell (for smaller screens it is above the cell). The menu consists of:
   1. Toggling type of cell from code to html and vice-versa
@@ -52,7 +53,7 @@ The edit menu consists of:
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 ## Special Functions
 There are two special functions:
-  1. show(..). This function displays the object in the output cell. 
+  1. show(..). This function displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
   2. curr_cell(). This function returns the element corresponding to the output <div> of the current code cell. 
 Both these functions might behave differentyl when called from within asynchronous code.
 ## Keyboard Shortcuts
