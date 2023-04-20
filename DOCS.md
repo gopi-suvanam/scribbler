@@ -28,7 +28,7 @@
 Certain operations can be done on cell-menu. The cell-menu is at top-right corner of the cell (for smaller screens it is above the cell). The menu consists of:
   1. Toggling type of cell from code to html and vice-versa
   2. Running/playing (►) the cell to run the code in the cell or to display the html content
-  3. Moving the cell uo (↑) 
+  3. Moving the cell up (↑) 
   4. Moving the cell down (↓)
   5. Adding another cell below the current cell (✛)
   6. Deleting the current cell (☓)
