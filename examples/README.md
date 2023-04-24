@@ -1,6 +1,11 @@
-﻿## Links to example Notebooks saved in this Repo
+---
+title: Sample Notebooks using JSNB
+layout: page
+decripriont: Links to sample JSNB notbooks hosted on Github. Click on each link to play around with the code.
+---
+ ## Links to example Notebooks saved in this Repo
  
- These notebooks are stored and served from Git-hub pages.
+ These notebooks are stored and served from Git-hub pages. Click on each link to play around with the code.
  
  ### Introductory
 1. [Hello-world](https://decentralized-intelligence.com/jsnb/#./examples/Hello-world.jsnb)
