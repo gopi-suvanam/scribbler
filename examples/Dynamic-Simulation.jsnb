@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "Dynamic Simulation",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Dynamic System Simulation</h1>\n<style>\n\t      /* CSS styles for simulation canvas */\n\t      canvas {\n\t        border: 1px solid black;\n\t      }\n\t    </style>\n<p> Run the next cell to define the simulation and the click on the \"Start Simulation\" button. This simulation uses native JavaScript function setInterval.</p>\n<br>\n  This example demonstrates a simulation of a bouncing ball. The ball bounces off the edges of a rectangle but the right edge of the rectangle is also moving to and fro. This creates a chaotic behaviour (I think).",
+      "status": "",
+      "output": "<h1>Dynamic System Simulation</h1>\n<style>\n\t      /* CSS styles for simulation canvas */\n\t      canvas {\n\t        border: 1px solid black;\n\t      }\n\t    </style>\n<p> Run the next cell to define the simulation and the click on the \"Start Simulation\" button. This simulation uses native JavaScript function setInterval.</p>\n<br>\n  This example demonstrates a simulation of a bouncing ball. The ball bounces off the edges of a rectangle but the right edge of the rectangle is also moving to and fro. This creates a chaotic behaviour (I think).",
+      "type": "html"
+    },
+    {
+      "code": "// JavaScript code for simulation\nsimulate=function(){\t\n\t      // Get canvas element\n\t      const canvas = document.getElementById('simulationCanvas');\n\t      const ctx = canvas.getContext('2d');\n\t\n\t      // Set initial position and velocity\n\t      let x = canvas.width / 2;\n\t      let y = canvas.height - 30;\n\t      let dx = 10;\n\t      let dy = -10;\n\t  \t\n          \n\t      // Set ball radius\n\t      const ballRadius = 10;\n         // Setting canvas Width params\n  \t\tlet boundary = canvas.width;\n       let dw=2; // speed of canvas expansion\n\t\n\t      // Function to draw the ball\n\t      function drawBall() {\n\t        ctx.beginPath();\n\t        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);\n\t        ctx.fillStyle = 'blue';\n\t        ctx.fill();\n\t        ctx.closePath();\n\t      }\n\t\n  function drawBoundary(){\n\t\t ctx.beginPath();\n\t\t  ctx.moveTo(boundary, 0);\n\t\t  ctx.lineTo(boundary, canvas.height);\n\t\t  ctx.stroke();\n\t   }\n\t      // Function to update ball position\n\t      function updateBallPosition() {\n\t        // Clear canvas\n\t        ctx.clearRect(0, 0, canvas.width, canvas.height);\n\t\n\t        // Draw ball\n\t\t\tmoveBoundary();\n\t        drawBall();\n\t\t\tdrawBoundary();\n\t        // Update position\n\t        x += dx;\n\t        y += dy;\n\t\n\t        // Reverse direction if ball hits canvas edges\n\t        if (x + dx > boundary- ballRadius || x + dx < ballRadius) {\n\t          dx = -dx;\n\t        }\n\t        if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {\n\t          dy = -dy;\n\t        }\n\t      }\n\t\n  \n       \n          function moveBoundary(){\n\t\t   boundary=boundary+dw;\n\t\t\t if(boundary>canvas.width) dw=-Math.abs(dw);\n\t\t\t   if(boundary<canvas.width*0.8) dw= Math.abs(dw);\n\n\t\t }\n\t      // Call updateBallPosition function repeatedly for animation\n\t      setInterval(updateBallPosition, 10);\n}",
+      "status": "[4]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "function(){\t\n\t      // Get canvas element\n\t      const canvas = document.getElementById('simulationCanvas');\n\t      const ctx = canvas.getContext('2d');\n\t\n\t      // Set initial position and velocity\n\t      let x = canvas.width / 2;\n\t      let y = canvas.height - 30;\n\t      let dx = 10;\n\t      let dy = -10;\n\t  \t\n          \n\t      // Set ball radius\n\t      const ballRadius = 10;\n         // Setting canvas Width params\n  \t\tlet boundary = canvas.width;\n       let dw=2; // speed of canvas expansion\n\t\n\t      // Function to draw the ball\n\t      function drawBall() {\n\t        ctx.beginPath();\n\t        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);\n\t        ctx.fillStyle = 'blue';\n\t        ctx.fill();\n\t        ctx.closePath();\n\t      }\n\t\n  function drawBoundary(){\n\t\t ctx.beginPath();\n\t\t  ctx.moveTo(boundary, 0);\n\t\t  ctx.lineTo(boundary, canvas.height);\n\t\t  ctx.stroke();\n\t   }\n\t      // Function to update ball position\n\t      function updateBallPosition() {\n\t        // Clear canvas\n\t        ctx.clearRect(0, 0, canvas.width, canvas.height);\n\t\n\t        // Draw ball\n\t\t\tmoveBoundary();\n\t        drawBall();\n\t\t\tdrawBoundary();\n\t        // Update position\n\t        x += dx;\n\t        y += dy;\n\t\n\t        // Reverse direction if ball hits canvas edges\n\t        if (x + dx &gt; boundary- ballRadius || x + dx &lt; ballRadius) {\n\t          dx = -dx;\n\t        }\n\t        if (y + dy &gt; canvas.height - ballRadius || y + dy &lt; ballRadius) {\n\t          dy = -dy;\n\t        }\n\t      }\n\t\n  \n       \n          function moveBoundary(){\n\t\t   boundary=boundary+dw;\n\t\t\t if(boundary&gt;canvas.width) dw=-Math.abs(dw);\n\t\t\t   if(boundary<br>",
+      "type": "code"
+    },
+    {
+      "code": "<canvas id=\"simulationCanvas\" width=\"400\" height=\"400\"></canvas>\n<button onclick=\"simulate()\">Start Simulation</button>",
+      "status": "",
+      "output": "<canvas id=\"simulationCanvas\" width=\"400\" height=\"400\"></canvas>\n<button onclick=\"simulate()\">Start Simulation</button>",
+      "type": "html"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb"
+}
