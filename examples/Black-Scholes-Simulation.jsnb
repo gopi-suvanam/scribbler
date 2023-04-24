@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1>Blakc-Scholes Simulation</h1>\nThis notebook simulates option prices for 10mln different scenarios (coming out of random-normal distrinution) and takes average of the prices. The distribution of prices is also shown. \nThe simulation is done using for-loop and map function.",
+      "code": "<h1>Black-Scholes Simulation</h1>\nThis notebook simulates option prices for 10mln different scenarios (coming out of random-normal distrinution) and takes average of the prices. The distribution of prices is also shown. \nThe simulation is done using for-loop and map function.",
       "status": "",
-      "output": "<h1>Blakc-Scholes Simulation</h1>\nThis notebook simulates option prices for 10mln different scenarios (coming out of random-normal distrinution) and takes average of the prices. The distribution of prices is also shown. \nThe simulation is done using for-loop and map function.",
+      "output": "<h1>Black-Scholes Simulation</h1>\nThis notebook simulates option prices for 10mln different scenarios (coming out of random-normal distrinution) and takes average of the prices. The distribution of prices is also shown. \nThe simulation is done using for-loop and map function.",
       "type": "html"
     },
     {
