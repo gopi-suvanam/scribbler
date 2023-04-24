@@ -22,11 +22,11 @@ toggle_editor=function(i){
 }
 unfocus_editor=function(i){
 	if(get_dom("cell_type"+i).checked) return;
-	{
-		input_dom=get_dom("input"+i)
-		input_dom.style.display = "none";
-		//get_dom("cell_menu"+i).style.display = "none";
-		get_dom("result"+i).style.display = "block";
+	else{
+		setTimeout(function(){
+		    run(i);
+		}, 200);
+		
 		
 	}
 }
