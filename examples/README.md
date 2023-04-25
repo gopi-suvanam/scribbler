@@ -27,7 +27,8 @@ decripriont: Links to sample JSNB notbooks hosted on Github. Click on each link 
 ### Simulation
 9. [Monte-Carlo Simulation of AMM](https://decentralized-intelligence.com/jsnb/#./examples/AMM-Simulation.jsnb)
 10. [Simple Simulation Example](https://decentralized-intelligence.com/jsnb/#./examples/Simple-Simulation.jsnb)
-11. [Option Price Simulation](https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes-Simulation.jsnb)
+11. [Bouncing Ball on Moving Boundary](https://decentralized-intelligence.com/jsnb/#./examples/Dynamic-Simulation.jsnb)
+12. [Option Price Simulation](https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes-Simulation.jsnb)
  
 
 
