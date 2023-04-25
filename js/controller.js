@@ -256,8 +256,11 @@ load_jsnb=function(content){
 		return ;
 	}
 	
+	
+	document.activeElement.blur(); 
+	document.body.scrollTop = document.documentElement.scrollTop = 0;
+	get_dom("top").focus();
 	if (run_on_load) setTimeout(run_all,200);
-	gdocument.activeElement.blur(); document.body.scrollTop = document.documentElement.scrollTop = 0;
 
 
 }
