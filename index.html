@@ -23,7 +23,13 @@
 		<script src="js/controller.js"></script> <!-- Controls the UI -->
 		<script src="js/worker.js"></script> <!-- Runs the user generated code -->
 		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
-		<script src="js/modal.js"></script> <!-- Modal/popul handling -->
+		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
+		
+		 <!-- Loading some libraries for power experience -->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
+	  <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+	  <script src="/di-libs/build/di-libs.js"></script>
+
 	</head>
   <body data-theme="light" >
 	<nav> <!-- Menu bar -->
@@ -121,8 +127,4 @@
   	insitialize_page(); <!-- Load the notebook or insert an empty cell -->
   </script>
 
-  <!-- Loading some libraries for power experience -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
-  <script src="/di-libs/build/di-libs.js"></script>
-</html>
+ </html>
