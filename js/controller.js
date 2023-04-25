@@ -162,6 +162,7 @@ get_nb=function(){
 	var nb=JSON.parse(JSON.stringify(blank_nb));
  	nb.metadata.name=get_dom("nb_name").innerHTML;
  	
+ 	nb['run_on_load']=get_dom("run_on_load").checked;
  	var main=get_dom("main");
  	var blocks=main.childNodes;
  	
@@ -217,6 +218,9 @@ load_jsnb=function(content){
 		var bkup_html=main.innerHTML;
 		var bkup_editors=editors
 		var bkup_status_data=status_data;
+		var bkup_run_on_load=get_dom("run_on_load").checked;
+		var run_on_load = nb.run_on_load || false;
+		get_dom("run_on_load").checked=run_on_load;
 		status_data={
 			num_blocks:0,
 			block_run:0
@@ -240,14 +244,20 @@ load_jsnb=function(content){
 			
 			
 		});
+		status_data.num_blocks=i;
+		
 	}catch(err){
-		alert(err.message)
-		console.log(err.stack)
-		editors=bkup_editors
+		alert(err.message);
+		console.log(err.stack);
+		editors=bkup_editors;
 		main.innerHTML=bkup_html;
-		alert(err.message)
+		alert(err.message);
+		get_dom("run_on_load").checked=bkup_run_on_load;
+		return ;
 	}
-	status_data.num_blocks=i;
+	
+	if (run_on_load) setTimeout(run_all,200);
+	get_dom("top").focus();
 
 }
 

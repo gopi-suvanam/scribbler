@@ -58,6 +58,9 @@
 	    </li>
 	  </ul>
 	  <ul>
+	  	<li>
+	  	 <a><input  id="run_on_load" data-tooltip="Run the code when the file is loaded" type="checkbox" class="cell-type"  ></input> </a>
+		</li>	
 	    <li >
 	      <a href="#" role="button" data-tooltip="Run all: Alt/Option-R" onclick="event.preventDefault();run_all()"  style="margin-right:5px">&#9658;</a>
 	    </li>
@@ -66,7 +69,7 @@
 	    </li>
 	  </ul>
 	</nav>
-
+	<span id="top"></span>
 	<!-- Template code block. This html will be copied and udpated for each cell -->
 	<div id="code_block_template" style="display:none">
 		<div  id="cell_menu_block_id" class="cell-menu">

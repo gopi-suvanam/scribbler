@@ -101,7 +101,8 @@ blank_nb={
   },
   "jsnbversion":"v0.1",
   "cells" : [],
-  "source":"https://github.com/gopi-suvanam/jsnb"
+  "source":"https://github.com/gopi-suvanam/jsnb",
+  "run_on_load":false
 }
 
 
