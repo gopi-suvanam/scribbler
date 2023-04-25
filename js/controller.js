@@ -257,7 +257,8 @@ load_jsnb=function(content){
 	}
 	
 	if (run_on_load) setTimeout(run_all,200);
-	get_dom("top").focus();
+	gdocument.activeElement.blur(); document.body.scrollTop = document.documentElement.scrollTop = 0;
+
 
 }
 
