@@ -21,11 +21,18 @@
       "type": "code"
     },
     {
-      "code": "<canvas id=\"simulationCanvas\" width=\"400\" height=\"400\"></canvas>\n<button onclick=\"simulate()\">Start Simulation</button>",
+      "code": "<canvas id=\"simulationCanvas\" width=\"400\" height=\"400\"></canvas>\n",
       "status": "",
-      "output": "<canvas id=\"simulationCanvas\" width=\"400\" height=\"400\"></canvas>\n<button onclick=\"simulate()\">Start Simulation</button>",
+      "output": "<canvas id=\"simulationCanvas\" width=\"400\" height=\"400\"></canvas>\n",
       "type": "html"
+    },
+    {
+      "code": "simulate()\ndocument.activeElement.blur(); \ndocument.body.scrollTop = document.documentElement.scrollTop = 0;",
+      "status": "",
+      "output": "",
+      "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": true
 }
