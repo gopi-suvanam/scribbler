@@ -46,6 +46,7 @@
 	        <li><a onclick="download_html(false)">Download as HTML</a></li>
 	        <li><a onclick="download_html(true)">Download only output</a></li>
 	        <li><a onclick="download_js()">Download as JS</a></li>
+	        <li><a data-target="options" onClick="toggleModal(event)">Options</a></li>
 	      </ul>
 	    </li>
 	    <li role="list" dir="rtl">
@@ -53,6 +54,7 @@
 	      <ul role="listbox">
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
+	        <li><a onclick="insert_cell('style')">Insert style cell</a></li>
 	      </ul>
 	    </li>
 	    <li role="list" dir="rtl">
@@ -64,9 +66,7 @@
 	    </li>
 	  </ul>
 	  <ul>
-	  	<li>
-	  	 <a><input  id="run_on_load" data-tooltip="Run the code when the file is loaded" type="checkbox" class="cell-type"  ></input> </a>
-		</li>	
+	  	
 	    <li >
 	      <a href="#" role="button" data-tooltip="Run all: Alt/Option-R" onclick="event.preventDefault();run_all()"  style="margin-right:5px">&#9658;</a>
 	    </li>
@@ -116,6 +116,22 @@
 	     <footer>
 	     	<p>The app does not store the access token on any server. It is stored only on the local machine (browser) and used to send requests to GitHub API. <p>
 	     </footer>
+	  </article>
+	</dialog>
+	
+	<dialog id="options"> <!--Modal for Options -->
+	  <article>
+	    <h5>Options for Notebook</h5>
+	    <input  id="run_on_load" data-tooltip="Run the code when the file is loaded" type="checkbox" class="cell-type"  ></input>
+	    <label for="run_on_load">Run the code when the file is loaded</label>
+	    <br>
+	    <input  id="hide_menu_on_embed" data-tooltip="Hide the menu in iframe embedding" type="checkbox" class="cell-type"  ></input>
+	    <label for="hide_menu_on_embed">Hide the menu in iframe embedding</label>
+	    <br>
+	    <input  id="hide_input_on_embed" data-tooltip="Hide the input cells in iframe embedding" type="checkbox" class="cell-type"  ></input>
+	    <label for="hide_input_on_embed">Hide the input cells in iframe embedding</label>
+	    
+		
 	  </article>
 	</dialog>
 	

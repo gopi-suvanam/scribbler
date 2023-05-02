@@ -129,12 +129,14 @@ insert_cell=function(type,after){
   			get_dom('cell_type'+i).checked=true;
 	  	}
 	  	else{
-	  		console.log(i,type);
 	  		get_dom('cell_type'+i).checked=false;
-	  		get_dom('result'+i).style.display='block';
-	  		get_dom('input'+i).style.display='none';
+	  		get_dom('result'+i).style.display='none';
+	  		get_dom('input'+i).style.display='block';
 	  		get_dom('status'+i).style.display='none';
-	  		get_dom("cell_menu"+i).style.display = "none";
+	  		get_dom("cell_menu"+i).style.display = "block";
+	  		if(type=='style') {
+	  			get_dom('input'+i).childNodes[0].CodeMirror.setValue("<style>\n\n</style>");
+	  		}
 	  	}
 	  	cm.focus();
 		cm.setCursor(1,0);
@@ -255,7 +257,6 @@ load_jsnb=function(content){
 		get_dom("run_on_load").checked=bkup_run_on_load;
 		return ;
 	}
-	
 	
 	document.activeElement.blur(); 
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
