@@ -27,20 +27,20 @@
 - Last evaluated expression of a code cell is displayed in the output. Ensure the last expression is not very large (like a large array or a function declaration).
 ## Cell Menu
 Certain operations can be done on cell-menu. The cell-menu is at top-right corner of the cell (for smaller screens it is above the cell). The menu consists of:
-  1. Toggling type of cell from code to html and vice-versa
-  2. Running/playing (►) the cell to run the code in the cell or to display the html content
-  3. Moving the cell up (↑) 
-  4. Moving the cell down (↓)
-  5. Adding another cell below the current cell (✛)
-  6. Deleting the current cell (☓)
+- Toggling type of cell from code to html and vice-versa
+- Running/playing (►) the cell to run the code in the cell or to display the html content
+- Moving the cell up (↑) 
+- Moving the cell down (↓)
+- Adding another cell below the current cell (✛)
+- Deleting the current cell (☓)
 ## File Menu
 The file menu consists of:
-  1. Open: Opening a JSNB file from local machine
-  2. Download: Saving the current notebook as JSNB file on local machine
-  3. GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Toke, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
-  4. Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
-  5. Download only output as HTML: Save only the output of the current notebook as HTML on local machine.
-  6. Download as JS: Down load the code in cells as a single JavaSript file.
+- Open: Opening a JSNB file from local machine
+- Download: Saving the current notebook as JSNB file on local machine
+- GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Toke, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
+- Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
+- Download only output as HTML: Save only the output of the current notebook as HTML on local machine.
+- Download as JS: Down load the code in cells as a single JavaSript file.
 ## Edit Menu
 The edit menu consists of:
   1. Insert code cell: A blank code-type cell is inserted at the end of the current notebook
@@ -53,8 +53,8 @@ The edit menu consists of:
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 ## Special Functions
 There are two special functions:
-  1. show(..). This function displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
-  2. curr_cell(). This function returns the element corresponding to the output <div> of the current code cell. 
+- show(..). This function displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
+- curr_cell(). This function returns the element corresponding to the output <div> of the current code cell. 
 Both these functions might behave differentyl when called from within asynchronous code.
 ## Keyboard Shortcuts
 These shortcuts work when a code cell is in focus:
@@ -72,9 +72,9 @@ These shortcuts are global
 - Ctrl-O: Load a jsnb from local machine
 ## Using external libraries
 External libraries can be used using two specially built functions:
-  1. load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
-  2. import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
-  3. Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
-  4. More ways including nodejs style require() is coming soon.
-  5. D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb)
+- load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
+- import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
+- Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
+- More ways including nodejs style require() is coming soon.
+- D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb)
   
