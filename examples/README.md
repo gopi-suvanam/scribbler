@@ -23,6 +23,7 @@ decripriont: Links to sample JSNB notbooks hosted on Github. Click on each link 
 
 ### Finance
 8. [Option Pricing using Black-Scholes](https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes.jsnb)
+9. [Option Pricing using Monte-Carlo Simulation](https://decentralized-intelligence.com/jsnb/#./examples/Option-Pricing-MC.jsnb)
 
 ### Simulation
 9. [Monte-Carlo Simulation of AMM](https://decentralized-intelligence.com/jsnb/#./examples/AMM-Simulation.jsnb)
