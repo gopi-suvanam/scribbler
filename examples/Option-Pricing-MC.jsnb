@@ -16,32 +16,32 @@
     },
     {
       "code": " optionPriceMC=function(strike, expiration, volatility, riskFreeRate, spot, simulations) {\n\t  let totalPayoff = 0;\n\t  const dt = 1.0 / 365; // time step of one day\n\t  const sqrtDt = Math.sqrt(dt);\n\t  const drift = riskFreeRate - 0.5 * volatility ** 2; //this comes from Ito's lemma\n\n\t  for (let i = 0; i < simulations; i++) {\n\t    let price = spot;\n\t    for (let t = 0; t < expiration; t += dt) {\n\t      const z = normalRandom(); // generate a random number from a normal distribution\n\t      price *= Math.exp(drift * dt + volatility * sqrtDt * z);\n\t    }\n\t    const payoff = Math.max(price - strike, 0); // payoff at expiration\n\t    totalPayoff += payoff * Math.exp(-riskFreeRate * expiration); // discounted payoff\n\t  }\n\t\n\t  const optionPrice = totalPayoff / simulations;\n\t  return optionPrice;\n\t}\n\t\n\tfunction normalRandom() { //Approximation to normaldistribution\n\t  let u = 0, v = 0;\n\t  while (u === 0) u = Math.random(); // ensure u is not 0\n\t  while (v === 0) v = Math.random(); // ensure v is not 0\n\t  return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);\n\t}\n\t",
-      "status": "[1]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[1]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "function(strike, expiration, volatility, riskFreeRate, spot, simulations) {\n\t  let totalPayoff = 0;\n\t  const dt = 1.0 / 365; // time step of one day\n\t  const sqrtDt = Math.sqrt(dt);\n\t  const drift = riskFreeRate - 0.5 * volatility ** 2; //this comes from Ito's lemma\n\n\t  for (let i = 0; i &lt; simulations; i++) {\n\t    let price = spot;\n\t    for (let t = 0; t &lt; expiration; t += dt) {\n\t      const z = normalRandom(); // generate a random number from a normal distribution\n\t      price *= Math.exp(drift * dt + volatility * sqrtDt * z);\n\t    }\n\t    const payoff = Math.max(price - strike, 0); // payoff at expiration\n\t    totalPayoff += payoff * Math.exp(-riskFreeRate * expiration); // discounted payoff\n\t  }\n\t\n\t  const optionPrice = totalPayoff / simulations;\n\t  return optionPrice;\n\t} <br>",
       "type": "code"
     },
     {
       "code": "optionPriceMC(100,30/365.0,0.2,0.01,100,100000)",
-      "status": "[2]<br><span style=\"font-size:8px\">10.41s<span></span></span>",
-      "output": "2.3088809704994717 <br>",
+      "status": "[2]<br><span style=\"font-size:8px\">10.714s<span></span></span>",
+      "output": "2.3323609848816518 <br>",
       "type": "code"
     },
     {
       "code": "\nblack_scholes.call_price(100,100,0.01,0.2,30/365.0)",
-      "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "status": "[3]<br><span style=\"font-size:8px\">0ms<span></span></span>",
       "output": "{\n  \"price\": 2.3275634021786473,\n  \"gamma\": 0.06809696371428008,\n  \"vega\": 11.194021432484394,\n  \"theta\": -14.113268008708788,\n  \"rho\": 4.059248760433754\n} <br>",
       "type": "code"
     },
     {
       "code": "//Using di-libs to clean the code and improve speed\noptionPriceMC_di_libs=function(strike, expiration, volatility, riskFreeRate, spot, simulations) {\n  let totalPayoff = 0;\n  const dt = 1.0 / 365; // time step of one day\n  const sqrtDt = Math.sqrt(dt);\n  const drift = riskFreeRate - 0.5 * volatility ** 2; //this comes from Ito's lemma\n  const num_steps=Math.round(expiration/dt);\n  const random_vars=random.twod.normal(simulations,num_steps,drift*dt,volatility * sqrtDt); //This is defined in di-libs\n  const prices=random_vars.map(row=>Math.exp(row.sum())*spot);\n  const disc_fact=Math.exp(-riskFreeRate * expiration);\n  const payoff= K=>{return p=>Math.max(p-K,0)*disc_fact}; //Returns a function\n  \n  const payoffs=prices.map(payoff(strike)); // Using closure of strike\n  \n  return payoffs.mean();\n}",
-      "status": "[4]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[4]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "function(strike, expiration, volatility, riskFreeRate, spot, simulations) {\n  let totalPayoff = 0;\n  const dt = 1.0 / 365; // time step of one day\n  const sqrtDt = Math.sqrt(dt);\n  const drift = riskFreeRate - 0.5 * volatility ** 2; //this comes from Ito's lemma\n  const num_steps=Math.round(expiration/dt);\n  const random_vars=random.twod.normal(simulations,num_steps,drift*dt,volatility * sqrtDt); //This is defined in di-libs\n  const prices=random_vars.map(row=&gt;Math.exp(row.sum())*spot);\n  const disc_fact=Math.exp(-riskFreeRate * expiration);\n  const payoff= K=&gt;{return p=&gt;Math.max(p-K,0)*disc_fact}; //Returns a function\n  \n  const payoffs=prices.map(payoff(strike)); // Using closure of strike\n  \n  return payoffs.mean();\n} <br>",
       "type": "code"
     },
     {
       "code": "optionPriceMC_di_libs(100,30/365.0,0.2,0.01,100,100000)",
-      "status": "[5]<br><span style=\"font-size:8px\">1.523s<span></span></span>",
-      "output": "2.3241433173056394 <br>",
+      "status": "[5]<br><span style=\"font-size:8px\">1.387s<span></span></span>",
+      "output": "2.298191624376317 <br>",
       "type": "code"
     }
   ],
