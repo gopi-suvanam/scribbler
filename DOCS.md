@@ -43,8 +43,10 @@ The file menu consists of:
 - Download as JS: Down load the code in cells as a single JavaSript file.
 ## Edit Menu
 The edit menu consists of:
-  1. Insert code cell: A blank code-type cell is inserted at the end of the current notebook
-  2. Insert html cell: A blank html-type cell is inserted at the end of the current notebook
+- Insert code cell: A blank code-type cell is inserted at the end of the current notebook
+- Insert html cell: A blank html-type cell is inserted at the end of the current notebook
+- Insert style cell: A blank html-type cell with <style> tags is inserted at the end of the current notebook
+  
 ## URL Structure
 - The URL of Github pages deployment is https://decentralized-intelligence.com/jsnb/. 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
@@ -70,6 +72,7 @@ These shortcuts are global
 - Ctrl-G: Import from/Push to GitHub
 - Ctrl-S: Download the jsnb to local machine
 - Ctrl-O: Load a jsnb from local machine
+  
 ## Using external libraries
 External libraries can be used using two specially built functions:
 - load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
