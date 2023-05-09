@@ -5,7 +5,7 @@ decripriont: Links to sample JSNB notbooks hosted on Github. Click on each link 
 ---
 ## Links to example Notebooks saved in this Repo
  
-JSNB is tool to do experimentation in JavaScript like Jupyter for Python. JavaScript Notebooks can be used to test code while developing and also for scientific calculation. The below notebooks are samples/boilerplates to start experimenting/building. Click on each link to play around with the code.
+JSNB is a tool to do experimentation in JavaScript like Jupyter for Python. JavaScript Notebooks can be used to test code while developing and also for scientific calculation. The below notebooks are samples/boilerplates to start experimenting/building. Click on each link to play around with the code.
 
 ### Introductory
 1. [Hello-world](https://decentralized-intelligence.com/jsnb/#./examples/Hello-world.jsnb)
