@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nExperiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. Please feel free to send in pull requests/issues.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.\nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>. ",
+      "code": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nInteractive environment for experimenting in javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. Please feel free to send in pull requests/issues. <br>\nThere are two types of cells \n<ul>\n <li><p>an html cell, the cell you are reading right now. </p></li>\n <li><p>a code cell, where you may input some JS code for the browser to execute. </p></li>\n</ul>\nYou can click on either of the two following buttons to create a cell.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.\nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>. ",
       "status": "",
-      "output": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nExperiment and play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. Please feel free to send in pull requests/issues.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.\nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>. ",
+      "output": "<h5>Welcome to JSNB - Javascript Notebook </h5> \nInteractive environment for experimenting in javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.\nNext few cells give you the \"hello world\" notebook. Please feel free to send in pull requests/issues. <br>\nThere are two types of cells \n<ul>\n <li><p>an html cell, the cell you are reading right now. </p></li>\n <li><p>a code cell, where you may input some JS code for the browser to execute. </p></li>\n</ul>\nYou can click on either of the two following buttons to create a cell.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. Press Shift-Enter to Run the current cell and see the output.\nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>. ",
       "type": "html"
     },
     {
@@ -51,5 +51,6 @@
       "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }
