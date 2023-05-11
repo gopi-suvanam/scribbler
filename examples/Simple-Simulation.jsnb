@@ -28,11 +28,11 @@
     },
     {
       "code": "simulate()\ndocument.activeElement.blur(); \ndocument.body.scrollTop = document.documentElement.scrollTop = 0;",
-      "status": "",
-      "output": "",
+      "status": "[2]<br><span style=\"font-size:8px\">11ms<span></span></span>",
+      "output": "0 <br>",
       "type": "code"
     }
   ],
   "source": "https://github.com/gopi-suvanam/jsnb",
-  "run_on_load": true
+  "run_on_load": false
 }
