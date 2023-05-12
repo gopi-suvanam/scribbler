@@ -4,7 +4,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 - Runs without backend (node.js/npm/pip install/ngnix etc etc). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a server (I didnt want to use the word "serverless" as that word has been polluted by Amazon).
 - Can be loaded from the web (i.e. behind a webserver) or from the file system (certain features like WebRTC might require a server)
 - UI is similar/close to Jupyter Notebook (for the sake familiarity for python developers). Has a minimalistic UI to put focus on user generated code/content.
-- Uses Codemirror for formatting the code area and Pico CSS for styling.
+- It is light-weight as it uses minimal external libraries : Codemirror for formatting the code area and Pico CSS for styling.
+- Comes loded with Plotly, D3 and DI-Libs for power usage. More libaries/modules can be easily loaded using load_script or import_module functions.
 
 ## Table of contents
 <!-- toc -->
@@ -66,6 +67,7 @@ These shortcust are global
 Not to be used for:
 1. Production use cases
 2. As an alternative to webapps
+3. Working with sensitive data like login/pwd/private keys etc.
 
 ## Collaboration
 The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collabortion is still possible through:
