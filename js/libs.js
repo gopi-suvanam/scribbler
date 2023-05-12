@@ -91,19 +91,6 @@ function insertAfter(el0, el1) {
     }
 }
 
-blank_nb={
-  "metadata" : {
-     "name":"Starting JS Notebook Example",
-    "language_info": {
-        "name" : "JavaScipt",
-        "version": "8.0"
-    }
-  },
-  "jsnbversion":"v0.1",
-  "cells" : [],
-  "source":"https://github.com/gopi-suvanam/jsnb",
-  "run_on_load":false
-}
 
 
 downloadObjectAsJson=function(exportObj, exportName){
@@ -127,24 +114,9 @@ downloadObjectAsJson=function(exportObj, exportName){
   }
   
   
-  handleFiles=function() {
-	  const fileList = this.files; /* now you can work with the file list */
-	  let f = fileList[0];
-    
-    		let reader = new FileReader();
-    		reader.onload = (function(theFile) {
-        return function(e) {
-	          load_jsnb( e.target.result );
-	        };
-	      })(f);
-	
-	      // Read in the image file as a data URL.
-	      reader.readAsText(f);
-	      
 
-	}
 	
- read_file=function(url,callbk,failure){
+read_file=function(url,callbk,failure){
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 		  if (this.readyState == 4 && this.status == 200) {

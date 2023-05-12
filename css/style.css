@@ -15,7 +15,7 @@ nav{
  	font-size:10px !important;
  	position: relative;
 		top: 0;
-	border-bottom:thin solid grey;
+	border-bottom:1px solid lightgrey;
 }
 nav li{
 	padding:0px;
@@ -101,11 +101,11 @@ ul[role=listbox]{
 
 #nb_name{
 	margin-left:5px ;	margin-right:5px ;
-	border:thin solid grey ;
+	color:darkgrey;
 }
 
 #logo{
-	height:60px;
+	height:35px;
 	margin:0px;
 }
 p{
@@ -133,7 +133,34 @@ input{
     	margin:2px;
     	padding:2px;
     }
+    #github_link{
+    	display:none;
+    }
 }
+
+nav details[role=list] summary{
+	padding-top:2px !important;
+	padding-bottom:2px !important;
+	border:none !important;
+	font-size:14px !important;
+	line-height:35px !important;
+}
+nav details[role=list]{
+
+	border:none !important;
+}
+
+details[role=list] summary::after{
+	height:35px;
+	line-height:35px;
+	font-size:10px;
+}
+
+nav [role=button]{
+	padding-top:2px !important;
+	padding-bottom:2px !important;
+}
+
 
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */

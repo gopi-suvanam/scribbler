@@ -135,13 +135,11 @@ update_repos=function(){
 
 }
 load_from_git=function(){
-	file_details={}
 	file_details['source']='github';
 	file_details['token']=get_dom("token").value;
 	file_details['user']=get_dom("user").value;
 	file_details['repo']=get_dom("repo").value;
 	file_details['path']=get_dom("path").value;
-	status['file_details']=file_details;
 	get_file_content(file_details['token'],file_details['user'],file_details['repo'],file_details['path'])
 	.then(
 		nb=>{
@@ -181,6 +179,8 @@ load_from_git=function(){
 		 console.log(response);
 		  var data=await parse_response(response);
 		load_jsnb(data);
+		
+		
 	}catch(error){
 		console.log(error);
 		openModal(get_dom('git-import-export'));
@@ -190,26 +190,25 @@ load_from_git=function(){
 	
 }
 upload_to_git=function(){
-	file_details={}
 	file_details['source']='github';
 	file_details['token']=get_dom("token").value;
 	file_details['user']=get_dom("user").value;
 	file_details['repo']=get_dom("repo").value;
 	file_details['path']=get_dom("path").value;
-	status['file_details']=file_details;
 	
-	nb=get_nb();
-	content=JSON.stringify(nb,undefined,2);
-	upload_file_to_git(file_details['token'],content,file_details['user'],file_details['repo'],file_details['path'])
-	.then(x=>{
-		alert("Successfully pushed");
-		closeModal(get_dom('git-import-export'));
-			const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
-			const nextTitle = 'JavaScript Notebook';
-			const nextState = { additionalInformation: 'Updated the URL with JS' };
-			window.history.pushState(nextState, nextTitle, nextURL);
-
-		})
-	.catch(error=>{alert("Error: "+error)})
+	//nb=get_nb();
+	
+	// Send a message object to the iframe
+   	console.log("sending message get_nb,upload_to_git");
+   	console.log("status",status);
+      const message = {	
+        action:"get_nb",
+        data:"",
+        call_bk:"upload_to_git"
+      };
+      
+      sandbox.contentWindow.postMessage(message, '*');
+      
+     
 	
 }

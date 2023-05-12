@@ -1,157 +1,7 @@
-﻿status_data={
-	num_blocks:0,
-	block_run:0
-}
+﻿
 
-
-var editors={}
-
-toggle_editor=function(i){
-	if(get_dom("cell_type"+i).checked) return;
-	
-	{
-		input_dom=get_dom("input"+i)
-		input_dom.style.display = "block";
-		get_dom("cell_menu"+i).style.display = "block";
-		get_dom("result"+i).style.display = "none";
-		cm=input_dom.childNodes[0].CodeMirror;
-		cm.focus();
-		cm.setCursor(1,0)
-		
-	}
-}
-unfocus_editor=function(i){
-	if(get_dom("cell_type"+i).checked) return;
-	else{
-		setTimeout(function(){
-		    run(i);
-		}, 200);
-		
-		
-	}
-}
-delete_cell=function(i){
-	get_dom("block"+i).remove();
-	delete editors[i];
-}
-move_up=function(i){
-	curr=get_dom("block"+i)
-	prev=curr.previousSibling
-	curr.parentNode.insertBefore(curr,prev);
-	
-	input_dom=get_dom("input"+i)
-	cm=input_dom.childNodes[0].CodeMirror;
-	cm.focus();
-	cm.setCursor(1,0)
-}
-move_down=function(i){
-	curr=get_dom("block"+i)
-	next=curr.nextSibling
-	curr.parentNode.insertBefore(curr, next.nextSibling)
-	
-	input_dom=get_dom("input"+i)
-	cm=input_dom.childNodes[0].CodeMirror;
-	cm.focus();
-	cm.setCursor(1,0)
-}
-
-goto_next_cell=function(i){
-	curr=get_dom("block"+i);
-	next=curr.nextSibling;
-	if(next==null) return;
-	next_block_id=next.id.replace("block","");
-	goto_input_cell(next_block_id);
-	
-}
-goto_input_cell=function(i){
-	if(!get_dom("cell_type"+i).checked){
-		input_dom=get_dom("input"+i)
-		input_dom.style.display = "block";
-		get_dom("cell_menu"+i).style.display = "block";
-		get_dom("result"+i).style.display = "none";
-		cm=input_dom.childNodes[0].CodeMirror;
-		cm.focus();
-		cm.setCursor(1,0)
-		
-	}else{
-		input_dom=get_dom("input"+i)
-		cm=input_dom.childNodes[0].CodeMirror;
-		cm.focus();
-		cm.setCursor(1,0)
-	}
-}
-insert_cell=function(type,after){
-	var i=status_data.num_blocks;
-	var block_html=get_dom("code_block_template").innerHTML;
-	block_html=block_html.replaceAll('_block_id',i);
-	block_html= block_html.replaceAll(/(\r\n|\n|\r|\t)/gm, "");
-
-	var div = document.createElement('div');
-  	div.innerHTML = block_html; 
-  	div.setAttribute('id','block'+i);
-
-  	//
-  	if(after==undefined){
-  		get_dom("main").appendChild(div);
-  		
-  	}else{
-  		get_dom("block"+after).after(div)
-  	}
-
-	waitForDom("input"+i).then(input_div => {
-	
-		cm = new CodeMirror(function(node){input_div.appendChild(node);
-		}, {
-		  value: "",
-		   tabSize: 4,
-			     mode: 'javascript',
-			     theme: 'default',
-			     lineNumbers: true,
-			     //styleActiveSelected: true,
-			     //styleActiveLine: true,
-			     indentWithTabs: true,
-			     matchBrackets: true,
-			     highlightMatches: true,
-			     extraKeys: {
-			          'Ctrl-Enter': (cm) => { run(i)},
-			          'Cmd-Enter': (cm) => {run(i)},
-			          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
-			          'Alt-Enter': (cm) => {insert_cell('code',i);},
-			           //'Alt-R':(cm)=>{run_all()},	
-			           'Alt-D':(cm)=>{delete_cell(i)},	
-			           'Alt-Up':(cm)=>{move_up(i)},	
-			           'Alt-Down':(cm)=>{move_down(i)},		     
-			          }
-		});
-		
-		
-		if(type=='code'){
-  			get_dom('cell_type'+i).checked=true;
-	  	}
-	  	else{
-	  		get_dom('cell_type'+i).checked=false;
-	  		get_dom('result'+i).style.display='none';
-	  		get_dom('input'+i).style.display='block';
-	  		get_dom('status'+i).style.display='none';
-	  		get_dom("cell_menu"+i).style.display = "block";
-	  		if(type=='style') {
-	  			get_dom('input'+i).childNodes[0].CodeMirror.setValue("<style>\n\n</style>");
-	  		}
-	  	}
-	  	cm.focus();
-		cm.setCursor(1,0);
-	  	editors[i]=cm;
-
-	});
-	
-
-	status_data.num_blocks=i+1;
-
-}
-
-
-
-
+sandbox = {};
+file_details={};
 
 
 toggle_dark_mode=function(){
@@ -160,150 +10,156 @@ toggle_dark_mode=function(){
    else document.body.setAttribute("data-theme",'light');
 }
 
-get_nb=function(){
-	var nb=JSON.parse(JSON.stringify(blank_nb));
- 	nb.metadata.name=get_dom("nb_name").innerHTML;
- 	
- 	nb['run_on_load']=get_dom("run_on_load").checked;
- 	var main=get_dom("main");
- 	var blocks=main.childNodes;
- 	
- 	
- 	blocks.forEach(x=>{
- 		var block_id=x.id.replace("block","")
- 		var menu=get_dom("cell_menu"+block_id);
-	 	var code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
-	 	var result=get_dom("result"+block_id);
-	 	var status=get_dom("status"+block_id).innerHTML;
-	 	var output=get_dom("output"+block_id).innerHTML;
-	 	var type=get_dom("cell_type"+block_id).checked?'code':'html';
-	 	nb.cells.push({code:code,status:status,output:output,type:type})
-	 	
- 	});
- 	return nb;
+handleFiles=function() {
+	  const fileList = this.files; /* now you can work with the file list */
+	  let f = fileList[0];
+    
+    		let reader = new FileReader();
+    		reader.onload = (function(theFile) {
+        return function(e) {
+	          load_jsnb( e.target.result );
+	        };
+	      })(f);
 	
+	      // Read in the image file as a data URL.
+	      reader.readAsText(f);
+	      
+
+	}
+	
+run_all=function(){
+
+    // Send a message object to the iframe
+   
+      const message = {
+        action:"run_all",
+        data:""      
+       };
+      sandbox.contentWindow.postMessage(message, '*');
+
 }
-
-
-
-
-
 download_nb=function(){
- 	
- 	nb=get_nb();
- 	downloadObjectAsJson(nb,nb.metadata.name+'.jsnb');	
- 	
+
+    // Send a message object to the iframe
+   
+      const message = {
+        action:"get_nb",
+        data:"",
+        call_bk:"download_nb"
+      };
+      sandbox.contentWindow.postMessage(message, '*');
+    
+    
+
  	
 }
 
 download_js=function(){
  	
- 	nb=get_nb();
- 	js=nb.cells.filter(x=>x.type=='code').map(x=>x['code']);
- 	js=js.join("\n/*---------*/\n");
- 	name=get_dom("nb_name").innerHTML+'.js';
- 	js="/*Generated by JSNB: https://github.com/gopi-suvanam/jsnb*/\n\n"+js;
-	var dataStr = "data:text/js;charset=utf-8," + encodeURIComponent(js); 	
- 	    var downloadAnchorNode = document.createElement('a');
-	    downloadAnchorNode.setAttribute("href",     dataStr);
-	    downloadAnchorNode.setAttribute("download", name );
-	    document.body.appendChild(downloadAnchorNode); // required for firefox
-	    downloadAnchorNode.click();
-	    downloadAnchorNode.remove();
+ 	const message = {
+        action:"get_nb",
+        data:"",
+        call_bk:"download_js"
+      };
+      sandbox.contentWindow.postMessage(message, '*');
+    
+
 }
 
 load_jsnb=function(content){
-	try{
-		var nb=JSON.parse(content);
-		get_dom("nb_name").innerHTML=nb.metadata.name;
-		var main=get_dom("main");
-		var bkup_html=main.innerHTML;
-		var bkup_editors=editors
-		var bkup_status_data=status_data;
-		var bkup_run_on_load=get_dom("run_on_load").checked;
-		var run_on_load = nb.run_on_load || false;
-		get_dom("run_on_load").checked=run_on_load;
-		status_data={
-			num_blocks:0,
-			block_run:0
-		}
-		editors={}
-		main.innerHTML='';
-		var i=0;
-		nb.cells.forEach(x=>{
-			insert_cell(x['type']);
-			waitForDom("input"+i).then(input_div => {
-				input_div.childNodes[0].CodeMirror.setValue(x['code'])
-			});
-			waitForDom("output"+i).then(output_div => {
-				output_div.innerHTML=x['output'];
-			});
-			waitForDom("status"+i).then(status_div => {
-				status_div.innerHTML=x['status'];
-			});
-			
-			i=i+1;
-			
-			
-		});
-		status_data.num_blocks=i;
-		
-	}catch(err){
-		alert(err.message);
-		console.log(err.stack);
-		editors=bkup_editors;
-		main.innerHTML=bkup_html;
-		alert(err.message);
-		get_dom("run_on_load").checked=bkup_run_on_load;
-		return ;
-	}
-	
-	document.activeElement.blur(); 
-	document.body.scrollTop = document.documentElement.scrollTop = 0;
-	get_dom("top").focus();
-	if (run_on_load) setTimeout(run_all,200);
 
+      const message = {
+        action:"load_jsnb",
+        data:content,
+        call_bk:""
+      };
+      console.log("sending message load_nb",message);
+      console.log(sandbox);
+      sandbox.contentWindow.postMessage(message, '*');
+      
+      var nb=JSON.parse(content);
+      var run_on_load = nb.run_on_load || false;
+      get_dom("run_on_load").checked=run_on_load;
+	
 
 }
 
 download_html=function(only_output){
- 	var name=get_dom("nb_name").innerHTML;
- 	
- 	var main=get_dom("main");
- 	var blocks=main.childNodes;
-	var html='<html><head>'
-	
-	var cells=get_nb().cells;
-	var css= [];
 
-	for (var sheeti= 0; sheeti<document.styleSheets.length; sheeti++) {
-		html+="<link rel='stylesheet' href='"+document.styleSheets[sheeti].href+"'>"
-	}
-	html+='<title>_title:JavaScript Notebook</title></head><body><nav><ul><li><a>_title</a></li></ul></nav><br>'; 	
-	html=html.replaceAll("_title",name)
- 	blocks.forEach(x=>{
- 		var block_id=x.id.replace("block","")
-	 	var result=get_dom("result"+block_id).outerHTML;
-	 	var input ='';
-	 	if(!only_output) input=get_dom("input"+block_id).outerHTML;
-	 	
-	 	
-	 	html=html+input+result;
-	 	
- 	});
- 	html=html+"</body></html>"
- 	downloadStringAsHTML(html,name+'.html');	
+    // Send a message object to the iframe
+   
+      const message = {
+        action:"get_html",
+        data:{only_output:only_output},
+        call_bk:"download_html"
+      };
+      sandbox.contentWindow.postMessage(message, '*');
+    
+   
 }
 
+insert_cell=function(type){
+	 // Send a message object to the iframe
+   
+      const message = {
+        action:"insert_cell",
+        data:{type:type},
+        call_bk:""
+      };
+      sandbox.contentWindow.postMessage(message, '*');
+}
 
-insitialize_page=function(){
+message_handler=async function(action,data,call_bk){
+	if(action=="download_nb"){
+		data['run_on_load'] = get_dom("run_on_load").checked;
+ 		downloadObjectAsJson(data,data.metadata.name+'.jsnb');	
+ 	}
+ 	if(action=="download_html"){
+ 		downloadStringAsHTML(data['html'],data['name']+'.html');	
+ 	}
+ 	if(action=="initialize_sandbox"){
+ 		try{ url=window.location.href.split("#")[1];} catch(e){url=''}
+	  	if(url!=undefined && url.length>1){
+	  		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
+	  		else read_file(url,load_jsnb,err=>{alert(err.message)});
+	  	}else{
+	  		insert_cell("code");
+	  	}
+ 	}
+ 	if(action=="download_js"){
+ 		nb=data;
+	 	js=nb.cells.filter(x=>x.type=='code').map(x=>x['code']);
+	 	js=js.join("\n/*---------*/\n");
+	 	name=nb.metadata.name+'.js';
+	 	js="/*Generated by JSNB: https://github.com/gopi-suvanam/jsnb*/\n\n"+js;
+		var dataStr = "data:text/js;charset=utf-8," + encodeURIComponent(js); 	
+	 	    var downloadAnchorNode = document.createElement('a');
+		    downloadAnchorNode.setAttribute("href",     dataStr);
+		    downloadAnchorNode.setAttribute("download", name );
+		    document.body.appendChild(downloadAnchorNode); // required for firefox
+		    downloadAnchorNode.click();
+		    downloadAnchorNode.remove();
+ 	}
+ 	if(action=="upload_to_git"){
+ 		data['run_on_load'] = get_dom("run_on_load").checked;
+ 		content=JSON.stringify(data,undefined,2);
+		upload_file_to_git(file_details['token'],content,file_details['user'],file_details['repo'],file_details['path'])
+		.then(x=>{
+			alert("Successfully pushed");
+			closeModal(get_dom('git-import-export'));
+				const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
+				const nextTitle = 'JavaScript Notebook';
+				const nextState = { additionalInformation: 'Updated the URL with JS' };
+				window.history.pushState(nextState, nextTitle, nextURL);
+	
+			})
+		.catch(error=>{alert("Error: "+error)})
+ 	}
 
-	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
-  	if(url!=undefined && url.length>1){
-  		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
-  		else read_file(url,load_jsnb,err=>{alert(err.message)});
-  	}
-  	else insert_cell('code');
+}
+insitialize_page=async function(){
+	sandbox = await waitForDom('sandbox');
+	
   	
   	const file_loader = document.getElementById("upload_file");
   	
@@ -314,6 +170,7 @@ insitialize_page=function(){
 	  }
 	};
 
+	
 
   	
   	file_loader.addEventListener("change", handleFiles, false);
@@ -336,6 +193,16 @@ insitialize_page=function(){
 			
 	  }
 	};
+	
+	window.addEventListener('message', function(event) {
+	      if (event.source === sandbox.contentWindow) {
+	        const message = event.data;
+	        console.log(message);
+	        message_handler(message.action,message.data,"");
+	      }
+	    });
+    
+    
 	  	
 }
 

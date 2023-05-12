@@ -70,6 +70,7 @@ run_all=function(){
 	var main=get_dom("main");
 	blocks=main.childNodes;
 	blocks.forEach(x=>{
+		console.log("running",x.id);
 		try{
 			run(x.id.replace('block',""))
 		}catch(err){
