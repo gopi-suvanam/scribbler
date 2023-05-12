@@ -1,6 +1,6 @@
 # Outline of the Code
 ## HTML
-JSNB is a single page app (SPA). The HTML is in index.html. In future there could be more pages for html, integration with other tools, and accessing stored files/data.
+JSNB is a single page app (SPA), or rather for security reasons two-pade app. Bulk of the HTML is in sandbox.html with a wrapper of index.html (containing mainly menu and footer). In future there could be more pages for html, integration with other tools, and accessing stored files/data.
 
 ## JavaScript
 JavaScript code of JSNB is organized into the following files (in the js/ folder):
