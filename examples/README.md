@@ -19,7 +19,7 @@ JSNB is a tool to do experimentation in JavaScript like Jupyter for Python. Java
 ### P2P and Decentralization
 5. [WebTorrent library](https://decentralized-intelligence.com/jsnb/#./examples/WebTorrent-Example.jsnb)
 6. [Blockchain using Metamask](https://decentralized-intelligence.com/jsnb/#./examples/Ethereum-Metamask.jsnb)
-7. [IPFS in the Broser using js-ipfs](https://decentralized-intelligence.com/jsnb/#./examples/IPFS-in-Browser.jsnb)
+7. [IPFS in the Browser using js-ipfs](https://decentralized-intelligence.com/jsnb/#./examples/IPFS-in-Browser.jsnb)
 
 ### Finance
 8. [Option Pricing using Black-Scholes](https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes.jsnb)
