@@ -91,7 +91,7 @@ ul[role=listbox]{
 
 .cell-menu a{
 
-	color:#fdd835 ;
+	color:#fede00 ;
 	margin:5px;
 	
 }
@@ -166,9 +166,9 @@ nav [role=button]{
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --primary: #fdd835;
+  --primary: #fede00;
   --primary-hover: #fbc02d;
-  --primary-focus: rgba(253, 216, 53, 0.125);
+  --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
 }
 
@@ -176,9 +176,9 @@ nav [role=button]{
 /* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --primary: #fdd835;
+    --primary: #fede00;
     --primary-hover: #ffeb3b;
-    --primary-focus: rgba(253, 216, 53, 0.25);
+    --primary-focus: rgba(254, 222, 0,0.25);
     --primary-inverse: rgba(0, 0, 0, 0.75);
   }
 }
@@ -188,7 +188,7 @@ nav [role=button]{
 [data-theme="dark"] {
   --primary: #fdd835;
   --primary-hover: #ffeb3b;
-  --primary-focus: rgba(253, 216, 53, 0.25);
+  --primary-focus: rgba(254, 222, 0,1);
   --primary-inverse: rgba(0, 0, 0, 0.75);
 }
 
