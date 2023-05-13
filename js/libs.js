@@ -55,7 +55,7 @@ import_module=function(module,features){
 	  console.log(script.outerHTML);
 }
 
-function waitForDom(id) {
+function wait_for_dom(id) {
     return new Promise(resolve => {
 	        if (get_dom(id)) {
 	            return resolve(get_dom(id));
@@ -76,7 +76,7 @@ function waitForDom(id) {
 }
 
 
-function insertAfter(el0, el1) {
+function insert_after(el0, el1) {
    try{
     	el0.after(el1)
     }catch(err){
@@ -93,18 +93,10 @@ function insertAfter(el0, el1) {
 
 
 
-downloadObjectAsJson=function(exportObj, exportName){
-    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj,undefined,2));
-    var downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href",     dataStr);
-    downloadAnchorNode.setAttribute("download", exportName );
-    document.body.appendChild(downloadAnchorNode); // required for firefox
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-  }
+
   
-  downloadStringAsHTML=function(str, exportName){
-    var dataStr = "data:text/html;charset=utf-8," + encodeURIComponent(str);
+  download_string=function(str, exportName,char_set){
+    var dataStr = char_set+","+ encodeURIComponent(str);
     var downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href",     dataStr);
     downloadAnchorNode.setAttribute("download", exportName );
@@ -133,3 +125,41 @@ read_file=function(url,callbk,failure){
 	  	failure(err)
 	  };
  }
+
+
+load_file= async function(){
+     
+	  const file_loader=document.createElement('input');
+	  file_id= (Math.random() + 1).toString(36).substring(7);
+	  file_loader.id= file_id;
+	  file_loader.type="file";
+	  file_loader.style.display='none';
+	  document.body.appendChild(file_loader);
+
+	await new Promise(resolve => setTimeout(resolve, 200));
+
+	x= await new Promise(resolve => {
+	 get_dom(file_id).addEventListener("change",event => {
+
+	 const fr = new FileReader();
+
+
+			 fr.onload=async function(event){
+			   		content=event.target.result;
+			   		get_dom(file_id).remove();
+			   		resolve(content);
+
+			 };
+
+	   fr.readAsText( get_dom(file_id).files[0]);
+
+
+
+	  });
+
+
+		 get_dom(file_id).click();
+	});
+  return(x);
+ 
+}

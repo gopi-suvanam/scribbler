@@ -143,7 +143,7 @@ nav details[role=list] summary{
 	padding-bottom:2px !important;
 	border:none !important;
 	font-size:14px !important;
-	line-height:35px !important;
+	line-height:33px !important;
 }
 nav details[role=list]{
 
@@ -151,8 +151,8 @@ nav details[role=list]{
 }
 
 details[role=list] summary::after{
-	height:35px;
-	line-height:35px;
+	height:33px;
+	line-height:33px;
 	font-size:10px;
 }
 

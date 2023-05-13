@@ -114,7 +114,7 @@ insert_cell=async function(type,after){
   		get_dom("block"+after).after(div)
   	}
 
-	var input_div=await waitForDom("input"+i); 
+	var input_div=await wait_for_dom("input"+i); 
 	{
 	
 		cm = new CodeMirror(
@@ -209,10 +209,10 @@ get_nb=function(){
 load_jsnb=async function(content){
 	try{
 		var nb=JSON.parse(content);
-		var nb_name=await waitForDom("nb_name");
+		var nb_name=await wait_for_dom("nb_name");
 
 		nb_name.innerHTML=nb.metadata.name;
-		var main = await waitForDom("main");
+		var main = await wait_for_dom("main");
 		var bkup_html=main.innerHTML;
 		var bkup_editors=editors
 		var bkup_status_data=status_data;
@@ -228,11 +228,11 @@ load_jsnb=async function(content){
 		for(let i=0;i<nb.cells.length;i++){
 			x=nb.cells[i];
 			await insert_cell(x['type']);
-			var input_i=await waitForDom("input"+i);
+			var input_i=await wait_for_dom("input"+i);
 			input_i.childNodes[0].CodeMirror.setValue(x['code']);
-			var output_i=await waitForDom("output"+i);
+			var output_i=await wait_for_dom("output"+i);
 			output_i.innerHTML=x['output'];
-			var status_i=await waitForDom("status"+i);
+			var status_i=await wait_for_dom("status"+i);
 			status_i.innerHTML=x['status'];
 			
 			console.log("inserted cell",i,input_i.id);
