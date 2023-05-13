@@ -11,7 +11,7 @@
     {
       "code": "<h5> Example of using sister project: DI-Libs</h5>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of DI-Libs. Click play button to see the graphs getting plotted in each cell.",
       "status": "",
-      "output": "<h5> Example of using sister project: DI-Libs</h5>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of DI-Libs.",
+      "output": "<h5> Example of using sister project: DI-Libs</h5>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of DI-Libs. Click play button to see the graphs getting plotted in each cell.",
       "type": "html"
     },
     {
@@ -33,5 +33,6 @@
       "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": true
 }
