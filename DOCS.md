@@ -62,11 +62,14 @@ The edit menu consists of:
 
 ## Special Functions
 There are a few special functions:
-- show(..). This function displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
-- curr_cell(). This function returns the element corresponding to the output <div> of the current code cell. 
+- show(..) displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
+- curr_cell() function returns the element corresponding to the output <div> of the current code cell. 
 Both these functions might behave differentyl when called from within asynchronous code.
+  
+Other useful functions:
 - get_dom(id) is short form for window.getElementById
-- waitForDom(id) is an asynchronous version of get_dom, where the function waits for a dom to be available and resolves to the element once it is available. This is useful if a dom is being created by another asynchronous activity. waitForDom can be used as: waitForDom(id).then(dom=>{stuff to do with dom}) or inside and async function it can be used as dom = await waitForDom(id).
+- wait_for_dom(id) is an asynchronous version of get_dom, where the function waits for a dom to be available and resolves to the element once it is available. This is useful if a dom is being created by another asynchronous activity. wait_for_dom can be used as: wait_for_dom(id).then(dom=>{stuff to do with dom}) or inside and async function it can be used as dom = await wait_for_dom(id).\
+- load_file opens file browser and resolves to the contents of a file if selected.
 - load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
 - import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
 
