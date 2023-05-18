@@ -1,15 +1,4 @@
-﻿var parse_response=async response => {
-        const isJson = response.headers.get('content-type')?.includes('application/json');
-        const data = isJson ? await response.json() : await response.text();
-        // check for error response
-        if (!response.ok) {
-            // get error message from body or default to response status
-            const error = (data && data.message) || response.status;
-            return Promise.reject(error);
-        }
-
-        return data;
-    }
+﻿
 
 var get_file_sha=async function (token,user,repo,path){
   

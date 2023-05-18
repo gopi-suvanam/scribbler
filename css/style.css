@@ -64,12 +64,16 @@ ul[role=listbox]{
 .status{
 	width:29px;
 	float:left;
-	marging:0px;
+	margin:0px;
 	font-size:12px;
+	display:inline;
 }
 .output{
 	float:left;
 	margin-left:10px;
+	margin-right:10px;
+	display:inline;
+	flex-grow:1;
 }
 
 .cell-menu{

@@ -149,10 +149,10 @@ insert_cell=async function(type,after){
 	  	}
 	  	else{
 	  		get_dom('cell_type'+i).checked=false;
-	  		get_dom('result'+i).style.display='none';
-	  		get_dom('input'+i).style.display='block';
+	  		get_dom('result'+i).style.display='flex';
+	  		get_dom('input'+i).style.display='none';
 	  		get_dom('status'+i).style.display='none';
-	  		get_dom("cell_menu"+i).style.display = "block";
+	  		get_dom("cell_menu"+i).style.display = "none";
 	  		if(type=='style') {
 	  			get_dom('input'+i).childNodes[0].CodeMirror.setValue("<style>\n\n</style>");
 	  		}
@@ -235,7 +235,6 @@ load_jsnb=async function(content){
 			var status_i=await wait_for_dom("status"+i);
 			status_i.innerHTML=x['status'];
 			
-			console.log("inserted cell",i,input_i.id);
 			
 		};
 		status_data.num_blocks=nb.cells.length;
