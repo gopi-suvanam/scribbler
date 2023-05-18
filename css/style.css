@@ -165,6 +165,10 @@ nav [role=button]{
 	padding-bottom:2px !important;
 }
 
+h1, h2, h3, h4, h5, h6, p, a {
+--typography-spacing-vertical:0px !important;
+}
+
 
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
@@ -174,6 +178,7 @@ nav [role=button]{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
+  
 }
 
 /* Yellow Dark scheme (Auto) */
