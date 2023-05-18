@@ -4,11 +4,12 @@ JSNB is a single page app (SPA), or rather for security reasons two-pade app. Bu
 
 ## JavaScript
 JavaScript code of JSNB is organized into the following files (in the js/ folder):
-1. controller.js: This controls the UI aspects (adding cells, deleting cells, loading noteboks etc.)
-2. libs.js: This contains reusable functions in other modules.
-3. worker.js: This is code where the user generated code is excecuted.
-4. github.js: Functions for interacting with GitHub API.
-5. modal.js: Functions for operating modal (UI) - this is from PICOCSS
+1. controller.js: This controls the UI aspects (downloading, interacting with Github, loading notebooks etc.) and interacting with the iframe.
+2. sanbox-controller.js: This controls the UI of the sanboxed JSNB rederrer (adding cells, deleting cells etc.) and interacting with the parent document.
+3. libs.js: This contains reusable functions in other modules. This is loaded in both index.html and sandbox.html.
+4. worker.js: This is code where the user generated code is excecuted. This is loaded in sandbox.html.
+5. github.js: Functions for interacting with GitHub API. This is loaded in index.html.
+6. modal.js: Functions for operating modal (UI) - this is from PICO-CSS. This is loaded in index.html.
 
 
 ## Codemirror
