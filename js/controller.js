@@ -3,20 +3,9 @@
 sandbox = {};
 file_details={};
 
-handle_files=function() {
-	  const file_list = this.files; /* now you can work with the file list */
-	  let f = fileList[0];
-    
-    		let reader = new FileReader();
-    		reader.onload = (function(theFile) {
-        return function(e) {
-	          load_jsnb( e.target.result );
-	        };
-	      })(f);
-	
-	      // Read in the image file as a data URL.
-	      reader.readAsText(f);
-	      
+load_file_click=function() {
+	load_file().then(x=>load_jsnb(x))
+
 
 	}
 	
@@ -146,21 +135,6 @@ message_handler=async function(action,data,call_bk){
 insitialize_page=async function(){
 	sandbox = await wait_for_dom('sandbox');
 	
-  	
-  	const file_loader = document.getElementById("upload_file");
-  	
-	
-	load_file_click=function(){
-	  if (file_loader) {
-	    file_loader.click();
-	  }
-	};
-
-	
-
-  	
-  	file_loader.addEventListener("change", handle_files, false);
-  	
   	document.onkeyup = function(e) {
 	  if (e.ctrlKey && e.key === 's') {
 	    download_nb();
@@ -187,8 +161,6 @@ insitialize_page=async function(){
 	        message_handler(message.action,message.data,"");
 	      }
 	    });
-    
-    
 	  	
 }
 

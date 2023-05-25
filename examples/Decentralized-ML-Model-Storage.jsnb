@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Decentralized ML Model Storage",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "load_script(\"https://cdn.jsdelivr.net/npm/brain.js\") //Brain.js for models\nload_script(\"https://cdnjs.cloudflare.com/ajax/libs/mnist/1.0.4/mnist.js\") //MNIST for data sets\nload_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\") //IPFS JS for storing models in IPFS\n\n",
+      "status": "[1]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "//Loading the data and creating training set for digit recognition\n\n    set = mnist.set(8000, 2000);\n\n  trainingData = set.training.map((data) => ({\n      input: data.input,\n      output: data.output,\n    }));\n\ntrainingData.shape()",
+      "status": "[3]<br><span style=\"font-size:8px\">691ms<span></span></span>",
+      "output": "[\n  8000,\n  0\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Training Data. This will take a while.\n net = new brain.NeuralNetwork();\n\n    // Train the network\n    net.train(trainingData, {\n      log: true,\n      logPeriod: 100,\n    });",
+      "status": "[7]<br><span style=\"font-size:8px\">216.819s<span></span></span>",
+      "output": "{\n  \"error\": 0.0039890639236585404,\n  \"iterations\": 6\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Serialize the mode;\nconst digitReconModel =JSON.stringify(net.toJSON());\n//Download the file, push to cloud or store it IPFS. \ndownload_string(digitReconModel,\"Digit-Recognition-Model.json\",\"data:text/json;charset=utf-8\")",
+      "status": "[17]<br><span style=\"font-size:8px\">116ms<span></span></span>",
+      "output": "{} <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Load the model from a file. A file browser will popup. Please, select the file you have downloaded.\n//This cell and next can be new script/application\nmodelFromFile = new brain.NeuralNetwork();\nload_file().then(x=>modelFromFile.fromJSON(JSON.parse(x)))",
+      "status": "[2]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "{} <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Run for a sample \nmodelFromFile.run(set.training[195].input)",
+      "status": "[4]<br><span style=\"font-size:8px\">14ms<span></span></span>",
+      "output": "{\n  \"0\": 1.1513139952512574e-7,\n  \"1\": 0.0024146125651896,\n  \"2\": 0.9996902942657471,\n  \"3\": 0.0000019221722595830215,\n  \"4\": 7.505974508603686e-7,\n  \"5\": 0.000022156929844641127,\n  \"6\": 0.04239603877067566,\n  \"7\": 0.0004913187585771084,\n  \"8\": 0.00002142593621101696,\n  \"9\": 6.727171353304584e-7\n} <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
