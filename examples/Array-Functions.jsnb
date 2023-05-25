@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Array-Functions",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "//forEach\nconst numbers = [1, 2, 3, 4];\n\tnumbers.forEach((num) => {\n\t  show(num);\n\t});",
+      "status": "[11]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "1 <br>2 <br>3 <br>4 <br>",
+      "type": "code"
+    },
+    {
+      "code": "//map. Getting squares of numbers in an array using map function\nconst numbers = [1, 2, 3, 4];\nconst squared =(num)=>num*num;\nshow(numbers.map(squared)); ",
+      "status": "[12]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "[\n  1,\n  4,\n  9,\n  16\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "//filter.  Filtering even numbers form an array using filter function\nconst numbers = [1, 2, 3, 4];\nconst is_even = num=>num % 2 === 0;\nshow(numbers.filter(is_even))\n",
+      "status": "[13]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "[\n  2,\n  4\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "//reduce. Caulcuating sum of array using reduce function\nconst numbers = [1, 2, 3, 4];\nconst sum = (accumulator, num) => accumulator + num;\nshow(numbers.reduce(sum,0));",
+      "status": "[14]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "10 <br>",
+      "type": "code"
+    },
+    {
+      "code": "//every. Testing if every number in an array is even using the function every\nconst numbers = [1, 2, 3, 4];\nconst is_even = num=>num % 2 === 0;\nshow(numbers.every(is_even)); ",
+      "status": "[15]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "false <br>",
+      "type": "code"
+    },
+    {
+      "code": "//every. Testing if any number in an array is even using the function sume\nconst numbers = [1, 2, 3, 4];\nconst is_even = num=>num % 2 === 0;\nshow(numbers.some(is_even)); ",
+      "status": "[16]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "true <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
