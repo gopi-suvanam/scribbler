@@ -15,13 +15,13 @@
       "type": "html"
     },
     {
-      "code": "ethereum.request({ method: 'eth_requestAccounts' }).then(accounts=>{\n account = accounts[0];\n  show(account);\n})\n\n",
+      "code": "ethereum.request({ method: 'eth_requestAccounts' }).then(accounts=>{\n account = accounts[0];\n  show(account);\n})\n\n//Note: The account number printed below is not real.",
       "status": "[2]<br><span style=\"font-size:8px\">2ms<span></span></span>",
       "output": "0xd79740980530b4f786900ee6c3171cad4ba38f54 <br>",
       "type": "code"
     },
     {
-      "code": "ethereum.request({\n  \"jsonrpc\":\"2.0\",\n  \"method\":\"eth_getBalance\"\n  ,\"params\":[account, \"latest\"],\n  \"id\":1}).then(x=>show(parseInt(x,16)/1000000000000000000+' Eth'))\n",
+      "code": "ethereum.request({\n  \"jsonrpc\":\"2.0\",\n  \"method\":\"eth_getBalance\"\n  ,\"params\":[account, \"latest\"],\n  \"id\":1}).then(x=>show(parseInt(x,16)/1000000000000000000+' Eth'))\n\n",
       "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "1.938493849384984 <br>",
       "type": "code"
