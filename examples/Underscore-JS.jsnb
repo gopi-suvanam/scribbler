@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Using Underscore JS",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "load_script(\"https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js\")",
+      "status": "[1]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "var numbers = [1, 2, 3, 4, 5];\n\tvar doubledNumbers = _.map(numbers, function(num) {\n\t  return num * 2;\n\t});\n\tshow(doubledNumbers); ",
+      "status": "[2]<br><span style=\"font-size:8px\">20ms<span></span></span>",
+      "output": "[\n  2,\n  4,\n  6,\n  8,\n  10\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "var users = [\n\t  { name: 'John', age: 25 },\n\t  { name: 'Alice', age: 30 },\n\t  { name: 'Bob', age: 28 }\n\t];\nnames = _.pluck(users, 'name');\n",
+      "status": "[3]<br><span style=\"font-size:8px\">12ms<span></span></span>",
+      "output": "[\n  \"John\",\n  \"Alice\",\n  \"Bob\"\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "var students = [\n\t  { name: 'John', grade: 'A' },\n\t  { name: 'Alice', grade: 'B' },\n\t  { name: 'Bob', grade: 'A' },\n\t  { name: 'Charlie', grade: 'B' }\n\t];\ngroupedStudents = _.groupBy(students, 'grade');",
+      "status": "[4]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "{\n  \"A\": [\n    {\n      \"name\": \"John\",\n      \"grade\": \"A\"\n    },\n    {\n      \"name\": \"Bob\",\n      \"grade\": \"A\"\n    }\n  ],\n  \"B\": [\n    {\n      \"name\": \"Alice\",\n      \"grade\": \"B\"\n    },\n    {\n      \"name\": \"Charlie\",\n      \"grade\": \"B\"\n    }\n  ]\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "var students = [\n\t  { name: 'John', age: 25 },\n\t  { name: 'Alice', age: 30 },\n\t  { name: 'Bob', age: 28 }\n\t];\nsortedStudents = _.sortBy(students, 'age');\n",
+      "status": "[5]<br><span style=\"font-size:8px\">9ms<span></span></span>",
+      "output": "[\n  {\n    \"name\": \"John\",\n    \"age\": 25\n  },\n  {\n    \"name\": \"Bob\",\n    \"age\": 28\n  },\n  {\n    \"name\": \"Alice\",\n    \"age\": 30\n  }\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "var template = _.template('<h1><%= title %></h1>');\nhtml = template({ title: 'Welcome to my website' });",
+      "status": "[6]<br><span style=\"font-size:8px\">12ms<span></span></span>",
+      "output": "<h1>Welcome to my website</h1> <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
