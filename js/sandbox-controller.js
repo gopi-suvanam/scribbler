@@ -3,7 +3,6 @@
 	block_run:0
 }
 
-
 blank_nb={
   "metadata" : {
      "name":"Starting JS Notebook Example",
@@ -35,9 +34,11 @@ toggle_editor=function(i){
 	}
 }
 unfocus_editor=function(i){
+	
 	if(get_dom("cell_type"+i).checked) return;
 	else{
 		setTimeout(function(){
+		    if(get_dom("cell_type"+i).checked) return;
 		    run(i);
 		}, 200);
 		
