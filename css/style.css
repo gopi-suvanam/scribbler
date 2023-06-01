@@ -170,6 +170,15 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 }
 
 
+
+.cell-type:checked + span::before {
+  content: "code";
+}
+
+.cell-type + span::before {
+  content: "html";
+}
+
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
