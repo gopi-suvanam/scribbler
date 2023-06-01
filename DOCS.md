@@ -9,7 +9,8 @@
 6. [URL Structure](#url-structure)
 7. [Special Functions](#special-functions)
 8. [Keyboard Shortcuts](#keyboard-shortcuts)
-9. [Using external libraries](#using-external-libraries)
+9. [Exporting-Importing](#exporting-importing)
+10. [Using external libraries](#using-external-libraries)
 
 ## Installing
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub and used directly from file system by opening index.html. 
@@ -64,7 +65,7 @@ The edit menu consists of:
 There are a few special functions:
 - show(..) displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
 - curr_cell() function returns the element corresponding to the output <div> of the current code cell. 
-Both these functions might behave differentyl when called from within asynchronous code.
+Both these functions might behave differently when called from within asynchronous code.
   
 Other useful functions:
 - get_dom(id) is short form for window.getElementById
@@ -87,6 +88,16 @@ These shortcuts are global
 - Ctrl-G: Import from/Push to GitHub
 - Ctrl-S: Download the jsnb to local machine
 - Ctrl-O: Load a jsnb from local machine
+
+## Exporting-Importing
+- A notebook can be downloaded (Ctrl-S) as a .jsnb file and can be loaded (Ctrl-O) later.
+- A file on GitHub repo can be loaded into the JSNB file. The repo has to be public or you should be a collaborator.
+- A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
+- GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
+- Files in public GitHub repos can be directly accessed as: https://decentralized-intelligence.com/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
+- If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://decentralized-intelligence.com/jsnb/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
+- The output of a notebook can be downloaded as an HTML file (with code or wothout code)
+- The code of a notebook can be downloaded as a JavaScript file
   
 ## Using external libraries
 External libraries can be used using two specially built functions:
