@@ -11,8 +11,6 @@ Notebook for javascript experimentation (in the browser). Overview:
 <!-- toc -->
 1. [Getting Started](#getting-started)
 2. [Features](#features)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Exporting-Importing](#exporting-importing)
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
 5. [Vs. xyz](#how-is-jsnb-different)
