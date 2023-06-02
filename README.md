@@ -11,8 +11,6 @@ Notebook for javascript experimentation (in the browser). Overview:
 <!-- toc -->
 1. [Getting Started](#getting-started)
 2. [Features](#features)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Exporting-Importing](#exporting-importing)
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
 5. [Vs. xyz](#how-is-jsnb-different)
@@ -36,29 +34,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 - There are two special functions included in the app: show(...) for showing some string in the output box. curr_cell() for getting the element corresponding to the output cell.
 - For adding more functionality import an external library through import(...) or by adding <script> element.
 - D3JS (for data manipulation and charting), Plotly (for plots) and sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using reload_script.
-
-### Keyboard Shortcuts
-These shortcuts work when a code cell is in focus:
-- Ctrl-Enter/Cmd-Enter: Run the current cell
-- Shift-Enter': Run the current cell and go to next cell
-- Alt-Enter/Option-Enter: Insert new cell
-- Alt-D/Option-D: Delete the current cell (no undo at the moment, so be careful)
-- Alt/Option-Up Arrow: Move the cell up
-- Alt/Option-Up Down: Move the cell down
-
-These shortcust are global
-- Alt-R/Option-R: Run all the cells
-- Ctrl-G: Import from/Push to GitHub
-- Ctrl-S: Download the jsnb to local machine
-- Ctrl-O: Load a jsnb from local machine
-
-### Exporting-Importing
-- A notebook can be downloaded (Ctrl-S) as a .jsnb file and can be loaded (Ctrl-O) later.
-- A file on GitHub repo can be loaded into the JSNB file. The repo has to be public or you should be a collaborator.
-- A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
-- GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
-- The output of a notebook can be downloaded as an HTML file (with code or wothout code)
-- The code of a notebook can be downloaded as a JavaScript file
+- Keyboard Shortcuts: Several keyboard shortcuts for running/dowloading/adding cells/deleting cells etc. See [DOCS](DOCS.md#keyboard-shortcuts) for details
+- Importing and exporting: Download/Upload, dowload as html/javascript, push to/pull from Github. See [DOCS](DOCS.md#exporting-importing) for details
 
 ## Use cases
 1. For trying new libraries for testing and building
