@@ -55,12 +55,12 @@ load_jsnb=function(content){
         data:content,
         call_bk:""
       };
-      console.log("sending message load_nb",message);
-      console.log(sandbox);
+      
       sandbox.contentWindow.postMessage(message, '*');
       
       var nb=JSON.parse(content);
       var run_on_load = nb.run_on_load || false;
+      document.title = "JSNB: "+nb.metadata.name;
       get_dom("run_on_load").checked=run_on_load;
 	
 
