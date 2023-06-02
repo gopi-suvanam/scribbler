@@ -9,21 +9,27 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
+      "code": "<h1>Monte-Carlo Simulation of Goals</h1>\nThis notebook illustrates the use of Monte-Carlo simulation for calculating winning odds of a football match between two teams, where the team strength is different. \nNumber of goals are simulated and winning odds are calculated based on that.",
+      "status": "",
+      "output": "<h1>Monte-Carlo Simulation of Goals</h1>\nThis notebook illustrates the use of Monte-Carlo simulation for calculating winning odds of a football match between two teams, where the team strength is different. \nNumber of goals are simulated and winning odds are calculated based on that.",
+      "type": "html"
+    },
+    {
       "code": "\tmonte_carlo_simulation= function ( num_simulations, simulate_match) {\n\t  let home_wins = 0;\n\t  let away_wins = 0;\n\t  let draws = 0;\n\t\n\t  for (let i = 0; i < num_simulations; i++) {\n\t    const goal_difference = simulate_match();\n\t\n\t    if (goal_difference > 0) {\n\t      home_wins++;\n\t    } else if (goal_difference < 0) {\n\t      away_wins++;\n\t    } else {\n\t      draws++;\n\t    }\n\t  }\n\t\n\t  return {\n\t    \"home_win_percentage\":home_wins/num_simulations,\n\t    \"away_win_precentage\":away_wins/num_simulations,\n\t    \"draw_percentage\":draws/num_simulations,\n\t  };\n\t}\n",
-      "status": "[11]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "status": "[1]<br><span style=\"font-size:8px\">5ms<span></span></span>",
       "output": "function ( num_simulations, simulate_match) {\n\t  let home_wins = 0;\n\t  let away_wins = 0;\n\t  let draws = 0;\n\t\n\t  for (let i = 0; i &lt; num_simulations; i++) {\n\t    const goal_difference = simulate_match();\n\t\n\t    if (goal_difference &gt; 0) {\n\t      home_wins++;\n\t    } else if (goal_difference &lt; 0) {\n\t      away_wins++;\n\t    } else {\n\t      draws++;\n\t    }\n\t  }\n\t\n\t  return {\n\t    \"home_win_percentage\":home_wins/num_simulations,\n\t    \"away_win_precentage\":away_wins/num_simulations,\n\t    \"draw_percentage\":draws/num_simulations,\n\t  };\n\t} <br>",
       "type": "code"
     },
     {
       "code": "simulate_match_on_strength=function(home_team_strength, away_team_strength) {\n\t  return ()=>{\n\t\t\t\n\t\t  // Generate random goal counts for each team\n\t\t  const home_goals = Math.round(Math.random() * home_team_strength);\n\t\t  const away_goals = Math.round(Math.random() * away_team_strength);\n\t\t\n\t\t  // Calculate the goal difference\n\t\t  const goal_difference = home_goals - away_goals;\n\t\t  return goal_difference;\n\t  }\n\t}",
-      "status": "[12]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[2]<br><span style=\"font-size:8px\">0ms<span></span></span>",
       "output": "function(home_team_strength, away_team_strength) {\n\t  return ()=&gt;{\n\t\t\t\n\t\t  // Generate random goal counts for each team\n\t\t  const home_goals = Math.round(Math.random() * home_team_strength);\n\t\t  const away_goals = Math.round(Math.random() * away_team_strength);\n\t\t\n\t\t  // Calculate the goal difference\n\t\t  const goal_difference = home_goals - away_goals;\n\t\t  return goal_difference;\n\t  }\n\t} <br>",
       "type": "code"
     },
     {
-      "code": "monte_carlo_simulation(1000,simulate_match_on_strength(2,1))",
-      "status": "[13]<br><span style=\"font-size:8px\">3ms<span></span></span>",
-      "output": "{\n  \"home_win_percentage\": 0.511,\n  \"away_win_precentage\": 0.133,\n  \"draw_percentage\": 0.356\n} <br>",
+      "code": "show(\"Diaplying odds fo winning and draws\")\nmonte_carlo_simulation(1000,simulate_match_on_strength(2,1))",
+      "status": "[3]<br><span style=\"font-size:8px\">4ms<span></span></span>",
+      "output": "Diaplying odds fo winning and draws <br>{\n  \"home_win_percentage\": 0.523,\n  \"away_win_precentage\": 0.121,\n  \"draw_percentage\": 0.356\n} <br>",
       "type": "code"
     }
   ],

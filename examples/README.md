@@ -30,7 +30,7 @@ JSNB is a tool to do experimentation in JavaScript like Jupyter for Python. Java
 10. [Simple Simulation Example](https://decentralized-intelligence.com/jsnb/#./examples/Simple-Simulation.jsnb)
 11. [Bouncing Ball on Moving Boundary](https://decentralized-intelligence.com/jsnb/#./examples/Dynamic-Simulation.jsnb)
 12. [Option Price Simulation](https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes-Simulation.jsnb)
-13. [Monte-Carlo Simulation of Goals](https://decentralized-intelligence.com/jsnb/#./examples/Monet-Carlo-Simulation-of-Goals.jsnb)
+13. [Monte-Carlo Simulation of Goals](https://decentralized-intelligence.com/jsnb/#./examples/Monte-Carlo-Simulation-of-Goals.jsnb)
 
 ### Scientific Computation
 14. [Runge-Kutta Method for Differential Equations](https://decentralized-intelligence.com/jsnb/#./examples/Runge-Kutta-for-Differential-Equations.jsnb)
