@@ -45,7 +45,7 @@ ul[role=listbox]{
 	margin:10px;
 	height: auto !important;
 	min-height:50px !important;
-	overflow:scroll !important;
+	max-height:300px !important;
 }
 
 .CodeMirror-scroll{
@@ -177,6 +177,11 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 
 .cell-type + span::before {
   content: "html";
+}
+
+#github_link{
+	color: var(--secondary);
+    background-color: var(--primary);
 }
 
 /* Yellow Light scheme (Default) */
