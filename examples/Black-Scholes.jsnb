@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Black-Scholes",
+    "name": "Black-Scholes Formula for Option Pricing and Greeks",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Black-Scholes Example</h5>\nThis notebook implements Black-Scholes formula in JavaScript.",
+      "code": "<h5>Black-Scholes Example</h5>\nThis notebook implements Black-Scholes formula in JavaScript including calculation of Greeks.",
       "status": "",
-      "output": "<h5>Black-Scholes Example</h5>\nThis notebook implements Black-Scholes formula in JavaScript.",
+      "output": "<h5>Black-Scholes Example</h5>\nThis notebook implements Black-Scholes formula in JavaScript including calculation of Greeks.",
       "type": "html"
     },
     {
@@ -21,9 +21,9 @@
       "type": "code"
     },
     {
-      "code": "black_scholes={}\nblack_scholes.call_price=function(S,K,r,v,t) { \n\t  var sqt = Math.sqrt(t);\n\t  d1 = (Math.log(S/K) + r*t)/(v*sqt) + 0.5*(v*sqt);\n\t  d2 = d1 - (v*sqt);\n\t  delta = normalcdf(d1);\n\t  Nd2 = normalcdf(d2);\n\t  ert = Math.exp(-r*t);\n\t  nd1 = ndist(d1);\n\t  result={}\n\t  result['price']=S*delta-K*ert *Nd2;\n\t  result['gamma'] = nd1/(S*v*sqt);\n\t  result['vega'] = S*sqt*nd1;\n\t  result['theta'] = -(S*v*nd1)/(2*sqt) - r*K*ert*Nd2;\n\t  result['rho'] = K*t*ert*Nd2;\n\t  return (result );\n\t} //end of black_scholes call\n\"Call option function\"",
-      "status": "[7]<br><span style=\"font-size:8px\">1ms<span></span></span>",
-      "output": "Call option function <br>",
+      "code": "black_scholes={}\nblack_scholes.call_price=function(S,K,r,v,t) { \n\t  var sqt = Math.sqrt(t);\n\t  d1 = (Math.log(S/K) + r*t)/(v*sqt) + 0.5*(v*sqt);\n\t  d2 = d1 - (v*sqt);\n\t  delta = normalcdf(d1);\n\t  Nd2 = normalcdf(d2);\n\t  ert = Math.exp(-r*t);\n\t  nd1 = ndist(d1);\n\t  result={}\n\t  result['price']=S*delta-K*ert *Nd2;\n\t  result['gamma'] = nd1/(S*v*sqt);\n\t  result['vega'] = S*sqt*nd1;\n\t  result['theta'] = -(S*v*nd1)/(2*sqt) - r*K*ert*Nd2;\n\t  result['rho'] = K*t*ert*Nd2;\n\t  return (result );\n\t} //end of black_scholes call\n\"Call option function is defined above\"",
+      "status": "[1]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Call option function is defined above <br>",
       "type": "code"
     },
     {
@@ -33,5 +33,6 @@
       "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }
