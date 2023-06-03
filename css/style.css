@@ -86,7 +86,7 @@ ul[role=listbox]{
 	float:left;
 	margin-left:10px;
 	margin-right:10px;
-	display:flex;
+	display:inline;
 	flex-grow:1;
 }
 
@@ -143,19 +143,23 @@ input{
     top: unset;
     right: unset;
     height:unset;
+    display:flex;
+    border-top:thin solid black;
     
     }
     .cell-menu a{
 
-	color:#fede00 ;
+	color:unset;
 	margin:5px;
 	font-size:16px;
+	flex-grow:1;
 	
 	}
 .cell-menu span{
 
 	margin:5px;
 	font-size:16px;
+	flex-grow:1;
 	
 	}
 
