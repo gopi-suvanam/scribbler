@@ -86,7 +86,7 @@ ul[role=listbox]{
 	float:left;
 	margin-left:10px;
 	margin-right:10px;
-	display:inline;
+	display:flex;
 	flex-grow:1;
 }
 
