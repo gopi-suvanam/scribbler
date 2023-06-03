@@ -14,12 +14,19 @@ article,textarea{
  
 }
 
+
+
+
 nav{
  	margin:0px;
  	font-size:10px !important;
  	position: relative;
 		top: 0;
 	border-bottom:1px solid lightgrey;
+	width:100%;
+	justify-content:unset !important;
+	display:flex;
+
 }
 nav li{
 	padding:0px;
@@ -50,6 +57,7 @@ ul[role=listbox]{
 	height: auto !important;
 	min-height:50px !important;
 	max-height:300px !important;
+	padding:0px !important;
 }
 
 .CodeMirror-scroll{
@@ -60,7 +68,9 @@ ul[role=listbox]{
 .cm-editor { height: 100% }
 .cm-scroller { overflow: auto }
 
-
+.CodeMirror-sizer{
+	border-right:unset !important;
+}
 .error{
 	color:red;
 }
@@ -126,24 +136,42 @@ input{
 }
 @media (max-width: 600px) {
   .cell-menu {
-	display: block;
-    margin-bottom: 5px;
+	display: flex;
+    margin: 5px;
     float: unset;
     position: unset;
     top: unset;
     right: unset;
+    height:unset;
     
     }
+    .cell-menu a{
+
+	color:#fede00 ;
+	margin:5px;
+	font-size:16px;
+	
+	}
+.cell-menu span{
+
+	margin:5px;
+	font-size:16px;
+	
+	}
+
     .container{
     	padding:3px;
     }
+    
     .CodeMirror,article,textarea{
-    	margin:2px;
-    	padding:2px;
+    	margin:5px;
+    	padding:5px;
     }
-    #github_link{
-    	display:none;
+    
+    details[role=list] summary::after {
+    	display:none
     }
+    
 }
 
 nav details[role=list] summary{

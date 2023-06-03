@@ -1,6 +1,7 @@
 ﻿status_data={
 	num_blocks:0,
-	block_run:0
+	block_run:0,
+	running_embedded:false
 }
 
 blank_nb={
@@ -218,10 +219,7 @@ load_jsnb=async function(content){
 		var bkup_editors=editors
 		var bkup_status_data=status_data;
 		var run_on_load = nb.run_on_load || false;
-		status_data={
-			num_blocks:0,
-			block_run:0
-		}
+	
 		editors={}
 		main.innerHTML='';
 		var i=0;
@@ -236,12 +234,15 @@ load_jsnb=async function(content){
 			var status_i=await wait_for_dom("status"+i);
 			status_i.innerHTML=x['status'];
 			
-			
 		};
 		status_data.num_blocks=nb.cells.length;
 		
 		if (run_on_load) run_all();
-		
+		if(status_data.running_embedded){
+			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
+	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
+	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
+		}
 		document.activeElement.blur(); 
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
 		get_dom("top").focus();
@@ -305,6 +306,20 @@ message_handler=async function(action,data,call_bk){
 		
 }
 insitialize_sandbox=function(){
+
+
+	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
+  	if(url!=undefined && url.length>1){
+  		status_data.running_embedded=true;
+  		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
+  		else read_file(url,load_jsnb,err=>{alert(err.message)});
+  		document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
+  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
+  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
+
+  		return;
+  	}	  	
+
 	document.onkeyup = function(e) {
 	  if (e.ctrlKey && e.key === 's') {
 	    window.parent.postMessage({"action":"download_nb","data":get_nb(),"call_bk":''}, '*');
