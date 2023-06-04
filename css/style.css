@@ -136,7 +136,6 @@ input{
 }
 @media (max-width: 600px) {
   .cell-menu {
-	display: flex;
     margin: 5px;
     float: unset;
     position: unset;
@@ -150,16 +149,14 @@ input{
     .cell-menu a{
 
 	color:unset;
-	margin:5px;
+	margin:10px;
 	font-size:16px;
-	flex-grow:1;
 	
 	}
-.cell-menu span{
-
-	margin:5px;
+    .cell-menu span{
+	
+	margin:10px;
 	font-size:16px;
-	flex-grow:1;
 	
 	}
 
