@@ -27,9 +27,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		
 		 <!-- Loading some libraries for power experience -->
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
-	  <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
-	  <script src="/di-libs/build/di-libs.js"></script>
+	  
 
 	</head>
   <body style="height:100%" data-theme="light" >
@@ -44,8 +42,8 @@
 				</label>
 			</span>
 			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter"   onclick="run(_block_id)">&#9658;</a>
-			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#8593;</a>
-			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="move_down(_block_id)">&#8595;</a>
+			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#x25B2;</a>
+			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="move_down(_block_id)">&#x25BC;</a>
 			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
 			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
 			
@@ -65,4 +63,7 @@
   	insitialize_sandbox(); <!-- Load the notebook or insert an empty cell -->
   </script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+	<script src="/di-libs/build/di-libs.js"></script>
  </html>
