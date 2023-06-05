@@ -17,19 +17,28 @@ show_in_dom=function(output,...objs){
 
 get_dom=id=>document.getElementById(id);
 
-load_script = function(url){
+load_script = function(url,async){
 	var script = document.createElement('script');
+	
 	script.src = url;
+	script.id=(Math.random() + 1).toString(36).substring(7);
+	if(async==undefined) async=true;
+	script.async=async;
 	document.head.appendChild(script);
+	return script.id; 
 
 }
 
-reload_script = function(url){
+reload_script = function(url,async){
 	var script = document.createElement('script');
 	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
 	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
 	script.src = url;
+	if(async==undefined) async=true;
+	script.async=async;
+	script.id=(Math.random() + 1).toString(36).substring(7);
 	document.head.appendChild(script);
+	return script.id; 
 
 }
 

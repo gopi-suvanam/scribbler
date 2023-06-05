@@ -237,7 +237,10 @@ load_jsnb=async function(content){
 		};
 		status_data.num_blocks=nb.cells.length;
 		
-		if (run_on_load) run_all();
+		if (run_on_load) {
+			await wait_for_dom("libs-loaded");
+			run_all();
+		}
 		if(status_data.running_embedded){
 			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
