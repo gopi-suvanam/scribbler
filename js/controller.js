@@ -60,7 +60,7 @@ load_jsnb=function(content){
       
       var nb=JSON.parse(content);
       var run_on_load = nb.run_on_load || false;
-      document.title = "JSNB: "+nb.metadata.name;
+      document.title = nb.metadata.name+": JSNB (JavaScript Notebook);
       get_dom("run_on_load").checked=run_on_load;
 	
 
