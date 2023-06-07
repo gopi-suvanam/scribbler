@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "name": "Numerical Analysis Recipes",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h3><a href=\"https://en.wikipedia.org/wiki/Bisection_method\">Bisection Method</a>  for Finding Solution to an Equation",
+      "status": "",
+      "output": "<h3><a href=\"https://en.wikipedia.org/wiki/Bisection_method\">Bisection Method</a>  for Finding Solution to an Equation</h3>",
+      "type": "html"
+    },
+    {
+      "code": "function bisectionMethod(func, a, b, tolerance) {\n\t  let c = (a + b) / 2;\n\t  while (Math.abs(func(c)) > tolerance) {\n\t    if (func(a) * func(c) < 0) {\n\t      b = c;\n\t    } else {\n\t      a = c;\n\t    }\n\t    c = (a + b) / 2;\n\t  }\n\t  return c;\n\t}\n\t\n\t// Example usage\n\tfunction f(x) {\n\t  return x * x - 4; // Find the root of this function\n\t}\n\t\n\tconst root = bisectionMethod(f, 1, 3, 0.0001);\n\tshow(\"Root:\", root);\n",
+      "status": "[1]<br><span style=\"font-size:8px\">8ms<span></span></span>",
+      "output": "Root: 2 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3><a href=\"https://en.wikipedia.org/wiki/Newton%27s_method\">Newton's Method </a> for Finding Solution to an Equation </h3>",
+      "status": "",
+      "output": "<h3><a href=\"https://en.wikipedia.org/wiki/Newton%27s_method\">Newton's Method </a> for Finding Solution to an Equation </h3>",
+      "type": "html"
+    },
+    {
+      "code": "\tfunction newtonsMethod(func, derivative, x0, tolerance) {\n\t  let x = x0;\n\t  while (Math.abs(func(x)) > tolerance) {\n\t    x = x - func(x) / derivative(x);\n\t  }\n\t  return x;\n\t}\n\t\n\t// Example usage\n\tfunction f(x) {\n\t  return x * x - 4; // Find the root of this function\n\t}\n\t\n\tfunction fDerivative(x) {\n\t  return 2 * x; // Derivative of f(x)\n\t}\n\t\n\tconst root = newtonsMethod(f, fDerivative, 2, 0.0001);\n\tshow(\"Root:\", root);\n",
+      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Root: 2 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3> <a href=\"https://en.wikipedia.org/wiki/Euler_method\">Euler's Method</a> for Ordinary Differential Equation <h3>\n",
+      "status": "",
+      "output": "<h3> <a href=\"https://en.wikipedia.org/wiki/Euler_method\">Euler's Method</a> for Ordinary Differential Equation </h3><h3>\n</h3>",
+      "type": "html"
+    },
+    {
+      "code": "\tfunction eulerMethod(dydx, x0, y0, h, numSteps) {\n\t  let x = x0;\n\t  let y = y0;\n\t  for (let i = 0; i < numSteps; i++) {\n\t    const slope = dydx(x, y);\n\t    y = y + h * slope;\n\t    x = x + h;\n\t  }\n\t  return y;\n\t}\n\t\n\t// Example usage\n\tfunction dydx(x, y) {\n\t  return x * x - 4 * y; // Solve the differential equation dy/dx = x^2 - 4y\n\t}\n\t\n\tconst solution = eulerMethod(dydx, 0, 1, 0.1, 10);\n\tshow(\"Solution:\", solution);",
+      "status": "[4]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "Solution: 0.15589545215999998 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3><a href=\"https://en.wikipedia.org/wiki/Simpson%27s_rule\">Simpson's Rule</a> for Numerical Integration</h3>",
+      "status": "",
+      "output": "<h3><a href=\"https://en.wikipedia.org/wiki/Simpson%27s_rule\">Simpson's Rule</a> for Numerical Integration</h3>",
+      "type": "html"
+    },
+    {
+      "code": "function simpsonsRule(func, a, b, n) {\n\t  const h = (b - a) / n;\n\t  let sum = func(a) + func(b);\n\t\n\t  for (let i = 1; i < n; i++) {\n\t    const x = a + i * h;\n\t    sum += i % 2 === 0 ? 2 * func(x) : 4 * func(x);\n\t  }\n\t\n\t  return (h / 3) * sum;\n\t}\n\t\n\t// Example usage\n\tfunction f(x) {\n\t  return Math.sin(x); // Integrate sin(x) from 0 to π\n\t}\n\t\n\tconst integral = simpsonsRule(f, 0, Math.PI, 100);\n\tshow(\"Integral:\", integral);",
+      "status": "[7]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Integral: 2.0000000108245044 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3><a href=\"https://en.wikipedia.org/wiki/Gaussian_elimination\">Gaussian Elimination</a> for a System of Linear Equations</h3>",
+      "status": "",
+      "output": "<h3><a href=\"https://en.wikipedia.org/wiki/Gaussian_elimination\">Gaussian Elimination</a> for a System of Linear Equations</h3>",
+      "type": "html"
+    },
+    {
+      "code": "",
+      "status": "",
+      "output": "",
+      "type": "html"
+    },
+    {
+      "code": "function gaussianElimination(matrix) {\n\t  const n = matrix.length;\n\t\n\t  for (let i = 0; i < n; i++) {\n\t    let maxRow = i;\n\t    for (let j = i + 1; j < n; j++) {\n\t      if (Math.abs(matrix[j][i]) > Math.abs(matrix[maxRow][i])) {\n\t        maxRow = j;\n\t      }\n\t    }\n\t\n\t    [matrix[i], matrix[maxRow]] = [matrix[maxRow], matrix[i]];\n\t\n\t    for (let j = i + 1; j < n; j++) {\n\t      const ratio = matrix[j][i] / matrix[i][i];\n\t      for (let k = i; k < n + 1; k++) {\n\t        matrix[j][k] -= ratio * matrix[i][k];\n\t      }\n\t    }\n\t  }\n\t\n\t  const solution = new Array(n);\n\t\n\t  for (let i = n - 1; i >= 0; i--) {\n\t    let sum = 0;\n\t    for (let j = i + 1; j < n; j++) {\n\t      sum += matrix[i][j] * solution[j];\n\t    }\n\t    solution[i] = (matrix[i][n] - sum) / matrix[i][i];\n\t  }\n\t\n\t  return solution;\n\t}\n\t\n\t// Example usage\n\tconst augmentedMatrix = [\n\t  [2, 1, -1, 8],\n\t  [-3, -1, 2, -11],\n\t  [-2, 1, 2, -3],\n\t];\n\t\n\tconst solution = gaussianElimination(augmentedMatrix);\n\tshow(\"Solution:\", solution);\n\n",
+      "status": "[8]<br><span style=\"font-size:8px\">9ms<span></span></span>",
+      "output": "Solution: [\n  2,\n  3.0000000000000004,\n  -0.9999999999999999\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3><a href=\"https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods\">Runge-Kutta Method</a> for Ordinary Differential Equations<h3>",
+      "status": "",
+      "output": "<h3><a href=\"https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods\">Runge-Kutta Method</a> for Ordinary Differential Equations</h3><h3></h3>",
+      "type": "html"
+    },
+    {
+      "code": "function rungeKuttaMethod(dydx, x0, y0, h, numSteps) {\n\t  let x = x0;\n\t  let y = y0;\n\t\n\t  for (let i = 0; i < numSteps; i++) {\n\t    const k1 = h * dydx(x, y);\n\t    const k2 = h * dydx(x + h / 2, y + k1 / 2);\n\t    const k3 = h * dydx(x + h / 2, y + k2 / 2);\n\t    const k4 = h * dydx(x + h, y + k3);\n\t\n\t    y = y + (k1 + 2 * k2 + 2 * k3 + k4) / 6;\n\t    x = x + h;\n\t  }\n\t\n\t  return y;\n\t}\n\t\n\t// Example usage\n\tfunction dydx(x, y) {\n\t  return x * x - 4 * y; // Solve the differential equation dy/dx = x^2 - 4y\n\t}\n\t\n\tconst solution = rungeKuttaMethod(dydx,0, 1, 0.1, 10);\n\tshow(\"Solution:\", solution);\n",
+      "status": "[9]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Solution: 0.17402437805254978 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
