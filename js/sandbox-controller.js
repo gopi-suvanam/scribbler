@@ -222,9 +222,10 @@ load_jsnb=async function(content){
 	
 		editors={}
 		main.innerHTML='';
-		var i=0;
 		
+		status_data.num_blocks=0;
 		for(let i=0;i<nb.cells.length;i++){
+			console.log(i,"/",nb.cells.length);
 			x=nb.cells[i];
 			await insert_cell(x['type']);
 			var input_i=await wait_for_dom("input"+i);

@@ -223,6 +223,26 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
     background-color: var(--primary);
 }
 
+
+/* For WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Set the color of the thumb */
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #888; /* Set the color of the thumb */
+}
+
+
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"],

@@ -145,7 +145,7 @@ load_file= async function(){
 	  file_loader.style.display='none';
 	  document.body.appendChild(file_loader);
 
-	await new Promise(resolve => setTimeout(resolve, 200));
+	await wait_for_dom(file_id);
 
 	x= await new Promise(resolve => {
 	 get_dom(file_id).addEventListener("change",event => {
