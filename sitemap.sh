@@ -15,7 +15,7 @@ echo "    <lastmod>2023-04-28T00:00:00+00:00</lastmod>" >> "$SITEMAP_FILE"
 echo '  </url>' >> "$SITEMAP_FILE"
    
 # Find all files in the directory and generate sitemap entries
-find "$DIRECTORY" -type f | while read -r FILE
+find "$DIRECTORY"/*.jsnb -type f | while read -r FILE
 do
   FILENAME=$(basename "$FILE")
   FILENAME_ESCAPED=$(echo "$FILENAME" | sed 's/\&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'\''/\&apos;/g')

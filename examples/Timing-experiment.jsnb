@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<strong>Timing Experiment</strong><br>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
+      "code": "<h5>Timing Experiment</h5>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
       "status": "",
-      "output": "<strong>Timing Experiment</strong><br>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
+      "output": "<h5>Timing Experiment</h5>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
       "type": "html"
     },
     {
@@ -26,5 +26,7 @@
       "output": "Taking sum of 1/x for a large number:10000000 using map-reduce<br>16.69531126585727<br>16.11809565095832",
       "type": "code"
     }
-  ]
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }

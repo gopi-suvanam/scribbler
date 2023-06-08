@@ -9,38 +9,44 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
+      "code": "<h5>Array Functions and Functional Programming </h5>\nIn functional programming, array functions (also known as array methods or higher-order functions) are functions that operate on arrays or collections of data and produce a new array or a transformed result based on the input array. These functions are designed to support a more declarative and functional style of programming, where you can perform various operations on arrays without explicitly using loops or mutating the original array.\n<br>Some commonly used array functions in functional programming include:\n<pre>\n1. `map`: Transforms each element of an array by applying a given function and returns a new array with the transformed elements.\n\n2. `filter`: Selects elements from an array based on a given condition and returns a new array with the selected elements.\n\n3. `reduce`: Applies a given function to reduce an array into a single value. It iterates over each element of the array and accumulates the result.\n\n4. `forEach`: Executes a provided function on each element of an array, but it does not produce a new array.\n\n5. `some` / `every`: Checks if at least one element or every element in an array satisfies a given condition, respectively.\n</pre>\nThese array functions, among others, enable functional programming paradigms by providing higher-order functions that abstract away the need for explicit iteration and mutation of arrays. They encourage immutability and make code more concise, readable, and easier to reason about.",
+      "status": "",
+      "output": "<h5>Array Functions and Functional Programming </h5>\nIn functional programming, array functions (also known as array methods or higher-order functions) are functions that operate on arrays or collections of data and produce a new array or a transformed result based on the input array. These functions are designed to support a more declarative and functional style of programming, where you can perform various operations on arrays without explicitly using loops or mutating the original array.\n<br>Some commonly used array functions in functional programming include:\n<pre>1. `map`: Transforms each element of an array by applying a given function and returns a new array with the transformed elements.\n\n2. `filter`: Selects elements from an array based on a given condition and returns a new array with the selected elements.\n\n3. `reduce`: Applies a given function to reduce an array into a single value. It iterates over each element of the array and accumulates the result.\n\n4. `forEach`: Executes a provided function on each element of an array, but it does not produce a new array.\n\n5. `some` / `every`: Checks if at least one element or every element in an array satisfies a given condition, respectively.\n</pre>\nThese array functions, among others, enable functional programming paradigms by providing higher-order functions that abstract away the need for explicit iteration and mutation of arrays. They encourage immutability and make code more concise, readable, and easier to reason about.",
+      "type": "html"
+    },
+    {
       "code": "//forEach\nconst numbers = [1, 2, 3, 4];\n\tnumbers.forEach((num) => {\n\t  show(num);\n\t});",
-      "status": "[11]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "status": "[1]<br><span style=\"font-size:8px\">8ms<span></span></span>",
       "output": "1 <br>2 <br>3 <br>4 <br>",
       "type": "code"
     },
     {
       "code": "//map. Getting squares of numbers in an array using map function\nconst numbers = [1, 2, 3, 4];\nconst squared =(num)=>num*num;\nshow(numbers.map(squared)); ",
-      "status": "[12]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[2]<br><span style=\"font-size:8px\">3ms<span></span></span>",
       "output": "[\n  1,\n  4,\n  9,\n  16\n] <br>",
       "type": "code"
     },
     {
       "code": "//filter.  Filtering even numbers form an array using filter function\nconst numbers = [1, 2, 3, 4];\nconst is_even = num=>num % 2 === 0;\nshow(numbers.filter(is_even))\n",
-      "status": "[13]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "status": "[3]<br><span style=\"font-size:8px\">0ms<span></span></span>",
       "output": "[\n  2,\n  4\n] <br>",
       "type": "code"
     },
     {
       "code": "//reduce. Caulcuating sum of array using reduce function\nconst numbers = [1, 2, 3, 4];\nconst sum = (accumulator, num) => accumulator + num;\nshow(numbers.reduce(sum,0));",
-      "status": "[14]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[4]<br><span style=\"font-size:8px\">2ms<span></span></span>",
       "output": "10 <br>",
       "type": "code"
     },
     {
       "code": "//every. Testing if every number in an array is even using the function every\nconst numbers = [1, 2, 3, 4];\nconst is_even = num=>num % 2 === 0;\nshow(numbers.every(is_even)); ",
-      "status": "[15]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "status": "[5]<br><span style=\"font-size:8px\">4ms<span></span></span>",
       "output": "false <br>",
       "type": "code"
     },
     {
       "code": "//every. Testing if any number in an array is even using the function sume\nconst numbers = [1, 2, 3, 4];\nconst is_even = num=>num % 2 === 0;\nshow(numbers.some(is_even)); ",
-      "status": "[16]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "status": "[8]<br><span style=\"font-size:8px\">2ms<span></span></span>",
       "output": "true <br>",
       "type": "code"
     }

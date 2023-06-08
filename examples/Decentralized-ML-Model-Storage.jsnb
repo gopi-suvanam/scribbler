@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Decentralized ML Model Storage",
+    "name": "Decentralized ML Model Using Brain.js",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -8,6 +8,12 @@
   },
   "jsnbversion": "v0.1",
   "cells": [
+    {
+      "code": "<h5>ML Model Using Brain.js</h5>\nThis notebook explores building a machine learning model for digit recignition in the browser. The notebook can be used to store the model and also load it later. \nThis framework can be used for building and deploying machines learning models without a server.",
+      "status": "",
+      "output": "<h5>ML Model Using Brain.js</h5>\nThis notebook explores building a machine learning model for digit recignition in the browser. The notebook can be used to store the model and also load it later. \nThis framework can be used for building and deploying machines learning models without a server.",
+      "type": "html"
+    },
     {
       "code": "load_script(\"https://cdn.jsdelivr.net/npm/brain.js\") //Brain.js for models\nload_script(\"https://cdnjs.cloudflare.com/ajax/libs/mnist/1.0.4/mnist.js\") //MNIST for data sets\nload_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\") //IPFS JS for storing models in IPFS\n\n",
       "status": "[1]<br><span style=\"font-size:8px\">3ms<span></span></span>",
