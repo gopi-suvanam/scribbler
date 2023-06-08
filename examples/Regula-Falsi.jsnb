@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Regula Falsi Method for Solving Equations",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "function regulaFalsi(func, a, b, tolerance, maxIterations) {\n  let c;\n  let iterations = 0;\n\n  while (Math.abs(b - a) > tolerance && iterations < maxIterations) {\n    c = (a * func(b) - b * func(a)) / (func(b) - func(a));\n\n    if (func(c) === 0) {\n      break; // Found exact root\n    } else if (func(a) * func(c) < 0) {\n      b = c;\n    } else {\n      a = c;\n    }\n\n    iterations++;\n  }\n\n  return c;\n}\n\n// Example usage\nfunction f(x) {\n  return x * x - 4; // Solve the equation x^2 - 4 = 0\n}\n\nconst root = regulaFalsi(f, 1, 3, 0.0001, 100);\nshow(\"Approximate root:\", root);\n",
+      "status": "[1]<br><span style=\"font-size:8px\">7ms<span></span></span>",
+      "output": "Approximate root: 2 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
