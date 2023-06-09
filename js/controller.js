@@ -59,6 +59,11 @@ load_jsnb=function(content){
       var nb=JSON.parse(content);
       var run_on_load = nb.run_on_load || false;
       document.title = nb.metadata.name+": JSNB (JavaScript Notebook)";
+      var metaDescription = document.querySelector('meta[name="description"]');
+
+	// Set the description dynamically
+	var newDescription = nb.metadata.name+" Notebook for experimenting in JavaScript. Play with html and code using a simple interface."
+	metaDescription.setAttribute("content", newDescription);
       get_dom("run_on_load").checked=run_on_load;
 	
 
