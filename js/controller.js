@@ -62,7 +62,7 @@ load_jsnb=function(content){
       var metaDescription = document.querySelector('meta[name="description"]');
 
 	// Set the description dynamically
-	var newDescription = nb.metadata.name+" - Notebook for experimenting in JavaScript. Contains editable code and output. Play with html and code using a simple interface."
+	var newDescription = nb.metadata.name+" - Notebook for experimenting in JavaScript. Contains editable code and output. Play with html and code using a simple interface.";
 	metaDescription.setAttribute("content", newDescription);
       get_dom("run_on_load").checked=run_on_load;
 	
