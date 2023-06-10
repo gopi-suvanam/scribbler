@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "Functional Code for Numerical Analysis",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "Function.prototype.derivative=function(delta=0.00001){\n  return x=>(this(x+delta)-this(x-delta))/delta/2.0;\n}\n\nFunction.prototype.root=function( x0, tolerance, max_iterations,derivative,algorithm='newton-raphson') { \n  let f=this(x0);\n  if(Math.abs(f)<tolerance | max_iterations==0) return x0;\n  else{\n\tif(derivative==undefined) {\n\t  var derivative=this.derivative(tolerance);\n\t}\n\tvar dydx=derivative(x0);\n\tlet x=x0 -f/dydx; \n\treturn this.newton_raphson(x,tolerance, max_iterations-1,derivative,algorithm)\n  }\n}\n\n\nFunction.prototype.inverse = function(tolerence=0.00001,max_iteration=1000){\n   return y=>(x=>this(x)-y).root(0,tolerence,max_iteration)\n}\n\n",
+      "status": "[151]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "function(tolerence=0.00001,max_iteration=1000){\n   return y=&gt;(x=&gt;this(x)-y).root(0,tolerence,max_iteration)\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Usage\nf=x=> x * x*x-1000*x+1; // Solve the equation x^2 - 4 = 0\ndydx=x=>3*x*x-1000;\nshow(\"Derivative:\")\nshow(\"Numerical method:\",f.derivative()(2),\"Analytics method:\",dydx(2))\nshow(\"Inverse:\",f.inverse()(0))",
+      "status": "[154]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Derivative: <br>Numerical method: -987.9999999952814 Analytics method: -988 <br>Inverse: 0.0010000000000001048 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
