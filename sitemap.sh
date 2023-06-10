@@ -16,7 +16,7 @@ echo '  </url>' >> "$SITEMAP_FILE"
    
 echo '  <url>' >> "$SITEMAP_FILE"
 echo "    <loc>https://decentralized-intelligence.com/jsnb/examples/README</loc>" >> "$SITEMAP_FILE"
-echo "    <lastmod>2023-05-28T00:00:00+00:00</lastmod>" >> "$SITEMAP_FILE"
+echo "    <lastmod>$(date +'%Y-%m-%dT%H:%M:%SZ')</lastmod>" >> "$SITEMAP_FILE"
 echo '  </url>' >> "$SITEMAP_FILE"
 
 # Find all files in the directory and generate sitemap entries
