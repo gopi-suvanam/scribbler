@@ -16,11 +16,19 @@ echo '  <url>' >> "$SITEMAP_FILE"
 echo "    <loc>$SITE_LOCATION</loc>" >> "$SITEMAP_FILE"
 echo "    <lastmod>2023-04-28T00:00:00+00:00</lastmod>" >> "$SITEMAP_FILE"
 echo '  </url>' >> "$SITEMAP_FILE"
-   
+
+README_MODIFIED=$(stat -f %m examples/README.md)
 echo '  <url>' >> "$SITEMAP_FILE"
 echo "    <loc>$SITE_LOCATION/examples/README</loc>" >> "$SITEMAP_FILE"
-echo "    <lastmod>$(date +'%Y-%m-%dT%H:%M:%SZ')</lastmod>" >> "$SITEMAP_FILE"
+echo "    <lastmod>$(date -r $README_MODIFIED +'%Y-%m-%dT%H:%M:%SZ')</lastmod>" >> "$SITEMAP_FILE"
 echo '  </url>' >> "$SITEMAP_FILE"
+
+DOCS_MODIFIED=$(stat -f %m DOCS.md)
+echo '  <url>' >> "$SITEMAP_FILE"
+echo "    <loc>$SITE_LOCATION/DOCS</loc>" >> "$SITEMAP_FILE"
+echo "    <lastmod>$(date -r $DOCS_MODIFIED +'%Y-%m-%dT%H:%M:%SZ')</lastmod>" >> "$SITEMAP_FILE"
+echo '  </url>' >> "$SITEMAP_FILE"
+
 
 # Find all files in the directory and generate sitemap entries
 find "$DIRECTORY"/*.jsnb -type f | while read -r FILE
