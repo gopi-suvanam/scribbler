@@ -27,7 +27,7 @@
       "type": "html"
     },
     {
-      "code": "\tfunction newtonsMethod(func, derivative, x0, tolerance) {\n\t  let x = x0;\n\t  while (Math.abs(func(x)) > tolerance) {\n\t    x = x - func(x) / derivative(x);\n\t  }\n\t  return x;\n\t}\n\t\n\t// Example usage\n\tfunction f(x) {\n\t  return x * x - 4; // Find the root of this function\n\t}\n\t\n\tfunction fDerivative(x) {\n\t  return 2 * x; // Derivative of f(x)\n\t}\n\t\n\tconst root = newtonsMethod(f, fDerivative, 2, 0.0001);\n\tshow(\"Root:\", root);\n",
+      "code": "\tfunction newtonsMethod(func, derivative, x0, tolerance) {\n\t  let x = x0;\n\t  if (derivative==undefined) {\n\t\tderivative = t=>(func(t+0.00000001)-func(t))/0.00000001;\n\t  }\n\t  while (Math.abs(func(x)) > tolerance) {\n\t    x = x - func(x) / derivative(x);\n\t  }\n\t  return x;\n\t}\n\t\n\t// Example usage\n\tfunction f(x) {\n\t  return x * x - 4; // Find the root of this function\n\t}\n\t\n\tfunction fDerivative(x) {\n\t  return 2 * x; // Derivative of f(x)\n\t}\n\t\n\tconst root = newtonsMethod(f, fDerivative, 2, 0.0001);\n\tshow(\"Root:\", root);\n",
       "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "Root: 2 <br>",
       "type": "code"
