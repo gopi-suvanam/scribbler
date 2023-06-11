@@ -9,6 +9,12 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
+      "code": "<h1><a href=\"https://decentralized-intelligence.com/2023/06/07/Numerical-Analysis-in-JavaScript-for-Scientific-Computing.html\">Numerical Analysis Recipes</a></h1>\nNumerical analysis encompasses a range of methods for solving mathematical problems approximately. These methods include root-finding techniques, interpolation and extrapolation, numerical integration, differential equation solvers, linear algebra techniques, optimization algorithms, and Monte Carlo methods. These methods are used to approximate solutions, compute integrals, solve differential equations, optimize functions, and estimate results using random sampling. The choice of method depends on the problem's nature and requirements, balancing factors such as accuracy, efficiency, and available computational resources.\n<br>This notebook contains:\n<br>- Bisection Mehtod for Solving Equations\n<br>- Newton's Method\n<br>- Euler's Method\n<br>- Simpson's rule\n<br>- Gaussian Elimination\n<br>- Runge-Kutta Method",
+      "status": "",
+      "output": "<h1><a href=\"https://decentralized-intelligence.com/2023/06/07/Numerical-Analysis-in-JavaScript-for-Scientific-Computing.html\">Numerical Analysis Recipes</a></h1>\nNumerical analysis encompasses a range of methods for solving mathematical problems approximately. These methods include root-finding techniques, interpolation and extrapolation, numerical integration, differential equation solvers, linear algebra techniques, optimization algorithms, and Monte Carlo methods. These methods are used to approximate solutions, compute integrals, solve differential equations, optimize functions, and estimate results using random sampling. The choice of method depends on the problem's nature and requirements, balancing factors such as accuracy, efficiency, and available computational resources.\n<br>This notebook contains:\n<br>- Bisection Mehtod for Solving Equations\n<br>- Newton's Method\n<br>- Euler's Method\n<br>- Simpson's rule\n<br>- Gaussian Elimination\n<br>- Runge-Kutta Method",
+      "type": "html"
+    },
+    {
       "code": "<h3><a href=\"https://en.wikipedia.org/wiki/Bisection_method\">Bisection Method</a>  for Finding Solution to an Equation",
       "status": "",
       "output": "<h3><a href=\"https://en.wikipedia.org/wiki/Bisection_method\">Bisection Method</a>  for Finding Solution to an Equation</h3>",
