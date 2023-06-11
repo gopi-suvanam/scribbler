@@ -40,5 +40,6 @@ JSNB is a tool to do experimentation in JavaScript like Jupyter for Python. Java
 ### Functional Programming and Libraries
 17. [Array Functions in JavaScript](https://decentralized-intelligence.com/jsnb/#./examples/Array-Functions.jsnb). Array functions in JavaScript help in functional programming and making succinct code without loops.
 18. [Using Underscore.js](https://decentralized-intelligence.com/jsnb/#./examples/Underscore-JS.jsnb). Underscore.js is a library with utilities in JavaScript. 
+19. [Functional Code for Numerical Analysis](https://decentralized-intelligence.com/jsnb/#./examples/Numerical-Analysis-Using-Functional-Paradigm.jsnb). Functional code for finding roots, derivative and inverse of functions.
 
 
