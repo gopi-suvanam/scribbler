@@ -23,7 +23,7 @@ JSNB is a tool to do experimentation in JavaScript like Jupyter for Python. Java
 
 ### Financial Computation
 8. [Option Pricing using Black-Scholes](https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes.jsnb). Pricing options using the famous Black-Scholes formula.
-9. [Option Pricing using Monte-Carlo Simulation](https://decentralized-intelligence.com/jsnb/#./examples/Option-Pricing-MC.jsnb). Pricing options using Monte-Carlo simulation rather than a closed form formula.
+
 
 ### Simulation
 9. [Monte-Carlo Simulation of AMM - Automated MArket Making](https://decentralized-intelligence.com/jsnb/#./examples/AMM-Simulation.jsnb). Simulating Automate-Market-Making for assets in a decentralized exchange.

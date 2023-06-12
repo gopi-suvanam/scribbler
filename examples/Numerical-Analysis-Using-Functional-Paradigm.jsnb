@@ -15,21 +15,21 @@
       "type": "html"
     },
     {
-      "code": "Function.prototype.derivative=function(delta=0.00001){\n  return x=>(this(x+delta)-this(x-delta))/delta/2.0;\n}\n\nFunction.prototype.root=function( x0, tolerance, max_iterations,derivative,algorithm='newton-raphson') { \n  let f=this(x0);\n  if(Math.abs(f)<tolerance | max_iterations==0) return x0;\n  else{\n\tif(derivative==undefined) {\n\t  var derivative=this.derivative(tolerance);\n\t}\n\tvar dydx=derivative(x0);\n\tlet x=x0 -f/dydx; \n\treturn this.newton_raphson(x,tolerance, max_iterations-1,derivative,algorithm)\n  }\n}\n\n\nFunction.prototype.inverse = function(tolerence=0.00001,max_iteration=1000){\n   return y=>(x=>this(x)-y).root(0,tolerence,max_iteration)\n}\n\n",
-      "status": "[151]<br><span style=\"font-size:8px\">0ms<span></span></span>",
-      "output": "function(tolerence=0.00001,max_iteration=1000){\n   return y=&gt;(x=&gt;this(x)-y).root(0,tolerence,max_iteration)\n} <br>",
+      "code": "Function.prototype.derivative=function(delta=0.00001,algorithm=undefined){\n  return x=>{\n  \td1=(this(x+delta/2)-this(x-delta/2))/delta;\n  \tif (algorithm=='richardson'){\n\t  \td2=(this(x+delta/4)-this(x-delta/4))/(delta/2);\n\t  \treturn d2-(d1-d2)/2;\n\t}else{\n\t\treturn d1;\n\t}\n  }\n}\n\nFunction.prototype.root=function( x0, tolerance, max_iterations,derivative,algorithm='newton-raphson') { \n  let f=this(x0);\n  if(Math.abs(f)<tolerance | max_iterations==0) return x0;\n  else{\n\tif(derivative==undefined) {\n\t  var derivative=this.derivative(tolerance);\n\t}\n\tvar dydx=derivative(x0);\n\tlet x=x0 -f/dydx; \n\treturn this.root(x,tolerance, max_iterations-1,derivative,algorithm)\n  }\n}\n\n\nFunction.prototype.inverse = function(tolerence=0.00001,max_iteration=1000){\n   return y=>(x=>this(x)-y).root(0,tolerence,max_iteration)\n}\n\nFunction.prototype.integral = function( a,b,n,algorithm=\"simpsons\") {\n    if(algorithm=='richardson'){\n\t  I1=this.integral(a,b,n,\"simpson\");\n\t  I2=this.integral(a,b,n/2,\"simpson\");\n\t  return I1-(I2-I1);\n\t}\n\tconst h = (b - a) / n;\n\tlet sum = this(a) + this(b);\n\n\tfor (let i = 1; i < n; i++) {\n\t  const x = a + i * h;\n\t  sum += i % 2 === 0 ? 2 * this(x) : 4 * this(x);\n\t}\n\n\treturn (h / 3) * sum;\n\n}",
+      "status": "[24]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "function( a,b,n,algorithm=\"simpsons\") {\n\n\tconst h = (b - a) / n;\n\tlet sum = this(a) + this(b);\n\n\tfor (let i = 1; i &lt; n; i++) {\n\t  const x = a + i * h;\n\t  sum += i % 2 === 0 ? 2 * this(x) : 4 * this(x);\n\t}\n\n\treturn (h / 3) * sum;\n\n} <br>",
       "type": "code"
     },
     {
-      "code": "//Usage\nf=x=> x**3-1000*x+1; // Solve the equation x\ndydx=x=>3*x**2-1000;\nshow(\"Derivative:\")\nshow(\"Numerical method:\",f.derivative()(2),\"Analytics method:\",dydx(2))\nshow(\"Inverse:\",f.inverse()(2))",
-      "status": "[162]<br><span style=\"font-size:8px\">2ms<span></span></span>",
-      "output": "Derivative: <br>Numerical method: -987.9999999952814 Analytics method: -988 <br>Inverse: -0.0010000000000001102 <br>",
+      "code": "//Usage\nf=x=> x**3-1000*x+1; // Solve the equation x\ndydx=x=>3*x**2-1000;\nshow(\"Derivative:\")\nshow(\"Numerical method:\",f.derivative(0.0001)(2),f.derivative(0.0001,'richardson')(2),\"Analytical method:\",dydx(2))\nshow(\"Inverse:\",f.inverse()(2))\nf.integral(1,2,100)",
+      "status": "[25]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "Derivative: <br>Numerical method: -987.9999999975553 -987.9999999907341 Analytics method: -988 <br>Inverse: -0.0010000000000000213 <br>-1495.25 <br>",
       "type": "code"
     },
     {
-      "code": "//Usage\nf=Math.sin; // Solve the equation x\ndydx=x=>3*x**2-1000;\nshow(\"Derivative:\")\nshow(\"Numerical method:\",f.derivative()(2),\"Analytics method:\",dydx(2))\nshow(\"Inverse:\",f.inverse()(2))",
-      "status": "[163]<br><span style=\"font-size:8px\">7ms<span></span></span>",
-      "output": "Derivative: <br>Numerical method: -0.4161468365404541 Analytics method: -988 <br>Inverse: 0.37676750967743744 <br>",
+      "code": "//Usage\nf=Math.sin; // Solve the equation x\ndydx=x=>3*x**2-1000;\nshow(\"Derivative:\")\nshow(\"Numerical method:\",f.derivative()(2),\"Analytics method:\",dydx(2))\nshow(\"Inverse:\",f.inverse()(2))\n\nf.integral(100)(1,2)",
+      "status": "[18]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "Derivative: <br>Numerical method: -0.4161468365404541 Analytics method: -988 <br>Inverse: 0.37676750967743744 <br>0.9564491424684186 <br>",
       "type": "code"
     }
   ],
