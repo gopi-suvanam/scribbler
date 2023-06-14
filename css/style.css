@@ -242,6 +242,9 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
   background-color: #888; /* Set the color of the thumb */
 }
 
+pre{
+ padding:10px;
+}
 
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */

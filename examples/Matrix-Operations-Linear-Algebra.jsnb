@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Matrix Operations and Linear Algebra Using Numeric.js",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Matrix Operations and Linear Algebra Using <a href=\"/2023/06/14/Numerical-Analysis-Linear-Algebra-NumericJS.html\">Numeric.js</a></h1>\nLinear algebra involves several fundamental matrix operations that are widely used in various applications. Here are some important matrix operations in linear algebra:\n\n<br>- Matrix Addition:\nAddition of two matrices of the same dimensions is performed by adding corresponding elements.\n<br>- Matrix Subtraction:\nSubtraction of two matrices of the same dimensions is performed by subtracting corresponding elements.\n<br>- Scalar Multiplication:\nMultiplication of a matrix by a scalar involves multiplying each element of the matrix by the scalar.\n<br>- Matrix Multiplication:\nMatrix multiplication is a more complex operation. Given two matrices A and B, the product C = A * B is computed by taking the dot product of each row of A with each column of B.\n<br>- Transposition:\nTransposing a matrix involves flipping its rows and columns. The transpose of a matrix A is denoted as A^T.\n<br>- Matrix Inverse and Solving Linear Equations:\nThe inverse of a square matrix A is denoted as A^(-1) and satisfies the property A * A^(-1) = A^(-1) * A = I, where I is the identity matrix. Not all matrices have an inverse.\n\nDeterminant:\nThe determinant of a square matrix is a scalar value that provides information about its properties. It is denoted as det(A) or |A|. The determinant can be used to determine if a matrix is invertible.\n\n",
+      "status": "",
+      "output": "<h1>Matrix Operations and Linear Algebra Using <a href=\"/2023/06/14/Numerical-Analysis-Linear-Algebra-NumericJS.html\">Numeric.js</a></h1>\nLinear algebra involves several fundamental matrix operations that are widely used in various applications. Here are some important matrix operations in linear algebra:\n\n<br>- Matrix Addition:\nAddition of two matrices of the same dimensions is performed by adding corresponding elements.\n<br>- Matrix Subtraction:\nSubtraction of two matrices of the same dimensions is performed by subtracting corresponding elements.\n<br>- Scalar Multiplication:\nMultiplication of a matrix by a scalar involves multiplying each element of the matrix by the scalar.\n<br>- Matrix Multiplication:\nMatrix multiplication is a more complex operation. Given two matrices A and B, the product C = A * B is computed by taking the dot product of each row of A with each column of B.\n<br>- Transposition:\nTransposing a matrix involves flipping its rows and columns. The transpose of a matrix A is denoted as A^T.\n<br>- Matrix Inverse and Solving Linear Equations:\nThe inverse of a square matrix A is denoted as A^(-1) and satisfies the property A * A^(-1) = A^(-1) * A = I, where I is the identity matrix. Not all matrices have an inverse.\n\nDeterminant:\nThe determinant of a square matrix is a scalar value that provides information about its properties. It is denoted as det(A) or |A|. The determinant can be used to determine if a matrix is invertible.\n\n",
+      "type": "html"
+    },
+    {
+      "code": "load_script(\"https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js\")",
+      "status": "[1]<br><span style=\"font-size:8px\">15ms<span></span></span>",
+      "output": "g9iio <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Adding two matrices\n    const A = [[1, 2], [3, 4]];\n\tconst B = [[5, 6], [7, 8]];\n\t\n\tconst C = numeric.add(A, B);\n\tshow(C.to_html())\n\t\n",
+      "status": "[7]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "<table class=\"di-table\"><tbody><tr><th></th><td>6</td><td>8</td></tr><tr><th></th><td>10</td><td>12</td></tr></tbody></table> <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Calculating  product of matrices\nconst A = [[1, 2], [3, 4]];\n\tconst B = [[5, 6], [7, 8]];\n\tconst D = numeric.dot(A, B);\n\tshow(\"D:\",D.to_html())\n\t",
+      "status": "[15]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "D: <table class=\"di-table\"><tbody><tr><th></th><td>19</td><td>22</td></tr><tr><th></th><td>43</td><td>50</td></tr></tbody></table> <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Caculating inverse of a matrix\n    const A = [[1, 2], [3, 4]];\n\tconst B = [[5, 6], [7, 8]];\n\n\tconst E = numeric.inv(A);\n\tshow(\"E:\",E.to_html())\n",
+      "status": "[12]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "E: <table class=\"di-table\"><tbody><tr><th></th><td>-1.9999999999999996</td><td>0.9999999999999998</td></tr><tr><th></th><td>1.4999999999999998</td><td>-0.49999999999999994</td></tr></tbody></table> <br>",
+      "type": "code"
+    },
+    {
+      "code": "\n\n//You can solve linear systems of equations using the numeric.solve() function.\n\n\tconst  L= [[2, 3], [4, -1]];\n\tconst c = [7, 1];\n\t\n\tconst x = numeric.solve(L, c);\n\tshow(\"x:\",x)\n\n",
+      "status": "[13]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "x: [\n  0.7142857142857143,\n  1.8571428571428572\n] <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}

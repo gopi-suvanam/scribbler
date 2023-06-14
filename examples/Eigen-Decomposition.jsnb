@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "Eigen Decomposition Using Numeric.js",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Eigen Decomposition Using <a href=\"/2023/06/14/Numerical-Analysis-Linear-Algebra-NumericJS.html\">Numeric.js</a></h1>\nEigen decomposition, also known as eigendecomposition or spectral decomposition, is a fundamental concept in linear algebra that decomposes a square matrix into a set of eigenvectors and eigenvalues. It provides a way to analyze and understand the properties of a matrix and its linear transformations.\n\nGiven a square matrix A, the eigen decomposition expresses A as the product of three matrices:\n<pre>\nA = V * D * V^(-1)\n\nwhere:\n\nV is a matrix whose columns are the eigenvectors of A.\nD is a diagonal matrix whose entries are the eigenvalues of A.\nV^(-1) is the inverse of matrix V.\n</pre>\nEach eigenvector corresponds to a specific eigenvalue, which represents the scaling factor by which the eigenvector is transformed under the linear transformation defined by the matrix A.\n<br>Eigen decomposition is valuable because it allows us to analyze the behavior of a matrix transformation in terms of its eigenvalues and eigenvectors. The eigenvectors provide the directions along which the transformation stretches or compresses, while the eigenvalues determine the magnitude of the stretching or compression. This decomposition can reveal important information about the matrix, such as symmetry, positive definiteness, or the presence of repeated eigenvalues.\n<br>Eigen decomposition has numerous applications across various fields, including physics, engineering, computer science, and data analysis. It is used in problems such as principal component analysis (PCA), data compression, solving systems of linear differential equations, graph theory, and many other areas where the properties of linear transformations are important.\n<br>Implementing eigen decomposition involves finding the eigenvectors and eigenvalues of the matrix, typically through numerical methods or algorithms. Libraries and software packages often provide functions or routines to compute the eigen decomposition of a matrix efficiently.",
+      "status": "",
+      "output": "<h1>Eigen Decomposition Using <a href=\"/2023/06/14/Numerical-Analysis-Linear-Algebra-NumericJS.html\">Numeric.js</a></h1>\nEigen decomposition, also known as eigendecomposition or spectral decomposition, is a fundamental concept in linear algebra that decomposes a square matrix into a set of eigenvectors and eigenvalues. It provides a way to analyze and understand the properties of a matrix and its linear transformations.\n\nGiven a square matrix A, the eigen decomposition expresses A as the product of three matrices:\n<pre>A = V * D * V^(-1)\n\nwhere:\n\nV is a matrix whose columns are the eigenvectors of A.\nD is a diagonal matrix whose entries are the eigenvalues of A.\nV^(-1) is the inverse of matrix V.\n</pre>\nEach eigenvector corresponds to a specific eigenvalue, which represents the scaling factor by which the eigenvector is transformed under the linear transformation defined by the matrix A.\n<br>Eigen decomposition is valuable because it allows us to analyze the behavior of a matrix transformation in terms of its eigenvalues and eigenvectors. The eigenvectors provide the directions along which the transformation stretches or compresses, while the eigenvalues determine the magnitude of the stretching or compression. This decomposition can reveal important information about the matrix, such as symmetry, positive definiteness, or the presence of repeated eigenvalues.\n<br>Eigen decomposition has numerous applications across various fields, including physics, engineering, computer science, and data analysis. It is used in problems such as principal component analysis (PCA), data compression, solving systems of linear differential equations, graph theory, and many other areas where the properties of linear transformations are important.\n<br>Implementing eigen decomposition involves finding the eigenvectors and eigenvalues of the matrix, typically through numerical methods or algorithms. Libraries and software packages often provide functions or routines to compute the eigen decomposition of a matrix efficiently.",
+      "type": "html"
+    },
+    {
+      "code": "load_script(\"https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js\")",
+      "status": "[1]<br><span style=\"font-size:8px\">6ms<span></span></span>",
+      "output": "grvor <br>",
+      "type": "code"
+    },
+    {
+      "code": "const matrix = [\n  [1, 2, 3],\n  [4, 5, 6],\n  [7, 8, 9]\n];\n\nconst eigens = numeric.eig(matrix);\n\nshow(\"Eigen values:\",eigens['lambda']['x'])\nshow(\"Eigen Vectors:\",eigens['E']['x'].to_html())",
+      "status": "[6]<br><span style=\"font-size:8px\">10ms<span></span></span>",
+      "output": "Eigen values: [\n  16.11684396980706,\n  -1.1168439698070436,\n  -2.1693674893577825e-30\n] <br>Eigen Vectors: <table class=\"di-table\"><tbody><tr><th></th><td>-0.23197068724628583</td><td>-0.7858302387420677</td><td>0.40824829046386285</td></tr><tr><th></th><td>-0.525322093301234</td><td>-0.08675133925662748</td><td>-0.816496580927726</td></tr><tr><th></th><td>-0.8186734993561819</td><td>0.6123275602288099</td><td>0.40824829046386313</td></tr></tbody></table> <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}

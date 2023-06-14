@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "Singular Value Decomposition Using Numeric.js",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Singular Value Decomposition Using <a href=\"/2023/06/14/Numerical-Analysis-Linear-Algebra-NumericJS.html\">Numeric.js</a></h1>\nSVD stands for Singular Value Decomposition. It is a powerful matrix factorization technique used in linear algebra and numerical analysis. SVD decomposes a matrix into three separate matrices, which can be useful for various applications, such as dimensionality reduction, data compression, image processing, and solving linear systems.\n\nGiven an m x n matrix A, the SVD factorizes it as:\n<pre>\n  \nA = U * S * V^T\n\nWhere:\n\nU is an m x m orthogonal matrix, containing the left singular vectors.\nS is an m x n diagonal matrix, containing the singular values.\nV^T is the transpose of an n x n orthogonal matrix, containing the right singular vectors.\n\n</pre>\nThe singular values in the S matrix represent the square roots of the eigenvalues of A^T * A or A * A^T, and they provide information about the importance of each singular vector.\n\nSVD has various applications in data analysis and machine learning. It can be used for dimensionality reduction by retaining only the most significant singular values and their corresponding singular vectors. It also plays a key role in recommender systems, image compression, noise reduction, and other domains where matrix manipulation and analysis are required.\n\nBy decomposing a matrix into its singular value components, SVD provides a valuable tool for understanding the structure, properties, and relationships within the data represented by the matrix.",
+      "status": "",
+      "output": "<h1>Singular Value Decomposition Using <a href=\"/2023/06/14/Numerical-Analysis-Linear-Algebra-NumericJS.html\">Numeric.js</a></h1>\nSVD stands for Singular Value Decomposition. It is a powerful matrix factorization technique used in linear algebra and numerical analysis. SVD decomposes a matrix into three separate matrices, which can be useful for various applications, such as dimensionality reduction, data compression, image processing, and solving linear systems.\n\nGiven an m x n matrix A, the SVD factorizes it as:\n<pre>  \nA = U * S * V^T\n\nWhere:\n\nU is an m x m orthogonal matrix, containing the left singular vectors.\nS is an m x n diagonal matrix, containing the singular values.\nV^T is the transpose of an n x n orthogonal matrix, containing the right singular vectors.\n\n</pre>\nThe singular values in the S matrix represent the square roots of the eigenvalues of A^T * A or A * A^T, and they provide information about the importance of each singular vector.\n\nSVD has various applications in data analysis and machine learning. It can be used for dimensionality reduction by retaining only the most significant singular values and their corresponding singular vectors. It also plays a key role in recommender systems, image compression, noise reduction, and other domains where matrix manipulation and analysis are required.\n\nBy decomposing a matrix into its singular value components, SVD provides a valuable tool for understanding the structure, properties, and relationships within the data represented by the matrix.",
+      "type": "html"
+    },
+    {
+      "code": "load_script(\"https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js\")",
+      "status": "[1]<br><span style=\"font-size:8px\">5ms<span></span></span>",
+      "output": "kvatuj <br>",
+      "type": "code"
+    },
+    {
+      "code": "const matrix = [\n  [1, 2, 3],\n  [4, 5, 6],\n  [7, 8, 9]\n];\n\nconst svdResult = numeric.svd(matrix);\n\nshow(\"U:\",svdResult.U.to_html())\nshow(\"V:\",svdResult.V.to_html())\nshow(\"S:\",[svdResult.S].to_html())\n",
+      "status": "[17]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "U: <table class=\"di-table\"><tbody><tr><th></th><td>-0.21483723836839624</td><td>-0.8872306883463703</td><td>-0.4082482904638635</td></tr><tr><th></th><td>-0.5205873894647371</td><td>-0.2496439529882984</td><td>0.8164965809277259</td></tr><tr><th></th><td>-0.8263375405610778</td><td>0.38794278236977475</td><td>-0.40824829046386285</td></tr></tbody></table> <br>V: <table class=\"di-table\"><tbody><tr><th></th><td>-0.4796711778777716</td><td>0.7766909903215591</td><td>0.40824829046386335</td></tr><tr><th></th><td>-0.5723677939720625</td><td>0.0756864701045587</td><td>-0.816496580927726</td></tr><tr><th></th><td>-0.665064410066353</td><td>-0.6253180501124429</td><td>0.40824829046386263</td></tr></tbody></table> <br>S: <table class=\"di-table\"><tbody><tr><th></th><td>16.848103352614203</td><td>1.0683695145547079</td><td>0</td></tr></tbody></table> <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
