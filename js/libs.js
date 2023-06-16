@@ -1,4 +1,11 @@
-﻿window.MAX_LENGTH_TO_SHOW=10000;
+﻿if(window){
+	window.MAX_LENGTH_TO_SHOW=10000;
+	window.TIMEOUT_FOR_BLOCKING_CALLS=5000;
+}else{
+	MAX_LENGTH_TO_SHOW=10000;
+	TIMEOUT_FOR_BLOCKING_CALLS=5000;
+}
+
 show_in_dom=function(output,...objs){
 	var to_show='';
 	for(var i=0;i<objs.length;i+=1){
@@ -18,27 +25,43 @@ show_in_dom=function(output,...objs){
 get_dom=id=>document.getElementById(id);
 
 load_script = function(url,async){
-	var script = document.createElement('script');
-	
-	script.src = url;
-	script.id=(Math.random() + 1).toString(36).substring(7);
+
 	if(async==undefined) async=true;
-	script.async=async;
-	document.head.appendChild(script);
-	return script.id; 
+	if(async){
+		return new Promise(function(resolve, reject) {
+		    var xhr = new XMLHttpRequest();
+		    xhr.open('GET', url, true);
+		    xhr.onreadystatechange = function() {
+		      if (xhr.readyState === 4) {
+		        if (xhr.status === 200) {		          
+		          resolve(eval(xhr.responseText));
+		        } else {
+		          reject(new Error('Error fetching script. Status: ' + xhr.status));
+		        }
+		      }
+		    };
+		
+		    xhr.send();
+		  });
+	}else{
+		  var xhr = new XMLHttpRequest();
+		  xhr.open('GET', url, false); // Set the third parameter to false for synchronous request
+		  xhr.send();
+		
+		  if (xhr.status === 200) {
+		    return eval(xhr.responseText);
+		   
+		  } else {
+		    throw('Error fetching script. Status:'+xhr.status);
+		  }
+	}
 
 }
 
 reload_script = function(url,async){
-	var script = document.createElement('script');
-	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
-	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
-	script.src = url;
 	if(async==undefined) async=true;
-	script.async=async;
-	script.id=(Math.random() + 1).toString(36).substring(7);
-	document.head.appendChild(script);
-	return script.id; 
+	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
+	return load_scrupt(url,async);
 
 }
 
@@ -61,7 +84,6 @@ import_module=function(module,features){
 	      console.error("Failed to load module script with URL " + url);
 
 	  };
-	  console.log(script.outerHTML);
 }
 
 function wait_for_dom(id) {

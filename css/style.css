@@ -6,7 +6,7 @@
 	    flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea{
+h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td{
 	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
 }
 
@@ -130,8 +130,8 @@ ul[role=listbox]{
 	height:35px;
 	margin:0px;
 }
-p{
-	font-size:12px;
+p, td{
+	font-size:14px;
 }
 input{
 	font-size:12px;
