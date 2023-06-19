@@ -357,5 +357,6 @@ insitialize_sandbox=function(){
 	    });
 	   
     	window.parent.postMessage({"action":"initialize_sandbox","data":'',"call_bk":'load_jsnb'}, '*');
+    	window.alert =x=>show("<p class='error'>!! "+x+" !!</p>");
 }
 
