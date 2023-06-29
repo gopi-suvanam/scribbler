@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Get Square Error",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "function get_squares(upto) {\n  const data = [];\n\n  for (var i = 1; i <= upto; i++) {\n    data.push(function () {\n\t  let sqr=i*i;\n      return sqr;\n    });\n  }\n\n  return data;\n}\n\nconst functions = get_squares(10);\n\nfunctions.map(x=>x());\n",
+      "status": "[21]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "[\n  121,\n  121,\n  121,\n  121,\n  121,\n  121,\n  121,\n  121,\n  121,\n  121\n] <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
