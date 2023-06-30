@@ -1,15 +1,15 @@
 ---
-title: Sample Notebooks using JSNB
+title: Sample Notebooks using Scribbler
 layout: page
-decripriont: Links to sample JSNB notbooks hosted on Github. Click on each link to play around with the code.
+decripriont: Links to sample Scribbler notebooks (.jsnb) hosted on Github. Click on each link to play around with the code.
 ---
 ## Links to example Notebooks saved in this Repo
  
-JSNB is a tool to do experimentation in JavaScript like Jupyter for Python. JavaScript Notebooks can be used to test code while developing and also for scientific calculations. The below notebooks are samples/boilerplates to start experimenting/building. Click on each link to play around with the code.
+Scribbler is a tool to do experimentation in JavaScript like Jupyter for Python. JavaScript Notebooks can be used to test code while developing and also for scientific calculations. The below notebooks are samples/boilerplates to start experimenting/building. Click on each link to play around with the code.
 
 ### Introductory Notebooks
 1. [Hello-world for JavaScript Notebook](https://decentralized-intelligence.com/jsnb/#./examples/Hello-world.jsnb). An introductory notebook with a hello-world example.
-2. [Using curr_cell function in JSNB](https://decentralized-intelligence.com/jsnb/#./examples/curr_cell_example.jsnb). A special function in JSNB to identify the dom of current cell.
+2. [Using curr_cell function in Scribbler](https://decentralized-intelligence.com/jsnb/#./examples/curr_cell_example.jsnb). A special function in Scribbler to identify the dom of current cell.
 3. [For-loop vs Reduce Performance Comparision](https://decentralized-intelligence.com/jsnb/#./examples/Timing-experiment.jsnb). Compares performance of for-loop in javascript with that of the native function reduce.
 4. [Alternating Sequence](https://decentralized-intelligence.com/jsnb/#./examples/Alternating-Sequence.jsnb). Sum of sequences, shows usage of for-loop and simple plotting.
 
