@@ -6,15 +6,15 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/examples/README</loc>
-    <lastmod>2023-06-13T09:28:13Z</lastmod>
+    <lastmod>2023-06-30T10:40:30Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/DOCS</loc>
-    <lastmod>2023-06-02T12:19:01Z</lastmod>
+    <lastmod>2023-06-30T10:40:30Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/AMM-Simulation.jsnb</loc>
-    <lastmod>2023-03-25T09:18:16Z</lastmod>
+    <lastmod>2023-06-30T13:09:19Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Alternating-Sequence.jsnb</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Array-Functions.jsnb</loc>
-    <lastmod>2023-06-08T14:26:02Z</lastmod>
+    <lastmod>2023-06-30T12:55:19Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes-Simulation.jsnb</loc>
@@ -30,11 +30,11 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Black-Scholes.jsnb</loc>
-    <lastmod>2023-06-08T14:28:23Z</lastmod>
+    <lastmod>2023-06-30T13:10:43Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Crypto-Currency-TimeSeries.jsnb</loc>
-    <lastmod>2023-06-08T14:34:44Z</lastmod>
+    <lastmod>2023-06-30T13:33:25Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Cubic-Spline-Interpolation.jsnb</loc>
@@ -42,15 +42,15 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/DI-Lib-Plots.jsnb</loc>
-    <lastmod>2023-05-13T11:14:40Z</lastmod>
+    <lastmod>2023-06-30T13:34:01Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Decentralized-ML-Model-Storage.jsnb</loc>
-    <lastmod>2023-06-08T14:54:08Z</lastmod>
+    <lastmod>2023-06-30T12:54:14Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Dynamic-Simulation.jsnb</loc>
-    <lastmod>2023-06-07T14:08:50Z</lastmod>
+    <lastmod>2023-06-30T13:07:53Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Eigen-Decomposition.jsnb</loc>
@@ -58,19 +58,23 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Ethereum-Metamask.jsnb</loc>
-    <lastmod>2023-06-08T14:55:57Z</lastmod>
+    <lastmod>2023-06-30T13:31:21Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Fibonacci-Sequence-Golden-Ratio.jsnb</loc>
-    <lastmod>2023-06-08T16:32:07Z</lastmod>
+    <lastmod>2023-06-30T12:55:44Z</lastmod>
+  </url>
+  <url>
+    <loc>https://decentralized-intelligence.com/jsnb/#./examples/Get-Square-Error.jsnb</loc>
+    <lastmod>2023-06-29T12:39:07Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Hello-world.jsnb</loc>
-    <lastmod>2023-06-07T14:08:50Z</lastmod>
+    <lastmod>2023-06-19T10:59:51Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/IPFS-in-Browser.jsnb</loc>
-    <lastmod>2023-02-27T14:53:27Z</lastmod>
+    <lastmod>2023-06-30T13:17:20Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Matrix-Operations-Linear-Algebra.jsnb</loc>
@@ -90,11 +94,11 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Option-Pricing-MC.jsnb</loc>
-    <lastmod>2023-06-08T14:58:23Z</lastmod>
+    <lastmod>2023-06-30T13:10:01Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Plotly-Example.jsnb</loc>
-    <lastmod>2023-06-08T14:59:46Z</lastmod>
+    <lastmod>2023-06-30T13:34:45Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Regula-Falsi.jsnb</loc>
@@ -118,11 +122,11 @@
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/Underscore-JS.jsnb</loc>
-    <lastmod>2023-06-08T15:03:31Z</lastmod>
+    <lastmod>2023-06-30T12:54:47Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/WebTorrent-Example.jsnb</loc>
-    <lastmod>2023-01-18T10:10:30Z</lastmod>
+    <lastmod>2023-06-30T13:32:22Z</lastmod>
   </url>
   <url>
     <loc>https://decentralized-intelligence.com/jsnb/#./examples/curr_cell_example.jsnb</loc>
