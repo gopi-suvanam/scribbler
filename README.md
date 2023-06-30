@@ -13,7 +13,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 2. [Features](#features)
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
-5. [Vs. xyz](#how-is-jsnb-different)
+5. [Vs. xyz](#how-is-scribbler-different)
 6. [Additional Resources](#links)
 
 ## Getting Started
@@ -48,20 +48,20 @@ Not to be used for:
 
 ## Collaboration
 The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collabortion is still possible through:
-1. Download and share JSNB files.
-2. Use github for storing JSNB files. Make the repo public or add collaborators. The notebooks built on JSNB can be directly be synced on to GitHub using an access token.
+1. Download and share .jsnb files.
+2. Use github for storing .jsnb files. Make the repo public or add collaborators. The notebooks built on Scribbler can be directly be synced on to GitHub using an access token.
 3. Files in public GitHub repos can be directly accessed as: https://decentralized-intelligence.com/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
 4. If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://decentralized-intelligence.com/jsnb/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
 5. Map a cloud drive or LAN drive onto local machine and load from/download to the drive. Share the drive with collaborators.
 
-## How is JSNB different
-- JSNB is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
-- JSNB can have multiple cells so it can create long documents.
+## How is Scribbler different
+- Scribbler is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
+- Scribbler can have multiple cells so it can create long documents.
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
-- JSNB can also be used for scientific computation using several open source javascript libraries.
+- Scribbler can also be used for scientific computation using several open source javascript libraries.
 
 ## Links
-Additional documentation for JSNB:
+Additional documentation for Scribbler:
 1. [Docs](https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md)
 2. [Code-docs](https://github.com/gopi-suvanam/jsnb/blob/main/CODE-DOCS.md)
 3. [Roadmap](https://github.com/gopi-suvanam/jsnb/blob/main/ROADMAP.md)
