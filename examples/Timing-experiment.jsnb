@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Timing experiment",
+    "name": "Timing experiment -For-Loop vs Reduce",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Timing Experiment</h5>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
+      "code": "<h1>Timing Experiment - Comparison of For-Loop vs Reduce</h1>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
       "status": "",
-      "output": "<h5>Timing Experiment</h5>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
+      "output": "<h1>Timing Experiment - Comparison of For-Loop vs Reduce</h1>\nThis notebook illustrates the use of JSNB for evaluating performance of code. There are two different approaches to Σ1/x: one using for loop, another using reduce function of arrays. \nThe timing for both these approches is displayed in the status bar next to the output. As an aside Σ1/x (from 1 to n) ~ log(n).",
       "type": "html"
     },
     {
