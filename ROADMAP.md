@@ -1,4 +1,4 @@
-# Roadmap for JSNB
+# Roadmap for Scribbler
 ## Done
 ### UI
 - UI could be similar to Jupyter Notebook
