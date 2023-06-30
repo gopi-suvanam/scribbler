@@ -1,4 +1,4 @@
-# JavaScript Notebook (JSNB) [Try here](https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
+# Scribller: JavaScript Notebook [Try here](https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
 Notebook for javascript experimentation (in the browser). Overview:
 - Easy to use javascript experimentation tool.
 - Runs without backend (node.js/npm/pip install/ngnix etc etc). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a server (I didnt want to use the word "serverless" as that word has been polluted by Amazon).
