@@ -1,4 +1,4 @@
-# DOCS for JSNB
+# DOCS for Scribbler
 
 ## TOC
 1. [Installing](#installing)
@@ -41,8 +41,8 @@ Certain operations can be done on cell-menu. The cell-menu is at top-right corne
 
 ## File Menu
 The file menu consists of:
-- Open: Opening a JSNB file from local machine
-- Download: Saving the current notebook as JSNB file on local machine
+- Open: Opening a .jsnb file from local machine
+- Download: Saving the current notebook as .jsnb file on local machine
 - GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Toke, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
 - Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
 - Download only output as HTML: Save only the output of the current notebook as HTML on local machine.
@@ -57,8 +57,8 @@ The edit menu consists of:
 ## URL Structure
 - The URL of Github pages deployment is https://decentralized-intelligence.com/jsnb/. 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
-- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb]) will "GET" the file https://decentralized-intelligence.com/jsnb/examples/Hello-world.jsnb and load it into JSNB. The file has to be available publicly to load in this fashion. 
-- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). If the repo is public, JSNB will try to GET it and load it, else GitHub authentication dialoge will pop up. 
+- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb]) will "GET" the file https://decentralized-intelligence.com/jsnb/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
+- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialoge will pop up. 
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 
 ## Special Functions
@@ -91,7 +91,7 @@ These shortcuts are global
 
 ## Exporting-Importing
 - A notebook can be downloaded (Ctrl-S) as a .jsnb file and can be loaded (Ctrl-O) later.
-- A file on GitHub repo can be loaded into the JSNB file. The repo has to be public or you should be a collaborator.
+- A file on GitHub repo can be loaded into the .jsnb file. The repo has to be public or you should be a collaborator.
 - A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
 - GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
 - Files in public GitHub repos can be directly accessed as: https://decentralized-intelligence.com/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
