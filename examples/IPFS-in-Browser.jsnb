@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>IPFS in Browser</h5>\nThis notebook explores accessing IPFS through ipfs-js in the browser.",
+      "code": "<h1>IPFS in Browser</h1>\nIPFS (InterPlanetary File System) is a decentralized and distributed protocol designed for storing and sharing files in a peer-to-peer network. It provides a way to address and retrieve content based on the content itself rather than its location on a specific server or network. As of 2023, IPFS is the most popular platform for storing files in a decentralized form. Along with along with libp2p and Smart Contracts, IPFS is a key building block of decentralized computing.\n\n\n<br>This notebook explores accessing IPFS through ipfs-js in the browser.",
       "status": "",
-      "output": "<h5>IPFS in Browser</h5>\nThis notebook explores accessing IPFS through ipfs-js in the browser.",
+      "output": "<h1>IPFS in Browser</h1>\nIPFS (InterPlanetary File System) is a decentralized and distributed protocol designed for storing and sharing files in a peer-to-peer network. It provides a way to address and retrieve content based on the content itself rather than its location on a specific server or network. As of 2023, IPFS is the most popular platform for storing files in a decentralized form. Along with along with libp2p and Smart Contracts, IPFS is a key building block of decentralized computing.\n\n\n<br>This notebook explores accessing IPFS through ipfs-js in the browser.",
       "type": "html"
     },
     {
@@ -33,5 +33,6 @@
       "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }

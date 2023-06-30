@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "AMM Simulation",
+    "name": "&nbsp;Automated Market Making (AMM) Simulation",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Simulation, plotting and array calculations</h5>\nThis notebook explores Monte-Carlo simulation of an <a href=\"https://www.coindesk.com/learn/what-is-an-automated-market-maker/\">Automated Market Maker </a>. \nThis uses libraries from my other project <a href=\"https://github.com/gopi-suvanam/di-libs\">DI-Libs</a>. \nThis notebook is built for experimentation in simulations and also for illustrating the use of DI-Libs for plotting, array calculations.",
+      "code": "<h1>Automated Market Making Simulation</h1>\nThis notebook explores Monte-Carlo simulation of an <a href=\"https://www.coindesk.com/learn/what-is-an-automated-market-maker/\">Automated Market Maker </a>. \nThis uses libraries from my other project <a href=\"https://github.com/gopi-suvanam/di-libs\">DI-Libs</a>. \nThis notebook is built for experimentation in simulations and also for illustrating the use of DI-Libs for plotting, array calculations.",
       "status": "",
-      "output": "<h5>Simulation, plotting and array calculations</h5>\nThis notebook explores Monte-Carlo simulation of an <a href=\"https://www.coindesk.com/learn/what-is-an-automated-market-maker/\">Automated Market Maker </a>. \nThis uses libraries from my other project <a href=\"https://github.com/gopi-suvanam/di-libs\">DI-Libs</a>. \nThis notebook is built for experimentation in simulations and also for illustrating the use of DI-Libs for plotting, array calculations.",
+      "output": "<h1>Automated Market Making Simulation</h1>\nThis notebook explores Monte-Carlo simulation of an <a href=\"https://www.coindesk.com/learn/what-is-an-automated-market-maker/\">Automated Market Maker </a>. \nThis uses libraries from my other project <a href=\"https://github.com/gopi-suvanam/di-libs\">DI-Libs</a>. \nThis notebook is built for experimentation in simulations and also for illustrating the use of DI-Libs for plotting, array calculations.",
       "type": "html"
     },
     {
@@ -51,5 +51,6 @@
       "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }

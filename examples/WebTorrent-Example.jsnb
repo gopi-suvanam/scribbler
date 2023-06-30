@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h3>WebTorrent Example</h3>\nThis notebook loads a P2P file using WebTorrent library (which used WebRTC in the background). WebRTC may not work if JSNB be is not hosted (i.e. loads as file:///). Play the next two cells to see the video.<br>\n<div>\n  <span id=\"download\"></span><br>\n  <span id=\"tdownload\"></span><br>\n  <span id=\"sdownload\"></span><br>\n  <span id=\"pdownload\"></span><br>\n  <span id=\"hash\"></span>\n</div>\n<hr/>\n<style>\nvideo {\n  width: 100% height: 100%\n}\n</style>",
+      "code": "<h1>WebTorrent Example</h1>\nThis notebook loads a P2P file using WebTorrent library (which used WebRTC in the background). WebRTC may not work if JSNB be is not hosted (i.e. loads as file:///). Play the next two cells to see the video.<br>\n<div>\n  <span id=\"download\"></span><br>\n  <span id=\"tdownload\"></span><br>\n  <span id=\"sdownload\"></span><br>\n  <span id=\"pdownload\"></span><br>\n  <span id=\"hash\"></span>\n</div>\n<hr/>\n<style>\nvideo {\n  width: 100% height: 100%\n}\n</style>",
       "status": "",
-      "output": "<h3>WebTorrent Example</h3>\nThis notebook loads a P2P file using WebTorrent library (which used WebRTC in the background). WebRTC may not work if JSNB be is not hosted (i.e. loads as file:///). Play the next two cells to see the video.<br>\n<div>\n  <span id=\"download\"></span><br>\n  <span id=\"tdownload\"></span><br>\n  <span id=\"sdownload\"></span><br>\n  <span id=\"pdownload\"></span><br>\n  <span id=\"hash\"></span>\n</div>\n<hr>\n<style>\nvideo {\n  width: 100% height: 100%\n}\n</style>",
+      "output": "<h1>WebTorrent Example</h1>\nThis notebook loads a P2P file using WebTorrent library (which used WebRTC in the background). WebRTC may not work if JSNB be is not hosted (i.e. loads as file:///). Play the next two cells to see the video.<br>\n<div>\n  <span id=\"download\"></span><br>\n  <span id=\"tdownload\"></span><br>\n  <span id=\"sdownload\"></span><br>\n  <span id=\"pdownload\"></span><br>\n  <span id=\"hash\"></span>\n</div>\n<hr>\n<style>\nvideo {\n  width: 100% height: 100%\n}\n</style>",
       "type": "html"
     },
     {
@@ -26,5 +26,7 @@
       "output": "",
       "type": "code"
     }
-  ]
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }

@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Charting in Plotly</h5>\nThis is a sample notebook to illustrate the use of plotly graphs.\n\n  <br>Next cell has an empty div, which we will populate subsequetly with a nice graph.",
+      "code": "<h1>Charting in Plotly </h1>\nThis is a sample notebook to illustrate the use of plotly graphs using JavaScript.\n\n  <br>Next cell has an empty div, which we will populate subsequetly with a nice graph.",
       "status": "",
-      "output": "<h5>Charting in Plotly</h5>\nThis is a sample notebook to illustrate the use of plotly graphs.\n\n  <br>Next cell has an empty div, which we will populate subsequetly with a nice graph.",
+      "output": "<h1>Charting in Plotly </h1>\nThis is a sample notebook to illustrate the use of plotly graphs using JavaScript.\n\n  <br>Next cell has an empty div, which we will populate subsequetly with a nice graph.",
       "type": "html"
     },
     {

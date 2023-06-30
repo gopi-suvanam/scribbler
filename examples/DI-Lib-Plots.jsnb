@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5> Example of using sister project: DI-Libs</h5>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. Click play button to see the graphs getting plotted in each cell.",
+      "code": "<h1> Example of using sister project: DI-Libs</h1>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. Click play button to see the graphs getting plotted in each cell.",
       "status": "",
-      "output": "<h5> Example of using sister project: DI-Libs</h5>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. Click play button to see the graphs getting plotted in each cell.",
+      "output": "<h1> Example of using sister project: DI-Libs</h1>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. Click play button to see the graphs getting plotted in each cell.",
       "type": "html"
     },
     {

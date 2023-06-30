@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>Accessing Ethereum Blockchain using Metamask </h5>\nThis notebook shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser. Run the next cell to connect to Metamask and then run the cell after that.",
+      "code": "<h1>Accessing Ethereum Blockchain using Metamask </h1>\nThis notebook shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser. Run the next cell to connect to Metamask and then run the cell after that.",
       "status": "",
-      "output": "<h5>Accessing Ethereum Blockchain using Metamask </h5>\nThis notebook shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser. Run the next cell to connect to Metamask and then run the cell after that.",
+      "output": "<h1>Accessing Ethereum Blockchain using Metamask </h1>\nThis notebook shows some examples of using Metamask API to connect with blockchain. It runs only with http and not on file:///. You will require Metamask add-on added to the browser. Run the next cell to connect to Metamask and then run the cell after that.",
       "type": "html"
     },
     {

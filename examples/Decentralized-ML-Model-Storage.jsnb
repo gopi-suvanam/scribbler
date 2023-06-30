@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h5>ML Model Using Brain.js</h5>\nThis notebook explores building a machine learning model for digit recignition in the browser. The notebook can be used to store the model and also load it later. \nThis framework can be used for building and deploying machines learning models without a server.",
+      "code": "<h1>ML Model Using Brain.js</h1>\nThis notebook explores building a machine learning model for digit recignition in the browser. The notebook can be used to store the model and also load it later. \nThis framework can be used for building and deploying machines learning models without a server.",
       "status": "",
-      "output": "<h5>ML Model Using Brain.js</h5>\nThis notebook explores building a machine learning model for digit recignition in the browser. The notebook can be used to store the model and also load it later. \nThis framework can be used for building and deploying machines learning models without a server.",
+      "output": "<h1>ML Model Using Brain.js</h1>\nThis notebook explores building a machine learning model for digit recignition in the browser. The notebook can be used to store the model and also load it later. \nThis framework can be used for building and deploying machines learning models without a server.",
       "type": "html"
     },
     {
