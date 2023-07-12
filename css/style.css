@@ -10,6 +10,12 @@ h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td{
 	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
 }
 
+h1{font-size:36px}
+h2{font-size:28px}
+h3{font-size:20px}
+h4{font-size:16px}
+h5{font-size:14px}
+
 article,textarea{
  margin:10px;
  padding:10px !important;
