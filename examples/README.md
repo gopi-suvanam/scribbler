@@ -29,7 +29,7 @@ Scribbler is a tool to do experimentation in JavaScript like Jupyter for Python.
 
 
 ### Simulation
-13. [Monte-Carlo Simulation of AMM - Automated MArket Making](https://app.scribbler.live/#./examples/AMM-Simulation.jsnb). Simulating Automate-Market-Making for assets in a decentralized exchange.
+13. [Monte-Carlo Simulation of AMM - Automated Market Making](https://app.scribbler.live/#./examples/AMM-Simulation.jsnb). Simulating Automate-Market-Making for assets in a decentralized exchange.
 14. [Simple Simulation Example](https://app.scribbler.live/#./examples/Simple-Simulation.jsnb). Simulation of a physical system - a ball bouncing off four walls.
 15. [Dynamic System Simulation - Bouncing Ball on Moving Boundary](https://app.scribbler.live/#./examples/Dynamic-Simulation.jsnb). Simulation of a physical system - a ball bouncing off four walls but with one of the walls oscillating.
 16. [Option Price Simulation](https://app.scribbler.live/#./examples/Black-Scholes-Simulation.jsnb). 
