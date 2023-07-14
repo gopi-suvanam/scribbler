@@ -7,7 +7,7 @@ DIRECTORY="examples"
 SITEMAP_FILE="sitemap.xml"
 
 # Main site lin
-SITE_LOCATION="https://decentralized-intelligence.com/jsnb"
+SITE_LOCATION="https://app.scribbler.live"
 
 # Create the XML sitemap header
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$SITEMAP_FILE"
