@@ -15,12 +15,6 @@
       "type": "html"
     },
     {
-      "code": "<h2>Working with Cells</h2>\nScribbler notebooks have two types of cells: \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- an html cell, the cell you are reading right now. \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- a code cell, where you may input some JS code for the browser to execute. \n<br>\n New cells can be added (✛/Option-Enter), deleted (☓), moved up (▲), moved down (▼) using the menu on the top right corner of the cell. The cell type can be toggled between html and code as well. \n A code cell can be run using the run button (►) or the keyboard shortcut: Ctrl-Enter/Shift-Enter.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. \nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>.  ",
-      "status": "",
-      "output": "<h2>Working with Cells</h2>\nScribbler notebooks have two types of cells: \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- an html cell, the cell you are reading right now. \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- a code cell, where you may input some JS code for the browser to execute. \n<br>\n New cells can be added (✛/Option-Enter), deleted (☓), moved up (▲), moved down (▼) using the menu on the top right corner of the cell. The cell type can be toggled between html and code as well. \n A code cell can be run using the run button (►) or the keyboard shortcut: Ctrl-Enter/Shift-Enter.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. \nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>.  ",
-      "type": "html"
-    },
-    {
       "code": "<h4>To start with, you could simply do: </h4> ",
       "status": "",
       "output": "<h4>To start with, you could simply do: </h4> ",
@@ -55,6 +49,12 @@
       "status": "[9]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "Hello <span style=\"background-color:green;color:white\">World</span> <br>",
       "type": "code"
+    },
+    {
+      "code": "<h2>Working with Cells</h2>\nScribbler notebooks have two types of cells: \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- an html cell, the cell you are reading right now. \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- a code cell, where you may input some JS code for the browser to execute. \n<br>\n New cells can be added (✛/Option-Enter), deleted (☓), moved up (▲), moved down (▼) using the menu on the top right corner of the cell. The cell type can be toggled between html and code as well. \n A code cell can be run using the run button (►) or the keyboard shortcut: Ctrl-Enter/Shift-Enter.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. \nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>.  ",
+      "status": "",
+      "output": "<h2>Working with Cells</h2>\nScribbler notebooks have two types of cells: \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- an html cell, the cell you are reading right now. \n<br> &nbsp;&nbsp;&nbsp;&nbsp;- a code cell, where you may input some JS code for the browser to execute. \n<br>\n New cells can be added (✛/Option-Enter), deleted (☓), moved up (▲), moved down (▼) using the menu on the top right corner of the cell. The cell type can be toggled between html and code as well. \n A code cell can be run using the run button (►) or the keyboard shortcut: Ctrl-Enter/Shift-Enter.\n<br>Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. \nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>.  ",
+      "type": "html"
     },
     {
       "code": "<h2> Math and Plotting</h2>\nYou can use all JS functionality in a sandboxed environment easily. Next cell shows illustrates use of array function and plotting of a chart.",
