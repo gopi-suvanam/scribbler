@@ -37,7 +37,7 @@
 	        <li><a onclick="download_html(false)">Download as HTML</a></li>
 	        <li><a onclick="download_html(true)">Download only output</a></li>
 	        <li><a onclick="download_js()">Download as JS</a></li>
-	        <li><a data-target="options" onClick="toggleModal(event)">Options</a></li>
+	        
 	      </ul>
 	      </details>
 	    </li>
@@ -48,6 +48,7 @@
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
 	        <li><a onclick="insert_cell('style')">Insert style cell</a></li>
+	        <li><a data-target="options" onClick="toggleModal(event)">Options</a></li>
 	      </ul>
 	      </details>
 	    </li>
@@ -108,12 +109,12 @@
 	    <h5>Options for Notebook</h5>
 	    <input  id="run_on_load" data-tooltip="Run the code when the file is loaded" type="checkbox" class="cell-type"  ></input>
 	    <label for="run_on_load">Run the code when the file is loaded</label>
-	    <br>
+	    <!--<br>
 	    <input  id="hide_menu_on_embed" data-tooltip="Hide the menu in iframe embedding" type="checkbox" class="cell-type"  ></input>
 	    <label for="hide_menu_on_embed">Hide the menu in iframe embedding</label>
 	    <br>
 	    <input  id="hide_input_on_embed" data-tooltip="Hide the input cells in iframe embedding" type="checkbox" class="cell-type"  ></input>
-	    <label for="hide_input_on_embed">Hide the input cells in iframe embedding</label>
+	    <label for="hide_input_on_embed">Hide the input cells in iframe embedding</label> -->
 	    
 		
 	  </article>
