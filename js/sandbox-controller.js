@@ -248,8 +248,8 @@ load_jsnb=async function(content){
 	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
 		}
 		document.activeElement.blur(); 
-		document.body.scrollTop = document.documentElement.scrollTop = 0;
-		get_dom("top").focus();
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
 		
 	}catch(err){
 		alert(err.message);
