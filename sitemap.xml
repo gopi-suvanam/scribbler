@@ -5,131 +5,16 @@
     <lastmod>2023-04-28T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>https://app.scribbler.live/examples/README</loc>
-    <lastmod>2023-07-14T09:15:01Z</lastmod>
-  </url>
-  <url>
     <loc>https://app.scribbler.live/DOCS</loc>
     <lastmod>2023-06-30T10:40:30Z</lastmod>
   </url>
   <url>
-    <loc>https://app.scribbler.live/#./examples/AMM-Simulation.jsnb</loc>
-    <lastmod>2023-06-30T13:09:19Z</lastmod>
+    <loc>https://app.scribbler.live/README</loc>
+    <lastmod>2023-06-30T10:40:30Z</lastmod>
   </url>
   <url>
-    <loc>https://app.scribbler.live/#./examples/Alternating-Sequence.jsnb</loc>
-    <lastmod>2023-06-08T16:35:02Z</lastmod>
+    <loc>https://app.scribbler.live/CODE-DOCS</loc>
+    <lastmod>2023-06-30T10:40:30Z</lastmod>
   </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Array-Functions.jsnb</loc>
-    <lastmod>2023-06-30T12:55:19Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Black-Scholes-Simulation.jsnb</loc>
-    <lastmod>2023-04-24T11:55:41Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Black-Scholes.jsnb</loc>
-    <lastmod>2023-06-30T13:10:43Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Crypto-Currency-TimeSeries.jsnb</loc>
-    <lastmod>2023-06-30T13:33:25Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Cubic-Spline-Interpolation.jsnb</loc>
-    <lastmod>2023-06-14T14:34:09Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/DI-Lib-Plots.jsnb</loc>
-    <lastmod>2023-06-30T13:34:01Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Decentralized-ML-Model-Storage.jsnb</loc>
-    <lastmod>2023-06-30T12:54:14Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Dynamic-Simulation.jsnb</loc>
-    <lastmod>2023-06-30T13:07:53Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Eigen-Decomposition.jsnb</loc>
-    <lastmod>2023-06-14T14:33:32Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Ethereum-Metamask.jsnb</loc>
-    <lastmod>2023-06-30T13:31:21Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Fibonacci-Sequence-Golden-Ratio.jsnb</loc>
-    <lastmod>2023-06-30T12:55:44Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Get-Square-Error.jsnb</loc>
-    <lastmod>2023-06-29T12:39:07Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Hello-world.jsnb</loc>
-    <lastmod>2023-07-13T13:02:24Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/IPFS-in-Browser.jsnb</loc>
-    <lastmod>2023-06-30T13:17:20Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Matrix-Operations-Linear-Algebra.jsnb</loc>
-    <lastmod>2023-06-14T14:32:33Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Monte-Carlo-Simulation-of-Goals.jsnb</loc>
-    <lastmod>2023-06-02T14:01:10Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Numerical-Analysis-Recipes.jsnb</loc>
-    <lastmod>2023-06-11T10:34:08Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Numerical-Analysis-Using-Functional-Paradigm.jsnb</loc>
-    <lastmod>2023-06-11T22:19:48Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Option-Pricing-MC.jsnb</loc>
-    <lastmod>2023-06-30T13:10:01Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Plotly-Example.jsnb</loc>
-    <lastmod>2023-06-30T13:34:45Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Regula-Falsi.jsnb</loc>
-    <lastmod>2023-06-11T20:25:44Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Runge-Kutta-for-Differential-Equations.jsnb</loc>
-    <lastmod>2023-06-02T14:10:14Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Simple-Simulation.jsnb</loc>
-    <lastmod>2023-05-12T10:36:57Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Singular-Value-Decomposition.jsnb</loc>
-    <lastmod>2023-06-14T14:35:04Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Timing-experiment.jsnb</loc>
-    <lastmod>2023-06-30T13:49:39Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/Underscore-JS.jsnb</loc>
-    <lastmod>2023-06-30T12:54:47Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/WebTorrent-Example.jsnb</loc>
-    <lastmod>2023-06-30T13:32:22Z</lastmod>
-  </url>
-  <url>
-    <loc>https://app.scribbler.live/#./examples/curr_cell_example.jsnb</loc>
-    <lastmod>2023-01-23T16:36:49Z</lastmod>
-  </url>
+  
 </urlset>
