@@ -29,7 +29,7 @@ do
   FILE_MODIFIED=$(stat -f %m "$FILE")
   
   echo '  <url>' >> "$SITEMAP_FILE"
-  echo "    <loc>$SITE_LOCATION/examples/?jsnb=./examples/$FILENAME_ESCAPED</loc>" >> "$SITEMAP_FILE"
+  echo "    <loc>$SITE_LOCATION/?jsnb=./examples/$FILENAME_ESCAPED</loc>" >> "$SITEMAP_FILE"
   echo "    <lastmod>$(date -r $FILE_MODIFIED +'%Y-%m-%dT%H:%M:%SZ')</lastmod>" >> "$SITEMAP_FILE"
   echo '  </url>' >> "$SITEMAP_FILE"
 done
