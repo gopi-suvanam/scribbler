@@ -22,26 +22,19 @@ run=function(_block_id){
 			get_dom("output"+_block_id).style.display="inline";
 			get_dom("input"+_block_id).style.display = "block";
 			const start_time_eval = Date.now();
-			(async () => {
-				
-				
-			
-				show=(...args)=>show_in_dom(`output${_block_id}`,...args);
+			show=(...args)=>show_in_dom(`output${_block_id}`,...args);
 								
-				opt=eval(code); // This is where the magic happens.
-				if(opt!=undefined) show(opt);
-					
-			
+			opt=eval(code); // This is where the magic happens.
+			if(opt!=undefined) show(opt);
 				
-			})()
-			.then(()=>{
-				const end_time_eval = Date.now();
-				var execution_time=end_time_eval - start_time_eval;
-			
-				status_data.block_run+=1;
-				execution_time=execution_time>1000?execution_time/1000.0+'s':execution_time+'ms';
-				get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>';
-			});
+
+			const end_time_eval = Date.now();
+			var execution_time=end_time_eval - start_time_eval;
+		
+			status_data.block_run+=1;
+			execution_time=execution_time>1000?execution_time/1000.0+'s':execution_time+'ms';
+			get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>';
+
 		}
 		else{
 			get_dom("status"+_block_id).innerHTML='';
