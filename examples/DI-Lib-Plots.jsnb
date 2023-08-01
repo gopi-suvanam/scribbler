@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1> Example of using sister project: DI-Libs</h1>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. Click play button to see the graphs getting plotted in each cell.",
+      "code": "<h1> Example of using sister project: DI-Libs</h1>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. \nClick play button to see the graphs getting plotted in each cell.\nThe library is very userfriendly and interacts well with Scribbler. To start with you can simply do: \n<pre>\n \nx.plot()\n//x is any Array\n  </pre>",
       "status": "",
-      "output": "<h1> Example of using sister project: DI-Libs</h1>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. Click play button to see the graphs getting plotted in each cell.",
+      "output": "<h1> Example of using sister project: DI-Libs</h1>\nDI-Libs extends the Array prototype to make plotting easy.  It also gives additional functionalities. This notebook illustrates the use of <a href=\"/di-libs\">DI-Libs </a>. \nClick play button to see the graphs getting plotted in each cell.\nThe library is very userfriendly and interacts well with Scribbler. To start with you can simply do: \n<pre> \nx.plot()\n//x is any Array\n  </pre>",
       "type": "html"
     },
     {
