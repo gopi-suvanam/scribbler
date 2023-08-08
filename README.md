@@ -17,11 +17,11 @@ Notebook for javascript experimentation (in the browser). Overview:
 6. [Additional Resources](#links)
 
 ## Getting Started
-1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.
+1. Clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.[DOWNLOAD LINK](https://github.com/gopi-suvanam/scribbler/archive/refs/heads/main.zip)
 2. If you want to host the app online, you can put the folder in web directory of the server and use the link to index.html.
-3. You can also try the git-hosted version (without downloading anything) here: [https://app.scribbler.live/#](https://gopi-suvanam.github.io/jsnb/#)
-4. A hello-world notebook: [https://app.scribbler.live/#/jsnb/examples/Hello-world.jsnb](https://app.scribbler.live/#./examples/Hello-world.jsnb)
-5. More examples will be added in the folder examples/ in the repository. Check the [README in that folder](/examples/README.md) for links.
+3. You can also try the git-hosted version (without downloading anything) here: [https://app.scribbler.live/#](https://app.scribbler.live/#)
+4. A hello-world notebook is avaliable here: [https://app.scribbler.live/#./examples/Hello-world.jsnb](https://app.scribbler.live/#./examples/Hello-world.jsnb)
+5. More examples are available in the folder examples/ of this repository. Check the [README in that folder](./examples/README.md) for links.
 
 ## Features
 - The notebook consists of cells. Each cell will have user inputted html/code and an output. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
