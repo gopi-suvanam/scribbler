@@ -28,22 +28,29 @@ load_script = function(url,async){
 
 	if(async==undefined) async=true;
 	if(async){
-		return new Promise(function(resolve, reject) {
-		    var xhr = new XMLHttpRequest();
-		    xhr.open('GET', url, true);
-		    xhr.onreadystatechange = function() {
-		      if (xhr.readyState === 4) {
-		        if (xhr.status === 200) {		          
-		          resolve(eval(xhr.responseText));
-		        } else {
-		          reject(new Error('Error fetching script. Status: ' + xhr.status));
-		        }
-		      }
-		    };
-		
-		    xhr.send();
-		  });
+		if(document.head){
+			return new Promise((resolve, reject) => {
+			      const script = document.createElement('script');
+			      script.src = url;
+			      script.async = true;
+			
+			      script.onload = () => {
+			        // The script was successfully loaded
+			        resolve();
+			      };
+			
+			      script.onerror = () => {
+			        // An error occurred while loading the script
+			        reject(new Error(`Failed to load script from ${url}. Check logs.`));
+			      };
+			
+			      document.head.appendChild(script);
+			    });
+		 }else{
+		 	throw("Asynchronous mode works only in the browser.")
+		 }
 	}else{
+		
 		  var xhr = new XMLHttpRequest();
 		  xhr.open('GET', url, false); // Set the third parameter to false for synchronous request
 		  xhr.send();
@@ -59,9 +66,9 @@ load_script = function(url,async){
 }
 
 reload_script = function(url,async){
-	if(async==undefined) async=true;
 	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
-	return load_scrupt(url,async);
+	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
+	return load_script(url,async);
 
 }
 
