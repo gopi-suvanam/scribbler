@@ -1,12 +1,12 @@
 ﻿body{
-	background-color: white;
-	color:dark-grey;
+	//background-color: white;
+	//color:dark-grey;
 	height: 100%;
 	    display: flex;
 	    flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td{
+h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
 }
 
@@ -21,6 +21,8 @@ article,textarea{
  padding:10px !important;
  overflow:auto; 
  font-size:14px;
+ color:var(--color);
+ background-color:var(--background-color); 
  
 }
 
@@ -50,7 +52,7 @@ nav ul{
 	margin-right:10px !important;
 }
 nav a{
-	color:grey
+	//color:grey
 }
 footer span{
 	font-size:12px;
@@ -62,18 +64,23 @@ ul[role=listbox]{
 	font-family: Arial, monospace !important; 
 	font-size: 14px !important; 
 	border: 1px solid #d0d7de;
-		border-radius: 6px;
+	border-radius: 6px;
 	margin:10px;
 	height: auto !important;
 	min-height:50px !important;
 	max-height:300px !important;
 	padding:0px !important;
+
 }
 
 .CodeMirror-scroll{
 	max-height:300px;
 }
 
+.CodeMirror-cursor {
+  border-left: 1px solid white;
+  border-right: 1px solid black;
+}
 
 .cm-editor { height: 100% }
 .cm-scroller { overflow: auto }
@@ -111,7 +118,7 @@ ul[role=listbox]{
 	top:5px;
 	right:0px;
 	margin-right:15px;
-	color:darkgray ;
+	//color:darkgray ;
 	
 }
 
@@ -129,7 +136,7 @@ ul[role=listbox]{
 
 #nb_name{
 	margin-left:5px ;	margin-right:5px ;
-	color:darkgrey;
+	//color:darkgrey;
 }
 
 #logo{
@@ -160,7 +167,7 @@ input{
     }
     .cell-menu a{
 
-	color:unset;
+	//color:unset;
 	margin:10px;
 	font-size:16px;
 	
@@ -211,7 +218,7 @@ nav [role=button]{
 }
 
 h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
---typography-spacing-vertical:0px !important;
+	--typography-spacing-vertical:0px !important;
 }
 
 

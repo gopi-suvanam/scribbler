@@ -99,6 +99,14 @@ goto_input_cell=function(i){
 
 insert_cell=async function(type,after){
 	var i=status_data.num_blocks;
+	const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	
+	// Apply the appropriate CodeMirror theme
+	var code_theme = 'default';
+	if (userPreferredTheme === 'dark') {
+	   code_theme='cobalt'; // Apply a dark theme (adjust theme name)
+	} 
+	
 	console.log(type,after,i);
 	var block_html=get_dom("code_block_template").innerHTML;
 	block_html=block_html.replaceAll('_block_id',i);
@@ -124,25 +132,27 @@ insert_cell=async function(type,after){
 		{input_div.appendChild(node);
 		}, {
 		  value: "",
-		   tabSize: 4,
-			     mode: 'javascript',
-			     theme: 'default',
-			     lineNumbers: true,
-			     //styleActiveSelected: true,
-			     //styleActiveLine: true,
-			     indentWithTabs: true,
-			     matchBrackets: true,
-			     highlightMatches: true,
-			     extraKeys: {
-			          'Ctrl-Enter': (cm) => { run(i)},
-			          'Cmd-Enter': (cm) => {run(i)},
-			          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
-			          'Alt-Enter': (cm) => {insert_cell('code',i);},
-			           //'Alt-R':(cm)=>{run_all()},	
-			           'Alt-D':(cm)=>{delete_cell(i)},	
-			           'Alt-Up':(cm)=>{move_up(i)},	
-			           'Alt-Down':(cm)=>{move_down(i)},		     
-			          }
+		   	tabSize: 4,
+		     mode: 'javascript',
+		     theme: 'default',
+		     lineNumbers: true,
+		     lineWrapping:true,
+		     //styleActiveSelected: true,
+		     //styleActiveLine: true,
+		     indentWithTabs: true,
+		     matchBrackets: true,
+		     highlightMatches: true,
+		     theme:code_theme,
+		     extraKeys: {
+		          'Ctrl-Enter': (cm) => { run(i)},
+		          'Cmd-Enter': (cm) => {run(i)},
+		          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
+		          'Alt-Enter': (cm) => {insert_cell('code',i);},
+		           //'Alt-R':(cm)=>{run_all()},	
+		           'Alt-D':(cm)=>{delete_cell(i)},	
+		           'Alt-Up':(cm)=>{move_up(i)},	
+		           'Alt-Down':(cm)=>{move_down(i)},		     
+		          }
 		});
 		
 		
