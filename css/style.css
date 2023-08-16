@@ -265,23 +265,26 @@ pre{
 
 /* Yellow Dark scheme (Auto) */
 /* Automatically enabled if user has Dark mode enabled */
+/* Keeping it same as light mode for now.. will change later */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --primary: #fede00;
-    --primary-hover: #ffeb3b;
-    --primary-focus: rgba(254, 222, 0,0.25);
-    --primary-inverse: rgba(0, 0, 0, 0.75);
+  --primary: #fede00;
+  --primary-hover: #fbc02d;
+  --primary-focus: rgba(254, 222, 0,0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
   }
 }
 
 /* Yellow Dark scheme (Forced) */
 /* Enabled if forced with data-theme="dark" */
-[data-theme="dark"] {
+/* Keeping it same as light mode for now.. will change later */
+
+/*[data-theme="dark"] {
   --primary: #fdd835;
   --primary-hover: #ffeb3b;
   --primary-focus: rgba(254, 222, 0,1);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-}
+}*/
 
 /* Yellow (Common styles) */
 :root {
