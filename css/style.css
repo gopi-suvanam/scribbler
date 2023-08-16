@@ -263,6 +263,16 @@ pre{
   
 }
 
+
+[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  --primary: #fede00;
+  --primary-hover: #fbc02d;
+  --primary-focus: rgba(254, 222, 0,0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+  
+}
+
 /* Yellow Dark scheme (Auto) */
 /* Automatically enabled if user has Dark mode enabled */
 /* Keeping it same as light mode for now.. will change later */
