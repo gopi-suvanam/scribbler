@@ -134,9 +134,13 @@ function insert_after(el0, el1) {
 
   
   download_string=function(str, exportName,char_set){
-    var dataStr = char_set+","+ encodeURIComponent(str);
-    var downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href",     dataStr);
+    
+	const blob = new Blob([str], { type: "text/plain" });
+	
+	const downloadAnchorNode = document.createElement("a");
+	downloadAnchorNode.href = URL.createObjectURL(blob);
+
+
     downloadAnchorNode.setAttribute("download", exportName );
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
