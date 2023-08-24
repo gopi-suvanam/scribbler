@@ -7,6 +7,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 - It is light-weight as it uses minimal external libraries for styling : Codemirror for formatting the code area and Pico CSS for styling.
 - Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. More libaries/modules can be easily loaded using load_script or import_module functions.
 
+![Scribbler Screenshot](images/Scribbler-SS.png)
+
 ## Table of contents
 <!-- toc -->
 1. [Getting Started](#getting-started)
