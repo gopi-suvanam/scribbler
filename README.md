@@ -1,4 +1,4 @@
-![Banner](banner.png)
+![Banner](images/banner.png)
 # Scribbler: JavaScript Notebook. [Try here](https://app.scribbler.live/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
 
 Notebook for javascript experimentation (in the browser). Overview:
