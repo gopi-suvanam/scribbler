@@ -10,6 +10,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 
 ![Scribbler Screenshot](images/Scribbler-SS.png)
 
+For discussions and asking questions join our community of [GitHub Discussions](https://github.com/gopi-suvanam/scribbler/discussions/).
+
 ## Table of contents
 <!-- toc -->
 1. [Getting Started](#getting-started)
