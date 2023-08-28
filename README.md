@@ -2,13 +2,9 @@
 # Scribbler: JavaScript Notebook. [Try here](https://app.scribbler.live/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
 
 Notebook for javascript experimentation (in the browser). Overview:
-- Easy to use javascript experimentation tool.
-- Runs without backend (node.js/npm/pip install/ngnix etc etc). 
-- Can be loaded from the web (i.e. behind a webserver serving static pages) or from the file system (certain features like WebRTC might require a server)
-- UI is similar/close to Jupyter Notebook (for the sake of familiarity for python developers).
-- Has a minimalistic UI to put focus on user generated code/content.
-- It is light-weight as it uses minimal external libraries for styling.
-- Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. More libaries/modules can be easily loaded using load_script or import_module functions.
+- Easy to use javascript experimentation tool. Runs without backend (node.js/npm/pip install/ngnix etc etc).  Can be used online or offline.
+- Has a minimalistic UI to put focus on user generated code/content. It is light-weight as it uses minimal external libraries for styling.
+- Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. Thirdparty libaries/modules can be easily loaded.
 
 ![Scribbler Screenshot](images/Scribbler-SS.png)
 
