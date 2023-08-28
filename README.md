@@ -22,7 +22,7 @@ For discussions and asking questions join our community of [GitHub Discussions](
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
 5. [Vs. xyz](#how-is-scribbler-different)
-6. [Acknowledgements](#acknowledgments)
+6. [Acknowledgements](#acknowledgements)
 7. [Additional Resources](#links)
 
 ## Getting Started
