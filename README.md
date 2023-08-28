@@ -3,11 +3,11 @@
 
 Notebook for javascript experimentation (in the browser). Overview:
 - Easy to use javascript experimentation tool.
-- Runs without backend (node.js/npm/pip install/ngnix etc etc). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a backend runtime.
+- Runs without backend (node.js/npm/pip install/ngnix etc etc). 
 - Can be loaded from the web (i.e. behind a webserver serving static pages) or from the file system (certain features like WebRTC might require a server)
 - UI is similar/close to Jupyter Notebook (for the sake of familiarity for python developers).
 - Has a minimalistic UI to put focus on user generated code/content.
-- It is light-weight as it uses minimal external libraries for styling : Codemirror for formatting the code area and Pico CSS for styling.
+- It is light-weight as it uses minimal external libraries for styling.
 - Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. More libaries/modules can be easily loaded using load_script or import_module functions.
 
 ![Scribbler Screenshot](images/Scribbler-SS.png)
@@ -22,12 +22,12 @@ For discussions and asking questions join our community of [GitHub Discussions](
 3. [Use cases](#use-cases)
 4. [Collaboration](#collaboration)
 5. [Vs. xyz](#how-is-scribbler-different)
-6. [Additional Resources](#links)
+6. [Acknowledgements](#acknowledgments)
+7. [Additional Resources](#links)
 
 ## Getting Started
-1. You can start using the hosted version (without downloading anything) here: [https://app.scribbler.live/#](https://app.scribbler.live/#)
-2. A hello-world notebook is avaliable here: [Hello World in Scribbler](https://app.scribbler.live/#./examples/Hello-world.jsnb)
-3. For offline/local usage - clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.[DOWNLOAD LINK](https://github.com/gopi-suvanam/scribbler/archive/refs/heads/main.zip)
+1. You can start using the hosted version (without downloading anything) here: [https://app.scribbler.live/#](https://app.scribbler.live/#). A hello-world notebook is avaliable here: [Hello World in Scribbler](https://app.scribbler.live/#./examples/Hello-world.jsnb)
+3. For offline/local usage - clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install.[DOWNLOAD LINK](https://github.com/gopi-suvanam/scribbler/archive/refs/heads/main.zip). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a backend runtime.
 4. For self-hosted use, you can put the folder in web directory of the server and use the link to index.html.
 5. Several examples are available in the folder examples/ of this repository. Check the [README in that folder](./examples/README.md) for links. They can be used as boilerplates for further experimentation.
 
@@ -67,6 +67,11 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - Scribbler can have multiple cells so it can create long documents.
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
 - Scribbler can also be used for scientific computation using several open source javascript libraries.
+
+## Acknowledgement
+- Uses [Codemirror](https://github.com/codemirror) for formatting the code area
+- Uses [Pico CSS](https://github.com/picocss/pico) for styling.
+- Comes loaded with [D3](https://github.com/d3/d3) and [Plotly](https://github.com/plotly/plotly.js) for charting.
 
 ## Links
 Additional documentation for Scribbler:
