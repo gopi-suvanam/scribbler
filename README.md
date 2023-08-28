@@ -6,7 +6,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 - Has a minimalistic UI to put focus on user generated code/content. It is light-weight as it uses minimal external libraries for styling.
 - Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. Thirdparty libaries/modules can be easily loaded.
 
-![Scribbler Screenshot](images/Scribbler-SS.png)
+![Scribbler Screenshot](images/Scribbler-SS.png  =1250x)
 
 For discussions and asking questions join our community of [GitHub Discussions](https://github.com/gopi-suvanam/scribbler/discussions/).
 
