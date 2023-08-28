@@ -61,7 +61,7 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 ## How is Scribbler different
 - Scribbler is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.
 - Scribbler can have multiple cells so it can create long documents.
-- Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
+- Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of Scribbler. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
 - Scribbler can also be used for scientific computation using several open source javascript libraries.
 
 ## Acknowledgements
