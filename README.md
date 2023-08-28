@@ -68,7 +68,7 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of JSNB. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
 - Scribbler can also be used for scientific computation using several open source javascript libraries.
 
-## Acknowledgement
+## Acknowledgements
 - Uses [Codemirror](https://github.com/codemirror) for formatting the code area
 - Uses [Pico CSS](https://github.com/picocss/pico) for styling.
 - Comes loaded with [D3](https://github.com/d3/d3) and [Plotly](https://github.com/plotly/plotly.js) for charting.
