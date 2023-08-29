@@ -16,26 +16,26 @@
     },
     {
       "code": "const ld=load_script(\"https://cdn.jsdelivr.net/gh/silvia-odwyer/pixels.js/dist/Pixels.js\");\nif(ld) show(\"Load an image and get an interesting filtered image\");\nelse show(\"error in loading the library\");\nfilters = [\"twenties\", \"ocean\", \"perfume\", \"warmth\", \"solange\", \"extreme_offset_red\"\n,\"ocean\", \"offset\", \"twenties\", \"warmth\", \"solange\", \"extreme_offset_red\",\n  \"ocean\", \"perfume\", \"wood\", \"crimson\",  \"offset\", \"warmth\",  \"extreme_offset_red\"]\n  \"\"",
-      "status": "[4]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "status": "[1]<br><span style=\"font-size:8px\">2ms<span></span></span>",
       "output": "Load an image and get an interesting filtered image <br> <br>",
       "type": "code"
     },
     {
       "code": "\n\nshow('<input type=\"file\" id=\"file\"></input>');\n\nget_dom('file').addEventListener(\"change\",event => { \n  \tconst fr = new FileReader(); \n    fr.onload=async function(event)\n\t\t{ \n\t  \t\t\t\t dataURI=event.target.result; \n\t\t\t\tconsole.log(dataURI);\n\t \t\t\t var img = get_dom(\"image-div\");\n\t\t\t\t\timg.innerHTML='';\n\t  \t\t\tlet new_img = document.createElement('img');\n\t  new_img.style.maxWidth=\"100%\";\n               \t\tnew_img.src =  dataURI;\n\t\t\t\t  new_img.id=\"image\";\n\n\t         img.appendChild(new_img);\n\t  \t\t\t\tlet filter=random.oned.choice(1,filters)[0];\n\t  \t\t\t\t\n\t\t\t\t  pixelsJS.filterImg(new_img, filter); \n\n\t\t\t}\n\tfr.readAsDataURL( get_dom('file').files[0]); \n}); \n\n\n",
-      "status": "[2]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "<input type=\"file\" id=\"file\"> <br>",
       "type": "code"
     },
     {
       "code": "<div id=\"image-div\" style=\"width:100%\">\n</div>\n",
       "status": "",
-      "output": "<div id=\"image-div\" style=\"width:100%\">\n</div>\n",
+      "output": "<div id=\"image-div\" style=\"width:100%\"><canvas height=\"340\" width=\"605\"></canvas></div>\n",
       "type": "html"
     },
     {
-      "code": " reapply=function(){\nvar img = get_dom(\"image-div\");\n\t\t\t\t\timg.innerHTML='';\n\t  \t\t\tlet new_img = document.createElement('img');\n\t  new_img.style.maxWidth=\"100%\";\n               \t\tnew_img.src =  dataURI;\n\t\t\t\t  new_img.id=\"image\";\n\n\t         img.appendChild(new_img);\n\t  \t\t\t\tlet filter=random.oned.choice(1,filters)[0];\n\t  \t\t\t\t\n\t\t\t\t  pixelsJS.filterImg(new_img, filter); \n};\n\"\";\nshow('<button onclick=\"reapply()\">Repply filter</button>');\n",
-      "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
-      "output": "<button onclick=\"reapply()\">Repply filter</button> <br>",
+      "code": " reapply=function(){\nvar img = get_dom(\"image-div\");\n\t\t\t\t\timg.innerHTML='';\n\t  \t\t\tlet new_img = document.createElement('img');\n\t  new_img.style.maxWidth=\"100%\";\n               \t\tnew_img.src =  dataURI;\n\t\t\t\t  new_img.id=\"image\";\n\n\t         img.appendChild(new_img);\n\t  \t\t\t\tlet filter=random.oned.choice(1,filters)[0];\n\t  \t\t\t\t\n\t\t\t\t  pixelsJS.filterImg(new_img, filter); \n   \t\t\t\t\tif(img.firstChild.width>img.clientWidth) img.firstChild.width=img.clientWidth;\n};\n\n\n download = function(){\n  \n  var link = document.createElement('a');\n  link.download = 'filtered-image.png';\n  link.href =get_dom('image-div').firstChild.toDataURL();\n  link.click();\n}\nshow('<button onclick=\"reapply()\">Random filter</button>');\nshow('<button onclick=\"download()\">Download</button>');\n\n",
+      "status": "[7]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "<button onclick=\"reapply()\">Repply filter</button> <br><button onclick=\"download()\">Download</button> <br>",
       "type": "code"
     }
   ],
