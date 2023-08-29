@@ -15,9 +15,9 @@
       "type": "html"
     },
     {
-      "code": "const ld=load_script(\"https://cdn.jsdelivr.net/gh/silvia-odwyer/pixels.js/dist/Pixels.js\");\nif(ld) show(\"Loaded the library\");\nelse show(\"error in loading the library\");\nfilters = [\"twenties\", \"ocean\", \"perfume\", \"warmth\", \"solange\", \"extreme_offset_red\"\n,\"ocean\", \"offset\", \"twenties\", \"warmth\", \"solange\", \"extreme_offset_red\",\n  \"ocean\", \"perfume\", \"wood\", \"crimson\",  \"offset\", \"warmth\",  \"extreme_offset_red\"]\n  \"\"",
-      "status": "[1]<br><span style=\"font-size:8px\">4ms<span></span></span>",
-      "output": "Loaded the library <br> <br>",
+      "code": "const ld=load_script(\"https://cdn.jsdelivr.net/gh/silvia-odwyer/pixels.js/dist/Pixels.js\");\nif(ld) show(\"Load an image and get an interesting filtered image\");\nelse show(\"error in loading the library\");\nfilters = [\"twenties\", \"ocean\", \"perfume\", \"warmth\", \"solange\", \"extreme_offset_red\"\n,\"ocean\", \"offset\", \"twenties\", \"warmth\", \"solange\", \"extreme_offset_red\",\n  \"ocean\", \"perfume\", \"wood\", \"crimson\",  \"offset\", \"warmth\",  \"extreme_offset_red\"]\n  \"\"",
+      "status": "[4]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Load an image and get an interesting filtered image <br> <br>",
       "type": "code"
     },
     {
