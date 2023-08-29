@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1>Photo booth: Apply Random Filters to Your Photos</h1>",
+      "code": "<div style=\"background-color:#4a1d4a;margin:-20px;padding:20px;heing:40px;overflow:none\"><h1 style=\"color:yellow\">Photo booth: Apply Random Filters to Your Photos</h1></div>",
       "status": "",
-      "output": "<h1>Photo booth: Apply Random Filters to Your Photos</h1>",
+      "output": "<div style=\"background-color:#4a1d4a;margin:-20px;padding:20px;heing:40px;overflow:none\"><h1 style=\"color:yellow\">Photo booth: Apply Random Filters to Your Photos</h1></div>",
       "type": "html"
     },
     {
