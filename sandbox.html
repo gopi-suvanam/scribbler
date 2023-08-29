@@ -29,7 +29,7 @@
 		<base target="_parent">	
 		
 	</head>
-  <body style="height:100%" data-theme="light" >
+  <body style="height:100%" >
   	<span id="top"></span>	
 	<!-- Template code block. This html will be copied and udpated for each cell -->
 	<div id="code_block_template" style="display:none">
@@ -48,9 +48,9 @@
 			
 		</div>
 		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'></div>
-		<article style="display:flex" id="result_block_id" ondblclick="toggle_editor(_block_id)">
+		<article style="display:flex"  id="result_block_id">
 			<p class="status" id="status_block_id"></p> 
-			<div class="output" id="output_block_id"></div>
+			<div class="output" id="output_block_id"  ondblclick="toggle_editor(_block_id)"></div>
 		</article>
 	</div>
 	<div class="container">

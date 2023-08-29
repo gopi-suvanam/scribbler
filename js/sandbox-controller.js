@@ -256,6 +256,8 @@ load_jsnb=async function(content){
 			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
+	  		document.querySelectorAll(".output").forEach(a=>a.ondblclick = "");
+	  		get_dom("nb_name").style.display = "none";
 		}
 		document.activeElement.blur(); 
 		document.body.scrollTop = 0;
