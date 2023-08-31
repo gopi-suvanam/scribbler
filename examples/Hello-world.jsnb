@@ -9,15 +9,15 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1>Welcome to Scribbler </h1>\n<h3>A Javascript Notebook Tool</h3>\nScribbler is an interactive environment for experimenting in javascript using a simple interface (without servers and backend deployment). Scribbler can be used for:\n<ul style=\"font-size:14px\">\n<li>Scientific Computation</li>\n<li>Data Science/Machine Learning</li>\n<li>Dashboard Development</li>\n<li>Experimenting With new Code/Libraries</li>\n  </ul>\nPlease feel free to send in pull requests/issues on Github. Next few cells give you the \"hello world\" notebook. \n\n\n\n   ",
+      "code": "<img style=\"width:100%\" src='images/banner.png'></img>",
       "status": "",
-      "output": "<h1>Welcome to Scribbler </h1>\n<h3>A Javascript Notebook Tool</h3>\nScribbler is an interactive environment for experimenting in javascript using a simple interface (without servers and backend deployment). Scribbler can be used for:\n<ul style=\"font-size:14px\">\n<li>Scientific Computation</li>\n<li>Data Science/Machine Learning</li>\n<li>Dashboard Development</li>\n<li>Experimenting With new Code/Libraries</li>\n  </ul>\nPlease feel free to send in pull requests/issues on Github. Next few cells give you the \"hello world\" notebook. \n\n\n\n   ",
+      "output": "<img style=\"width:100%\" src=\"images/banner.png\">",
       "type": "html"
     },
     {
-      "code": "<h4>To start with, you could simply do: </h4> ",
+      "code": "<h1>Welcome to Scribbler </h1>\n<h3>A Javascript Notebook Tool</h3>\nScribbler is an interactive environment for experimenting in javascript using a simple interface (without servers and backend deployment). Scribbler can be used for:\n<ul style=\"font-size:14px\">\n<li>Scientific Computation</li>\n<li>Data Science/Machine Learning</li>\n<li>Dashboard Development</li>\n<li>Experimenting With new Code/Libraries</li>\n  </ul>\nPlease feel free to send in pull requests/issues on Github. Next few cells give you the \"hello world\" notebook. \n\n\n\n   ",
       "status": "",
-      "output": "<h4>To start with, you could simply do: </h4> ",
+      "output": "<h1>Welcome to Scribbler </h1>\n<h3>A Javascript Notebook Tool</h3>\nScribbler is an interactive environment for experimenting in javascript using a simple interface (without servers and backend deployment). Scribbler can be used for:\n<ul style=\"font-size:14px\">\n<li>Scientific Computation</li>\n<li>Data Science/Machine Learning</li>\n<li>Dashboard Development</li>\n<li>Experimenting With new Code/Libraries</li>\n  </ul>\nPlease feel free to send in pull requests/issues on Github. Next few cells give you the \"hello world\" notebook. \n\n\n\n   ",
       "type": "html"
     },
     {
@@ -25,6 +25,12 @@
       "status": "[1]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "Hello World <br>",
       "type": "code"
+    },
+    {
+      "code": "<h4>To start with, you could simply do: </h4> ",
+      "status": "",
+      "output": "<h4>To start with, you could simply do: </h4> ",
+      "type": "html"
     },
     {
       "code": "<h4>Or to show off you could write a function to do that.</h4>",
