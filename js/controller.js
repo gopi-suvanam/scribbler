@@ -112,7 +112,24 @@ message_handler=async function(action,data,call_bk){
  	}
  	if(action=="download_nb"){
 		data['run_on_load'] = get_dom("run_on_load").checked;
- 		download_string(JSON.stringify(data,undefined,2),data.metadata.name+'.jsnb',"data:text/json;charset=utf-8");	
+		let url='';
+		let file_name='';
+		try{ 
+		
+ 			const urlParams = new URLSearchParams(window.location.search);
+			const jsnb_path = urlParams.get('jsnb');
+			if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
+ 			else url=window.location.href.split("#")[1];
+ 		} catch(e){
+ 			url=''
+ 		}
+ 		if(url!=undefined && url.length>1){
+	  		 file_name = url.split('/').slice(-1)[0]
+	  	}else{
+	  		 file_name=data.metadata.name.replaceAll(' ','_')+'.jsnb'
+	  	}
+	  	
+ 		download_string(JSON.stringify(data,undefined,2),file_name,"data:text/json;charset=utf-8");	
  	}
  	if(action=="download_html"){
  		download_string(data['html'],data['name']+'.html',"data:text/html;charset=utf-8");	

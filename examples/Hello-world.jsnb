@@ -21,16 +21,16 @@
       "type": "html"
     },
     {
-      "code": "show(\"Hello World\") //Edit the text and press the play button to see the change in the next cell",
-      "status": "[1]<br><span style=\"font-size:8px\">1ms<span></span></span>",
-      "output": "Hello World <br>",
-      "type": "code"
-    },
-    {
       "code": "<h4>To start with, you could simply do: </h4> ",
       "status": "",
       "output": "<h4>To start with, you could simply do: </h4> ",
       "type": "html"
+    },
+    {
+      "code": "show(\"Hello World\") //Edit the text and press the play button to see the change in the next cell",
+      "status": "[1]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Hello World <br>",
+      "type": "code"
     },
     {
       "code": "<h4>Or to show off you could write a function to do that.</h4>",
