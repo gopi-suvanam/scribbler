@@ -23,6 +23,7 @@ article,textarea{
  font-size:14px;
  color:var(--color);
  background-color:var(--background-color); 
+ border:thin solid white;
  
 }
 
