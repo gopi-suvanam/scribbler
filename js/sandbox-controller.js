@@ -102,7 +102,7 @@ insert_cell=async function(type,after){
 	const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 	
 	// Apply the appropriate CodeMirror theme
-	var code_theme = 'default';
+	var code_theme = 'duotone-light';
 	if (userPreferredTheme === 'dark') {
 	   code_theme='cobalt'; // Apply a dark theme (adjust theme name)
 	} 
@@ -134,7 +134,6 @@ insert_cell=async function(type,after){
 		  value: "",
 		   	tabSize: 4,
 		     mode: 'javascript',
-		     theme: 'default',
 		     lineNumbers: true,
 		     lineWrapping:true,
 		     //styleActiveSelected: true,
