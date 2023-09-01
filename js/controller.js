@@ -102,8 +102,9 @@ message_handlers={
 			const jsnb_path = urlParams.get('jsnb');
 			if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
  			else url=window.location.href.split("#")[1];
- 		} catch(e){url=''}
-	  	if(url!=undefined && url.length>1){
+ 		} catch(e){url="./examples/Hello-world.jsnb"}
+ 		if(url==undefined) url="./examples/Hello-world.jsnb";
+	  	if( url.length>1){
 	  		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
 	  		else read_file(url,load_jsnb,err=>{alert(err.message)});
 	  	}else{
