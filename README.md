@@ -1,5 +1,5 @@
 ![Banner](images/banner.png)
-#### [Hello World](https://app.scribbler.live) • [Website](https://scribbler.live) • [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Discussions]([https://scribbler.live/tutorials](https://github.com/gopi-suvanam/scribbler/discussions/)) 
+#### [Hello World](https://app.scribbler.live) • [Website](https://scribbler.live) • [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Discussions](https://github.com/gopi-suvanam/scribbler/discussions/)
 
 
 # Scribbler: JavaScript Notebook. [Use here (No login required)](https://app.scribbler.live/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
