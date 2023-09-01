@@ -1,5 +1,5 @@
 ![Banner](images/banner.png)
-#### [Use Without Login](https://app.scribbler.live) • [Website](https://scribbler.live) • [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) 
+#### [Hello World](https://app.scribbler.live) • [Website](https://scribbler.live) • [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Discussions]([https://scribbler.live/tutorials](https://github.com/gopi-suvanam/scribbler/discussions/)) 
 
 
 # Scribbler: JavaScript Notebook. [Use here (No login required)](https://app.scribbler.live/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
@@ -10,9 +10,6 @@ Notebook for javascript experimentation (in the browser). Overview:
 - [x] Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. Thirdparty libaries/modules can be easily loaded.
 
 ![Scribbler Screenshot](images/Scribbler-SS.png)
-
-For discussions and asking questions join our community of [GitHub Discussions](https://github.com/gopi-suvanam/scribbler/discussions/).
-
 
 ## Table of contents
 <!-- toc -->
