@@ -7,6 +7,7 @@ run=function(_block_id){
 	curr_cell=function(){
 		return get_dom("output"+_block_id);
 	}
+	get_dom("run-button"+_block_id).setAttribute("data-tooltip","Running the cell");
 	get_dom("status"+_block_id).innerHTML='[*]'
 	get_dom("output"+_block_id).innerHTML=''
 	
@@ -54,6 +55,13 @@ run=function(_block_id){
 		get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err.message+"</p>";
 		get_dom("status"+_block_id).innerHTML='[-]'
 	}
+	
+	get_dom("run-button"+_block_id).setAttribute("data-tooltip","Finished running the cell");
+	setTimeout(()=>{
+		get_dom("run-button"+_block_id).removeAttribute("data-tooltip");
+		get_dom("run-button"+_block_id).setAttribute("data-tooltip","Run the cell");
+		}
+	, 5000);
 }
 
 run_all=function(){
