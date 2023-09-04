@@ -59,7 +59,7 @@ run=function(_block_id){
 	get_dom("run-button"+_block_id).setAttribute("data-tooltip","Finished running the cell");
 	setTimeout(()=>{
 		get_dom("run-button"+_block_id).removeAttribute("data-tooltip");
-		get_dom("run-button"+_block_id).setAttribute("data-tooltip","Run the cell");
+		get_dom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
 		}
 	, 5000);
 }
