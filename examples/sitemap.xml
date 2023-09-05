@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/AMM-Simulation.jsnb</loc>
-    <lastmod>2023-07-16T19:49:44Z</lastmod>
+    <lastmod>2023-09-01T09:47:11Z</lastmod>
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/Alternating-Sequence.jsnb</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/DI-Lib-Plots.jsnb</loc>
-    <lastmod>2023-07-16T19:49:44Z</lastmod>
+    <lastmod>2023-07-31T17:38:54Z</lastmod>
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/Decentralized-ML-Model-Storage.jsnb</loc>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/Hello-world.jsnb</loc>
-    <lastmod>2023-07-16T19:49:44Z</lastmod>
+    <lastmod>2023-09-04T10:48:20Z</lastmod>
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/IPFS-in-Browser.jsnb</loc>
@@ -87,6 +87,10 @@
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/Option-Pricing-MC.jsnb</loc>
     <lastmod>2023-07-16T19:49:44Z</lastmod>
+  </url>
+  <url>
+    <loc>https://app.scribbler.live/?jsnb=./examples/Photo-Booth.jsnb</loc>
+    <lastmod>2023-08-30T13:29:30Z</lastmod>
   </url>
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/Plotly-Example.jsnb</loc>
@@ -127,5 +131,9 @@
   <url>
     <loc>https://app.scribbler.live/?jsnb=./examples/curr_cell_example.jsnb</loc>
     <lastmod>2023-07-16T19:49:44Z</lastmod>
+  </url>
+  <url>
+    <loc>https://app.scribbler.live/?jsnb=./examples/spectral-analysis.jsnb</loc>
+    <lastmod>2023-08-21T11:25:28Z</lastmod>
   </url>
 </urlset>
