@@ -15,20 +15,16 @@ jobs:
 
       - name: Build and deploy
         run: |
-          # Your build commands here
-          # For example, if using Jekyll:
-          # bundle install
-          # bundle exec jekyll build
 
           # Add your Google Analytics tracking code to your HTML files
-          echo '<!-- Google Analytics Tracking Code -->' >> ./_site/index.html
-          echo '<script async src="https://www.googletagmanager.com/gtag/js?id=G-45Z12S039Z"></script>' >> ./_site/index.html
-          echo '<script>' >> ./_site/index.html
-          echo '  window.dataLayer = window.dataLayer || [];' >> ./_site/index.html
-          echo '  function gtag(){dataLayer.push(arguments);}' >> ./_site/index.html
-          echo '  gtag("js", new Date());' >> ./_site/index.html
-          echo '  gtag("config", "G-45Z12S039Z");' >> ./_site/index.html
-          echo '</script>' >> ./_site/index.html
+          echo '<!-- Google Analytics Tracking Code -->' >> ./index.html
+          echo '<script async src="https://www.googletagmanager.com/gtag/js?id=G-45Z12S039Z"></script>' >> ./index.html
+          echo '<script>' >> ./index.html
+          echo '  window.dataLayer = window.dataLayer || [];' >> ./index.html
+          echo '  function gtag(){dataLayer.push(arguments);}' >> ./index.html
+          echo '  gtag("js", new Date());' >> ./index.html
+          echo '  gtag("config", "G-45Z12S039Z");' >> ./index.html
+          echo '</script>' >> ./index.html
 
           # Deploy to GitHub Pages
           git config --global user.name "${{ secrets.GITHUB_ACTOR }}"
