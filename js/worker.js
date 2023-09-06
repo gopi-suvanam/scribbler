@@ -11,57 +11,62 @@ run=function(_block_id){
 	get_dom("status"+_block_id).innerHTML='[*]'
 	get_dom("output"+_block_id).innerHTML=''
 	
-	code=editors[_block_id].getValue()
-	try{
-		if(get_dom("cell_type"+_block_id).checked){
-		
-			get_dom("result"+_block_id).style.display = "flex";
-			
-			
-			get_dom("status"+_block_id).style.display="inline";
-			
-			get_dom("output"+_block_id).style.display="inline";
-			get_dom("input"+_block_id).style.display = "block";
-			const start_time_eval = Date.now();
-			show=(...args)=>show_in_dom(`output${_block_id}`,...args);
-								
-			opt=eval(code); // This is where the magic happens.
-			if(opt!=undefined) show(opt);
-				
-
-			const end_time_eval = Date.now();
-			var execution_time=end_time_eval - start_time_eval;
-		
-			status_data.block_run+=1;
-			execution_time=execution_time>1000?execution_time/1000.0+'s':execution_time+'ms';
-			get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>';
-
-		}
-		else{
-			get_dom("status"+_block_id).innerHTML='';
-			
-			get_dom("output"+_block_id).innerHTML=code;
-			get_dom("status"+_block_id).style.display="none";
-			get_dom("input"+_block_id).style.display = "none";
-			get_dom("cell_menu"+_block_id).style.display = "none";
-			get_dom("result"+_block_id).style.display = "flex";
-		}
-	}catch(err){
-		console.log(err.stack)
-		get_dom("result"+_block_id).style.display = "flex";
-		if(typeof(err)=='string') 
-		get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err+"</p>";
-		else
-		get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err.message+"</p>";
-		get_dom("status"+_block_id).innerHTML='[-]'
-	}
+	get_dom("run-button"+_block_id).innerHTML="&#8856;";
 	
-	get_dom("run-button"+_block_id).setAttribute("data-tooltip","Finished running the cell");
+	const code=editors[_block_id].getValue()
+	
 	setTimeout(()=>{
-		get_dom("run-button"+_block_id).removeAttribute("data-tooltip");
-		get_dom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
+		try{
+			if(get_dom("cell_type"+_block_id).checked){
+			
+				get_dom("result"+_block_id).style.display = "flex";
+				
+				
+				get_dom("status"+_block_id).style.display="inline";
+				
+				get_dom("output"+_block_id).style.display="inline";
+				get_dom("input"+_block_id).style.display = "block";
+				const start_time_eval = Date.now();
+				show=(...args)=>show_in_dom(`output${_block_id}`,...args);
+									
+				opt=eval(code); // This is where the magic happens.
+				if(opt!=undefined) show(opt);
+					
+	
+				const end_time_eval = Date.now();
+				var execution_time=end_time_eval - start_time_eval;
+			
+				status_data.block_run+=1;
+				execution_time=execution_time>1000?execution_time/1000.0+'s':execution_time+'ms';
+				get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>';
+	
+			}
+			else{
+				get_dom("status"+_block_id).innerHTML='';
+				
+				get_dom("output"+_block_id).innerHTML=code;
+				get_dom("status"+_block_id).style.display="none";
+				get_dom("input"+_block_id).style.display = "none";
+				get_dom("cell_menu"+_block_id).style.display = "none";
+				get_dom("result"+_block_id).style.display = "flex";
+			}
+		}catch(err){
+			console.log(err.stack)
+			get_dom("result"+_block_id).style.display = "flex";
+			if(typeof(err)=='string') 
+			get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err+"</p>";
+			else
+			get_dom("output"+_block_id).innerHTML=get_dom("output"+_block_id).innerHTML+"<p class='error'>"+err.message+"</p>";
+			get_dom("status"+_block_id).innerHTML='[-]'
 		}
-	, 5000);
+		
+		get_dom("run-button"+_block_id).setAttribute("data-tooltip","Finished running the cell");
+		get_dom("run-button"+_block_id).innerHTML="&#9658";
+		setTimeout(()=>{
+			get_dom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
+			}
+		, 5000);
+	},10);
 }
 
 run_all=function(){
