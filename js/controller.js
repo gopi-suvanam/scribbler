@@ -69,13 +69,13 @@ load_jsnb=function(content){
 
 }
 
-download_html=function(only_output){
+download_html=function(view){
 
     // Send a message object to the iframe
    
       const message = {
         action:"get_html",
-        data:{only_output:only_output},
+        data:{view:view},
         call_bk:"download_html"
       };
       sandbox.contentWindow.postMessage(message, '*');

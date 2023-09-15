@@ -275,32 +275,57 @@ load_jsnb=async function(content){
 
 }
 
-get_html=function(only_output){
+get_html=function(view){
  	var name=get_dom("nb_name").innerHTML;
  	
  	var main=get_dom("main");
  	var blocks=main.childNodes;
-	var html='<html><head>'
+	var html='<html>\n<head>\n'
 	
 	var cells=get_nb().cells;
 	var css= [];
 
 	for (var sheeti= 0; sheeti<document.styleSheets.length; sheeti++) {
-		html+="<link rel='stylesheet' href='"+document.styleSheets[sheeti].href+"'>"
+		let href=document.styleSheets[sheeti].href;
+		if (href!=undefined && href !=null && href.length>0)
+		html+="<link rel='stylesheet' href='"+href+"'>\n";
 	}
-	html+='<title>_title:JavaScript Notebook</title></head><body><nav><ul><li><a>_title</a></li></ul></nav><br>'; 	
+	if(view=='html+js') {
+		for (var scripti= 0; scripti<document.scripts.length; scripti++) {
+			let src=document.scripts[scripti].src;
+			if (src!=undefined && src !=null && src>0)
+			html+="<script  src='"+scr+"'></script>\n"
+		}
+	}
+	
+	html+='<title>_title:JavaScript Notebook</title>\n</head>\n<body>\n<nav><ul><li><a>_title</a></li></ul></nav>\n<br>\n<div class="container">'; 	
 	html=html.replaceAll("_title",name)
  	blocks.forEach(x=>{
  		var block_id=x.id.replace("block","")
-	 	var result=get_dom("result"+block_id).outerHTML;
-	 	var input ='';
-	 	if(!only_output) input=get_dom("input"+block_id).outerHTML;
+ 		var input ='';
+ 		var output=get_dom("result"+block_id).outerHTML;
+	 	if(view=='nb') {
+	 		if(get_dom("cell_type"+block_id).checked){
+	 			input=get_dom("input"+block_id).outerHTML;
+	 		}
+	 	}
+	 	if(view=='html+js') {
+	 		if(get_dom("cell_type"+block_id).checked){
+		 		let code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
+		 		input="\n<script>\n"+code+"\n</script>\n";
+		 	}
+		 	
+		 	var output=get_dom("output"+block_id).outerHTML;
+	 	}
 	 	
 	 	
-	 	html=html+input+result;
+	 	
+	 	
+	 	
+	 	html=html+"\n"+input+"\n"+output;
 	 	
  	});
- 	html=html+"</body></html>"
+ 	html=html+"</div></body></html>"
  	return {html:html,name:name}	
 }
 
@@ -310,7 +335,7 @@ message_handler=async function(action,data,call_bk){
 	}
 	if(action == "run_all") run_all();
 	if(action=="get_html"){
-		window.parent.postMessage({"action":call_bk,"data":get_html(data['only_output']),"call_bk":''}, '*');
+		window.parent.postMessage({"action":call_bk,"data":get_html(data['view']),"call_bk":''}, '*');
 	}
 	if(action=="load_jsnb"){
 		load_jsnb(data);

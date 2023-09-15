@@ -19,19 +19,6 @@
 		<script src="js/controller.js"></script> <!-- Controls the UI -->
 		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
 		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
-
-		<!-- Google analytics. Remove this section -->
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-45Z12S039Z"></script>
-		<script>
-		  if(location.hostname=='app.scribbler.live'){
-			  window.dataLayer = window.dataLayer || [];
-			  function gtag(){dataLayer.push(arguments);}
-			  gtag('js', new Date());
-			
-			  gtag('config', 'G-45Z12S039Z');
-		  }
-		</script>
 		
 
 	</head>
@@ -47,8 +34,9 @@
 		<li><a onclick="load_file_click()">Open (Ctrl-O)</a></li>
 	        <li><a onclick="download_nb()">Download (Ctr-S)</a></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
-	        <li><a onclick="download_html(false)">Download as HTML</a></li>
-	        <li><a onclick="download_html(true)">Download only output</a></li>
+	        <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
+	        <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
+	        <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
 	        <li><a onclick="download_js()">Download as JS</a></li>
 	        
 	      </ul>
