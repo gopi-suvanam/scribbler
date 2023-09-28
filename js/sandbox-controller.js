@@ -192,9 +192,7 @@ toggle_dark_mode=function(){
 
 get_nb=function(){
 	var nb=JSON.parse(JSON.stringify(blank_nb));
- 	nb.metadata.name=get_dom("nb_name").innerHTML;
  	
- 	//nb['run_on_load']=get_dom("run_on_load").checked;
  	var main=get_dom("main");
  	var blocks=main.childNodes;
  	
@@ -220,9 +218,7 @@ get_nb=function(){
 load_jsnb=async function(content){
 	try{
 		var nb=JSON.parse(content);
-		var nb_name=await wait_for_dom("nb_name");
 
-		nb_name.innerHTML=nb.metadata.name;
 		var main = await wait_for_dom("main");
 		var bkup_html=main.innerHTML;
 		var bkup_editors=editors
@@ -256,7 +252,6 @@ load_jsnb=async function(content){
 	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".output").forEach(a=>a.ondblclick = "");
-	  		get_dom("nb_name").style.display = "none";
 		}
 		document.activeElement.blur(); 
 		document.body.scrollTop = 0;
@@ -276,7 +271,6 @@ load_jsnb=async function(content){
 }
 
 get_html=function(view){
- 	var name=get_dom("nb_name").innerHTML;
  	
  	var main=get_dom("main");
  	var blocks=main.childNodes;
@@ -326,7 +320,7 @@ get_html=function(view){
 	 	
  	});
  	html=html+"</div></body></html>"
- 	return {html:html,name:name}	
+ 	return {html:html}	
 }
 
 message_handler=async function(action,data,call_bk){
