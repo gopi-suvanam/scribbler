@@ -117,6 +117,8 @@ message_handlers={
  	},
  	"download_nb":async function(data,call_bk){
 		data['run_on_load'] = get_dom("run_on_load").checked;
+		data.metadata.name=get_dom("nb_name").innerHTML;
+		
 		let url='';
 		let file_name='';
 		try{ 
@@ -134,7 +136,6 @@ message_handlers={
 	  		 file_name = url.split('/').slice(-1)[0]
 	  	}else{
 	  		
-	  		 data.metadata.name=get_dom("nb_name").innerHTML;
 	  		 file_name=data.metadata.name.replaceAll(' ','_')+'.jsnb'
 	  	}
  		download_string(JSON.stringify(data,undefined,2),file_name,"data:text/json;charset=utf-8");	
