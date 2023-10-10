@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Enumerating Primes",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Enumerating Prime Numbers</h2>\nEnumerating prime numbers, which means listing or finding all prime numbers within a certain range or up to a specific limit, is useful for several reasons:\n<br>\n1. Number Theory and Mathematics: Enumerating prime numbers helps mathematicians study and understand their properties, patterns, and distribution. \n<br>\n2. Cryptography: Prime numbers play a crucial role in modern cryptography, particularly in algorithms like RSA (Rivest-Shamir-Adleman). \n<br>\n3. Computer Science and Algorithms: Prime numbers are used in various computer science algorithms and data structures. \n<br>\n4. Random Number Generation: Prime numbers are often used in random number generation algorithms. \n<br>\nIn summary, enumerating prime numbers is not only a fundamental task in mathematics but also a practical necessity in various fields of science, technology, and computer science. It enables researchers, engineers, and developers to solve complex problems, secure communication, optimize algorithms, and advance our understanding of the mathematical universe.",
+      "status": "",
+      "output": "<h1>Enumerating Prime Numbers</h1>\nEnumerating prime numbers, which means listing or finding all prime numbers within a certain range or up to a specific limit, is useful for several reasons:\n<br>\n1. Number Theory and Mathematics: Enumerating prime numbers helps mathematicians study and understand their properties, patterns, and distribution. \n<br>\n2. Cryptography: Prime numbers play a crucial role in modern cryptography, particularly in algorithms like RSA (Rivest-Shamir-Adleman). \n<br>\n3. Computer Science and Algorithms: Prime numbers are used in various computer science algorithms and data structures. \n<br>\n4. Random Number Generation: Prime numbers are often used in random number generation algorithms. \n<br>\nIn summary, enumerating prime numbers is not only a fundamental task in mathematics but also a practical necessity in various fields of science, technology, and computer science. It enables researchers, engineers, and developers to solve complex problems, secure communication, optimize algorithms, and advance our understanding of the mathematical universe.",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Trial Division</h2> This is the simplest method to find prime numbers. It involves dividing the number to be checked by all numbers less than it to see if any of them evenly divide it. If none do, the number is prime. However, this method is slow for very large numbers.\n",
+      "status": "",
+      "output": "<h2>Trial Division</h2> This is the simplest method to find prime numbers. It involves dividing the number to be checked by all numbers less than it to see if any of them evenly divide it. If none do, the number is prime. However, this method is slow for very large numbers.\n",
+      "type": "html"
+    },
+    {
+      "code": "function isPrime(n) {\n\t  if (n <= 1) return false;\n\t  if (n <= 3) return true;\n\t\n\t  if (n % 2 === 0 || n % 3 === 0) return false;\n\t\n\t  for (let i = 5; i * i <= n; i += 6) {\n\t    if (n % i === 0 || n % (i + 2) === 0) return false;\n\t  }\n\t\n\t  return true;\n\t}\nshow(\"testing...\")\np=1003;\nshow(p,\"is\",isPrime(p)?\"prime\":\"composite\")\n",
+      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "testing... <br>1003 is composite <br>",
+      "type": "code"
+    },
+    {
+      "code": "\n<h2>Sieve of Eratosthenes</h2> \nThis is an ancient and efficient algorithm for generating prime numbers up to a specified limit, not for finding individual primes. It works by iteratively marking the multiples of each prime starting from 2, which eventually leaves only the prime numbers as unmarked. The Sieve of Eratosthenes is a classic algorithm for finding all prime numbers up to a specified limit (n). \n<ul>\n  <li>It initializes an array sieve of size n + 1 with true values, assuming all numbers are prime initially.</li>\n<li>It iterates through numbers starting from 2 up to the square root of n.</li>\n<li>For each prime number p, it marks its multiples as false in the sieve array.</li>\n<li>Finally, it collects all the remaining true values in the sieve array, which correspond to prime numbers up to n.</li>\n</ul>",
+      "status": "",
+      "output": "\n<h2>Sieve of Eratosthenes</h2> \nThis is an ancient and efficient algorithm for generating prime numbers up to a specified limit, not for finding individual primes. It works by iteratively marking the multiples of each prime starting from 2, which eventually leaves only the prime numbers as unmarked. The Sieve of Eratosthenes is a classic algorithm for finding all prime numbers up to a specified limit (n). \n<ul>\n  <li>It initializes an array sieve of size n + 1 with true values, assuming all numbers are prime initially.</li>\n<li>It iterates through numbers starting from 2 up to the square root of n.</li>\n<li>For each prime number p, it marks its multiples as false in the sieve array.</li>\n<li>Finally, it collects all the remaining true values in the sieve array, which correspond to prime numbers up to n.</li>\n</ul>",
+      "type": "html"
+    },
+    {
+      "code": "sieveOfEratosthenes=function (n) {\n\t  const primes = [];\n\t  const sieve = new Array(n + 1).fill(true);\n\t  \n\t  for (let p = 2; p * p <= n; p++) {\n\t    if (sieve[p]) {\n\t      for (let i = p * p; i <= n; i += p) {\n\t        sieve[i] = false;\n\t      }\n\t    }\n\t  }\n\t  \n\t  for (let i = 2; i <= n; i++) {\n\t    if (sieve[i]) {\n\t      primes.push(i);\n\t    }\n\t  }\n\t  \n\t  return primes;\n\t}",
+      "status": "[5]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "function (n) {\n\t  const primes = [];\n\t  const sieve = new Array(n + 1).fill(true);\n\t  \n\t  for (let p = 2; p * p &lt;= n; p++) {\n\t    if (sieve[p]) {\n\t      for (let i = p * p; i &lt;= n; i += p) {\n\t        sieve[i] = false;\n\t      }\n\t    }\n\t  }\n\t  \n\t  for (let i = 2; i &lt;= n; i++) {\n\t    if (sieve[i]) {\n\t      primes.push(i);\n\t    }\n\t  }\n\t  \n\t  return primes;\n\t} <br>",
+      "type": "code"
+    },
+    {
+      "code": "n=1000;\nprimes=sieveOfEratosthenes(n)\nshow(\"Primes upto\",n,\":\",primes)",
+      "status": "[9]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Primes upto 1000 : [\n  2,\n  3,\n  5,\n  7,\n  11,\n  13,\n  17,\n  19,\n  23,\n  29,\n  31,\n  37,\n  41,\n  43,\n  47,\n  53,\n  59,\n  61,\n  67,\n  71,\n  73,\n  79,\n  83,\n  89,\n  97,\n  101,\n  103,\n  107,\n  109,\n  113,\n  127,\n  131,\n  137,\n  139,\n  149,\n  151,\n  157,\n  163,\n  167,\n  173,\n  179,\n  181,\n  191,\n  193,\n  197,\n  199,\n  211,\n  223,\n  227,\n  229,\n  233,\n  239,\n  241,\n  251,\n  257,\n  263,\n  269,\n  271,\n  277,\n  281,\n  283,\n  293,\n  307,\n  311,\n  313,\n  317,\n  331,\n  337,\n  347,\n  349,\n  353,\n  359,\n  367,\n  373,\n  379,\n  383,\n  389,\n  397,\n  401,\n  409,\n  419,\n  421,\n  431,\n  433,\n  439,\n  443,\n  449,\n  457,\n  461,\n  463,\n  467,\n  479,\n  487,\n  491,\n  499,\n  503,\n  509,\n  521,\n  523,\n  541,\n  547,\n  557,\n  563,\n  569,\n  571,\n  577,\n  587,\n  593,\n  599,\n  601,\n  607,\n  613,\n  617,\n  619,\n  631,\n  641,\n  643,\n  647,\n  653,\n  659,\n  661,\n  673,\n  677,\n  683,\n  691,\n  701,\n  709,\n  719,\n  727,\n  733,\n  739,\n  743,\n  751,\n  757,\n  761,\n  769,\n  773,\n  787,\n  797,\n  809,\n  811,\n  821,\n  823,\n  827,\n  829,\n  839,\n  853,\n  857,\n  859,\n  863,\n  877,\n  881,\n  883,\n  887,\n  907,\n  911,\n  919,\n  929,\n  937,\n  941,\n  947,\n  953,\n  967,\n  971,\n  977,\n  983,\n  991,\n  997\n] <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
