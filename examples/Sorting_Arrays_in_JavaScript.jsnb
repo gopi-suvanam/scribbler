@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "name": "Sorting Arrays in JavaScript",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Sorting Arrays in JavaScript</h1>\nSorting is the process of arranging elements in a specific order, often numerically or alphabetically, for easier search, retrieval, or analysis. There are three broad algorithms we will discuss using JavaScript code:",
+      "status": "",
+      "output": "<h1>Sorting Arrays in JavaScript</h1>\nSorting is the process of arranging elements in a specific order, often numerically or alphabetically, for easier search, retrieval, or analysis. There are three broad algorithms we will discuss using JavaScript code:",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Bubble Sort</h2>\n\nBubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.\n",
+      "status": "",
+      "output": "<h2>Bubble Sort</h2>\n\nBubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.\n",
+      "type": "html"
+    },
+    {
+      "code": "\tbubbleSort=function(arr) {\n\t    let n = arr.length;\n\t    let swapped;\n\t    do {\n\t        swapped = false;\n\t        for (let i = 0; i < n - 1; i++) {\n\t            if (arr[i] > arr[i + 1]) {\n\t                // Swap arr[i] and arr[i + 1]\n\t                let temp = arr[i];\n\t                arr[i] = arr[i + 1];\n\t                arr[i + 1] = temp;\n\t                swapped = true;\n\t            }\n\t        }\n\t    } while (swapped);\n\t    return arr;\n\t}\n",
+      "status": "[10]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "function(arr) {\n\t    let n = arr.length;\n\t    let swapped;\n\t    do {\n\t        swapped = false;\n\t        for (let i = 0; i &lt; n - 1; i++) {\n\t            if (arr[i] &gt; arr[i + 1]) {\n\t                // Swap arr[i] and arr[i + 1]\n\t                let temp = arr[i];\n\t                arr[i] = arr[i + 1];\n\t                arr[i + 1] = temp;\n\t                swapped = true;\n\t            }\n\t        }\n\t    } while (swapped);\n\t    return arr;\n\t} <br>",
+      "type": "code"
+    },
+    {
+      "code": "show(\"Testing bubble sort...\")\t\nconst unsortedArray = [64, 34, 25, 12, 22, 11, 90];\n\tconst sortedArray = bubbleSort(unsortedArray);\n\tshow(sortedArray);",
+      "status": "[11]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "Testing bubble sort... <br>[\n  11,\n  12,\n  22,\n  25,\n  34,\n  64,\n  90\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Quick Sort</h2>\nQuick sort is a divide-and-conquer sorting algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot.",
+      "status": "",
+      "output": "<h2>Quick Sort</h2>\nQuick sort is a divide-and-conquer sorting algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot.",
+      "type": "html"
+    },
+    {
+      "code": "\tquickSort=function (arr) {\n\t    if (arr.length <= 1) return arr;\n\t    \n\t    const pivot = arr[0];\n\t    const left = [];\n\t    const right = [];\n\t    \n\t    for (let i = 1; i < arr.length; i++) {\n\t        if (arr[i] < pivot) {\n\t            left.push(arr[i]);\n\t        } else {\n\t            right.push(arr[i]);\n\t        }\n\t    }\n\t    \n\t    return quickSort(left).concat(pivot, quickSort(right));\n\t}\n\t\n",
+      "status": "[12]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "function (arr) {\n\t    if (arr.length &lt;= 1) return arr;\n\t    \n\t    const pivot = arr[0];\n\t    const left = [];\n\t    const right = [];\n\t    \n\t    for (let i = 1; i &lt; arr.length; i++) {\n\t        if (arr[i] &lt; pivot) {\n\t            left.push(arr[i]);\n\t        } else {\n\t            right.push(arr[i]);\n\t        }\n\t    }\n\t    \n\t    return quickSort(left).concat(pivot, quickSort(right));\n\t} <br>",
+      "type": "code"
+    },
+    {
+      "code": "\tshow(\"Testing quick sort...\")\t\n\nconst unsortedArray = [64, 34, 25, 12, 22, 11, 90];\n\tconst sortedArray = quickSort(unsortedArray);\n\tshow(sortedArray);",
+      "status": "[13]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Testing quick sort... <br>[\n  11,\n  12,\n  22,\n  25,\n  34,\n  64,\n  90\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Merge Sort</h2>\nMerge sort is a divide-and-conquer sorting algorithm that divides the unsorted list into `n` sublists, each containing one element, and then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.",
+      "status": "",
+      "output": "<h2>Merge Sort</h2>\nMerge sort is a divide-and-conquer sorting algorithm that divides the unsorted list into `n` sublists, each containing one element, and then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.",
+      "type": "html"
+    },
+    {
+      "code": "mergeSort=function (arr) {\n\t    if (arr.length <= 1) {\n\t        return arr;\n\t    }\n\t\n\t    // Split the array in half\n\t    const middle = Math.floor(arr.length / 2);\n\t    const left = arr.slice(0, middle);\n\t    const right = arr.slice(middle);\n\t\n\t    // Recursively sort and merge the halves\n\t    return merge(mergeSort(left), mergeSort(right));\n\t}\n\t\n\tfunction merge(left, right) {\n\t    let result = [];\n\t    let leftIndex = 0;\n\t    let rightIndex = 0;\n\t\n\t    // Compare elements and merge them in sorted order\n\t    while (leftIndex < left.length && rightIndex < right.length) {\n\t        if (left[leftIndex] < right[rightIndex]) {\n\t            result.push(left[leftIndex]);\n\t            leftIndex++;\n\t        } else {\n\t            result.push(right[rightIndex]);\n\t            rightIndex++;\n\t        }\n\t    }\n\t\n\t    // Concatenate any remaining elements from both lists\n\t    return result.concat(left.slice(leftIndex), right.slice(rightIndex));\n\t}\n\t\n",
+      "status": "[14]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "function (arr) {\n\t    if (arr.length &lt;= 1) {\n\t        return arr;\n\t    }\n\t\n\t    // Split the array in half\n\t    const middle = Math.floor(arr.length / 2);\n\t    const left = arr.slice(0, middle);\n\t    const right = arr.slice(middle);\n\t\n\t    // Recursively sort and merge the halves\n\t    return merge(mergeSort(left), mergeSort(right));\n\t} <br>",
+      "type": "code"
+    },
+    {
+      "code": "show(\"Testing merge sort...\")\nconst unsortedArray = [64, 34, 25, 12, 22, 11, 90];\n\tconst sortedArray = mergeSort(unsortedArray);\n\tshow(sortedArray);",
+      "status": "[15]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Testing merge sort... <br>[\n  11,\n  12,\n  22,\n  25,\n  34,\n  64,\n  90\n] <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
