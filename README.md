@@ -1,5 +1,5 @@
 ![Banner](images/banner.png)
-#### [Hello World](https://app.scribbler.live)• [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Discussions](https://github.com/gopi-suvanam/scribbler/discussions/) • [Roadmap](https://github.com/users/gopi-suvanam/projects/1) 
+#### [Hello World](https://app.scribble.live) • [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Discord](https://discord.com/invite/uxNSsWunwU) 
 
 
 # Scribbler: JavaScript Notebook. [Use here (No login required)](https://app.scribbler.live/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
@@ -8,6 +8,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 - [x] Easy to use javascript experimentation tool. Runs without backend (node.js/npm/pip install/ngnix etc etc).  Can be used online or offline.
 - [x] Has a minimalistic UI to put focus on user generated code/content. It is light-weight as it uses minimal external libraries for styling.
 - [x] Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. Thirdparty libaries/modules can be easily loaded.
+
+[Join Our Discord Server]
 
 ![Scribbler Screenshot](images/Scribbler-SS.png)
 
