@@ -9,7 +9,7 @@ Notebook for javascript experimentation (in the browser). Overview:
 - [x] Has a minimalistic UI to put focus on user generated code/content. It is light-weight as it uses minimal external libraries for styling.
 - [x] Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. Thirdparty libaries/modules can be easily loaded.
 
-[Join Our Discord Server]
+[Join Our Discord Server](https://discord.com/invite/uxNSsWunwU)
 
 ![Scribbler Screenshot](images/Scribbler-SS.png)
 
