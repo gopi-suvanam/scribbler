@@ -168,6 +168,13 @@ read_file=function(url,callbk,failure){
 	  };
  }
 
+is_sandboxed=function(){
+	if(document.domain=='') return true;
+	if(document.domain==undefined) return true;
+	if(document.domain==null) return true;
+	if(document.domain.length==0) return true;
+	return false;
+}
 
 load_file= async function(){
      
