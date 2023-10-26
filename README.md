@@ -71,6 +71,7 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - Scribbler can have multiple cells so it can create long documents.
 - Intended use is for experimenting and computing in javascript. HTML and CSS are secondary in the case of Scribbler. Whereas for Jsfiddle and codepen the main use case to test javascript along with html and css.
 - Scribbler can also be used for scientific computation using several open source javascript libraries.
+- ObservableHQ is similar in principle to Scribbler but it a walled garden and not an open source tool. Also it uses relies on React framework whereas Scribbler is framework agnostic.
 
 ## Acknowledgements
 - Uses [Codemirror](https://github.com/codemirror) for formatting the code area
