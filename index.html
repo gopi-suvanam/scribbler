@@ -64,9 +64,18 @@
 	      </ul>
 	      </details>
 	    </li>
+	    <li >
+	      <p class="secondary">Welcome&nbsp;</p>
+
+	    </li>
+	    <li>
+	    <p class="secondary" id='username'></p>
+	    </li>
 	  </ul>
 	  <div style="flex-grow:0.9"></div>
 	  <ul>
+	  	
+	  
 	  	
 	    <li >
 	      <a href="#" class="secondary" data-tooltip="Run all: Alt/Option-R" data-placement="bottom" onclick="event.preventDefault();run_all()"  style="margin-right:5px">&#9658;</a>
@@ -78,8 +87,9 @@
 	</nav>
 	<div class="container">
 		<a id="nb_name" contentEditable="true">Loading a note book...</a> <!-- Title of the notebook -->
+		<button  title="Take the notebook out of sandbox" id="break-sandbox" onclick="break_sandbox()"  >&#9889;</button> <!-- Title of the notebook -->
 	</div>
-	<iframe id="sandbox" style="width:100%;height:100%" credentialless src="sandbox.html" sandbox="allow-scripts allow-downloads allow-top-navigation allow-popups"></iframe>
+	<iframe id="sandbox" style="width:100%;height:100%" ></iframe>
 	
 	
 	
@@ -113,7 +123,11 @@
 	    <h5>Options for Notebook</h5>
 	    <input  id="run_on_load" data-tooltip="Run the code when the file is loaded" type="checkbox" class="cell-type"  ></input>
 	    <label for="run_on_load">Run the code when the file is loaded</label>
-	    <!--<br>
+	    <!--<br> Could be implemented in the future
+	    <input  id="request_sansbox" data-tooltip="Request removing sandbox when the file is loaded" type="checkbox" class="cell-type"  ></input>
+	    <label for="request_sansbox">Request removing sandbox when the file is loaded</label>
+	    
+	    <br>
 	    <input  id="hide_menu_on_embed" data-tooltip="Hide the menu in iframe embedding" type="checkbox" class="cell-type"  ></input>
 	    <label for="hide_menu_on_embed">Hide the menu in iframe embedding</label>
 	    <br>

@@ -215,16 +215,15 @@ get_nb=function(){
 
 
 
-load_jsnb=async function(content){
+load_jsnb=async function(nb){
 	try{
-		var nb=JSON.parse(content);
 
 		var main = await wait_for_dom("main");
 		var bkup_html=main.innerHTML;
 		var bkup_editors=editors
 		var bkup_status_data=status_data;
 		var run_on_load = nb.run_on_load || false;
-	
+		if(typeof(nb)=='string') nb=JSON.parse(nb);
 		editors={}
 		main.innerHTML='';
 		
@@ -292,8 +291,7 @@ get_html=function(view){
 		}
 	}
 	
-	html+='<title>_title:JavaScript Notebook</title>\n</head>\n<body>\n<nav><ul><li><a>_title</a></li></ul></nav>\n<br>\n<div class="container">'; 	
-	html=html.replaceAll("_title",name)
+	html+='<title>______title:Scribbler Notebook</title>\n</head>\n<body>\n<br>\n<div class="container">'; 	
  	blocks.forEach(x=>{
  		var block_id=x.id.replace("block","")
  		var input ='';
@@ -320,17 +318,12 @@ get_html=function(view){
 	 	
  	});
  	html=html+"</div></body></html>"
- 	return {html:html}	
+ 	return html	
 }
 
 message_handler=async function(action,data,call_bk){
-	if(action == 'get_nb') {
-		window.parent.postMessage({"action":call_bk,"data":get_nb(),"call_bk":''}, '*');
-	}
+
 	if(action == "run_all") run_all();
-	if(action=="get_html"){
-		window.parent.postMessage({"action":call_bk,"data":get_html(data['view']),"call_bk":''}, '*');
-	}
 	if(action=="load_jsnb"){
 		load_jsnb(data);
 	}
@@ -340,10 +333,11 @@ message_handler=async function(action,data,call_bk){
 		
 }
 insitialize_sandbox=function(){
-
+	console.log("Initializing sanbox...");
 
 	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
   	if(url!=undefined && url.length>1){
+  		console.log("Loading from url inside Sandbox");
   		status_data.running_embedded=true;
   		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
   		else read_file(url,load_jsnb,err=>{alert(err.message)});
@@ -354,39 +348,31 @@ insitialize_sandbox=function(){
   		return;
   	}	  	
 
-	document.onkeyup = function(e) {
-	  if (e.ctrlKey && e.key === 's') {
-	    window.parent.postMessage({"action":"download_nb","data":get_nb(),"call_bk":''}, '*');
-	  } else if (e.ctrlKey && e.key === 'g') {
-	    openModal(get_dom('git-import-export'));
-	  } else if (e.ctrlKey && e.key === 'o') {
-	    load_file_click()
-			
-	  }
-	  else if (e.altKey && e.key === '®') {
-	    run_all()
-			
-	  }
-	  else if (e.altKey && e.key === 'r') {
-	    run_all()
-			
-	  }
-	};
+
 	  	
 	  	
 	 window.addEventListener('message', function(event) {
 	      if (event.source === window.parent) {
-	        const message = event.data;
-	        console.log('Received message from main frame:', message);
-		
+	        const message = event.data;		
 		message_handler(message.action,message.data,message.call_bk);
-		
-		
-	        	        
+	
 	      }
 	    });
 	   
-    	window.parent.postMessage({"action":"initialize_sandbox","data":'',"call_bk":'load_jsnb'}, '*');
-    	window.alert =x=>show("<p class='error'>!! "+x+" !!</p>");
+	//Send notebook back on specific port if requested with port
+	window.addEventListener('message',e=>{
+		if(e.ports && e.data ) {
+		  if(e.data.action=='get_nb'){
+		          const data =  get_nb();
+		          // respond to main window
+		          e.ports[0].postMessage(data);
+		   }
+		   if(e.data.action=='get_html'){
+		          const data =  get_html(e.data.view);
+		          // respond to main window
+		          e.ports[0].postMessage(data);
+		   }
+	        }
+	})
 }
 

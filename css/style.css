@@ -147,9 +147,6 @@ ul[role=listbox]{
 	height:35px;
 	margin:0px;
 }
-p, td{
-	font-size:14px;
-}
 input{
 	font-size:12px;
 	padding:5px !important;

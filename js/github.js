@@ -87,22 +87,26 @@ var get_repos=async function (token,user) {
 
 
 var get_user=async function (token) {  
-  await fetch(`https://api.github.com/user`, {
+  const response=await fetch(`https://api.github.com/user`, {
       method: 'GET',
       headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'}
-    }).then(response=>parse_response(response))
-      .then(
-		function(data){login=data['login']}
-	
-     );
+    });
+   const data = await parse_response(response);
+   const login=data['login'];
+   username=data['name']
+   get_dom("username").innerHTML=username;
   return login;
 }
 
 update_owner= function(){
 	var token = get_dom("token").value;
 	get_user(token).then(x=>{
+		const today = new Date(); // Get the current date
+		const thirtyDaysLater = new Date(today); // Create a new date object as a copy of today
+		thirtyDaysLater.setDate(today.getDate() + 30); 
+		set_cookie("gh-token",token,thirtyDaysLater.setDate);
 		get_dom("user").value=x;
 		update_repos();
 		});
@@ -178,26 +182,37 @@ load_from_git=function(){
   
 	
 }
-upload_to_git=function(){
+upload_to_git=async function(){
 	file_details['source']='github';
 	file_details['token']=get_dom("token").value;
 	file_details['user']=get_dom("user").value;
 	file_details['repo']=get_dom("repo").value;
 	file_details['path']=get_dom("path").value;
 	
-	//nb=get_nb();
 	
 	// Send a message object to the iframe
-   	console.log("sending message get_nb,upload_to_git");
-   	console.log("status",status);
-      const message = {	
-        action:"get_nb",
-        data:"",
-        call_bk:"upload_to_git"
-      };
-      
-      sandbox.contentWindow.postMessage(message, '*');
-      
-     
+   	let nb=await get_nb();
+      	
+	const content=JSON.stringify(nb,undefined,2);
+	try{
+		const upload_status= await upload_file_to_git(file_details['token'],content,file_details['user'],file_details['repo'],file_details['path']);
+		alert("Successfully pushed");
+		closeModal(get_dom('git-import-export'));
+		const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
+		const nextTitle = 'JavaScript Notebook';
+		const nextState = { additionalInformation: 'Updated the URL with JS' };
+		window.history.pushState(nextState, nextTitle, nextURL);
+	}catch(error){
 	
+		alert("Error: "+error)
+	} 
+	
+}
+
+initialize_git=function(){
+    const token = get_cookie("gh-token");
+    if(token==null) return;
+     get_dom("token").value =token;
+     update_owner();
+     
 }
