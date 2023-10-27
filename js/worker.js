@@ -1,5 +1,5 @@
 ﻿
-run=function(_block_id){
+run= function(_block_id){
 	
 	/*var show =function(x){
 		show_in_dom(x,"output"+_block_id)
@@ -15,7 +15,7 @@ run=function(_block_id){
 	
 	const code=editors[_block_id].getValue()
 	
-	setTimeout(()=>{
+	setTimeout(async ()=>{
 		try{
 			if(get_dom("cell_type"+_block_id).checked){
 			
@@ -27,11 +27,13 @@ run=function(_block_id){
 				get_dom("output"+_block_id).style.display="inline";
 				get_dom("input"+_block_id).style.display = "block";
 				const start_time_eval = Date.now();
+				
 				show=(...args)=>show_in_dom(`output${_block_id}`,...args);
-									
+					
+								
 				opt=eval(code); // This is where the magic happens.
 				if(opt!=undefined) show(opt);
-					
+				
 	
 				const end_time_eval = Date.now();
 				var execution_time=end_time_eval - start_time_eval;
@@ -83,4 +85,7 @@ run_all=function(){
 	
 	
 }
+
+
+
 
