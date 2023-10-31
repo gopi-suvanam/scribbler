@@ -244,6 +244,8 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 	padding-bottom:0px;
 	float:right;
 	margin:0px;
+	padding-left:5px;
+	padding-right:5px;
 	
 }
 

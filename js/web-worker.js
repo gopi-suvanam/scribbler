@@ -1,4 +1,4 @@
-﻿// worker.js
+﻿//We worker for running code in the web-worker
 
 self.addEventListener('message', function(e) {
   const { functionString, parameters } = e.data;

@@ -245,29 +245,6 @@ function get_cookie(name) {
   return null; // Cookie not found
 }
 
-/**** Run In Other Processors **********/
-// Function to execute a function in the worker with dynamic parameters
-run_in=function(processor,func, ...parameters) {
-  if(is_sandboxed()) show("May not work in sandbox");
-  if(processor=="web-worker" || processor=="webworker" || processor=="ww"){
-	  const web_worker = new Worker('js/web-worker.js');
-          functionString=func.toString();
-	  return new Promise((resolve, reject) => {
-	    web_worker.addEventListener('message', (e) => {
-	        console.log(e);
-	        resolve(e.data);
-	      
-	    });
-	    web_worker.addEventListener('error', (e) => {
-		  console.log(e);
-	      reject(e.message);
-	    });
-	
-	    web_worker.postMessage({ functionString, parameters });
-	  });
-   }else{
-   	return new Promise((resolve,reject)=>{resolve(func(...parameters))});
-   }
-}
+
 
 
