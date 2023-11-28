@@ -79,9 +79,11 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - Comes loaded with [D3](https://github.com/d3/d3) and [Plotly](https://github.com/plotly/plotly.js) for charting.
 
 ## Links
+
 Additional documentation for Scribbler:
 1. [Docs](https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md)
 2. [Code-docs](https://github.com/gopi-suvanam/jsnb/blob/main/CODE-DOCS.md)
 3. [Roadmap](https://github.com/gopi-suvanam/jsnb/blob/main/ROADMAP.md)
 4. [Sample Notebooks](https://github.com/gopi-suvanam/jsnb/blob/main/examples/README.md)
 
++purplemonk
