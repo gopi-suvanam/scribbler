@@ -176,7 +176,7 @@ is_sandboxed=function(){
 	return false;
 }
 
-load_file= async function(){
+load_file= async function(type){
      
 	  const file_loader=document.createElement('input');
 	  file_id= (Math.random() + 1).toString(36).substring(7);
@@ -199,8 +199,11 @@ load_file= async function(){
 			   		resolve(content);
 
 			 };
-
+	
+	    if(type=='text' || type==undefined || type==null)
 	   fr.readAsText( get_dom(file_id).files[0]);
+	   else if(type='buffer')
+	   fr.readAsArrayBuffer( get_dom(file_id).files[0]);
 
 
 

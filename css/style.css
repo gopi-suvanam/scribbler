@@ -8,6 +8,11 @@
 
 h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+	c
+}
+
+a{
+color:#0020FF ;//blue
 }
 
 
@@ -130,7 +135,7 @@ ul[role=listbox]{
 
 .cell-menu a{
 
-	color:#e5aa00;
+	color:#ffdf00;
 	margin:10px;
 	font-size:20px;
 }
@@ -277,7 +282,7 @@ pre{
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --primary: #fede00;
+  --primary: #ffdf00;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
@@ -287,7 +292,7 @@ pre{
 
 [data-theme="dark"],
 :root:not([data-theme="light"]) {
-  --primary: #fede00;
+  --primary: #ffdf00;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
@@ -299,7 +304,7 @@ pre{
 /* Keeping it same as light mode for now.. will change later */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --primary: #fede00;
+  --primary: #ffdf00;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);

@@ -7,7 +7,7 @@ web_workers=[]
 run_in=function(processor,func, ...parameters) {
   if(is_sandboxed()) show("May not work in sandbox");
   if(processor=="web-worker" || processor=="webworker" || processor=="ww"){
-	run_in_ww(func, ...parameters);
+	return run_in_ww(func, ...parameters);
    }else{
    	return new Promise((resolve,reject)=>{resolve(func(...parameters))});
    }
@@ -20,8 +20,13 @@ run_in_ww=function(func, ...parameters) {
   return new Promise((resolve, reject) => {
     web_worker.addEventListener('message', (e) => {
     	const response=e.data;
-    	web_worker.terminate();
-        resolve(response);
+    	if(response.action=='result'){
+    		web_worker.terminate();
+        	resolve(response.data);
+        }else if(response.action=='show'){
+        	show(response.data);
+        
+        }
       
     });
     web_worker.addEventListener('error', (e) => {

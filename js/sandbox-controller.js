@@ -334,9 +334,13 @@ message_handler=async function(action,data,call_bk){
 }
 insitialize_sandbox=function(){
 	console.log("Initializing sanbox...");
-
+	
 	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
-  	if(url!=undefined && url.length>1){
+  	if(url!=undefined && url.length>1 ){
+  		if(!in_iframe()){
+	  		const confirmation =confirm("Alert!!! The page is loading without a sandboxed Iframe. Click ok only if you trust the link...");
+	  		if(!confirmation) return;
+  		}
   		console.log("Loading from url inside Sandbox");
   		status_data.running_embedded=true;
   		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
@@ -349,30 +353,38 @@ insitialize_sandbox=function(){
   	}	  	
 
 
+	if(in_iframe()){
 	  	
-	  	
-	 window.addEventListener('message', function(event) {
-	      if (event.source === window.parent) {
-	        const message = event.data;		
-		message_handler(message.action,message.data,message.call_bk);
-	
-	      }
-	    });
-	   
-	//Send notebook back on specific port if requested with port
-	window.addEventListener('message',e=>{
-		if(e.ports && e.data ) {
-		  if(e.data.action=='get_nb'){
-		          const data =  get_nb();
-		          // respond to main window
-		          e.ports[0].postMessage(data);
-		   }
-		   if(e.data.action=='get_html'){
-		          const data =  get_html(e.data.view);
-		          // respond to main window
-		          e.ports[0].postMessage(data);
-		   }
-	        }
-	})
+		 window.addEventListener('message', function(event) {
+		      if (event.source === window.parent) {
+		        const message = event.data;		
+			message_handler(message.action,message.data,message.call_bk);
+		
+		      }
+		    });
+		   
+		//Send notebook back on specific port if requested with port
+		window.addEventListener('message',e=>{
+			if(e.ports && e.data ) {
+			  if(e.data.action=='get_nb'){
+			          const data =  get_nb();
+			          // respond to main window
+			          e.ports[0].postMessage(data);
+			   }
+			   if(e.data.action=='get_html'){
+			          const data =  get_html(e.data.view);
+			          // respond to main window
+			          e.ports[0].postMessage(data);
+			   }
+		        }
+		})
+	}
 }
 
+in_iframe = function() {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
