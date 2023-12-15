@@ -1,9 +1,14 @@
 ﻿/**** Run In Other Processors **********/
-
+/**** Currently supports WebWorkes 
+      To add:
+      		GPU
+      		Cloud
+      		Decentralized Distributed Computation
+***/
 web_workers=[]
 
 
-// Function to execute a function in the worker with dynamic parameters
+// Wrapper function to execute a function in the worker with dynamic parameters
 run_in=function(processor,func, ...parameters) {
   if(is_sandboxed()) show("May not work in sandbox");
   if(processor=="web-worker" || processor=="webworker" || processor=="ww"){
@@ -13,6 +18,8 @@ run_in=function(processor,func, ...parameters) {
    }
 }
 
+// Function for running a function in a web-worker
+// This will convert the function into string and send to the web-worker
 run_in_ww=function(func, ...parameters) { 
   const web_worker = new Worker('js/web-worker.js');
   web_workers.push(web_worker);

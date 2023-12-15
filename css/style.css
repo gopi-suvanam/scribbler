@@ -230,28 +230,27 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 
 
 .cell-type:checked + span::before {
-  content: "code";
+	  content: "code";
 }
 
 .cell-type + span::before {
-  content: "html";
+	  content: "html";
 }
 
 #github_link{
 	color: var(--secondary);
-    background-color: var(--primary);
+	background-color: var(--primary);
 }
 
 #break-sandbox{
-	color: red;
 	background-color:var(--primary);
-    padding-top:0px;
+	color:red;
+    	padding-top:0px;
 	padding-bottom:0px;
 	float:right;
 	margin:0px;
-	padding-left:5px;
-	padding-right:5px;
-	
+	padding-left:15px;
+	padding-right:15px;
 }
 
 
