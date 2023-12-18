@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "name": "Google Analytics Dashboard",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "load_script(\"https://apis.google.com/js/api.js\",false)",
+      "status": "[2]<br><span style=\"font-size:8px\">317ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "  function initClient() {\n    // Initialize the API client with API key and authorized scopes\n    gapi.client.init({\n      apiKey: 'YOUR_API_KEY',\n      discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/analyticsreporting/v4/rest'],\n      clientId: 'YOUR_CLIENT_ID',\n      scope: 'https://www.googleapis.com/auth/analytics.readonly',\n    }).then(function () {\n      // Client is initialized, make an API request\n      getDataFromAnalytics();\n    });\n  }",
+      "status": "[3]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "  function getDataFromAnalytics() {\n    // Create a request to fetch data from Google Analytics\n    gapi.client.analyticsreporting.reports.batchGet({\n      \"reportRequests\": [\n        {\n          \"viewId\": \"YOUR_VIEW_ID\",\n          \"dateRanges\": [{\"startDate\": \"YYYY-MM-DD\", \"endDate\": \"YYYY-MM-DD\"}],\n          \"metrics\": [{\"expression\": \"ga:sessions\"}],\n          \"dimensions\": [{\"name\": \"ga:dimension1\"}]\n          // Add more metrics/dimensions/filters as needed\n        }\n      ]\n    }).then(function(response) {\n      // Handle the response\n      console.log(response);\n      // Process 'response' and store it in your database\n    }, function(reason) {\n      console.error('Error: ' + reason.result.error.message);\n    });\n  }",
+      "status": "[4]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "",
+      "status": "",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
