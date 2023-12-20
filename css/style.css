@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 }
 
 a{
-color:#0020FF ;//blue
+color:#00A7FF ;//blue
 }
 
 
@@ -135,7 +135,7 @@ ul[role=listbox]{
 
 .cell-menu a{
 
-	color:#ffdf00;
+	color:var(--primary);
 	margin:10px;
 	font-size:20px;
 }
@@ -144,8 +144,8 @@ ul[role=listbox]{
 
 
 #nb_name{
-	margin-left:5px ;	margin-right:5px ;
-	//color:darkgrey;
+	margin-left:5px ;	
+	margin-right:5px ;
 }
 
 #logo{
@@ -240,6 +240,10 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 #github_link{
 	color: var(--secondary);
 	background-color: var(--primary);
+	padding-top:0px;
+	padding-bottom:0px;
+	float:right;
+	margin:0px;
 }
 
 #break-sandbox{
@@ -249,8 +253,9 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 	padding-bottom:0px;
 	float:right;
 	margin:0px;
-	padding-left:15px;
-	padding-right:15px;
+	#padding-left:15px;
+	#padding-right:15px;
+	margin-right:5px;
 }
 
 
@@ -281,7 +286,7 @@ pre{
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --primary: #ffdf00;
+  --primary: #ffc408;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
@@ -291,7 +296,7 @@ pre{
 
 [data-theme="dark"],
 :root:not([data-theme="light"]) {
-  --primary: #ffdf00;
+  --primary: #ffc408;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
@@ -303,7 +308,7 @@ pre{
 /* Keeping it same as light mode for now.. will change later */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --primary: #ffdf00;
+  --primary: #ffc408;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
