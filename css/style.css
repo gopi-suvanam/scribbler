@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 }
 
 a{
-color:#00A7FF ;//blue
+color:var(--font-color) ;//purple
 }
 
 
@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 
 #break-sandbox{
 	background-color:var(--primary);
-	color:red;
+	color:#9e2887;
     	padding-top:0px;
 	padding-bottom:0px;
 	float:right;
@@ -284,23 +284,23 @@ pre{
 
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
-[data-theme="light"],
-:root:not([data-theme="dark"]) {
+[data-theme="light"]{
   --primary: #ffc408;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
+  --font-color:#9e2887;
+  
   
 }
 
 
-[data-theme="dark"],
-:root:not([data-theme="light"]) {
+:root:not([data-theme="light"]){
   --primary: #ffc408;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  
+  --font-color:#c589b9;
 }
 
 /* Yellow Dark scheme (Auto) */
@@ -312,6 +312,17 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
+  --font-color:#c589b9
+  }
+}
+
+@media only screen and (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+  --primary: #ffc408;
+  --primary-hover: #fbc02d;
+  --primary-focus: rgba(254, 222, 0,0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+  --font-color:#9e2887;
   }
 }
 
