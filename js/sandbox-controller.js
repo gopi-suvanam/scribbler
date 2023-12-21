@@ -150,11 +150,18 @@ insert_cell=async function(type,after){
 		           //'Alt-R':(cm)=>{run_all()},	
 		           'Alt-D':(cm)=>{delete_cell(i)},	
 		           'Alt-Up':(cm)=>{move_up(i)},	
-		           'Alt-Down':(cm)=>{move_down(i)},		     
+		           'Alt-Down':(cm)=>{move_down(i)},	
+		            "Ctrl-Space": "autocomplete",
+		             ".": function(cm) {
+				      setTimeout(function() {
+				        CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
+				      }, 100);
+				      return CodeMirror.Pass;
+				    }
+					     
 		          }
 		});
-		
-		
+
 		if(type=='code'){
   			get_dom('cell_type'+i).checked=true;
 	  	}
@@ -211,7 +218,6 @@ get_nb=function(){
  	return nb;
 	
 }
-
 
 
 
