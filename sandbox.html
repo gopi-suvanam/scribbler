@@ -29,7 +29,7 @@
 		<script src="js/worker.js"></script> <!-- Runs the user generated code -->
 		<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
 				
-		<!-- Styling using pico.css and some custome css -->
+		<!-- Styling using pico.css and some custom css -->
 		<link rel="stylesheet" href="css/pico.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		
@@ -42,12 +42,11 @@
 	<!-- Template code block. This html will be copied and udpated for each cell -->
 	<div id="code_block_template" style="display:none">
 		<div  id="cell_menu_block_id" class="cell-menu">
-			<a tabindex="0" data-tooltip="Toggle between code and html"> 
-				<b><label style="display:inline">
-				<input  id="cell_type_block_id" style="height:15px;display:none" type="checkbox" class="cell-type" checked="true" ></input>
-				<span></span>
-				</label></b>
-			</a>
+			
+			<select  id="cell_type_block_id" style="height:15px;" class="cell-type" >
+					<option selected value="code">code</option>
+					<option value="html">html</option>
+				</select>
 			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" id="run-button_block_id"  onclick="run(_block_id)">&#9658;</a>
 			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#x25B2;</a>
 			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="move_down(_block_id)">&#x25BC;</a>
@@ -55,7 +54,9 @@
 			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
 			
 		</div>
-		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'></div>
+		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'>
+		
+		</div>
 		<article style="display:flex"  id="result_block_id">
 			<p class="status" id="status_block_id"></p> 
 			<div class="output" id="output_block_id"  ondblclick="toggle_editor(_block_id)"></div>

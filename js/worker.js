@@ -17,7 +17,7 @@ run= function(_block_id){
 	
 	setTimeout(async ()=>{
 		try{
-			if(get_dom("cell_type"+_block_id).checked){
+			if(get_dom("cell_type"+_block_id).value=='code'){
 			
 				get_dom("result"+_block_id).style.display = "flex";
 				

@@ -21,7 +21,8 @@ blank_nb={
 var editors={}
 
 toggle_editor=function(i){
-	if(get_dom("cell_type"+i).checked) return;
+	if(get_dom("cell_type"+i).value=='code') return;
+	
 	
 	{
 		input_dom=get_dom("input"+i)
@@ -34,12 +35,24 @@ toggle_editor=function(i){
 		
 	}
 }
+
+const selectElements = document.querySelectorAll('.cell-type');
+
+selectElements.forEach(select => {
+  select.addEventListener('mousedown', (event) => {
+    event.stopPropagation();
+  });
+
+
+});
+
+
 unfocus_editor=function(i){
-	
-	if(get_dom("cell_type"+i).checked) return;
+	return; //Right now not making the run.. it will run only play button is pressed..
+	if(get_dom("cell_type"+i).value=='code') return;
 	else{
 		setTimeout(function(){
-		    if(get_dom("cell_type"+i).checked) return;
+		    if(get_dom("cell_type"+i).value=='code') return;
 		    run(i);
 		}, 200);
 		
@@ -72,16 +85,21 @@ move_down=function(i){
 }
 
 goto_next_cell=function(i){
+
 	curr=get_dom("block"+i);
 	next=curr.nextSibling;
 	if(next==null) return;
 	next_block_id=next.id.replace("block","");
+
 	goto_input_cell(next_block_id);
 	
 }
+
 goto_input_cell=function(i){
-	if(!get_dom("cell_type"+i).checked){
+	
+	if(!(get_dom("cell_type"+i).value==='code')){
 		input_dom=get_dom("input"+i)
+		console.log(input_dom);
 		input_dom.style.display = "block";
 		get_dom("cell_menu"+i).style.display = "block";
 		get_dom("result"+i).style.display = "none";
@@ -107,7 +125,6 @@ insert_cell=async function(type,after){
 	   code_theme='cobalt'; // Apply a dark theme (adjust theme name)
 	} 
 	
-	console.log(type,after,i);
 	var block_html=get_dom("code_block_template").innerHTML;
 	block_html=block_html.replaceAll('_block_id',i);
 	block_html= block_html.replaceAll(/(\r\n|\n|\r|\t)/gm, "");
@@ -161,12 +178,12 @@ insert_cell=async function(type,after){
 					     
 		          }
 		});
+		get_dom('cell_type'+i).value=type;
 
 		if(type=='code'){
-  			get_dom('cell_type'+i).checked=true;
+  			
 	  	}
 	  	else{
-	  		get_dom('cell_type'+i).checked=false;
 	  		get_dom('result'+i).style.display='flex';
 	  		get_dom('input'+i).style.display='none';
 	  		get_dom('status'+i).style.display='none';
@@ -198,20 +215,20 @@ toggle_dark_mode=function(){
 }
 
 get_nb=function(){
-	var nb=JSON.parse(JSON.stringify(blank_nb));
+	let nb=JSON.parse(JSON.stringify(blank_nb));
  	
- 	var main=get_dom("main");
- 	var blocks=main.childNodes;
+ 	let main=get_dom("main");
+ 	let blocks=main.childNodes;
  	
  	
  	blocks.forEach(x=>{
- 		var block_id=x.id.replace("block","")
- 		var menu=get_dom("cell_menu"+block_id);
-	 	var code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
-	 	var result=get_dom("result"+block_id);
-	 	var status=get_dom("status"+block_id).innerHTML;
-	 	var output=get_dom("output"+block_id).innerHTML;
-	 	var type=get_dom("cell_type"+block_id).checked?'code':'html';
+ 		let block_id=x.id.replace("block","")
+ 		let menu=get_dom("cell_menu"+block_id);
+	 	let code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
+	 	let result=get_dom("result"+block_id);
+	 	let status=get_dom("status"+block_id).innerHTML;
+	 	let output=get_dom("output"+block_id).innerHTML;
+	 	let type=get_dom("cell_type"+block_id).value;
 	 	nb.cells.push({code:code,status:status,output:output,type:type})
 	 	
  	});
@@ -235,7 +252,6 @@ load_jsnb=async function(nb){
 		
 		status_data.num_blocks=0;
 		for(let i=0;i<nb.cells.length;i++){
-			console.log(i,"/",nb.cells.length);
 			x=nb.cells[i];
 			await insert_cell(x['type']);
 			var input_i=await wait_for_dom("input"+i);
@@ -303,12 +319,12 @@ get_html=function(view){
  		var input ='';
  		var output=get_dom("result"+block_id).outerHTML;
 	 	if(view=='nb') {
-	 		if(get_dom("cell_type"+block_id).checked){
+	 		if(get_dom("cell_type"+block_id).value=='code'){
 	 			input=get_dom("input"+block_id).outerHTML;
 	 		}
 	 	}
 	 	if(view=='html+js') {
-	 		if(get_dom("cell_type"+block_id).checked){
+	 		if(get_dom("cell_type"+block_id).value=='code'){
 		 		let code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
 		 		input="\n<script>\n"+code+"\n</script>\n";
 		 	}

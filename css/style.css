@@ -135,7 +135,7 @@ ul[role=listbox]{
 
 .cell-menu a{
 
-	color:var(--primary);
+	color: var(--font-color);
 	margin:10px;
 	font-size:20px;
 }
@@ -229,12 +229,19 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 
 
 
-.cell-type:checked + span::before {
-	  content: "code";
-}
 
-.cell-type + span::before {
-	  content: "html";
+.cell-type{
+    color:var(--font-color) !important;
+    height: 32px !important;
+    width: 50px !important;
+    padding: 0px !important; 
+    margin: 0px !important;
+    text-align: center !important;
+    margin-top: -10px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    background-image: unset !important;
+    background-color: unset !important;
 }
 
 #github_link{
@@ -312,7 +319,7 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#c589b9
+  --font-color:#945488
   }
 }
 
@@ -322,7 +329,7 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#c589b9;
+  --font-color:#945488;
   }
 }
 
