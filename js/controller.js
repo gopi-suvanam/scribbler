@@ -233,6 +233,7 @@ openFileNamesModal=function(){
 }
 
 saveLocalFile=async function(){
+	getDom("save-button").setAttribute("aria-busy","true");
 	try{
 		let nb =await get_nb();
 		let update_time=new Date();
@@ -242,8 +243,9 @@ saveLocalFile=async function(){
 	}catch(e){
 		alert("Error saving file locally");
 	}
-	
-	
+	setTimeout( ()=>
+	getDom("save-button").removeAttribute("aria-busy"),
+	500);
 }
 deleteLocalFile=function(id,name){
 	let c=confirm("Deleting : "+name);

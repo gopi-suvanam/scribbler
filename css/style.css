@@ -248,8 +248,8 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 }
 
 #github_link{
-	color: var(--secondary);
-	background-color: var(--primary);
+	color: var(--font-color);
+	background-color: var(--secondary);
 	padding-top:0px;
 	padding-bottom:0px;
 	float:right;
@@ -257,17 +257,24 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 }
 
 #break-sandbox{
-	background-color:var(--primary);
+	background-color:var(--secondary);
 	color:#9e2887;
     	padding-top:0px;
 	padding-bottom:0px;
 	float:right;
 	margin:0px;
-	#padding-left:15px;
-	#padding-right:15px;
 	margin-right:5px;
 }
 
+#save-button{
+	background-color:var(--secondary);
+	color:var(--font-color);
+    	padding-top:0px;
+	padding-bottom:0px;
+	float:right;
+	margin:0px;
+	margin-right:5px;
+}
 
 
 /* For WebKit-based browsers */
@@ -300,7 +307,7 @@ pre{
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#c589b9;
-  
+  --secondary: hsl(205 18% 94% / 1);
   
 }
 
