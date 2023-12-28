@@ -15,18 +15,17 @@
 		<link rel="stylesheet" href="codemirror/codemirror.css">
 		<link rel="stylesheet" href="codemirror/cobalt.css">
 		<link rel="stylesheet" href="codemirror/duotone-light.css">
-		<link rel="stylesheet" href="https://codemirror.net/5/addon/hint/show-hint.css">
+		<link rel="stylesheet" href="codemirror/show-hint.css">
 		
 		<script src="codemirror/javascript.js"></script> <!--For styling javascript code -->
-		<script src="https://codemirror.net/5/addon/hint/show-hint.js"></script> <!--For providing hints -->
-		<script src="https://codemirror.net/5/addon/hint/javascript-hint.js"></script> <!--For JavaScript hints -->
+		<script src="codemirror/show-hint.js"></script> <!--For providing hints -->
+		<script src="codemirror/javascript-hint.js"></script> <!--For JavaScript hints -->
 		
 
 
 		<!-- Controllers and libs -->
 		<script src="js/libs.js"></script> <!-- libs for some functionality -->
 		<script src="js/sandbox-controller.js"></script> <!-- Controls the UI -->
-		<script src="js/worker.js"></script> <!-- Runs the user generated code -->
 		<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
 				
 		<!-- Styling using pico.css and some custom css -->
@@ -47,7 +46,7 @@
 					<option selected value="code">code</option>
 					<option value="html">html</option>
 				</select>
-			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" id="run-button_block_id"  onclick="run(_block_id)">&#9658;</a>
+			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" id="run-button_block_id"  onclick="worker.run(_block_id)">&#9658;</a>
 			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="sandbox.moveUp(_block_id)">&#x25B2;</a>
 			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="sandbox.moveDown(_block_id)">&#x25BC;</a>
 			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="sandbox.insertCell('code',_block_id)">&#10011;</a>

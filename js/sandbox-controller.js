@@ -1,6 +1,6 @@
 ﻿
 
-sandbox={}
+const sandbox={}
 
 sandbox.statusData={
 	num_blocks:0,
@@ -57,7 +57,7 @@ sandbox.unfocusEditor=function(i){
 	else{
 		setTimeout(function(){
 		    if(get_dom("cell_type"+i).value=='code') return;
-		    run(i);
+		    worker.run(i);
 		}, 200);
 		
 		
@@ -103,7 +103,6 @@ sandbox.goToInputCell=function(i){
 	
 	if(!(get_dom("cell_type"+i).value==='code')){
 		input_dom=get_dom("input"+i)
-		console.log(input_dom);
 		input_dom.style.display = "block";
 		get_dom("cell_menu"+i).style.display = "block";
 		get_dom("result"+i).style.display = "none";
@@ -164,9 +163,9 @@ sandbox.insertCell=async function(type,after){
 		     highlightMatches: true,
 		     theme:code_theme,
 		     extraKeys: {
-		          'Ctrl-Enter': (cm) => { run(i)},
-		          'Cmd-Enter': (cm) => {run(i)},
-		          'Shift-Enter': (cm) => {run(i);sandbox.goToNextCell(i) },
+		          'Ctrl-Enter': (cm) => { worker.run(i)},
+		          'Cmd-Enter': (cm) => {worker.run(i)},
+		          'Shift-Enter': (cm) => {worker.run(i);sandbox.goToNextCell(i) },
 		          'Alt-Enter': (cm) => {sandbox.insertCell('code',i);},
 		           //'Alt-R':(cm)=>{runAll()},	
 		           'Alt-D':(cm)=>{sandbox.deleteCell(i)},	
@@ -270,7 +269,7 @@ sandbox.loadJSNB=async function(nb){
 		
 		if (run_on_load) {
 			await wait_for_dom("libs-loaded");
-			runAll();
+			sandbox.runAll();
 		}
 		if(sandbox.statusData.running_embedded){
 			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
@@ -353,7 +352,7 @@ sandbox.runAll=function(){
 	blocks=main.childNodes;
 	blocks.forEach(x=>{
 		try{
-			run(x.id.replace('block',""))
+			worker.run(x.id.replace('block',""))
 		}catch(err){
 			console.log(err.stack)
 		}
@@ -425,3 +424,6 @@ sandbox.initialize=function(){
 	}
 }
 
+/** Making sandbox immutable so that user generated scripts cannot change the functions **/
+
+Object.freeze(sandbox);

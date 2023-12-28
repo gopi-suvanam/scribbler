@@ -266,7 +266,7 @@ loadLocalFile=function(id){
 }
 
 /********* Initialize Certain Global Variables and Load the JSNB from URL *****/
-keyUp=function(e) {
+keyDown=function(e) {
 	  if (e.ctrlKey && e.key === 's') {
 	    saveLocalFile();
 	  } else if (e.ctrlKey && e.key === 'g') {
@@ -307,9 +307,7 @@ insitialize_page=async function(){
 		},{once:true});
 		
 		
-	  	document.onkeyup = keyUp;
-		
-		sandbox_iframe.onkeyup=keyUp;
+	  	document.addEventListener('keydown', keyDown);
 		initialize_git();
 	};
 	
