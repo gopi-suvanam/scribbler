@@ -48,18 +48,18 @@
 					<option value="html">html</option>
 				</select>
 			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" id="run-button_block_id"  onclick="run(_block_id)">&#9658;</a>
-			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="move_up(_block_id)">&#x25B2;</a>
-			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="move_down(_block_id)">&#x25BC;</a>
-			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="insert_cell('code',_block_id)">&#10011;</a>
-			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  onclick="delete_cell(_block_id)">&#9747;</a>
+			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="sandbox.moveUp(_block_id)">&#x25B2;</a>
+			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="sandbox.moveDown(_block_id)">&#x25BC;</a>
+			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="sandbox.insertCell('code',_block_id)">&#10011;</a>
+			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  onclick="sandbox.deleteCell(_block_id)">&#9747;</a>
 			
 		</div>
-		<div id="input_block_id" tabindex='0' onfocusout="unfocus_editor(_block_id)" class='code'>
+		<div id="input_block_id" tabindex='0' onfocusout="sandbox.unfocusEditor(_block_id)" class='code'>
 		
 		</div>
 		<article style="display:flex"  id="result_block_id">
 			<p class="status" id="status_block_id"></p> 
-			<div class="output" id="output_block_id"  ondblclick="toggle_editor(_block_id)"></div>
+			<div class="output" id="output_block_id"  ondblclick="sandbox.toggleEditor(_block_id)"></div>
 		</article>
 	</div>
 	<div class="container">
@@ -67,7 +67,7 @@
 	</div>
   </body>
   <script>
-  	insitialize_sandbox(); <!-- Load the notebook or insert an empty cell -->
+  	sandbox.initialize(); <!-- Load the notebook or insert an empty cell -->
   </script>
   
   <!-- Loading some libraries for power experience. Putting at the end so that these do not block rest of the UI. -->

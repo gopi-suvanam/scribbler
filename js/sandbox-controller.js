@@ -1,10 +1,14 @@
-﻿status_data={
+﻿
+
+sandbox={}
+
+sandbox.statusData={
 	num_blocks:0,
 	block_run:0,
 	running_embedded:false
 }
 
-blank_nb={
+blankNB={
   "metadata" : {
      "name":"Starting JS Notebook Example",
     "language_info": {
@@ -18,9 +22,9 @@ blank_nb={
   "run_on_load":false
 }
 
-var editors={}
+sandbox.editors={}
 
-toggle_editor=function(i){
+sandbox.toggleEditor=function(i){
 	if(get_dom("cell_type"+i).value=='code') return;
 	
 	
@@ -47,7 +51,7 @@ selectElements.forEach(select => {
 });
 
 
-unfocus_editor=function(i){
+sandbox.unfocusEditor=function(i){
 	return; //Right now not making the run.. it will run only play button is pressed..
 	if(get_dom("cell_type"+i).value=='code') return;
 	else{
@@ -59,11 +63,11 @@ unfocus_editor=function(i){
 		
 	}
 }
-delete_cell=function(i){
+sandbox.deleteCell=function(i){
 	get_dom("block"+i).remove();
-	delete editors[i];
+	delete sandbox.editors[i];
 }
-move_up=function(i){
+sandbox.moveUp=function(i){
 	curr=get_dom("block"+i)
 	prev=curr.previousSibling
 	curr.parentNode.insertBefore(curr,prev);
@@ -73,7 +77,7 @@ move_up=function(i){
 	cm.focus();
 	cm.setCursor(1,0)
 }
-move_down=function(i){
+sandbox.moveDown=function(i){
 	curr=get_dom("block"+i)
 	next=curr.nextSibling
 	curr.parentNode.insertBefore(curr, next.nextSibling)
@@ -84,18 +88,18 @@ move_down=function(i){
 	cm.setCursor(1,0)
 }
 
-goto_next_cell=function(i){
+sandbox.goToNextCell=function(i){
 
 	curr=get_dom("block"+i);
 	next=curr.nextSibling;
 	if(next==null) return;
 	next_block_id=next.id.replace("block","");
 
-	goto_input_cell(next_block_id);
+	sandbox.goToInputCell(next_block_id);
 	
 }
 
-goto_input_cell=function(i){
+sandbox.goToInputCell=function(i){
 	
 	if(!(get_dom("cell_type"+i).value==='code')){
 		input_dom=get_dom("input"+i)
@@ -115,8 +119,8 @@ goto_input_cell=function(i){
 	}
 }
 
-insert_cell=async function(type,after){
-	var i=status_data.num_blocks;
+sandbox.insertCell=async function(type,after){
+	var i=sandbox.statusData.num_blocks;
 	const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 	
 	// Apply the appropriate CodeMirror theme
@@ -162,12 +166,12 @@ insert_cell=async function(type,after){
 		     extraKeys: {
 		          'Ctrl-Enter': (cm) => { run(i)},
 		          'Cmd-Enter': (cm) => {run(i)},
-		          'Shift-Enter': (cm) => {run(i);goto_next_cell(i) },
-		          'Alt-Enter': (cm) => {insert_cell('code',i);},
-		           //'Alt-R':(cm)=>{run_all()},	
-		           'Alt-D':(cm)=>{delete_cell(i)},	
-		           'Alt-Up':(cm)=>{move_up(i)},	
-		           'Alt-Down':(cm)=>{move_down(i)},	
+		          'Shift-Enter': (cm) => {run(i);sandbox.goToNextCell(i) },
+		          'Alt-Enter': (cm) => {sandbox.insertCell('code',i);},
+		           //'Alt-R':(cm)=>{runAll()},	
+		           'Alt-D':(cm)=>{sandbox.deleteCell(i)},	
+		           'Alt-Up':(cm)=>{sandbox.moveUp(i)},	
+		           'Alt-Down':(cm)=>{sandbox.moveDown(i)},	
 		            "Ctrl-Space": "autocomplete",
 		             ".": function(cm) {
 				      setTimeout(function() {
@@ -194,12 +198,12 @@ insert_cell=async function(type,after){
 	  	}
 	  	cm.focus();
 		cm.setCursor(1,0);
-	  	editors[i]=cm;
+	  	sandbox.editors[i]=cm;
 
 	}
 	
 
-	status_data.num_blocks=i+1;
+	sandbox.statusData.num_blocks=i+1;
 
 }
 
@@ -208,14 +212,14 @@ insert_cell=async function(type,after){
 
 
 
-toggle_dark_mode=function(){
+toggleDarkMode=function(){
    if(document.body.getAttribute("data-theme")=='light')
    document.body.setAttribute("data-theme",'dark');
    else document.body.setAttribute("data-theme",'light');
 }
 
-get_nb=function(){
-	let nb=JSON.parse(JSON.stringify(blank_nb));
+sandbox.getNB=function(){
+	let nb=JSON.parse(JSON.stringify(blankNB));
  	
  	let main=get_dom("main");
  	let blocks=main.childNodes;
@@ -238,22 +242,22 @@ get_nb=function(){
 
 
 
-load_jsnb=async function(nb){
+sandbox.loadJSNB=async function(nb){
 	try{
 
 		var main = await wait_for_dom("main");
 		var bkup_html=main.innerHTML;
-		var bkup_editors=editors
-		var bkup_status_data=status_data;
+		var bkup_editors=sandbox.editors
+		var bkup_statusData=sandbox.statusData;
 		var run_on_load = nb.run_on_load || false;
 		if(typeof(nb)=='string') nb=JSON.parse(nb);
-		editors={}
+		sandbox.editors={}
 		main.innerHTML='';
 		
-		status_data.num_blocks=0;
+		sandbox.statusData.num_blocks=0;
 		for(let i=0;i<nb.cells.length;i++){
 			x=nb.cells[i];
-			await insert_cell(x['type']);
+			await sandbox.insertCell(x['type']);
 			var input_i=await wait_for_dom("input"+i);
 			input_i.childNodes[0].CodeMirror.setValue(x['code']);
 			var output_i=await wait_for_dom("output"+i);
@@ -262,13 +266,13 @@ load_jsnb=async function(nb){
 			status_i.innerHTML=x['status'];
 			
 		};
-		status_data.num_blocks=nb.cells.length;
+		sandbox.statusData.num_blocks=nb.cells.length;
 		
 		if (run_on_load) {
 			await wait_for_dom("libs-loaded");
-			run_all();
+			runAll();
 		}
-		if(status_data.running_embedded){
+		if(sandbox.statusData.running_embedded){
 			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
@@ -281,7 +285,7 @@ load_jsnb=async function(nb){
 	}catch(err){
 		alert(err.message);
 		console.log(err.stack);
-		editors=bkup_editors;
+		sandbox.editors=bkup_editors;
 		main.innerHTML=bkup_html;
 		alert(err.message);
 		return ;
@@ -291,13 +295,13 @@ load_jsnb=async function(nb){
 
 }
 
-get_html=function(view){
+sandbox.getHTML=function(view){
  	
  	var main=get_dom("main");
  	var blocks=main.childNodes;
 	var html='<html>\n<head>\n'
 	
-	var cells=get_nb().cells;
+	var cells=sandbox.getNB().cells;
 	var css= [];
 
 	for (var sheeti= 0; sheeti<document.styleSheets.length; sheeti++) {
@@ -343,18 +347,35 @@ get_html=function(view){
  	return html	
 }
 
-message_handler=async function(action,data,call_bk){
 
-	if(action == "run_all") run_all();
-	if(action=="load_jsnb"){
-		load_jsnb(data);
+sandbox.runAll=function(){
+	var main=get_dom("main");
+	blocks=main.childNodes;
+	blocks.forEach(x=>{
+		try{
+			run(x.id.replace('block',""))
+		}catch(err){
+			console.log(err.stack)
+		}
+	});
+	
+	
+}
+
+
+
+sandbox.messageHandler=async function(action,data,call_bk){
+
+	if(action == "sandbox.runAll") sandbox.runAll();
+	if(action=="sandbox.loadJSNB"){
+		sandbox.loadJSNB(data);
 	}
-	if(action=="insert_cell"){
-		insert_cell(data['type']);
+	if(action=="sandbox.insertCell"){
+		sandbox.insertCell(data['type']);
 	}
 		
 }
-insitialize_sandbox=function(){
+sandbox.initialize=function(){
 	console.log("Initializing sanbox...");
 	
 	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
@@ -364,9 +385,9 @@ insitialize_sandbox=function(){
 	  		if(!confirmation) return;
   		}
   		console.log("Loading from url inside Sandbox");
-  		status_data.running_embedded=true;
+  		sandbox.statusData.running_embedded=true;
   		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
-  		else read_file(url,load_jsnb,err=>{alert(err.message)});
+  		else read_file(url,sandbox.loadJSNB,err=>{alert(err.message)});
   		document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
@@ -378,9 +399,10 @@ insitialize_sandbox=function(){
 	if(in_iframe()){
 	  	
 		 window.addEventListener('message', function(event) {
+		 	
 		      if (event.source === window.parent) {
 		        const message = event.data;		
-			message_handler(message.action,message.data,message.call_bk);
+			sandbox.messageHandler(message.action,message.data,message.call_bk);
 		
 		      }
 		    });
@@ -388,13 +410,13 @@ insitialize_sandbox=function(){
 		//Send notebook back on specific port if requested with port
 		window.addEventListener('message',e=>{
 			if(e.ports && e.data ) {
-			  if(e.data.action=='get_nb'){
-			          const data =  get_nb();
+			  if(e.data.action=='sandbox.getNB'){
+			          const data =  sandbox.getNB();
 			          // respond to main window
 			          e.ports[0].postMessage(data);
 			   }
-			   if(e.data.action=='get_html'){
-			          const data =  get_html(e.data.view);
+			   if(e.data.action=='sandbox.getHTML'){
+			          const data =  sandbox.getHTML(e.data.view);
 			          // respond to main window
 			          e.ports[0].postMessage(data);
 			   }
@@ -403,10 +425,3 @@ insitialize_sandbox=function(){
 	}
 }
 
-in_iframe = function() {
-    try {
-        return window.self !== window.top;
-    } catch (e) {
-        return true;
-    }
-}

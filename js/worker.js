@@ -13,7 +13,7 @@ run= function(_block_id){
 	
 	get_dom("run-button"+_block_id).innerHTML="&#8856;";
 	
-	const code=editors[_block_id].getValue()
+	const code=sandbox.editors[_block_id].getValue()
 	
 	setTimeout(async ()=>{
 		try{
@@ -38,9 +38,9 @@ run= function(_block_id){
 				const end_time_eval = Date.now();
 				var execution_time=end_time_eval - start_time_eval;
 			
-				status_data.block_run+=1;
+				sandbox.statusData.block_run+=1;
 				execution_time=execution_time>1000?execution_time/1000.0+'s':execution_time+'ms';
-				get_dom("status"+_block_id).innerHTML='['+status_data.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>';
+				get_dom("status"+_block_id).innerHTML='['+sandbox.statusData.block_run+']<br><span style="font-size:8px">'+execution_time+'<span>';
 	
 			}
 			else{
@@ -71,20 +71,6 @@ run= function(_block_id){
 	},10);
 }
 
-run_all=function(){
-	var main=get_dom("main");
-	blocks=main.childNodes;
-	blocks.forEach(x=>{
-		console.log("running",x.id);
-		try{
-			run(x.id.replace('block',""))
-		}catch(err){
-			console.log(err.stack)
-		}
-	});
-	
-	
-}
 
 
 

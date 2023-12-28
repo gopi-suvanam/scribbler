@@ -6,6 +6,15 @@
 	TIMEOUT_FOR_BLOCKING_CALLS=5000;
 }
 
+in_iframe = function() {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
+
+
 show_in_dom=function(output,...objs){
 	var to_show='';
 	for(var i=0;i<objs.length;i+=1){
@@ -22,7 +31,8 @@ show_in_dom=function(output,...objs){
 	if(to_show.length>0) document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<br>";
 }
 
-get_dom=id=>document.getElementById(id);
+getDom=x=>document.getElementById(x);
+get_dom = x=>document.getElementById(x);
 
 load_script = function(url,async){
 
@@ -133,7 +143,7 @@ function insert_after(el0, el1) {
 
 
   
-  download_string=function(str, exportName,char_set){
+download_string=function(str, exportName,char_set){
     
 	const blob = new Blob([str], { type: "text/plain" });
 	

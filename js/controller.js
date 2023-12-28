@@ -1,22 +1,21 @@
-sandbox = {};
 file_details={};
 username='';
 
 /****** Loading JSNB *********/
-send_nb_to_sandbox=function(nb){
-      const message = {
-        action:"load_jsnb",
-        data:nb,
-        call_bk:""
-      };
-      
-      sandbox.contentWindow.postMessage(message, '*');
-}
+
 load_jsnb=function(content){
       
       if(typeof(content)=='string') var nb=JSON.parse(content);      
       else var nb=content;
-	send_nb_to_sandbox(nb);
+	
+      const message = {
+        action:"sandbox.loadJSNB",
+        data:nb,
+        call_bk:""
+      };
+      
+      sandbox_iframe.contentWindow.postMessage(message, '*');
+      
       
 
       var run_on_load = nb.run_on_load || false;
@@ -35,14 +34,13 @@ load_jsnb=function(content){
 
 load_file_click=async function() {
 	
-	
 	const content = await load_file();
 	
 	get_dom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups");
         get_dom("sandbox").setAttribute("src","sandbox.html?var=xxx");
       	get_dom("break-sandbox").style.display='inline';
-      	sandbox=await wait_for_dom("sandbox");
-      	sandbox.addEventListener("load", function() {
+      	sandbox_iframe=await wait_for_dom("sandbox");
+      	sandbox_iframe.addEventListener("load", function() {
 	  load_jsnb(content);
 	},{once:true});
 
@@ -58,6 +56,7 @@ load_from_url=function(){
 	if(url==undefined) url="./examples/Hello-world.jsnb";
   	if( url.length>1){
   		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
+  		else if(url.split(":")[0].trim()=='local') loadLocalFile(url.split(":")[1].trim());
   		else read_file(url,load_jsnb,err=>{alert(err.message)});
   	}else{
 
@@ -83,7 +82,7 @@ function get_nb() {
     }
     // let iframe know we're expecting an answer
     // send it its own port
-    sandbox.contentWindow.postMessage({"action":'get_nb'}, '*', [channel.port2]);  
+    sandbox_iframe.contentWindow.postMessage({"action":'sandbox.getNB'}, '*', [channel.port2]);  
   });
 }
 
@@ -101,7 +100,7 @@ function get_html(view) {
     }
     // let iframe know we're expecting an answer
     // send it its own port
-    sandbox.contentWindow.postMessage({"action":'get_html',"view":view}, '*', [channel.port2]);  
+    sandbox_iframe.contentWindow.postMessage({"action":'sandbox.getHTML',"view":view}, '*', [channel.port2]);  
   });
 }
 download_js=async function(){
@@ -155,10 +154,10 @@ run_all=function(){
     // Send a message object to the iframe
    
       const message = {
-        action:"run_all",
+        action:"sandbox.runAll",
         data:""      
        };
-      sandbox.contentWindow.postMessage(message, '*');
+      sandbox_iframe.contentWindow.postMessage(message, '*');
 
 }
 
@@ -166,11 +165,11 @@ insert_cell=function(type){
 	 // Send a message object to the iframe
    
       const message = {
-        action:"insert_cell",
+        action:"sandbox.insertCell",
         data:{type:type},
         call_bk:""
       };
-      sandbox.contentWindow.postMessage(message, '*');
+      sandbox_iframe.contentWindow.postMessage(message, '*');
 }
 break_sandbox=async function(){
       const confirmation = confirm("!!! Alert !!! You are about to break the Sandbox. This can give the notebook access to your cookies, cache etc. Do so only if you trust the code in the notebook !!!");
@@ -179,26 +178,100 @@ break_sandbox=async function(){
       get_dom("sandbox").removeAttribute("sandbox");
       get_dom("sandbox").setAttribute("src","sandbox.html");
       
-      sandbox=await wait_for_dom("sandbox")
-      sandbox.addEventListener("load",async function(){
+      sandbox_iframe=await wait_for_dom("sandbox")
+      sandbox_iframe.addEventListener("load",async function(){
       		console.log("Sanbox loaded");
-      		
       		load_jsnb(nb);
-      		
       	}
       	,{once:true}
       );
       get_dom("break-sandbox").style.display='none';
 }
 
-/********* Initialize Certain Globa Variables and Load the JSNB from URL *****/
-key_up=function(e) {
+
+
+/******** Functions for handling local (IndexedDB) files */
+openFileNamesModal=function(){
+  // Get the modal
+  const modal = document.getElementById('fileNamesModal');
+
+  
+
+  // Call function to retrieve file names and populate the modal
+  getAllFileNames()
+    .then(files => {
+      const fileNamesList = document.getElementById('fileNamesList');
+
+      // Clear existing list items
+      fileNamesList.innerHTML = '';
+
+      // Populate the modal with file names
+      files.forEach(file => {
+        const li = document.createElement('li');
+        const fileLink=document.createElement('a');
+        fileLink.textContent=file.name;//+" "+file.update_time;
+	fileLink.onclick=()=>{
+		loadLocalFile(file.id);
+		closeModal(get_dom('fileNamesModal'));
+	}
+	
+        const deleteBtn=document.createElement('a');
+        deleteBtn.classList.add("file-delete");
+        deleteBtn.onclick=()=>deleteLocalFile(file.id,file.name);
+        deleteBtn.innerHTML='&#9747;';
+        
+        li.appendChild(fileLink);
+        li.appendChild(deleteBtn);
+        fileNamesList.appendChild(li);
+      });
+      
+
+    })
+    .catch(error => {
+      alert('Error retrieving file names:'+error);
+    });
+}
+
+saveLocalFile=async function(){
+	try{
+		let nb =await get_nb();
+		let update_time=new Date();
+		let id=await insertOrUpdateFile(nb, nb.metadata.name,update_time,file_details['id']);
+		openFileNamesModal();
+		file_details['id']=id;
+	}catch(e){
+		alert("Error saving file locally");
+	}
+	
+	
+}
+deleteLocalFile=function(id,name){
+	let c=confirm("Deleting : "+name);
+	if(c)
+	deleteFileById(parseInt(id)).then(x=>openFileNamesModal()).catch(err=>{alert("Error in deletion:"+error)});
+
+}
+loadLocalFile=function(id){
+	getFileById(id).then(obj=>{
+		
+		load_jsnb(obj.nb);
+		file_details['id']=obj.id
+		
+	}
+	
+	).catch(err=>{alert("Error in Loading file:"+err)});
+
+}
+
+/********* Initialize Certain Global Variables and Load the JSNB from URL *****/
+keyUp=function(e) {
 	  if (e.ctrlKey && e.key === 's') {
-	    download_nb();
+	    saveLocalFile();
 	  } else if (e.ctrlKey && e.key === 'g') {
 	    openModal(get_dom('git-import-export'));
 	  } else if (e.ctrlKey && e.key === 'o') {
-	    load_file_click()
+	    openModal(get_dom('fileNamesModal'));
+	    openFileNamesModal()
 			
 	  }
 	  else if (e.altKey && e.key === '®') {
@@ -219,9 +292,9 @@ insitialize_page=async function(){
 		get_dom("break-sandbox").style.display='inline';
 	      	
 	      	
-		sandbox = await wait_for_dom('sandbox');
+		sandbox_iframe = await wait_for_dom('sandbox');
 		
-		sandbox.addEventListener("load", function() {
+		sandbox_iframe.addEventListener("load", function() {
 			if(first_load){
 				console.log("Loading from URL");
 				load_from_url();
@@ -232,9 +305,9 @@ insitialize_page=async function(){
 		},{once:true});
 		
 		
-	  	document.onkeyup = key_up;
+	  	document.onkeyup = keyUp;
 		
-		sandbox.onkeyup=key_up;
+		sandbox_iframe.onkeyup=keyUp;
 		initialize_git();
 	};
 	

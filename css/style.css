@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 }
 
 a{
-color:var(--font-color) ;//purple
+	color:var(--font-color) ;//purple
 }
 
 
@@ -158,6 +158,9 @@ input{
 	line-height:20px;
 }
 
+.file-delete{
+	color:red;
+}
 
 @media (max-width: 600px) {
   .cell-menu {

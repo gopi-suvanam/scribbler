@@ -18,6 +18,7 @@
 		<script src="js/libs.js"></script> <!-- libs for some functionality -->
 		<script src="js/controller.js"></script> <!-- Controls the UI -->
 		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
+		<script src="js/local-storage.js"></script> <!-- Functions for storing and retreiving JSNBs in indexddb -->
 		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
 		
 
@@ -31,13 +32,15 @@
 	      <summary tabindex="0" aria-haspopup="listbox">File</summary>
 	      <ul role="listbox">
 	        <li><a href="#" target="_blank">New Blank NB</a></li>
-		<li><a onclick="load_file_click()">Open (Ctrl-O)</a></li>
-	        <li><a onclick="download_nb()">Download (Ctr-S)</a></li>
+	        <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
+		<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a></li>
+		<li><a onclick="load_file_click()">Import</a></li>
+	        <li><a onclick="download_nb()">Export</a></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
-	        <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
-	        <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
-	        <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
-	        <li><a onclick="download_js()">Download as JS</a></li>
+	        <li><a onclick="download_html('nb')">Export as HTML (NB-view)</a></li>
+	        <li><a onclick="download_html('output')">Export as HTML (Only output)</a></li>
+	        <li><a onclick="download_html('html+js')">Export as HTML (HTML+JS)</a></li>
+	        <li><a onclick="download_js()">Export as JS</a></li>
 	        
 	      </ul>
 	      </details>
@@ -143,6 +146,27 @@
 		
 	  </article>
 	</dialog>
+	
+	
+	<dialog id="fileNamesModal"> <!-- Modal for Loading Local Files -->
+	  <article>
+	    <h2>Load your local files</h2>
+	    <p>
+	      Load a JSNB from local stotage of the browser
+	    </p>
+	    <ol id="fileNamesList">
+	    
+	    </ol>
+	     <footer>
+	     	<p>The app does not send the local fiels to any server. 
+	     	The notebook scripts cannot directly access these files unless the sandbox is broken by the user.
+	     	The will get deleted if browser data is cleared.
+	     	<p>
+	     </footer>
+	  </article>
+	  
+	</dialog>
+	
 	
 	
   </body>
