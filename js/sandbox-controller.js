@@ -282,11 +282,9 @@ sandbox.loadJSNB=async function(nb){
 		document.documentElement.scrollTop = 0;
 		
 	}catch(err){
-		alert(err.message);
 		console.log(err.stack);
 		sandbox.editors=bkup_editors;
 		main.innerHTML=bkup_html;
-		alert(err.message);
 		return ;
 	}
 	
@@ -386,7 +384,7 @@ sandbox.initialize=function(){
   		console.log("Loading from url inside Sandbox");
   		sandbox.statusData.running_embedded=true;
   		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
-  		else read_file(url,sandbox.loadJSNB,err=>{alert(err.message)});
+  		else read_file(url,sandbox.loadJSNB,err=>{console.log(err.message)});
   		document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");

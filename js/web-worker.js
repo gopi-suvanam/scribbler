@@ -1,4 +1,4 @@
-﻿//We worker for running code in the web-worker
+﻿//Web worker for running code in the web-worker
 
 show=(data)=>{
 	
