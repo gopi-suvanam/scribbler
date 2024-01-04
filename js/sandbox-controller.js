@@ -92,7 +92,10 @@ sandbox.goToNextCell=function(i){
 
 	curr=get_dom("block"+i);
 	next=curr.nextSibling;
-	if(next==null) return;
+	if(next==null) {
+		sandbox.insertCell('code');
+		return;
+	}
 	next_block_id=next.id.replace("block","");
 
 	sandbox.goToInputCell(next_block_id);
@@ -118,15 +121,63 @@ sandbox.goToInputCell=function(i){
 	}
 }
 
+// Custom hint function to dynamically show function parameters
+CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
+  const cur = editor.getCursor();
+  const token = editor.getTokenAt(cur);
+
+  if (token.type === 'variable') {
+    return token.string;
+  }
+
+  return null;
+});
+
+
+sandbox.code_theme = 'duotone-light';
+const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+if (userPreferredTheme === 'dark') {
+   sandbox.code_theme='cobalt'; // Apply a dark theme (adjust theme name)
+} 
+
+
+sandbox.codeMirrorOptions={
+  value: "",
+   	tabSize: 4,
+     mode: 'javascript',
+     lineNumbers: true,
+     lineWrapping:true,
+     //styleActiveSelected: true,
+     //styleActiveLine: true,
+     indentWithTabs: true,
+     matchBrackets: true,
+     highlightMatches: true,
+     theme:sandbox.code_theme,
+     extraKeys: {
+          'Ctrl-Enter': (cm) => { worker.run(cm.i)},
+          'Cmd-Enter': (cm) => {worker.run(cm.i)},
+          'Shift-Enter': (cm) => {worker.run(cm.i);sandbox.goToNextCell(cm.i) },
+          'Alt-Enter': (cm) => {sandbox.insertCell('code',cm.i);},
+           //'Alt-R':(cm)=>{runAll()},	
+           'Alt-D':(cm)=>{sandbox.deleteCell(cm.i)},	
+           'Alt-Up':(cm)=>{sandbox.moveUp(cm.i)},	
+           'Alt-Down':(cm)=>{sandbox.moveDown(cm.i)},	
+           "Ctrl-Space": "autocomplete",
+           ".": function(cm) {
+		      setTimeout(function() {
+		        CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
+		      }, 100);
+		      return CodeMirror.Pass;
+		    }
+			     
+          }
+}
+
 sandbox.insertCell=async function(type,after){
 	var i=sandbox.statusData.num_blocks;
-	const userPreferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	
 	
 	// Apply the appropriate CodeMirror theme
-	var code_theme = 'duotone-light';
-	if (userPreferredTheme === 'dark') {
-	   code_theme='cobalt'; // Apply a dark theme (adjust theme name)
-	} 
 	
 	var block_html=get_dom("code_block_template").innerHTML;
 	block_html=block_html.replaceAll('_block_id',i);
@@ -148,39 +199,10 @@ sandbox.insertCell=async function(type,after){
 	{
 	
 		cm = new CodeMirror(
-		function(node)
-		{input_div.appendChild(node);
-		}, {
-		  value: "",
-		   	tabSize: 4,
-		     mode: 'javascript',
-		     lineNumbers: true,
-		     lineWrapping:true,
-		     //styleActiveSelected: true,
-		     //styleActiveLine: true,
-		     indentWithTabs: true,
-		     matchBrackets: true,
-		     highlightMatches: true,
-		     theme:code_theme,
-		     extraKeys: {
-		          'Ctrl-Enter': (cm) => { worker.run(i)},
-		          'Cmd-Enter': (cm) => {worker.run(i)},
-		          'Shift-Enter': (cm) => {worker.run(i);sandbox.goToNextCell(i) },
-		          'Alt-Enter': (cm) => {sandbox.insertCell('code',i);},
-		           //'Alt-R':(cm)=>{runAll()},	
-		           'Alt-D':(cm)=>{sandbox.deleteCell(i)},	
-		           'Alt-Up':(cm)=>{sandbox.moveUp(i)},	
-		           'Alt-Down':(cm)=>{sandbox.moveDown(i)},	
-		            "Ctrl-Space": "autocomplete",
-		             ".": function(cm) {
-				      setTimeout(function() {
-				        CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
-				      }, 100);
-				      return CodeMirror.Pass;
-				    }
-					     
-		          }
-		});
+			node=>{input_div.appendChild(node);}, 
+			sandbox.codeMirrorOptions
+		);
+		cm.i=i;
 		get_dom('cell_type'+i).value=type;
 
 		if(type=='code'){
