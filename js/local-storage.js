@@ -47,7 +47,7 @@ function getAllFileNames() {
         const cursor = cursorEvent.target.result;
         if (cursor) {
           // Push each fileName into the array
-          files.push({name:cursor.value.name,id:cursor.value.id,update_time:cursor.value.update_time});
+          files.push({name:cursor.value.name,id:cursor.value.id,updateTime:cursor.value.updateTime});
           cursor.continue();
         } else {
           // Resolve the promise with the array of fileNames when cursor iteration is done
@@ -71,7 +71,7 @@ function getAllFileNames() {
   object = {};
   object['nb']=nb;
   object['name']=name;
-  object['update_time']=update_time;
+  object['updateTime']=update_time;
   if(typeof(id)!=='undefined')
   	object['id']=id;
   return new Promise((resolve, reject) => {

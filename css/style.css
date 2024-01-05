@@ -161,6 +161,9 @@ input{
 .file-delete{
 	color:red;
 }
+.update-time{
+	font-size:12px;
+}
 
 @media (max-width: 600px) {
   .cell-menu {

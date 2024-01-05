@@ -216,12 +216,21 @@ openFileNamesModal=function(){
 	}
 	
         const deleteBtn=document.createElement('a');
+
+
+	
         deleteBtn.classList.add("file-delete");
         deleteBtn.onclick=()=>deleteLocalFile(file.id,file.name);
         deleteBtn.innerHTML='&#9747;';
         
+        const updateTime=document.createElement('p');
+        updateTime.textContent="Last updated at: " + file.updateTime;//+" "+file.update_time;
+        updateTime.classList.add("update-time");
+        
         li.appendChild(fileLink);
         li.appendChild(deleteBtn);
+        li.appendChild(updateTime);
+        
         fileNamesList.appendChild(li);
       });
       
@@ -236,8 +245,8 @@ saveLocalFile=async function(){
 	getDom("save-button").setAttribute("aria-busy","true");
 	try{
 		let nb =await get_nb();
-		let update_time=new Date();
-		let id=await insertOrUpdateFile(nb, nb.metadata.name,update_time,file_details['id']);
+		let updateTime=new Date();
+		let id=await insertOrUpdateFile(nb, nb.metadata.name,updateTime,file_details['id']);
 		openFileNamesModal();
 		file_details['id']=id;
 	}catch(e){
