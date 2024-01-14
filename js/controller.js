@@ -36,7 +36,7 @@ load_file_click=async function() {
 	
 	const content = await load_file();
 	
-	get_dom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups");
+	get_dom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
         get_dom("sandbox").setAttribute("src","sandbox.html?var=xxx");
       	get_dom("break-sandbox").style.display='inline';
       	sandbox_iframe=await wait_for_dom("sandbox");
@@ -298,7 +298,7 @@ insitialize_page=async function(){
 
 	window.onload = async function() {
 		first_load=true;
-		get_dom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups");
+		get_dom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		get_dom("sandbox").setAttribute("src","sandbox.html");
 		get_dom("break-sandbox").style.display='inline';
 	      	
