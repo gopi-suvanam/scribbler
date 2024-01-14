@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "Comparing Log and 1/n",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "calculate=function(){\n  let my_input=get_dom(\"my_input\").value;\n  let sum=0;\n  for(let i=1;i<=my_input;i++){\n\tsum+=1/i;\n  }\n  get_dom(\"sum\").innerHTML=sum;\n  get_dom(\"log\").innerHTML=Math.log(my_input);\n  \n}",
+      "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "function(){\n  let my_input=get_dom(\"my_input\").value;\n  let sum=0;\n  for(let i=1;i&lt;=my_input;i++){\n\tsum+=1/i;\n  }\n  get_dom(\"sum\").innerHTML=sum;\n  get_dom(\"log\").innerHTML=Math.log(my_input);\n  \n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h1>Input and Output<h1>\n  <input type='text' style=\"width:200px;font-size:14px\" id=\"my_input\"></input>\n<button onclick=\"calculate()\">Calculate</button>\nSum of 1/n: <span id='sum'></span>\n<br>\nlog(n): <span id='log'></span>\n",
+      "status": "",
+      "output": "<h1>Input and Output</h1><h1>\n  <input type=\"text\" style=\"width:200px;font-size:14px\" id=\"my_input\">\n<button onclick=\"calculate()\">Calculate</button>\nSum of 1/n: <span id=\"sum\">12.090146129863335</span>\n<br>\nlog(n): <span id=\"log\">11.512925464970229</span>\n</h1>",
+      "type": "html"
+    },
+    {
+      "code": "",
+      "status": "",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
