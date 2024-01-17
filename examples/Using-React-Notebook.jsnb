@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "name": "New JSNB",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "load_script(\"https://unpkg.com/react@17/umd/react.development.js\",false)\nload_script(\"https://unpkg.com/react-dom@17/umd/react-dom.development.js\",false)",
+      "status": "[3]<br><span style=\"font-size:8px\">445ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "<div id=\"reactDOM\"></div>",
+      "status": "",
+      "output": "<div id=\"reactDOM\"><h1>Hello, Scribbler with React!</h1></div>",
+      "type": "html"
+    },
+    {
+      "code": "  const App = React.createElement('h1', null, 'Hello, Scribbler with React!');\n\n  ReactDOM.render(App , document.getElementById('reactDOM'));\n\nshow('done')",
+      "status": "[6]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "done <br>",
+      "type": "code"
+    },
+    {
+      "code": "",
+      "status": "",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
