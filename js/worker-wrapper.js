@@ -101,7 +101,7 @@ worker.run_in=function(processor,func, ...parameters) {
 worker.web_workers=[]
 worker.run_in_ww=function(func, ...parameters) { 
   const web_worker = new Worker('js/web-worker.js');
-  web_workers.push(web_worker);
+  worker.web_workers.push(web_worker);
   functionString=func.toString();
   return new Promise((resolve, reject) => {
     web_worker.addEventListener('message', (e) => {
@@ -126,10 +126,10 @@ worker.run_in_ww=function(func, ...parameters) {
 }
 
 worker.terminateAllWebWorkers=function() {
-  for (const web_worker of web_workers) {
+  for (const web_worker of worker.web_workers) {
     web_worker.terminate();
   }
-  web_workers.length = 0; // Clear the array
+  worker.web_workers.length = 0; // Clear the array
 }
 
 
