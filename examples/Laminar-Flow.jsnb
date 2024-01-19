@@ -40,5 +40,5 @@
     }
   ],
   "source": "https://github.com/gopi-suvanam/jsnb",
-  "run_on_load": false
+  "run_on_load": true
 }
