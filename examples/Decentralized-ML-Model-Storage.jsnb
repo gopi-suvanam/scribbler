@@ -15,15 +15,21 @@
       "type": "html"
     },
     {
-      "code": "load_script(\"https://cdn.jsdelivr.net/npm/brain.js\") //Brain.js for models\nload_script(\"https://cdnjs.cloudflare.com/ajax/libs/mnist/1.0.4/mnist.js\") //MNIST for data sets\nload_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\") //IPFS JS for storing models in IPFS\n\n",
-      "status": "[1]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "code": "load_script(\"https://cdn.jsdelivr.net/npm/brain.js\",false) //Brain.js for models\nload_script(\"https://cdnjs.cloudflare.com/ajax/libs/mnist/1.0.4/mnist.js\",false) //MNIST for data sets\nload_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\",false) //IPFS JS for storing models in IPFS\n\n",
+      "status": "[3]<br><span style=\"font-size:8px\">3.331s<span></span></span>",
       "output": "",
       "type": "code"
     },
     {
       "code": "//Loading the data and creating training set for digit recognition\n\n    set = mnist.set(8000, 2000);\n\n  trainingData = set.training.map((data) => ({\n      input: data.input,\n      output: data.output,\n    }));\n\ntrainingData.shape()",
-      "status": "[3]<br><span style=\"font-size:8px\">691ms<span></span></span>",
+      "status": "[4]<br><span style=\"font-size:8px\">330ms<span></span></span>",
       "output": "[\n  8000,\n  0\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "train= td=>{\n   show(\"got data\");\n  importScripts(\"https://cdn.jsdelivr.net/npm/brain.js\");\n   net = new brain.NeuralNetwork();\n  show(\"initialized model\");\n    show(\"training data\");\n    // Train the network\n    net.train(td, {\n      log: true,\n      logPeriod: 100,\n    });\n\n  return net.toJSON();\n}\n(async ()=>{\nresult=await worker.run_in_ww(train,trainingData);\n  console.log(result);\n  alert('success');\n  \n})();",
+      "status": "[5]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "{} <br>",
       "type": "code"
     },
     {
