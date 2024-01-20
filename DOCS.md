@@ -58,7 +58,7 @@ The edit menu consists of:
 ## URL Structure
 - The URL of Github pages deployment is [https://app.scribbler.live](https://app.scribbler.live). 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
-- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://app.scribbler.live/#./examples/Hello-world.jsnb](https://app.scribbler.live#./examples/Hello-world.jsnb]) will "GET" the file https://decentralized-intelligence.com/jsnb/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
+- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://app.scribbler.live/#./examples/Hello-world.jsnb](https://app.scribbler.live#./examples/Hello-world.jsnb) will "GET" the file https://app.scribbler.live/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
 - Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://app.scribbler.live#github:gopi-suvanam/scribbler/examples/Hello-world.jsnb](https://app.scribbler.live#github:gopi-suvanam/scirbbler/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialoge will pop up. 
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 
