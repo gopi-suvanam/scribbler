@@ -13,10 +13,9 @@
 10. [Using external libraries](#using-external-libraries)
 
 ## Installing
-- The tool does not require any special installation. It can be downloaded/cloned from GitHub and used directly from file system by opening index.html. 
+- The tool does not require any special installation. It can be downloaded/cloned from GitHub.
 - The folder can be put behind a websrver to serve statically. There is no requirement of any backend framework (node/python etc). 
-- Some external libraries and features like WebRTC, Blockchain wallets may work only when the tool is hosted behind a server i.e. served through http and not as file:///. 
-- Github pages hosted version is available here: https://decentralized-intelligence.com/jsnb/#
+- Github pages hosted version is available here: https://app.scribbler.live
 
 ## Cells
 - The whole notebook is divided into cells. 
@@ -41,7 +40,9 @@ Certain operations can be done on cell-menu. The cell-menu is at top-right corne
 
 ## File Menu
 The file menu consists of:
-- Open: Opening a .jsnb file from local machine
+- Save: Saving a notebook to the browser storage
+- Open: Opening a notebook from the browser storage
+- Load: Opening a .jsnb file from local machine
 - Download: Saving the current notebook as .jsnb file on local machine
 - GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Toke, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
 - Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
@@ -55,10 +56,10 @@ The edit menu consists of:
 - Insert style cell: A blank html-type cell with <style> tags is inserted at the end of the current notebook
   
 ## URL Structure
-- The URL of Github pages deployment is https://decentralized-intelligence.com/jsnb/. 
+- The URL of Github pages deployment is [https://app.scribbler.live](https://app.scribbler.live). 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
-- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/Hello-world.jsnb]) will "GET" the file https://decentralized-intelligence.com/jsnb/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
-- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb](https://decentralized-intelligence.com/jsnb/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialoge will pop up. 
+- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://app.scribbler.live/#./examples/Hello-world.jsnb](https://app.scribbler.live#./examples/Hello-world.jsnb]) will "GET" the file https://decentralized-intelligence.com/jsnb/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
+- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://app.scribbler.live#github:gopi-suvanam/scribbler/examples/Hello-world.jsnb](https://app.scribbler.live#github:gopi-suvanam/scirbbler/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialoge will pop up. 
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 
 ## Special Functions
@@ -94,16 +95,16 @@ These shortcuts are global
 - A file on GitHub repo can be loaded into the .jsnb file. The repo has to be public or you should be a collaborator.
 - A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
 - GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
-- Files in public GitHub repos can be directly accessed as: https://decentralized-intelligence.com/jsnb/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
-- If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://decentralized-intelligence.com/jsnb/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
+- Files in public GitHub repos can be directly accessed as: https://app.scribbler.live#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
+- If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://app.scribbler.live#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
 - The output of a notebook can be downloaded as an HTML file (with code or wothout code)
 - The code of a notebook can be downloaded as a JavaScript file
   
 ## Using external libraries
 External libraries can be used using two specially built functions:
-- load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
+- load_script(url,async) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
 - import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
 - Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
 - More ways including nodejs style require() is coming soon.
-- D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb](https://decentralized-intelligence.com/jsnb/#/jsnb/examples/AMM-Simulation.jsnb)
+- D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://app.scribbler.live#./examples/AMM-Simulation.jsnb](https://app.scribbler.live#./examples/AMM-Simulation.jsnb)
   
