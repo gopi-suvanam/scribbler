@@ -8,7 +8,7 @@
 
 h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
-	c
+	
 }
 
 a{
@@ -21,6 +21,8 @@ h2{font-size:28px}
 h3{font-size:20px}
 h4{font-size:16px}
 h5{font-size:14px}
+li{font-size:18px}
+
 button{
 	width:unset;
 }
@@ -28,7 +30,7 @@ article,textarea{
  margin:10px;
  padding:10px !important;
  overflow:auto; 
- font-size:14px;
+ font-size:18px !important;
  color:var(--color);
  background-color:var(--background-color); 
  border:thin solid white;
@@ -71,19 +73,17 @@ ul[role=listbox]{
 }
 .CodeMirror {
 	font-family: Arial, monospace !important; 
-	font-size: 14px !important; 
+	font-size: 18px !important; 
 	border: 1px solid #d0d7de;
 	border-radius: 6px;
 	margin:10px;
 	height: auto !important;
 	min-height:50px !important;
-	max-height:300px !important;
 	padding:0px !important;
 
 }
 
 .CodeMirror-scroll{
-	max-height:300px;
 }
 
 .CodeMirror-cursor {
@@ -105,7 +105,7 @@ ul[role=listbox]{
 	width:29px;
 	float:left;
 	margin:0px;
-	font-size:12px;
+	font-size:18px;
 	display:inline;
 }
 .output{
@@ -153,7 +153,7 @@ ul[role=listbox]{
 	margin:0px;
 }
 input{
-	font-size:12px;
+	font-size:18px;
 	padding:5px !important;
 	line-height:20px;
 }
