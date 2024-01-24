@@ -40,7 +40,7 @@ worker.run= function(_block_id){
 				show=(...args)=>show_in_dom(`output${_block_id}`,...args);
 					
 								
-				opt=eval(code); // This is where the magic happens.
+				opt=(0,eval)(code); // This is where the magic happens.
 				if(opt!=undefined) show(opt);
 				
 	
