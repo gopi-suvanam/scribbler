@@ -1,5 +1,4 @@
 ﻿body{
-	//background-color: white;
 	//color:dark-grey;
 	height: 100%;
 	    display: flex;
@@ -12,7 +11,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 }
 
 a{
-	color:var(--font-color) ;//purple
+	color:var(--font-color) ;//grey
 }
 
 
@@ -57,6 +56,8 @@ nav{
 	width:100%;
 	justify-content:unset !important;
 	display:flex;
+	background-color:var(--primary)
+	
 
 }
 nav li{
@@ -71,7 +72,10 @@ nav ul{
 	margin-right:10px !important;
 }
 nav a{
-	//color:grey
+	color:var(--color)
+}
+summary{
+	color:var(--color) !important;
 }
 footer span{
 	font-size:12px;
@@ -268,8 +272,8 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 }
 
 #break-sandbox{
-	background-color:var(--secondary);
-	color:#9e2887;
+	background-color:white;
+	color:red;
     	padding-top:0px;
 	padding-bottom:0px;
 	float:right;
@@ -278,7 +282,7 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 }
 
 #save-button{
-	background-color:var(--secondary);
+	background-color:white;
 	color:var(--font-color);
     	padding-top:0px;
 	padding-bottom:0px;
@@ -313,22 +317,23 @@ pre{
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"]{
-  --primary: #ffc408;
+  --primary: #fede02;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#c589b9;
-  --secondary: hsl(205 18% 94% / 1);
+  --font-color:#555;
+  --secondary: #555;
   
 }
 
 
 :root:not([data-theme="light"]){
-  --primary: #ffc408;
+  --primary: rgb(17, 25, 31);
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#c589b9;
+  --font-color:#fede02;
+  --secondary: #fede02;
 }
 
 /* Yellow Dark scheme (Auto) */
@@ -336,21 +341,23 @@ pre{
 /* Keeping it same as light mode for now.. will change later */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --primary: #ffc408;
+  --primary: rgb(17, 25, 31);
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#945488
+  --font-color:#fede02
+  --secondary: #fede02;
   }
 }
 
 @media only screen and (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-  --primary: #ffc408;
+  --primary: #fede02;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#945488;
+  --font-color:#555;
+  --secondary: #fede02;
   }
 }
 

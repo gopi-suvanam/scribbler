@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<img style=\"width:100%\" src='images/banner.png'></img>",
+      "code": "<img style=\"width:100%\" src='images/banner-dark.png'></img>",
       "status": "",
-      "output": "<img style=\"width:100%\" src=\"images/banner.png\">",
+      "output": "<img style=\"width:100%\" src=\"images/banner-dark.png\">",
       "type": "html"
     },
     {
