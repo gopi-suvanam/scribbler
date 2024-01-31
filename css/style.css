@@ -73,9 +73,7 @@ nav ul{
 	margin-left:10px !important;
 	margin-right:10px !important;
 }
-nav a{
-	color:var(--color)
-}
+
 summary{
 	color:var(--color) !important;
 }
