@@ -58,7 +58,6 @@ nav{
 	width:100%;
 	justify-content:unset !important;
 	display:flex;
-	background-color:var(--primary)
 	
 
 }
@@ -222,7 +221,7 @@ nav details[role=list] summary{
 	padding-top:2px !important;
 	padding-bottom:2px !important;
 	border:none !important;
-	font-size:18px !important;
+	font-size:14px !important;
 	line-height:33px !important;
 	font-variant-caps:small-caps;
 }
