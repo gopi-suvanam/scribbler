@@ -12,7 +12,8 @@ h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 }
 
 a{
-	color:var(--font-color) ;//grey
+	color:var(--font-color) ;
+	text-decoration: underline;
 }
 
 
