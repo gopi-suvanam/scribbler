@@ -1,4 +1,5 @@
-![Banner](images/banner.png)
+![Banner](images/banner-dark.png)
+
 #### [Hello World](https://app.scribble.live) • [Docs](https://scribbler.live/docs)  • [Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Discord](https://discord.com/invite/uxNSsWunwU) 
 
 
