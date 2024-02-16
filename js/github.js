@@ -106,7 +106,7 @@ update_owner= function(){
 		const today = new Date(); // Get the current date
 		const thirtyDaysLater = new Date(today); // Create a new date object as a copy of today
 		thirtyDaysLater.setDate(today.getDate() + 30); 
-		set_cookie("gh-token",token,thirtyDaysLater.setDate);
+		localStorage.setItem("gh-token",token);
 		get_dom("user").value=x;
 		update_repos();
 		});
@@ -210,7 +210,9 @@ upload_to_git=async function(){
 }
 
 initialize_git=function(){
-    const token = get_cookie("gh-token");
+    const token = localStorage.getItem("gh-token");
+
+
     if(token==null) return;
      get_dom("token").value =token;
      update_owner();
