@@ -95,6 +95,7 @@ ul[role=listbox]{
 }
 
 .CodeMirror-scroll{
+  margin-right:5px !important;
 }
 
 .CodeMirror-cursor {
