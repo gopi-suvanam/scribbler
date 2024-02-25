@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Example for curr_cell",
+    "name": "Example for currCell",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -15,11 +15,12 @@
       "type": "html"
     },
     {
-      "code": "cc=curr_cell()\ncc.parentNode.style.backgroundColor='red'\ncc.style.color='white'\nshow(\"Trying something new\")",
-      "status": "[1]<br><span style=\"font-size:8px\">4ms<span></span></span>",
-      "output": "Trying something new",
+      "code": "cc=scrib.currCell()\ncc.parentNode.style.backgroundColor='red'\ncc.style.color='white'\nscrib.show(\"Trying something new\")",
+      "status": "[3]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "Trying something new <br>",
       "type": "code"
     }
   ],
-  "source": "https://github.com/gopi-suvanam/jsnb"
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
 }
