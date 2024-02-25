@@ -25,14 +25,14 @@ blankNB={
 sandbox.editors={}
 
 sandbox.toggleEditor=function(i){
-	if(get_dom("cell_type"+i).value=='code') return;
+	if(scrib.getDom("cell_type"+i).value=='code') return;
 	
 	
 	{
-		input_dom=get_dom("input"+i)
+		input_dom=scrib.getDom("input"+i)
 		input_dom.style.display = "block";
-		get_dom("cell_menu"+i).style.display = "block";
-		get_dom("result"+i).style.display = "none";
+		scrib.getDom("cell_menu"+i).style.display = "block";
+		scrib.getDom("result"+i).style.display = "none";
 		cm=input_dom.childNodes[0].CodeMirror;
 		cm.focus();
 		cm.setCursor(1,0)
@@ -53,10 +53,10 @@ selectElements.forEach(select => {
 
 sandbox.unfocusEditor=function(i){
 	return; //Right now not making the run.. it will run only play button is pressed..
-	if(get_dom("cell_type"+i).value=='code') return;
+	if(scrib.getDom("cell_type"+i).value=='code') return;
 	else{
 		setTimeout(function(){
-		    if(get_dom("cell_type"+i).value=='code') return;
+		    if(scrib.getDom("cell_type"+i).value=='code') return;
 		    worker.run(i);
 		}, 200);
 		
@@ -64,25 +64,25 @@ sandbox.unfocusEditor=function(i){
 	}
 }
 sandbox.deleteCell=function(i){
-	get_dom("block"+i).remove();
+	scrib.getDom("block"+i).remove();
 	delete sandbox.editors[i];
 }
 sandbox.moveUp=function(i){
-	curr=get_dom("block"+i)
+	curr=scrib.getDom("block"+i)
 	prev=curr.previousSibling
 	curr.parentNode.insertBefore(curr,prev);
 	
-	input_dom=get_dom("input"+i)
+	input_dom=scrib.getDom("input"+i)
 	cm=input_dom.childNodes[0].CodeMirror;
 	cm.focus();
 	cm.setCursor(1,0)
 }
 sandbox.moveDown=function(i){
-	curr=get_dom("block"+i)
+	curr=scrib.getDom("block"+i)
 	next=curr.nextSibling
 	curr.parentNode.insertBefore(curr, next.nextSibling)
 	
-	input_dom=get_dom("input"+i)
+	input_dom=scrib.getDom("input"+i)
 	cm=input_dom.childNodes[0].CodeMirror;
 	cm.focus();
 	cm.setCursor(1,0)
@@ -90,7 +90,7 @@ sandbox.moveDown=function(i){
 
 sandbox.goToNextCell=function(i){
 
-	curr=get_dom("block"+i);
+	curr=scrib.getDom("block"+i);
 	next=curr.nextSibling;
 	if(next==null) {
 		sandbox.insertCell('code');
@@ -104,18 +104,18 @@ sandbox.goToNextCell=function(i){
 
 sandbox.goToInputCell=function(i){
 	
-	if(!(get_dom("cell_type"+i).value==='code')){
-		input_dom=get_dom("input"+i)
+	if(!(scrib.getDom("cell_type"+i).value==='code')){
+		const input_dom=scrib.getDom("input"+i)
 		input_dom.style.display = "block";
-		get_dom("cell_menu"+i).style.display = "block";
-		get_dom("result"+i).style.display = "none";
-		cm=input_dom.childNodes[0].CodeMirror;
+		scrib.getDom("cell_menu"+i).style.display = "block";
+		scrib.getDom("result"+i).style.display = "none";
+		const cm=input_dom.childNodes[0].CodeMirror;
 		cm.focus();
 		cm.setCursor(1,0)
 		
 	}else{
-		input_dom=get_dom("input"+i)
-		cm=input_dom.childNodes[0].CodeMirror;
+		const input_dom=scrib.getDom("input"+i)
+		const cm=input_dom.childNodes[0].CodeMirror;
 		cm.focus();
 		cm.setCursor(1,0)
 	}
@@ -174,28 +174,28 @@ sandbox.codeMirrorOptions={
 }
 
 sandbox.insertCell=async function(type,after){
-	var i=sandbox.statusData.num_blocks;
+	let i=sandbox.statusData.num_blocks;
 	
 	
 	// Apply the appropriate CodeMirror theme
 	
-	var block_html=get_dom("code_block_template").innerHTML;
+	let block_html=scrib.getDom("code_block_template").innerHTML;
 	block_html=block_html.replaceAll('_block_id',i);
 	block_html= block_html.replaceAll(/(\r\n|\n|\r|\t)/gm, "");
 
-	var div = document.createElement('div');
+	const div = document.createElement('div');
   	div.innerHTML = block_html; 
   	div.setAttribute('id','block'+i);
 
   	//
   	if(after==undefined){
-  		get_dom("main").appendChild(div);
+  		scrib.getDom("main").appendChild(div);
   		
   	}else{
-  		get_dom("block"+after).after(div)
+  		scrib.getDom("block"+after).after(div)
   	}
 
-	var input_div=await wait_for_dom("input"+i); 
+	const input_div=await scrib.waitForDom("input"+i); 
 	{
 	
 		cm = new CodeMirror(
@@ -203,18 +203,18 @@ sandbox.insertCell=async function(type,after){
 			sandbox.codeMirrorOptions
 		);
 		cm.i=i;
-		get_dom('cell_type'+i).value=type;
+		scrib.getDom('cell_type'+i).value=type;
 
 		if(type=='code'){
   			
 	  	}
 	  	else{
-	  		get_dom('result'+i).style.display='flex';
-	  		get_dom('input'+i).style.display='none';
-	  		get_dom('status'+i).style.display='none';
-	  		get_dom("cell_menu"+i).style.display = "none";
+	  		scrib.getDom('result'+i).style.display='flex';
+	  		scrib.getDom('input'+i).style.display='none';
+	  		scrib.getDom('status'+i).style.display='none';
+	  		scrib.getDom("cell_menu"+i).style.display = "none";
 	  		if(type=='style') {
-	  			get_dom('input'+i).childNodes[0].CodeMirror.setValue("<style>\n\n</style>");
+	  			scrib.getDom('input'+i).childNodes[0].CodeMirror.setValue("<style>\n\n</style>");
 	  		}
 	  	}
 	  	cm.focus();
@@ -233,27 +233,22 @@ sandbox.insertCell=async function(type,after){
 
 
 
-toggleDarkMode=function(){
-   if(document.body.getAttribute("data-theme")=='light')
-   document.body.setAttribute("data-theme",'dark');
-   else document.body.setAttribute("data-theme",'light');
-}
 
 sandbox.getNB=function(){
-	let nb=JSON.parse(JSON.stringify(blankNB));
+	const nb=JSON.parse(JSON.stringify(blankNB));
  	
- 	let main=get_dom("main");
- 	let blocks=main.childNodes;
+ 	const main=scrib.getDom("main");
+ 	const blocks=main.childNodes;
  	
  	
  	blocks.forEach(x=>{
- 		let block_id=x.id.replace("block","")
- 		let menu=get_dom("cell_menu"+block_id);
-	 	let code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
-	 	let result=get_dom("result"+block_id);
-	 	let status=get_dom("status"+block_id).innerHTML;
-	 	let output=get_dom("output"+block_id).innerHTML;
-	 	let type=get_dom("cell_type"+block_id).value;
+ 		const block_id=x.id.replace("block","")
+ 		const menu=scrib.getDom("cell_menu"+block_id);
+	 	const code=scrib.getDom("input"+block_id).childNodes[0].CodeMirror.getValue();
+	 	const result=scrib.getDom("result"+block_id);
+	 	const status=scrib.getDom("status"+block_id).innerHTML;
+	 	const output=scrib.getDom("output"+block_id).innerHTML;
+	 	const type=scrib.getDom("cell_type"+block_id).value;
 	 	nb.cells.push({code:code,status:status,output:output,type:type})
 	 	
  	});
@@ -265,13 +260,13 @@ sandbox.getNB=function(){
 
 sandbox.loadJSNB=async function(nb){
 	try{
+		const main = await scrib.waitForDom("main");
+		const bkup_html=main.innerHTML;
+		const bkup_editors=sandbox.editors
+		const bkup_statusData=sandbox.statusData;
 
-		var main = await wait_for_dom("main");
-		var bkup_html=main.innerHTML;
-		var bkup_editors=sandbox.editors
-		var bkup_statusData=sandbox.statusData;
-		var run_on_load = nb.run_on_load || false;
 		if(typeof(nb)=='string') nb=JSON.parse(nb);
+		const run_on_load = nb.run_on_load || false;
 		sandbox.editors={}
 		main.innerHTML='';
 		
@@ -279,18 +274,18 @@ sandbox.loadJSNB=async function(nb){
 		for(let i=0;i<nb.cells.length;i++){
 			x=nb.cells[i];
 			await sandbox.insertCell(x['type']);
-			var input_i=await wait_for_dom("input"+i);
+			const input_i=await scrib.waitForDom("input"+i);
 			input_i.childNodes[0].CodeMirror.setValue(x['code']);
-			var output_i=await wait_for_dom("output"+i);
+			const output_i=await scrib.waitForDom("output"+i);
 			output_i.innerHTML=x['output'];
-			var status_i=await wait_for_dom("status"+i);
+			const status_i=await scrib.waitForDom("status"+i);
 			status_i.innerHTML=x['status'];
 			
 		};
 		sandbox.statusData.num_blocks=nb.cells.length;
 		
 		if (run_on_load) {
-			await wait_for_dom("libs-loaded");
+			await scrib.waitForDom("libs-loaded");
 			sandbox.runAll();
 		}
 		if(sandbox.statusData.running_embedded){
@@ -316,12 +311,12 @@ sandbox.loadJSNB=async function(nb){
 
 sandbox.getHTML=function(view){
  	
- 	var main=get_dom("main");
- 	var blocks=main.childNodes;
-	var html='<html>\n<head>\n'
+ 	const main=scrib.getDom("main");
+ 	const blocks=main.childNodes;
+	let html='<html>\n<head>\n'
 	
-	var cells=sandbox.getNB().cells;
-	var css= [];
+	const cells=sandbox.getNB().cells;
+	let css= [];
 
 	for (var sheeti= 0; sheeti<document.styleSheets.length; sheeti++) {
 		let href=document.styleSheets[sheeti].href;
@@ -338,21 +333,21 @@ sandbox.getHTML=function(view){
 	
 	html+='<title>______title:Scribbler Notebook</title>\n</head>\n<body>\n<br>\n<div class="container">'; 	
  	blocks.forEach(x=>{
- 		var block_id=x.id.replace("block","")
- 		var input ='';
- 		var output=get_dom("result"+block_id).outerHTML;
+ 		const block_id=x.id.replace("block","")
+ 		let input ='';
+ 		let output=scrib.getDom("result"+block_id).outerHTML;
 	 	if(view=='nb') {
-	 		if(get_dom("cell_type"+block_id).value=='code'){
-	 			input=get_dom("input"+block_id).outerHTML;
+	 		if(scrib.getDom("cell_type"+block_id).value=='code'){
+	 			input=scrib.getDom("input"+block_id).outerHTML;
 	 		}
 	 	}
 	 	if(view=='html+js') {
-	 		if(get_dom("cell_type"+block_id).value=='code'){
-		 		let code=get_dom("input"+block_id).childNodes[0].CodeMirror.getValue();
+	 		if(scrib.getDom("cell_type"+block_id).value=='code'){
+		 		const code=scrib.getDom("input"+block_id).childNodes[0].CodeMirror.getValue();
 		 		input="\n<script>\n"+code+"\n</script>\n";
 		 	}
 		 	
-		 	var output=get_dom("output"+block_id).outerHTML;
+		 	let output=scrib.getDom("output"+block_id).outerHTML;
 	 	}
 	 	
 	 	
@@ -368,16 +363,16 @@ sandbox.getHTML=function(view){
 
 
 sandbox.runAll=function(){
-	var main=get_dom("main");
-	blocks=main.childNodes;
+	const main=scrib.getDom("main");
+	const blocks=main.childNodes;
 	blocks.forEach(x=>{
 		try{
 			worker.run(x.id.replace('block',""))
+			console.log(x.id);
 		}catch(err){
 			console.log(err.stack)
 		}
 	});
-	
 	
 }
 
@@ -394,19 +389,49 @@ sandbox.messageHandler=async function(action,data,call_bk){
 	}
 		
 }
+
+sandbox.loadFromGit= async function(link){
+	var i = link.indexOf('/');
+	var user = link.slice(0,i); 
+	var rest = link.slice(i+1);
+	
+	var i = rest.indexOf('/');
+	var repo = rest.slice(0,i);
+	var path = rest.slice(i+1);
+	
+
+	
+	
+	url=`https://raw.githubusercontent.com/${user}/${repo}/main/${path}`;
+	
+	 try{
+		 var response= await fetch(url, {method: 'GET'});
+		  var data=await parse_response(response);
+		sandbox.loadJSNB(data);
+		
+		
+	}catch(error){
+		console.log(error);
+		alert("The published notebook is not available or not in the right format.");
+	}
+			  
+  
+	
+}
+
 sandbox.initialize=function(){
 	console.log("Initializing sanbox...");
 	
 	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
   	if(url!=undefined && url.length>1 ){
-  		if(!in_iframe()){
-	  		const confirmation =confirm("Alert!!! The page is loading without a sandboxed Iframe. Click ok only if you trust the link...");
-	  		if(!confirmation) return;
+  		if(!scrib.isInIFrame()){
+	  		alert("Alert!!! The page is loading without an Iframe. Your cookies etc could be compromised. If you are the publisher of this notebook, please put this in a sandboxed iframe in a page and share the link of the page.");
+	  		return;
   		}
   		console.log("Loading from url inside Sandbox");
   		sandbox.statusData.running_embedded=true;
-  		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
-  		else read_file(url,sandbox.loadJSNB,err=>{console.log(err.message)});
+  		if(url.split(":")[0].trim()=='github') sandbox.loadFromGit(url.split(":")[1].trim());
+  		else scrib.readFile(url,sandbox.loadJSNB,err=>{console.log(err.message)});
   		document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
@@ -415,7 +440,7 @@ sandbox.initialize=function(){
   	}	  	
 
 
-	if(in_iframe()){
+	if(scrib.isInIFrame()){
 	  	
 		 window.addEventListener('message', function(event) {
 		 	

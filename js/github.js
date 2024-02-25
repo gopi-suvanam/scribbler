@@ -96,49 +96,49 @@ var get_user=async function (token) {
    const data = await parse_response(response);
    const login=data['login'];
    username=data['name']
-   get_dom("username").innerHTML=username;
+   scrib.getDom("username").innerHTML=username;
   return login;
 }
 
 update_owner= function(){
-	var token = get_dom("token").value;
+	var token = scrib.getDom("token").value;
 	get_user(token).then(x=>{
 		const today = new Date(); // Get the current date
 		const thirtyDaysLater = new Date(today); // Create a new date object as a copy of today
 		thirtyDaysLater.setDate(today.getDate() + 30); 
 		localStorage.setItem("gh-token",token);
-		get_dom("user").value=x;
+		scrib.getDom("user").value=x;
 		update_repos();
 		});
 	
 
 }
 update_repos=function(){
-	var token = get_dom("token").value;
-	var user=get_dom("user").value;
+	var token = scrib.getDom("token").value;
+	var user=scrib.getDom("user").value;
 	
 	get_repos(token,user).then(repos=>{
 		var str='';
 		repos.forEach(x=>{
 			str += '<option value="'+x+'" />'; // Storing options in variable
 		})
-		get_dom('repos').innerHTML  =  str;
+		scrib.getDom('repos').innerHTML  =  str;
 		
 	});
 
 }
 load_from_git=function(){
-	file_details['source']='github';
-	file_details['token']=get_dom("token").value;
-	file_details['user']=get_dom("user").value;
-	file_details['repo']=get_dom("repo").value;
-	file_details['path']=get_dom("path").value;
-	get_file_content(file_details['token'],file_details['user'],file_details['repo'],file_details['path'])
+	fileDetails['source']='github';
+	fileDetails['token']=scrib.getDom("token").value;
+	fileDetails['user']=scrib.getDom("user").value;
+	fileDetails['repo']=scrib.getDom("repo").value;
+	fileDetails['path']=scrib.getDom("path").value;
+	get_file_content(fileDetails['token'],fileDetails['user'],fileDetails['repo'],fileDetails['path'])
 	.then(
 		nb=>{
 			load_jsnb(nb);
-			closeModal(get_dom('git-import-export'));
-			const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
+			closeModal(scrib.getDom('git-import-export'));
+			const nextURL = `#github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
 			const nextTitle = 'JavaScript Notebook';
 			const nextState = { additionalInformation: 'Updated the URL with JS' };
 			window.history.pushState(nextState, nextTitle, nextURL);
@@ -160,9 +160,9 @@ load_from_git=function(){
 	var repo = rest.slice(0,i);
 	var path = rest.slice(i+1);
 	
-	get_dom("user").value=user;
-	get_dom("repo").value=repo;
-	get_dom("path").value=path;
+	scrib.getDom("user").value=user;
+	scrib.getDom("repo").value=repo;
+	scrib.getDom("path").value=path;
 	
 	
 	url=`https://raw.githubusercontent.com/${user}/${repo}/main/${path}`;
@@ -176,18 +176,18 @@ load_from_git=function(){
 		
 	}catch(error){
 		console.log(error);
-		openModal(get_dom('git-import-export'));
+		openModal(scrib.getDom('git-import-export'));
 	}
 			  
   
 	
 }
 upload_to_git=async function(){
-	file_details['source']='github';
-	file_details['token']=get_dom("token").value;
-	file_details['user']=get_dom("user").value;
-	file_details['repo']=get_dom("repo").value;
-	file_details['path']=get_dom("path").value;
+	fileDetails['source']='github';
+	fileDetails['token']=scrib.getDom("token").value;
+	fileDetails['user']=scrib.getDom("user").value;
+	fileDetails['repo']=scrib.getDom("repo").value;
+	fileDetails['path']=scrib.getDom("path").value;
 	
 	
 	// Send a message object to the iframe
@@ -195,10 +195,10 @@ upload_to_git=async function(){
       	
 	const content=JSON.stringify(nb,undefined,2);
 	try{
-		const upload_status= await upload_file_to_git(file_details['token'],content,file_details['user'],file_details['repo'],file_details['path']);
+		const upload_status= await upload_file_to_git(fileDetails['token'],content,fileDetails['user'],fileDetails['repo'],fileDetails['path']);
 		alert("Successfully pushed");
-		closeModal(get_dom('git-import-export'));
-		const nextURL = `#github:${file_details['user']}/${file_details['repo']}/${file_details['path']}`;
+		closeModal(scrib.getDom('git-import-export'));
+		const nextURL = `#github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
 		const nextTitle = 'JavaScript Notebook';
 		const nextState = { additionalInformation: 'Updated the URL with JS' };
 		window.history.pushState(nextState, nextTitle, nextURL);
@@ -214,7 +214,7 @@ initialize_git=function(){
 
 
     if(token==null) return;
-     get_dom("token").value =token;
+     scrib.getDom("token").value =token;
      update_owner();
      
 }

@@ -24,6 +24,7 @@
 
 
 		<!-- Controllers and libs -->
+		<script > scrib={};</script>
 		<script src="js/libs.js"></script> <!-- libs for some functionality -->
 		<script src="js/sandbox-controller.js"></script> <!-- Controls the UI -->
 		<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
@@ -42,23 +43,24 @@
 	<div id="code_block_template" style="display:none">
 		<div  id="cell_menu_block_id" class="cell-menu">
 			
-			<select  id="cell_type_block_id" style="height:15px;" class="cell-type" >
+			<select  data-tooltip="Select whether to the cell contains code or html" data-placement="bottom"
+			id="cell_type_block_id" style="height:15px;" class="cell-type" >
 					<option selected value="code">code</option>
 					<option value="html">html</option>
 				</select>
-			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" id="run-button_block_id"  onclick="worker.run(_block_id)">&#9658;</a>
-			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"   onclick="sandbox.moveUp(_block_id)">&#x25B2;</a>
-			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"    onclick="sandbox.moveDown(_block_id)">&#x25BC;</a>
-			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter"  onclick="sandbox.insertCell('code',_block_id)">&#10011;</a>
-			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  onclick="sandbox.deleteCell(_block_id)">&#9747;</a>
+			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" data-placement="bottom" id="run-button_block_id"  onclick="worker.run(_block_id)">&#9658;</a>
+			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"  data-placement="bottom" onclick="sandbox.moveUp(_block_id)">&#x25B2;</a>
+			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"  data-placement="bottom"  onclick="sandbox.moveDown(_block_id)">&#x25BC;</a>
+			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter" data-placement="bottom"  onclick="sandbox.insertCell('code',_block_id)">&#10011;</a>
+			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  data-placement="bottom" onclick="sandbox.deleteCell(_block_id)">&#9747;</a>
 			
 		</div>
 		<div id="input_block_id" tabindex='0' onfocusout="sandbox.unfocusEditor(_block_id)" class='code'>
 		
 		</div>
-		<article style="display:flex"  id="result_block_id">
+		<article ondblclick="sandbox.toggleEditor(_block_id)" style="display:flex"  id="result_block_id">
 			<p class="status" id="status_block_id"></p> 
-			<div class="output" id="output_block_id"  ondblclick="sandbox.toggleEditor(_block_id)"></div>
+			<div class="output" id="output_block_id"  ></div>
 		</article>
 	</div>
 	<div class="container">
@@ -74,7 +76,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
 	<script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
 	<script src="https://decentralized-intelligence.com/di-libs/build/di-libs.js"></script>
-	<script id="libs-loaded"></script>
+	<script id="libs-loaded">
+
+	</script>
 
   
  </html>

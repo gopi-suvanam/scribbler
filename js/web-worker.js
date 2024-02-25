@@ -1,6 +1,6 @@
 ﻿//Web worker for running code in the web-worker
-
-show=(data)=>{
+scrib={};
+scrib.show=(data)=>{
 	
 	self.postMessage({'action':'show','data':data});
 }

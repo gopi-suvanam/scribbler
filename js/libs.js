@@ -1,12 +1,11 @@
-﻿if(window){
-	window.MAX_LENGTH_TO_SHOW=10000;
-	window.TIMEOUT_FOR_BLOCKING_CALLS=5000;
-}else{
-	MAX_LENGTH_TO_SHOW=10000;
-	TIMEOUT_FOR_BLOCKING_CALLS=5000;
-}
+﻿if(typeof(scrib)=='undefined') var scrib={};
+scrib.MAX_LENGTH_TO_SHOW=10000;
+scrib.TIMEOUT_FOR_BLOCKING_CALLS=5000;
+	
 
-in_iframe = function() {
+
+
+scrib.isInIFrame = function() {
     try {
         return window.self !== window.top;
     } catch (e) {
@@ -15,7 +14,7 @@ in_iframe = function() {
 }
 
 
-show_in_dom=function(output,...objs){
+scrib.showInDom=function(output,...objs){
 	var to_show='';
 	for(var i=0;i<objs.length;i+=1){
 		obj=objs[i];
@@ -23,7 +22,7 @@ show_in_dom=function(output,...objs){
 		
 		else to_show+=String(obj)+" ";
 	}
-	if (to_show.length<MAX_LENGTH_TO_SHOW)
+	if (to_show.length<scrib.MAX_LENGTH_TO_SHOW)
 		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+to_show;
 	else
 		document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<p class='error'>Object too large to show.</p>";;
@@ -31,10 +30,11 @@ show_in_dom=function(output,...objs){
 	if(to_show.length>0) document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<br>";
 }
 
-getDom=x=>document.getElementById(x);
-get_dom = x=>document.getElementById(x);
+scrib.getDom=x=>document.getElementById(x);
+scrib.getDom = x=>document.getElementById(x);
 
-load_script = function(url,async){
+
+scrib.loadScript = function(url,async){
 
 	if(async==undefined) async=true;
 	if(async){
@@ -75,7 +75,7 @@ load_script = function(url,async){
 
 }
 
-reload_script = function(url,async){
+scrib.reloadScript = function(url,async){
 	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
 	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
 	return load_script(url,async);
@@ -83,35 +83,17 @@ reload_script = function(url,async){
 }
 
 
-import_module=function(module,features){
-	var script = document.createElement('script');
-	script.type="module";
-	if(features==null) import(module);
-	else {
-		script.innerHTML = `import {${Object.keys(features).join(',')}} from "${module}";`; 
-		Object.keys(features).forEach(x=>{
-			script.innerHTML+=`window['${features[x]}']=${x};` 
-		})
-		
-	}
 
-	document.head.appendChild(script);
-	
-	script.onerror = () => {
-	      console.error("Failed to load module script with URL " + url);
 
-	  };
-}
-
-function wait_for_dom(id) {
+scrib.waitForDom=function(id) {
     return new Promise(resolve => {
-	        if (get_dom(id)) {
-	            return resolve(get_dom(id));
+	        if (scrib.getDom(id)) {
+	            return resolve(scrib.getDom(id));
 	        }
 
         const observer = new MutationObserver(mutations => {
-            if (get_dom(id)) {
-                resolve(get_dom(id));
+            if (scrib.getDom(id)) {
+                resolve(scrib.getDom(id));
                 observer.disconnect();
             }
         });
@@ -143,7 +125,7 @@ function insert_after(el0, el1) {
 
 
   
-download_string=function(str, exportName,char_set){
+scrib.downloadString=function(str, exportName,char_set){
     
 	const blob = new Blob([str], { type: "text/plain" });
 	
@@ -160,7 +142,7 @@ download_string=function(str, exportName,char_set){
   
 
 	
-read_file=function(url,callbk,failure){
+scrib.readFile=function(url,callbk,failure){
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 		  if (this.readyState == 4 && this.status == 200) {
@@ -178,7 +160,7 @@ read_file=function(url,callbk,failure){
 	  };
  }
 
-is_sandboxed=function(){
+scrib.isSandboxed=function(){
 	if(document.domain=='') return true;
 	if(document.domain==undefined) return true;
 	if(document.domain==null) return true;
@@ -186,7 +168,7 @@ is_sandboxed=function(){
 	return false;
 }
 
-load_file= async function(type){
+scrib.uploadFile= async function(type){
      
 	  const file_loader=document.createElement('input');
 	  file_id= (Math.random() + 1).toString(36).substring(7);
@@ -195,32 +177,32 @@ load_file= async function(type){
 	  file_loader.style.display='none';
 	  document.body.appendChild(file_loader);
 
-	await wait_for_dom(file_id);
+	await scrib.waitForDom(file_id);
 
 	x= await new Promise(resolve => {
-	 get_dom(file_id).addEventListener("change",event => {
+	 scrib.getDom(file_id).addEventListener("change",event => {
 
 	 const fr = new FileReader();
 
 
 			 fr.onload=async function(event){
 			   		content=event.target.result;
-			   		get_dom(file_id).remove();
+			   		scrib.getDom(file_id).remove();
 			   		resolve(content);
 
 			 };
 	
 	    if(type=='text' || type==undefined || type==null)
-	   fr.readAsText( get_dom(file_id).files[0]);
+	   fr.readAsText( scrib.getDom(file_id).files[0]);
 	   else if(type='buffer')
-	   fr.readAsArrayBuffer( get_dom(file_id).files[0]);
+	   fr.readAsArrayBuffer( scrib.getDom(file_id).files[0]);
 
 
 
 	  });
 
 
-		 get_dom(file_id).click();
+		 scrib.getDom(file_id).click();
 	});
   return(x);
  
@@ -240,24 +222,29 @@ var parse_response=async response => {
         return data;
     }
 
-/**** Cookie handling ******/ 
-function set_cookie(name, value, days) {
-  const date = new Date();
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + date.toUTCString();
-  document.cookie = name + "=" + value + "; " + expires + "; path=/";
-}
-function get_cookie(name) {
-  const cookies = document.cookie.split('; ');
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].split('=');
-    if (cookie[0] === name) {
-      return cookie[1];
-    }
-  }
-  return null; // Cookie not found
-}
 
+scrib.copyText=(textId)=>{
+    // Get the text to be copied
+    var text = document.getElementById(textId).innerText;
 
+    // Create a temporary textarea element
+    var textarea = document.createElement("textarea");
+
+    // Set the value of the textarea to the text to be copied
+    textarea.value = text;
+
+    // Append the textarea to the document body
+    document.body.appendChild(textarea);
+
+    // Select the text inside the textarea
+    textarea.select();
+
+    // Copy the selected text to the clipboard
+    document.execCommand("copy");
+
+    // Remove the temporary textarea
+    document.body.removeChild(textarea);
+
+}
 
 

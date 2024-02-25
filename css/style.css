@@ -282,15 +282,6 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 	margin-right:5px;
 }
 
-#save-button{
-	background-color:white;
-	color:var(--font-color);
-    	padding-top:0px;
-	padding-bottom:0px;
-	float:right;
-	margin:0px;
-	margin-right:5px;
-}
 
 
 /* For WebKit-based browsers */
