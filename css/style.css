@@ -3,11 +3,11 @@
 	height: 100%;
 	    display: flex;
 	    flex-direction: column;
-	    font-family: "EB Garamond", Garamond, "Times New Roman", serif !important;
+	    font-family:  "Inter", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
-	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+	font-family: "Inter", sans-serif;
 	
 }
 
@@ -17,12 +17,15 @@ a{
 }
 
 
-h1{font-size:36px}
+h1{font-size:32px}
 h2{font-size:28px}
-h3{font-size:20px}
-h4{font-size:16px}
-h5{font-size:14px}
-li{font-size:18px}
+h3{font-size:24px}
+h4{font-size:20px}
+h5{font-size:16px}
+li{font-size:16px}
+a{font-size:16px}
+p{font-size:16px}
+span{font-size:16px}
 
 button{
 	width:unset;
@@ -133,7 +136,7 @@ ul[role=listbox]{
 	margin-bottom:-15px;
 	height:15px;
 	line-height:15px;
-	font-size:15px;
+	font-size:12px;
 	z-index:100;
 	position:relative;
 	top:5px;
@@ -149,7 +152,7 @@ ul[role=listbox]{
 
 	color: var(--font-color);
 	margin:10px;
-	font-size:20px;
+	font-size:16px;
 }
 
 
@@ -258,7 +261,7 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
     text-align: center !important;
     margin-top: -10px !important;
     border: none !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     background-image: unset !important;
     background-color: unset !important;
 }
@@ -308,7 +311,7 @@ pre{
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"]{
-  --primary: #fede02;
+  --primary: #fbcd00;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
@@ -323,8 +326,8 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fede02;
-  --secondary: #fede02;
+  --font-color:#fbcd00;
+  --secondary: #fbcd00;
 }
 
 /* Yellow Dark scheme (Auto) */
@@ -336,19 +339,19 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fede02
-  --secondary: #fede02;
+  --font-color:#fbcd00
+  --secondary: #fbcd00;
   }
 }
 
 @media only screen and (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-  --primary: #fede02;
+  --primary: #fbcd00;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
-  --secondary: #fede02;
+  --secondary: #fbcd00;
   }
 }
 
@@ -369,5 +372,5 @@ pre{
   --form-element-focus-color: var(--primary-focus);
   --switch-color: var(--primary-inverse);
   --switch-checked-background-color: var(--primary);
-  --font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+  --font-family: "Inter", sans-serif;
 }
