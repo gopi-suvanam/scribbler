@@ -64,8 +64,8 @@ The edit menu consists of:
 
 ## Special Functions
 There are a few special functions:
-- show(..) displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
-- curr_cell() function returns the element corresponding to the output <div> of the current code cell. 
+- scrib.show(..) displays the object in the output cell. Ensure the content displayed is not very large, else it will be truncated. 
+- scrib.currCell() function returns the element corresponding to the output <div> of the current code cell. 
 Both these functions might behave differently when called from within asynchronous code.
   
 Other useful functions:
@@ -91,7 +91,6 @@ These shortcuts are global
 - Ctrl-O: Load a jsnb from local machine
 
 ## Exporting-Importing
-- A notebook can be downloaded (Ctrl-S) as a .jsnb file and can be loaded (Ctrl-O) later.
 - A file on GitHub repo can be loaded into the .jsnb file. The repo has to be public or you should be a collaborator.
 - A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
 - GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
