@@ -78,7 +78,7 @@ scrib.loadScript = function(url,async){
 scrib.reloadScript = function(url,async){
 	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
 	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
-	return load_script(url,async);
+	return scrib.loadScript(url,async);
 
 }
 

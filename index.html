@@ -42,14 +42,15 @@
 	      <ul role="listbox">
 	        <li><a href="#" target="_blank">New Blank NB</a></li>
 	        <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
-		<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a></li>
-		<li><a onclick="load_file_click()">Load</a></li>
-	        <li><a onclick="download_nb()">Download</a></li>
+		<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
+		<li><a onclick="load_file_click()">Upload NB</a></li>
+	        <li><a onclick="download_nb()">Download NB</a><hr></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
-	        <li><a onclick="download_html('nb')">Export as HTML (NB-view)</a></li>
-	        <li><a onclick="download_html('output')">Export as HTML (Only output)</a></li>
-	        <li><a onclick="download_html('html+js')">Export as HTML (HTML+JS)</a></li>
-	        <li><a onclick="download_js()">Export as JS</a></li>
+	        <li><a href="#"  onclick="event.preventDefault();shareBtn()">Share/Publish</a><hr></li>
+	        <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
+	        <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
+	        <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
+	        <li><a onclick="download_js()">Download as JS</a><hr></li>
 	        
 	      </ul>
 	      </details>
@@ -60,8 +61,17 @@
 	      <ul role="listbox">
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
-	        <li><a onclick="insert_cell('style')">Insert style cell</a></li>
+	        <li><a onclick="insert_cell('style')">Insert style cell</a><hr></li>
 	        <li><a data-target="options" onClick="toggleModal(event)">Options</a></li>
+	      </ul>
+	      </details>
+	    </li>
+	   <li role="list" dir="ltr">
+	    	<details role="list" dir="ltr">
+	      <summary tabindex="0" aria-haspopup="listbox">Run</summary>
+	      <ul role="listbox">
+	        <li><a onclick="run_all()">Run all</a></li>
+
 	      </ul>
 	      </details>
 	    </li>
@@ -200,23 +210,21 @@
 	    <span>
 	      Sharable Link:&nbsp;
 	    </span>
-	    
-	    <span id="sharableLink">
-	    
-	    </span><button onclick="scrib.copyText('sharableLink')">copy</button>
+	    <span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px" id="sharableLink"></span>&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('sharableLink')">&#128203;</a>
+	    <hr>
 	    <p>
-	    	This will show the notebook with all controls.
+	    	This will show the notebook with all controls. This link is ideal for collaboration. Any user with the link and access to the Github repo of the notebook and push the changes to Github.
 	    </p>
 	    </div>
 	    <div style="border:thin solid grey;width:100%;margin:5px;padding:5px">
 	     <span>
 	      iFrame to embed::&nbsp;
 	    </span>
-	    <span id="iframeLink">
-	    
-	    </span><button onclick="scrib.copyText('iframeLink')">copy</button>
+	    <span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px"  id="iframeLink"></span>
+	    &nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('iframeLink')">&#128203;</a>
+	    <hr>
 	     	  <p>
-	     	   When embedded the controls will be hidden. Ensure the iFrame is inserted in another page. The sandbox parameters can be removed/altered if you trust the code.
+	     	   NB: When embedded using this iFrame, the controls will be hidden. Ensure the iFrame is inserted in another page. The sandbox parameters can be removed/altered while embedding if you trust the code.
 	     	   If you want the code of the cells also to run when the page is loaded, check the "Run On Load" from Edit->Options before publishing.
 	     	</p>
 	     </div>
