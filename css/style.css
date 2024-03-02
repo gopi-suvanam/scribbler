@@ -1,10 +1,12 @@
 ﻿body{
 	//color:dark-grey;
+	background-color:#eee;
 	height: 100%;
 	    display: flex;
 	    flex-direction: column;
-	    font-family:  "Inter", sans-serif;
+	    font-family:  "Roboto", sans-serif;
 }
+
 
 h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
 	font-family: "Inter", sans-serif;
@@ -17,15 +19,17 @@ a{
 }
 
 
-h1{font-size:32px}
-h2{font-size:28px}
-h3{font-size:24px}
-h4{font-size:20px}
-h5{font-size:16px}
-li{font-size:16px}
-a{font-size:16px}
-p{font-size:16px}
-span{font-size:16px}
+h1{font-size:28px}
+h2{font-size:24px}
+h3{font-size:20px}
+h4{font-size:17px}
+h5{font-size:14px}
+li{font-size:14px}
+a{font-size:14px}
+p{font-size:14px}
+span{font-size:14px}
+span{font-size:14px}
+div{font-size:14px}
 
 button{
 	width:unset;
@@ -38,6 +42,7 @@ article,textarea{
  color:var(--color);
  background-color:var(--background-color); 
  border:thin solid white;
+ box-shadow:unset;
  
 }
 
@@ -151,10 +156,17 @@ ul[role=listbox]{
 .cell-menu a{
 
 	color: var(--font-color);
-	margin:10px;
-	font-size:16px;
+	margin:5px;
+	font-size:14px;
 }
 
+
+.cell-menu select{
+
+	color: var(--font-color);
+	margin:5px;
+	font-size:14px !important;
+}
 
 
 
