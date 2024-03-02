@@ -402,7 +402,7 @@ sandbox.loadFromGit= async function(link){
 
 	
 	
-	url=`https://raw.githubusercontent.com/${user}/${repo}/main/${path}`;
+	url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 	
 	 try{
 		 var response= await fetch(url, {method: 'GET'});

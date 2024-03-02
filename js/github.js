@@ -165,7 +165,7 @@ load_from_git=function(){
 	scrib.getDom("path").value=path;
 	
 	
-	url=`https://raw.githubusercontent.com/${user}/${repo}/main/${path}`;
+	url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 	
 	 try{
 		 var response= await fetch(url, {method: 'GET'});
