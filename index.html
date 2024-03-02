@@ -62,7 +62,9 @@
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert html cell</a></li>
 	        <li><a onclick="insert_cell('style')">Insert style cell</a><hr></li>
-	        <li><a data-target="options" onClick="toggleModal(event)">Options</a></li>
+	        <li><a data-target="options" onClick="toggleModal(event)">Options</li>
+	        <li><a onclick="event.preventDefault();break_sandbox()" >Trust the NB</a></li>
+	        
 	      </ul>
 	      </details>
 	    </li>
