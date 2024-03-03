@@ -330,7 +330,7 @@ pre{
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"]{
-  --primary: #fbcd00;
+  --primary: #fede02;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
@@ -345,8 +345,8 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fbcd00;
-  --secondary: #fbcd00;
+  --font-color:#fede02;
+  --secondary: #fede02;
 }
 
 /* Yellow Dark scheme (Auto) */
@@ -358,19 +358,19 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fbcd00
-  --secondary: #fbcd00;
+  --font-color:#fede02
+  --secondary: #fede02;
   }
 }
 
 @media only screen and (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-  --primary: #fbcd00;
+  --primary: #fede02;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
-  --secondary: #fbcd00;
+  --secondary: #fede02;
   }
 }
 
