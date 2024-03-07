@@ -70,8 +70,14 @@ nav{
 	width:100%;
 	justify-content:unset !important;
 	display:flex;
+		
+
 	
 
+}
+
+details[role=list] summary:not([role]) {
+	background-color:unset;
 }
 nav li{
 	padding:0px;
@@ -79,6 +85,7 @@ nav li{
 nav button{
 	padding:0px;
 	line-height:12px;
+	
 }
 nav ul{
 	margin-left:10px !important;
@@ -336,17 +343,20 @@ pre{
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
   --secondary: #555;
+  --form-element-background-color:white;
   
 }
 
 
 :root:not([data-theme="light"]){
-  --primary: rgb(17, 25, 31);
+  --primary: #fede02;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#fede02;
   --secondary: #fede02;
+  --form-element-background-color:white;
+
 }
 
 /* Yellow Dark scheme (Auto) */
@@ -354,12 +364,14 @@ pre{
 /* Keeping it same as light mode for now.. will change later */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --primary: rgb(17, 25, 31);
+  --primary: #fede02;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#fede02
   --secondary: #fede02;
+  --form-element-background-color:white;
+
   }
 }
 
@@ -371,6 +383,8 @@ pre{
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
   --secondary: #fede02;
+  --form-element-background-color:white;
+
   }
 }
 
@@ -392,4 +406,6 @@ pre{
   --switch-color: var(--primary-inverse);
   --switch-checked-background-color: var(--primary);
   --font-family: "Inter", sans-serif;
+  --form-element-background-color:white;
+
 }
