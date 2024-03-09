@@ -34,7 +34,7 @@
 	</head>
   <body style="height:100%" >
 	<nav> <!-- Menu bar -->
-	  <ul>
+	  <ul style="width:50%;float:left">
 	    <li><img src='images/logo2.png' id="logo"/></li>
 	    <li >
 	      <details role="list" dir="ltr">
@@ -96,42 +96,31 @@
 	    </li>
 	    
 	  </ul>
-	  <div style="flex-grow:0.8"></div>
-	  <ul>
-	    <li >
+	  
+	  
+	  <div style="float:right;width:50%;">
+	    <p class="secondary" style="display:inline;float:right;margin-right:5px"  id='username'></p>
+	    <p style="display:inline;float:right" class="secondary">Welcome&nbsp;</p>
+	  </div>
+	</nav>
+	<div class="container" style='display:flex;overflow:hidden'>
+	    <div style="floght:left;width:50%"><a id="nb_name" contentEditable="true">Loading a note book...</a> </div><!-- Title of the notebook -->
+	    <div style="floght:right;text-align:right;width:50%">
+	
 
-	       <a href="#"  style="margin-right:5px;font-size:24px" data-tooltip="Sharable link/ IFrame code" data-placement="bottom" 
+	       <a href="#"  style="margin-right:5px;font-size:17px" data-tooltip="Sharable link/ IFrame code" data-placement="bottom" 
 	      onclick="event.preventDefault();shareBtn()">⎘</a>
 	      
 
-	    </li>
-	    
-	    
-	    <li >
-	      <a href="#" style="margin-right:5px;font-size:24px"  data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
+	      <a href="#" style="margin-right:5px;font-size:14px"  data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
 	      onclick="event.preventDefault();run_all()"  >&#9658;</a>
-	    </li>	  
-	    <li >
-	      <a href="#" class="secondary" id='save-button' style="font-size:16px"
+	   
+	      <a href="#" class="secondary" id='save-button' style="margin-right:5px;font-size:11px"
 	      onclick="event.preventDefault();saveLocalFile()"   >&#128190;</a>
-	    </li>
 	    
-
-	    <li>
-	    	<a href="#" class="secondary" style="margin-right:5px;font-size:24px"
-	    	 data-tooltip="Take the notebook out of sandbox" data-placement="bottom"  id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯</a> <!-- Title of the notebook -->
-		    
-	    </li>
-	    
-	  </ul>
-	</nav>
-	<div class="container">
-	<a id="nb_name" contentEditable="true">Loading a note book...</a> <!-- Title of the notebook -->
-		
-
-	  
-	    <p class="secondary" style="display:inline;float:right;margin-right:5px"  id='username'></p>
-	    <p style="display:inline;float:right" class="secondary">Welcome&nbsp;</p>
+	    	<a href="#" class="secondary" style="margin-right:5px;font-size:16px"
+	    	 data-tooltip="Take the notebook out of sandbox" data-placement="bottom"  id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯</a>		    
+	    </div>
 	    
 	</div>
 	<iframe id="sandbox" style="width:100%;height:100%" ></iframe>
