@@ -190,7 +190,8 @@ ul[role=listbox]{
 }
 
 #logo{
-	height:35px;
+	height:37px;
+	width:39px;
 	margin:0px;
 }
 input{
@@ -207,6 +208,9 @@ input{
 }
 
 @media (max-width: 600px) {
+   #logo{
+   	display:none;
+   }
   .cell-menu {
     margin: 5px;
     float: unset;
@@ -253,7 +257,11 @@ nav details[role=list] summary{
 	border:none !important;
 	font-size:14px !important;
 	line-height:33px !important;
-	font-variant-caps:small-caps;
+	font-weight:700;
+}
+
+nav details[role=list] summary:hover{
+	color:#fede02 !important;
 }
 nav details[role=list]{
 

@@ -174,8 +174,8 @@ insert_cell=function(type){
       sandbox_iframe.contentWindow.postMessage(message, '*');
 }
 break_sandbox=async function(){
-      const confirmation = confirm("!!! Alert !!! You are about to break the Sandbox. This can give the notebook access to your cookies, cache etc. Do so only if you trust the code in the notebook !!!");
-      if(!confirmation) return;
+      const confirmation = prompt("!!! Alert !!! You are about to break the Sandbox. This can give the notebook access to your cookies, cache etc. Do so only if you trust the code in the notebook !!! Enter 'I trust' below if you trust the notebook.");
+      if(confirmation!=='I trust') return;
       const nb=await get_nb();
       scrib.getDom("sandbox").removeAttribute("sandbox");
       scrib.getDom("sandbox").setAttribute("src","sandbox.html");
