@@ -25,8 +25,8 @@ Notebook for javascript experimentation (in the browser). Overview:
 7. [Additional Resources](#links)
 
 ## Getting Started
-1. You can start using the hosted version (without downloading anything) here: [https://app.scribbler.live/#](https://app.scribbler.live/#). A hello-world notebook is avaliable here: [Hello World in Scribbler](https://app.scribbler.live/#./examples/Hello-world.jsnb)
-3. For offline/local usage - clone this repository (git clone or better still - download) on any machine and double-click index.html. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install. [DOWNLOAD LINK](https://github.com/gopi-suvanam/scribbler/archive/refs/heads/main.zip). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a backend runtime.
+1. You can start using the hosted version (without downloading anything) here: [https://app.scribbler.live/#](https://app.scribbler.live/#). A hello-world notebook is avaliable here: [Hello World in Scribbler](https://app.scribbler.live)
+3. For offline/local usage - clone this repository (git clone or better still - download) put it behind a webserver. That's it. No Ngnix, no npm, no node, no pip install, no apt-get install. [DOWNLOAD LINK](https://github.com/gopi-suvanam/scribbler/archive/refs/heads/main.zip). I call this a "nodeless" app for two reasons - 1. it does not require node and npm to use.. 2. it does not require a backend runtime.
 4. For self-hosted use, you can put the folder in web directory of the server and use the link to index.html.
 5. Several examples are available in the folder examples/ of this repository. Check the [README in that folder](./examples/README.md) for links. They can be used as boilerplates for further experimentation.
 
@@ -38,6 +38,10 @@ Notebook for javascript experimentation (in the browser). Overview:
 - **Cell Buttons:**
     - To get the output of a cell press play ► button on the cell menu (or Cmd/Ctrl-Enter on keyboard after selecting the cell).
     - The cell menu also has buttons for moving the cell up ↑, down ↓, adding a new cell ✛ and deleting the current cell ☓.
+- **Saving and Opening:**
+    - A notebook can be seved from File->Save. This will save it in the browser storage.
+    - You can open it using File->Open.
+    - Note that if browser data is cleared the files will be lost.
 - **Exporting and Importing:**
     - A notebook can be downloaded as json (has a default extension of .jsnb). IT can be loaded back into the app. The notebook or only the output can also be downloaded as html.
     - A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://app.scribbler.live/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
@@ -48,7 +52,7 @@ Notebook for javascript experimentation (in the browser). Overview:
     - Keyboard Shortcuts: Several keyboard shortcuts for running/dowloading/adding cells/deleting cells etc. See [DOCS](DOCS.md#keyboard-shortcuts) for details
 - **External Libraries:**    
     - [D3](https://github.com/d3/d3) and [Plotly](https://github.com/plotly/plotly.js) (for data manipulation and charting), and sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using reload_script.
-    - For adding more functionality import an external library through import() or through load_script(CDN_LINK).
+    - For adding more functionality import an external library through dynamic import() or through scrib.loadScript(CDN_LINK).
 
 ## Use cases
 1. For trying new libraries for testing and building
@@ -87,4 +91,3 @@ Additional documentation for Scribbler:
 3. [Roadmap](https://github.com/gopi-suvanam/jsnb/blob/main/ROADMAP.md)
 4. [Sample Notebooks](https://github.com/gopi-suvanam/jsnb/blob/main/examples/README.md)
 
-+purplemonk
