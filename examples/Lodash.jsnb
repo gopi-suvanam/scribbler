@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "name": "New JSNB",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Using Lodash to Simply JS Development </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n       Lodash is a popular JavaScript utility library that provides a collection of functions to help developers write concise and efficient code.\n    </p><br></div>",
+      "status": "",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Using Lodash to Simply JS Development </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n       Lodash is a popular JavaScript utility library that provides a collection of functions to help developers write concise and efficient code.\n    </p><br></div>",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Loading Lodash Dynamically</h2>\n It offers a wide range of utility functions, including ones for data manipulation, functional programming, and simplifying common tasks. Lodash is widely used in both front-end and back-end JavaScript development and is known for its performance and versatility.\n",
+      "status": "",
+      "output": "<h2>Loading Lodash Dynamically</h2>\n It offers a wide range of utility functions, including ones for data manipulation, functional programming, and simplifying common tasks. Lodash is widely used in both front-end and back-end JavaScript development and is known for its performance and versatility.\n",
+      "type": "html"
+    },
+    {
+      "code": "\nimport('https://cdn.jsdelivr.net/npm/lodash').then(_ => {\n    // Lodash is available here\n    scrib.show('Lodash dynamically imported successfully!');\n}).catch(error => {\n    // Handle error if Lodash fails to load\n    scrib.show('Error loading Lodash:', error);\n});",
+      "status": "[2]<br><span style=\"font-size:8px\">9ms<span></span></span>",
+      "output": "{} <br>Lodash dynamically imported successfully! <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Working with Arrays</h2>",
+      "status": "",
+      "output": "<h2>Working with Arrays</h2>",
+      "type": "html"
+    },
+    {
+      "code": "const numbers = [1, 2, 3, 4, 5];\n\n// Using map to double each number\nconst doubledNumbers = _.map(numbers, n => n * 2);\nscrib.show(\"Doubled numbers:\",doubledNumbers)\n// Using filter to get even numbers\nconst evenNumbers = _.filter(numbers, n => n % 2 === 0);\nscrib.show(\"Even numbers:\",evenNumbers)\n// Using sortBy to sort numbers in descending order\nconst sortedNumbers = _.sortBy(numbers, n => -n);\n\nscrib.show(\"Sorted numbers:\",sortedNumbers)",
+      "status": "[5]<br><span style=\"font-size:8px\">4ms<span></span></span>",
+      "output": "Doubled numbers: [\n  2,\n  4,\n  6,\n  8,\n  10\n] <br>Even numbers: [\n  2,\n  4\n] <br>Sorted numbers: [\n  5,\n  4,\n  3,\n  2,\n  1\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2> Working with Objects</h2>\n",
+      "status": "",
+      "output": "<h2> Working with Objects</h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "const user = {\n  id: 1,\n  name: 'John Doe',\n  age: 30,\n  email: 'john@example.com'\n};\n\n// Using omit to remove email from user object\nconst userWithoutEmail = _.omit(user, 'email');\nscrib.show(\"User without email:\",userWithoutEmail);\n// Using pick to select specific properties\nconst userDetails = _.pick(user, ['id', 'name']);\nscrib.show(\"User ID and Name:\",userDetails);\n",
+      "status": "[7]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "User without email: {\n  \"id\": 1,\n  \"name\": \"John Doe\",\n  \"age\": 30\n} <br>User ID and Name: {\n  \"id\": 1,\n  \"name\": \"John Doe\"\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Functional Programming</h2>",
+      "status": "",
+      "output": "<h2>Functional Programming</h2>",
+      "type": "html"
+    },
+    {
+      "code": "\nconst numbers = [1, 2, 3, 4, 5];\n\n// Using reduce to calculate sum of numbers\nconst sum = _.reduce(numbers, (acc, n) => acc + n, 0);\n\n// Using chain to chain multiple operations together\nconst result = _(numbers)\n  .map(n => n * 2)\n  .filter(n => n % 3 === 0)\n  .value();\n\nscrib.show(\"Mapped and filtered values:\",result)",
+      "status": "[10]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Mapped and filtered values: [\n  6\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Group Array Elements by Property</h2>",
+      "status": "",
+      "output": "<h2>Group Array Elements by Property</h2>",
+      "type": "html"
+    },
+    {
+      "code": "\nconst data = [\n  { id: 1, name: 'John' },\n  { id: 2, name: 'Jane' },\n  { id: 3, name: 'John' }\n];\n\n// Group array elements by the 'name' property\nconst groupedData = _.groupBy(data, 'name');\n\nscrib.show(groupedData);\n// Output:\n// {\n//   John: [ { id: 1, name: 'John' }, { id: 3, name: 'John' } ],\n//   Jane: [ { id: 2, name: 'Jane' } ]\n// }",
+      "status": "[13]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "{\n  \"John\": [\n    {\n      \"id\": 1,\n      \"name\": \"John\"\n    },\n    {\n      \"id\": 3,\n      \"name\": \"John\"\n    }\n  ],\n  \"Jane\": [\n    {\n      \"id\": 2,\n      \"name\": \"Jane\"\n    }\n  ]\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "",
+      "status": "",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
