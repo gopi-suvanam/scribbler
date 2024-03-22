@@ -17,7 +17,7 @@
     {
       "code": "<h2>API Without Authentication</h2>\nJavaScript can be used in Scribbler easily to test REST APIs easily. JS can handle various methods (GET, POST etc) and authenitcation mechanisms. See this article for more details: <a href='https://scribbler.live/2024/03/22/Testing-APIs-using-JavaScript.html'>Testing APIs using JavaScript</a>.",
       "status": "",
-      "output": "<h2>API Without Authentication</h2>\nJavaScript can be used in Scribbler easily to test REST APIs easily. JS can handle various methods (GET, POST etc) and authenitcation mechanisms. See this article for more details: <a href=\"\">Testing APIs using JavaScript</a>.",
+      "output": "<h2>API Without Authentication</h2>\nJavaScript can be used in Scribbler easily to test REST APIs easily. JS can handle various methods (GET, POST etc) and authenitcation mechanisms. See this article for more details: <a href=\"https://scribbler.live/2024/03/22/Testing-APIs-using-JavaScript.html\">Testing APIs using JavaScript</a>.",
       "type": "html"
     },
     {
