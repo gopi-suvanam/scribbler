@@ -280,16 +280,13 @@ loadLocalFile=function(id){
 shareBtn=function(){
  	let url='';
  	
-	try{ 
+	/*try{ 
 		const urlParams = new URLSearchParams(window.location.search);
-	const jsnb_path = urlParams.get('jsnb');
-	if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
-		else url=window.location.href.split("#")[1];
+		const jsnb_path = urlParams.get('jsnb');
+		if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
+			else url=window.location.href.split("#")[1];
 	} catch(e){
-		alert("Please push to github first");
 		
-		openModal(scrib.getDom('git-import-export'));	
-		return;
 	}
 	if(url==undefined) {
 		alert("Please push to github first");
@@ -297,11 +294,12 @@ shareBtn=function(){
 		return;
 
 	}
+	
   	if( url.length>1){
   		if(url.split(":")[0].trim()=='github') {
-  			scrib.getDom("sharableLink").innerHTML= window.location.origin+window.location.pathname+'?jsnb='+url;
+  			scrib.getDom("sharableLink").innerHTML= window.location;//.origin+window.location.pathname+'?jsnb='+url;
   			
-  			scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src="https://app.scribbler.live/sandbox.html?jsnb='+url+'"></iframe>';
+  			scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src="'++'"></iframe>';
   			openModal(scrib.getDom('shareNB'));
   		}
   		
@@ -315,7 +313,12 @@ shareBtn=function(){
   		alert("Please push to github first");
   		openModal(scrib.getDom('git-import-export'));
   		return;
-  	}
+  	}*/
+  	
+  	scrib.getDom("sharableLink").innerHTML= window.location;//.origin+window.location.pathname+'?jsnb='+url;
+  			
+  			scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src="'+window.location+'"></iframe>';
+  			openModal(scrib.getDom('shareNB'));
 
 
  }

@@ -95,16 +95,25 @@
 	      </details>
 	    </li>
 	    
+	    <li>
+	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()">
+	    Share</summary>
+	    </li>
 	  </ul>
 	  
 	  
 	  <div style="float:right;width:50%;">
 	    <p class="secondary" style="display:inline;float:right;margin-right:5px"  id='username'></p>
 	    <p style="display:inline;float:right" class="secondary">Welcome&nbsp;</p>
+	    
 	  </div>
 	</nav>
 	<div class="container" style='display:flex;overflow:hidden'>
-	    <div style="floght:left;width:50%"><a id="nb_name" contentEditable="true">Loading a note book...</a> </div><!-- Title of the notebook -->
+	    <div style="floght:left;width:50%"><a id="nb_name" contentEditable="true">Loading a note book...</a> 
+	    
+	    
+	    
+	    </div><!-- Title of the notebook -->
 	    <div style="floght:right;text-align:right;width:50%">
 	
 
@@ -215,8 +224,13 @@
 	    &nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('iframeLink')">&#128203;</a>
 	    <hr>
 	     	  <p>
-	     	   NB: When embedded using this iFrame, the controls will be hidden. Ensure the iFrame is inserted in another page. The sandbox parameters can be removed/altered while embedding if you trust the code.
-	     	   If you want the code of the cells also to run when the page is loaded, check the "Run On Load" from Edit->Options before publishing.
+	     	   NB:<br>
+	     	   - Push to github if you have made changes.
+	     	   <br>
+	     	   - When embedded using this iFrame, the controls will be hidden. 
+	     	   <br>- Ensure the iFrame is inserted in another page. 
+	     	   <br>- The sandbox parameters can be removed/altered while embedding if you trust the code.
+	     	   <br>- If you want the code of the cells also to run when the page is loaded, check the "Run On Load" from Edit->Options before publishing.
 	     	</p>
 	     </div>
 
