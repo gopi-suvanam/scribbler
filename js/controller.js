@@ -279,47 +279,21 @@ loadLocalFile=function(id){
 /********* Share and Publish *********/
 shareBtn=function(){
  	let url='';
- 	
-	/*try{ 
+ 	scrib.getDom("sharableLink").innerHTML= window.location;//.origin+window.location.pathname+'?jsnb='+url;
+  			
+	try{ 
 		const urlParams = new URLSearchParams(window.location.search);
 		const jsnb_path = urlParams.get('jsnb');
 		if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
 			else url=window.location.href.split("#")[1];
 	} catch(e){
-		
+		url='';
 	}
-	if(url==undefined) {
-		alert("Please push to github first");
-		openModal(scrib.getDom('git-import-export'));
-		return;
-
-	}
-	
-  	if( url.length>1){
-  		if(url.split(":")[0].trim()=='github') {
-  			scrib.getDom("sharableLink").innerHTML= window.location;//.origin+window.location.pathname+'?jsnb='+url;
-  			
-  			scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src="'++'"></iframe>';
-  			openModal(scrib.getDom('shareNB'));
-  		}
-  		
-  		else {
-  			alert("Please push to github first");
-  			openModal(scrib.getDom('git-import-export'));
-  			return;
-  		}
-  	}else{
-
-  		alert("Please push to github first");
-  		openModal(scrib.getDom('git-import-export'));
-  		return;
-  	}*/
-  	
-  	scrib.getDom("sharableLink").innerHTML= window.location;//.origin+window.location.pathname+'?jsnb='+url;
-  			
-  			scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src="'+window.location+'"></iframe>';
-  			openModal(scrib.getDom('shareNB'));
-
+	if(url==undefined) url='';
+	if(url.length>0)	
+		scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src ="'+window.location.origin+window.location.pathname+'sandbox.html?jsnb='+url+'"></iframe>';
+  	else alert("Push the notebook to Github first to publish the notebook in an iFrame");
+  	openModal(scrib.getDom('shareNB'));
 
  }
 toggleJsDlvr=function(){
