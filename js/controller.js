@@ -279,6 +279,7 @@ loadLocalFile=function(id){
 /********* Share and Publish *********/
 shareBtn=function(){
  	let url='';
+ 	
 	try{ 
 		const urlParams = new URLSearchParams(window.location.search);
 	const jsnb_path = urlParams.get('jsnb');
@@ -299,6 +300,7 @@ shareBtn=function(){
   	if( url.length>1){
   		if(url.split(":")[0].trim()=='github') {
   			scrib.getDom("sharableLink").innerHTML= window.location.origin+window.location.pathname+'?jsnb='+url;
+  			
   			scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src="https://app.scribbler.live/sandbox.html?jsnb='+url+'"></iframe>';
   			openModal(scrib.getDom('shareNB'));
   		}
@@ -317,7 +319,19 @@ shareBtn=function(){
 
 
  }
+toggleJsDlvr=function(){
 
+	let jsDlvrUrl='https://cdn.jsdelivr.net/gh/';
+	if(scrib.getDom("iframeLink").innerText(":")[0].trim()=='github'){
+		scrib.getDom("iframeLink").innerText=scrib.getDom("iframeLink").innerText.replace('github:',jsDlvrUrl);
+	}
+	else if(scrib.getDom("iframeLink").innerText(":")[0].trim()==jsDlvrUrl){
+		scrib.getDom("iframeLink").innerText=scrib.getDom("iframeLink").innerText.replace('github:',jsDlvrUrl);
+	}
+	
+}
+	
+	
 /********* Initialize Certain Global Variables and Load the JSNB from URL *****/
 keyDown=function(e) {
 	  if (e.ctrlKey && e.key === 's') {
