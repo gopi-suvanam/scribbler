@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Designe Patterns in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Experiment with design patterns for solving common software problems.\n    </p><br></div>",
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Design  Patterns in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Experiment with design patterns for solving common software problems.\n    </p><br></div>",
       "status": "",
-      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Designe Patterns in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Experiment with design patterns for solving common software problems.\n    </p><br></div>",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Design  Patterns in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Experiment with design patterns for solving common software problems.\n    </p><br></div>",
       "type": "html"
     },
     {
