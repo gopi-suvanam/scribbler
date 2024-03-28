@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "name": "Hello world",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Designe Patterns in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Experiment with design patterns for solving common software problems.\n    </p><br></div>",
+      "status": "",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Designe Patterns in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Experiment with design patterns for solving common software problems.\n    </p><br></div>",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Introduction to Design Patterns</h2>\nDesign patterns in JavaScript provide reusable solutions to common problems encountered during software development, promoting code organization, readability, and maintainability. In this article, we'll delve into the fundamentals of JavaScript design patterns, exploring their importance, types, and real-world applications.\n<br>Look at this article for details: <a href=''>Understanding the Essence of JavaScript Design Patterns</a>\n\n\n\n   ",
+      "status": "",
+      "output": "<h2>Introduction to Design Patterns</h2>\nDesign patterns in JavaScript provide reusable solutions to common problems encountered during software development, promoting code organization, readability, and maintainability. In this article, we'll delve into the fundamentals of JavaScript design patterns, exploring their importance, types, and real-world applications.\n\n\n\n   ",
+      "type": "html"
+    },
+    {
+      "code": "<h3>Creational Patterns</h3> ",
+      "status": "",
+      "output": "<h3>Creational Patterns</h3> ",
+      "type": "html"
+    },
+    {
+      "code": "//Constructor Pattern\nfunction Person(name, age) {\n  this.name = name;\n  this.age = age;\n}\n\nconst person1 = new Person('John', 30);\nscrib.show(person1); // Output: Person { name: 'John', age: 30 }",
+      "status": "[1]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "{\n  \"name\": \"John\",\n  \"age\": 30\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Module Pattern\nconst Module = (function() {\n  let privateVariable = 'I am private';\n  \n  function privateFunction() {\n    scrib.show(privateVariable);\n  }\n  \n  return {\n    publicFunction: function() {\n      privateFunction();\n    }\n  };\n})();\n\nModule.publicFunction(); // Output: I am private",
+      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "I am private <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Factor Pattern\nfunction createCar(type) {\n  if (type === 'SUV') {\n    return new SUV();\n  } else if (type === 'Sedan') {\n    return new Sedan();\n  }\n}\n\nclass SUV {\n  constructor() {\n    this.type = 'SUV';\n  }\n}\n\nclass Sedan {\n  constructor() {\n    this.type = 'Sedan';\n  }\n}\n\nconst myCar = createCar('SUV');\nscrib.show(myCar); // Output: SUV { type: 'SUV' }",
+      "status": "[3]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "{\n  \"type\": \"SUV\"\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Singleton Pattern\nconst Singleton = (function() {\n  let instance;\n  \n  function createInstance() {\n    return {\n      message: 'I am a singleton instance'\n    };\n  }\n  \n  return {\n    getInstance: function() {\n      if (!instance) {\n        instance = createInstance();\n      }\n      return instance;\n    }\n  };\n})();\n\nconst instance1 = Singleton.getInstance();\nconst instance2 = Singleton.getInstance();\n\nscrib.show(instance1 === instance2); // Output: true",
+      "status": "[4]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "true <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3>Structural Patterns</h3>",
+      "status": "",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "//Decorator Pattern\nclass Car {\n  constructor() {\n    this.price = 10000;\n  }\n}\n\nfunction luxuryCar(car) {\n  car.price += 5000;\n}\n\nconst myCar = new Car();\nluxuryCar(myCar);\n\nscrib.show(myCar.price); // Output: 15000",
+      "status": "[5]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "15000 <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Adapter Pattern\nclass OldPrinter {\n  constructor() {\n    this.print = function(str) {\n      scrib.show('Old Printer: ' + str);\n    };\n  }\n}\n\nclass NewPrinter {\n  constructor() {\n    this.printMessage = function(str) {\n     scrib.show('New Printer: ' + str);\n    };\n  }\n}\n\nclass PrinterAdapter {\n  constructor() {\n    const newPrinter = new NewPrinter();\n    this.print = function(str) {\n      newPrinter.printMessage(str);\n    };\n  }\n}\n\nconst adapter = new PrinterAdapter();\nadapter.print('Hello World'); // Output: New Printer: Hello World",
+      "status": "[6]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "New Printer: Hello World <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Facade Pattern:\nclass Engine {\n  start() {\n    scrib.show('Engine started');\n  }\n}\n\nclass FuelInjector {\n  inject() {\n    scrib.show('Fuel injected');\n  }\n}\n\nclass Starter {\n  engage() {\n    scrib.show('Starter engaged');\n  }\n}\n\nclass CarFacade {\n  constructor() {\n    this.engine = new Engine();\n    this.fuelInjector = new FuelInjector();\n    this.starter = new Starter();\n  }\n  \n  startCar() {\n    this.starter.engage();\n    this.fuelInjector.inject();\n    this.engine.start();\n  }\n}\n\nconst myCar = new CarFacade();\nmyCar.startCar(); // Output: Starter engaged, Fuel injected, Engine started",
+      "status": "[7]<br><span style=\"font-size:8px\">4ms<span></span></span>",
+      "output": "Starter engaged <br>Fuel injected <br>Engine started <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Composite Pattern\nclass Component {\n  constructor(name) {\n    this.name = name;\n  }\n  \n  display() {\n    scrib.show(this.name);\n  }\n}\n\nclass Composite extends Component {\n  constructor(name) {\n    super(name);\n    this.children = [];\n  }\n  \n  add(component) {\n    this.children.push(component);\n  }\n  \n  display() {\n    super.display();\n    this.children.forEach(child => child.display());\n  }\n}\n\nconst parent = new Composite('Parent');\nconst child1 = new Component('Child 1');\nconst child2 = new Component('Child 2');\n\nparent.add(child1);\nparent.add(child2);\n\nparent.display();\n",
+      "status": "[8]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Parent <br>Child 1 <br>Child 2 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h3>Behavioral Patterns</h3>",
+      "status": "",
+      "output": "<h3>Behavioral Patterns</h3>",
+      "type": "html"
+    },
+    {
+      "code": "//Observer Pattern\nclass Subject {\n  constructor() {\n    this.observers = [];\n  }\n  \n  addObserver(observer) {\n    this.observers.push(observer);\n  }\n  \n  notify(data) {\n    this.observers.forEach(observer => observer.update(data));\n  }\n}\n\nclass Observer {\n  update(data) {\n    scrib.show('Received data: ' + data);\n  }\n}\n\nconst subject = new Subject();\nconst observer1 = new Observer();\nconst observer2 = new Observer();\n\nsubject.addObserver(observer1);\nsubject.addObserver(observer2);\n\nsubject.notify('Hello World');\n// Output:\n// Received data: Hello World\n// Received data: Hello World",
+      "status": "[9]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Received data: Hello World <br>Received data: Hello World <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Strategy Pattern\nclass Strategy {\n  execute() {\n    throw new Error('Strategy.execute() must be implemented');\n  }\n}\n\nclass StrategyA extends Strategy {\n  execute() {\n    scrib.show('Executing strategy A');\n  }\n}\n\nclass StrategyB extends Strategy {\n  execute() {\n    scrib.show('Executing strategy B');\n  }\n}\n\nclass Context {\n  constructor(strategy) {\n    this.strategy = strategy;\n  }\n  \n  executeStrategy() {\n    this.strategy.execute();\n  }\n}\n\nconst contextA = new Context(new StrategyA());\nconst contextB = new Context(new StrategyB());\n\ncontextA.executeStrategy(); // Output: Executing strategy A\ncontextB.executeStrategy(); // Output: Executing strategy B",
+      "status": "[10]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Executing strategy A <br>Executing strategy B <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Command Pattern\nclass Command {\n  execute() {\n    throw new Error('Command.execute() must be implemented');\n  }\n}\n\nclass ConcreteCommand extends Command {\n  constructor(receiver) {\n    super();\n    this.receiver = receiver;\n  }\n  \n  execute() {\n    this.receiver.action();\n  }\n}\n\nclass Receiver {\n  action() {\n    scrib.show('Receiver executing action');\n  }\n}\n\nconst receiver = new Receiver();\nconst command = new ConcreteCommand(receiver);\ncommand.execute(); // Output: Receiver executing action",
+      "status": "[11]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Receiver executing action <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Iterator Pattern\nclass Iterator {\n  constructor(collection) {\n    this.collection = collection;\n    this.index = 0;\n  }\n  \n  hasNext() {\n    return this.index < this.collection.length;\n  }\n  \n  next() {\n    return this.collection[this.index++];\n  }\n}\n\nconst collection = [1, 2, 3, 4, 5];\nconst iterator = new Iterator(collection);\n\nwhile (iterator.hasNext()) {\n  scrib.show(iterator.next());\n}",
+      "status": "[12]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "1 <br>2 <br>3 <br>4 <br>5 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
