@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Hello world",
+    "name": "Design Patterns",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -15,9 +15,9 @@
       "type": "html"
     },
     {
-      "code": "<h2>Introduction to Design Patterns</h2>\nDesign patterns in JavaScript provide reusable solutions to common problems encountered during software development, promoting code organization, readability, and maintainability. In this article, we'll delve into the fundamentals of JavaScript design patterns, exploring their importance, types, and real-world applications.\n<br>Look at this article for details: <a href=''>Understanding the Essence of JavaScript Design Patterns</a>\n\n\n\n   ",
+      "code": "<h2>Introduction to Design Patterns</h2>\nDesign patterns in JavaScript provide reusable solutions to common problems encountered during software development, promoting code organization, readability, and maintainability. In this article, we'll delve into the fundamentals of JavaScript design patterns, exploring their importance, types, and real-world applications.\n<br>Look at this article for details: <a href='https://scribbler.live/2024/03/27/Design-Patterns-in-JavaScript.html' target=\"_blank\">Understanding the Essence of JavaScript Design Patterns</a>\n\n\n\n   ",
       "status": "",
-      "output": "<h2>Introduction to Design Patterns</h2>\nDesign patterns in JavaScript provide reusable solutions to common problems encountered during software development, promoting code organization, readability, and maintainability. In this article, we'll delve into the fundamentals of JavaScript design patterns, exploring their importance, types, and real-world applications.\n\n\n\n   ",
+      "output": "<h2>Introduction to Design Patterns</h2>\nDesign patterns in JavaScript provide reusable solutions to common problems encountered during software development, promoting code organization, readability, and maintainability. In this article, we'll delve into the fundamentals of JavaScript design patterns, exploring their importance, types, and real-world applications.\n<br>Look at this article for details: <a href=\"https://scribbler.live/2024/03/27/Design-Patterns-in-JavaScript.html\" target=\"_blank\">Understanding the Essence of JavaScript Design Patterns</a>\n\n\n\n   ",
       "type": "html"
     },
     {
