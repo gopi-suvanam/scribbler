@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "name": "Loading a note book...",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Timer Example </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Sample code for a simple timer to build Pomodoro or Other apps\n\t\t\n    </p><br></div>",
+      "status": "",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Timer Example </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Sample code for a simple timer to build Pomodoro or Other apps\n\t\t\n    </p><br></div>",
+      "type": "html"
+    },
+    {
+      "code": "<style>\n\n    canvas {\n        border: 2px solid black;\n        display: block;\n        margin: 0 auto;\n    }\n</style>\n<canvas id=\"timerCanvas\"></canvas>",
+      "status": "",
+      "output": "<style>\n\n    canvas {\n        border: 2px solid black;\n        display: block;\n        margin: 0 auto;\n    }\n</style>\n<canvas id=\"timerCanvas\"></canvas>",
+      "type": ""
+    },
+    {
+      "code": "Time in minutes:\n<input id=\"time\" type=\"text\"></input>\n<button onclick=\"start_timer()\">Start timer</button>",
+      "status": "",
+      "output": "Time in minutes:\n<input id=\"time\" type=\"text\">\n<button onclick=\"start_timer()\">Start timer</button>",
+      "type": "html"
+    },
+    {
+      "code": " const canvas = document.getElementById('timerCanvas');\n    const ctx = canvas.getContext('2d');\n    const centerX = canvas.width / 2;\n    const centerY = canvas.height / 2;\n    const radius = 80;\n\n    function drawTimer(percent) {\n        ctx.clearRect(0, 0, canvas.width, canvas.height);\n\n        // Draw outer circle\n        ctx.beginPath();\n        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);\n        ctx.strokeStyle = '#000';\n        ctx.lineWidth = 10;\n        ctx.stroke();\n        ctx.closePath();\n\n        // Draw progress circle\n        ctx.beginPath();\n        ctx.arc(centerX, centerY, radius, -Math.PI / 2, (Math.PI * 2) * percent - Math.PI / 2);\n        ctx.strokeStyle = '#ff0000';\n        ctx.lineWidth = 10;\n        ctx.stroke();\n        ctx.closePath();\n\n        // Display time text\n        ctx.font = '24px Arial';\n        ctx.fillStyle = '#000';\n        ctx.textAlign = 'center';\n        ctx.textBaseline = 'middle';\n        ctx.fillText(formatTime(600 - Math.floor(600 * percent)), centerX, centerY);\n    }\n\n    function formatTime(seconds) {\n        const min = Math.floor(seconds / 60);\n        const sec = seconds % 60;\n        return `${min}:${sec < 10 ? '0' : ''}${sec}`;\n    }\n\n    function animateTimer(duration) {\n        let start = null;\n\n        function step(timestamp) {\n            if (!start) start = timestamp;\n            const progress = (timestamp - start) / duration;\n            drawTimer(progress);\n            if (progress < 1) {\n                requestAnimationFrame(step);\n            }\n        }\n\n        requestAnimationFrame(step);\n    }\n\nfunction start_timer(){\n  var seconds=scrib.getDom(\"time\")*60;\n  drawTimer(0);\n  animateTimer(seconds);\n}",
+      "status": "[8]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
