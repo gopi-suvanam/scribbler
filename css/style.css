@@ -191,7 +191,7 @@ ul[role=listbox]{
 
 #logo{
 	height:37px;
-	width:39px;
+	width:35px;
 	margin:0px;
 }
 input{
@@ -208,7 +208,7 @@ input{
 }
 
 @media (max-width: 600px) {
-   #logo{
+   #welcome{
    	display:none;
    }
   .cell-menu {
