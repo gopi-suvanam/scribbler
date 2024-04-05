@@ -71,11 +71,10 @@ There are a few special functions:
 Both these functions might behave differently when called from within asynchronous code.
   
 Other useful functions:
-- get_dom(id) is short form for window.getElementById
-- wait_for_dom(id) is an asynchronous version of get_dom, where the function waits for a dom to be available and resolves to the element once it is available. This is useful if a dom is being created by another asynchronous activity. wait_for_dom can be used as: wait_for_dom(id).then(dom=>{stuff to do with dom}) or inside and async function it can be used as dom = await wait_for_dom(id).\
-- load_file opens file browser and resolves to the contents of a file if selected.
-- load_script(url) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
-- import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
+- scrib.getDom(id) is short form for window.getElementById
+- scrib.waitForDom(id) is an asynchronous version of scrib.waitForDom, where the function waits for a dom to be available and resolves to the element once it is available. This is useful if a dom is being created by another asynchronous activity. scrib.waitForDom can be used as: scrib.waitForDom(id).then(dom=>{stuff to do with dom}) or inside and async function it can be used as dom = await scrib.waitForDom(id).\
+- scrib.uploadFile opens file browser and resolves to the contents of a file if selected.
+- scrib.loadScript(url) to load the url as script. Example: To load JQuery use: scrib.loadScript("https://code.jquery.com/jquery-3.6.3.min.js")
 
 ## Keyboard Shortcuts
 These shortcuts work when a code cell is in focus:
@@ -120,10 +119,8 @@ These shortcuts are global
 
 ## Using external libraries
 External libraries can be used using two specially built functions:
-- load_script(url,async) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
-- import_module(module,features) to load an ES6 module. "module" is a file location. "features" is dictionary. The keys in features dictionary are loaded from the module and exposed globall as the values. 
+- scrib.loadScript(url,async) to load the url as script. Example: To load JQuery use: scrib.loadScript("https://code.jquery.com/jquery-3.6.3.min.js")
 - Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
-- More ways including nodejs style require() is coming soon.
 - D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://app.scribbler.live#./examples/AMM-Simulation.jsnb](https://app.scribbler.live#./examples/AMM-Simulation.jsnb)
   
   
