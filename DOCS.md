@@ -42,7 +42,7 @@ Certain operations can be done on cell-menu. The cell-menu is at top-right corne
 The file menu consists of:
 - Save: Saving a notebook to the browser storage
 - Open: Opening a notebook from the browser storage
-- Load: Opening a .jsnb file from local machine
+- Upload: Opening a .jsnb file from local machine
 - Download: Saving the current notebook as .jsnb file on local machine
 - GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Toke, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
 - Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
@@ -87,7 +87,7 @@ These shortcuts work when a code cell is in focus:
 These shortcuts are global
 - Alt-R/Option-R: Run all the cells
 - Ctrl-G: Import from/Push to GitHub
-- Ctrl-S: Download the jsnb to local machine
+- Ctrl-S: Save the notebook to the browser
 - Ctrl-O: Load a jsnb from local machine
 
 ## Exporting-Importing
@@ -99,6 +99,23 @@ These shortcuts are global
 - The output of a notebook can be downloaded as an HTML file (with code or wothout code)
 - The code of a notebook can be downloaded as a JavaScript file
   
+## Sandboxed Enviroment
+- The Scribbler notebook runs in a sandboxed iFrame. This blocks several functionalities including accessing certain browser APIs, accessing external resources where CORS is not allowed, accessing cookies etc.
+- To enable these features, click on the icon ⤯ at the top-right corner above the notebook. After confirmation, the notebook will be reloaded without the sandbox.
+
+## Embedding
+- Scribbler notebooks can be embedded as an iFrame in other pages.
+- For this use the code:
+```html
+<iframe id="sandbox" style="width:100%;height:100%" src ="https://app.scribbler.live/sandbox.html?jsnb=link-to-the-notebook-file"></iframe>
+```
+- Replace link-to-the-notebook-file with the path of the file.
+- Github file can be embedded using:
+```html
+<iframe id="sandbox" style="width:100%;height:100%" src ="https://app.scribbler.live/sandbox.html?jsnb=github:user/repository/path-to-file"></iframe>
+```
+- Note: Embed a notebook in your page only if you trust the notebook.
+
 ## Using external libraries
 External libraries can be used using two specially built functions:
 - load_script(url,async) to load the url as script. Example: To load JQuery use: load_script("https://code.jquery.com/jquery-3.6.3.min.js")
@@ -106,4 +123,5 @@ External libraries can be used using two specially built functions:
 - Additionally, dynamic import from ES6 can be used to load a module. Example: import("https://unpkg.com/jquery@3.3.1/dist/jquery.min.js")
 - More ways including nodejs style require() is coming soon.
 - D3 and Plotlyjs are preloaded. Also a sister project DI-Labs is preloaded. DI-Labs provides easy interface for working with data including plotting, array manipulation and scientific computing. See this example for more details: [https://app.scribbler.live#./examples/AMM-Simulation.jsnb](https://app.scribbler.live#./examples/AMM-Simulation.jsnb)
+  
   
