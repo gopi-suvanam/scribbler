@@ -10,7 +10,9 @@
 7. [Special Functions](#special-functions)
 8. [Keyboard Shortcuts](#keyboard-shortcuts)
 9. [Exporting-Importing](#exporting-importing)
-10. [Using external libraries](#using-external-libraries)
+10. [Sandboxed Environment](#sandboxed-enviroment)
+11. [Embedding Notebooks](#embedding-notebooks)
+12. [Using external libraries](#using-external-libraries)
 
 ## Installing
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub.
@@ -103,7 +105,7 @@ These shortcuts are global
 - The Scribbler notebook runs in a sandboxed iFrame. This blocks several functionalities including accessing certain browser APIs, accessing external resources where CORS is not allowed, accessing cookies etc.
 - To enable these features, click on the icon ⤯ at the top-right corner above the notebook. After confirmation, the notebook will be reloaded without the sandbox.
 
-## Embedding
+## Embedding Notebooks
 - Scribbler notebooks can be embedded as an iFrame in other pages.
 - For this use the code:
 ```html
