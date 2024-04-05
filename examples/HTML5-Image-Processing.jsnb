@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "name": "HTML5 Image Processing",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>HTML5 Image Processing Using Canvas</h1>\nHTML5 provides the `&ltcanvas>` element, a powerful drawing surface that allows for dynamic rendering of graphics and images. Combined with JavaScript, developers can leverage the Canvas API to perform various image editing operations, making it ideal for creating photo editing tools, graphic design applications, and more.\n",
+      "status": "",
+      "output": "<h1>HTML5 Image Processing Using Canvas</h1>\nHTML5 provides the `&lt;canvas&gt;` element, a powerful drawing surface that allows for dynamic rendering of graphics and images. Combined with JavaScript, developers can leverage the Canvas API to perform various image editing operations, making it ideal for creating photo editing tools, graphic design applications, and more.\n",
+      "type": "html"
+    },
+    {
+      "code": "<canvas id=\"imageCanvas\" width=\"500\" height=\"500\"></canvas>",
+      "status": "",
+      "output": "<canvas id=\"imageCanvas\" width=\"500\" height=\"500\"></canvas>",
+      "type": "html"
+    },
+    {
+      "code": "<h3>Run each of the cells below to see the changes in the above canvas!<h3>",
+      "status": "",
+      "output": "<h3>Run each of the cells below to see the changes in the above canvas!</h3><h3></h3>",
+      "type": "html"
+    },
+    {
+      "code": "//Draw some shapes in the canvas\nconst canvas = document.getElementById('imageCanvas');\nconst ctx = canvas.getContext('2d');\nctx.clearRect(0, 0, canvas.width, canvas.height);\nctx.filter ='none';\n// Draw a rectangle\nctx.fillStyle = 'blue';\nctx.fillRect(50, 50, 100, 100);\n\n// Draw a circle\nctx.beginPath();\nctx.arc(200, 200, 50, 0, 2 * Math.PI);\nctx.fillStyle = 'red';\nctx.fill();",
+      "status": "[25]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "//Load an Image\nconst canvas = document.getElementById('imageCanvas');\nconst ctx = canvas.getContext('2d');\nctx.filter ='none';\nconst image = new Image();\nconst imageUrl=\"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68\";\nimage.onload = function() {\n                // Clear canvas\n                ctx.clearRect(0, 0, canvas.width, canvas.height);\n\t\t\t\tctx.filter ='none';\n                // Draw image onto canvas\n                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);\n\n                // Manipulate the image (e.g., apply a filter)\n                // ctx.filter = 'grayscale(100%)';\n                // ctx.drawImage(image, 0, 0, canvas.width, canvas.height);\n            };\n\n// Load image from URL\nimage.src = imageUrl;\n",
+      "status": "[31]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68 <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Load a cropped Image\nconst canvas = document.getElementById('imageCanvas');\nconst ctx = canvas.getContext('2d');\nconst image = new Image();\nconst imageUrl=\"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68\";\n\nimage.onload = function() {\n    // Draw the loaded image onto the canvas\n    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);\n\tctx.filter ='none';\n    // Crop the image\n    cropImage(0, 0, 600, 600);\n\n    function cropImage(x, y, width, height) {\n        ctx.drawImage(image, x, y, width, height, 0, 0, canvas.width, canvas.height);\n    }\n};\n\n// Load image from URL\nimage.src = imageUrl;",
+      "status": "[28]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68 <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Load a  Image with filter\nconst canvas = document.getElementById('imageCanvas');\nconst ctx = canvas.getContext('2d');\nconst image = new Image();\nconst imageUrl=\"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68\";\n\nimage.onload = function() {\n    // Draw the loaded image onto the canvas\n    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);\n\n    // Apply filters\n    applyFilter('grayscale');\n    // Other filter options: 'sepia', 'blur', 'brightness', 'contrast', 'hue-rotate'\n\n    function applyFilter(filter) {\n        ctx.filter = `${filter}(100%)`;\n        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);\n    }\n};\n\n// Load image from URL\nimage.src = imageUrl;",
+      "status": "[29]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
