@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Closures in JavaScript",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Closures in JavaScript</h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Understanding JavaScript Closures: Unveiling the Power of Lexical Scope\n    </p><br></div>",
+      "status": "",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Closures in JavaScript</h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Understanding JavaScript Closures: Unveiling the Power of Lexical Scope\n    </p><br></div>",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Examples of Closures </h2>\n\n\n\n   ",
+      "status": "",
+      "output": "<h2>Examples of Closures </h2>\n\n\n\n   ",
+      "type": "html"
+    },
+    {
+      "code": "function outerFunction(name) {\n  const outerVariable = \"Hello \"+name+\"! I am in the outer function's scope.\";\n\n  function innerFunction() {\n    return(outerVariable);\n  }\n\n  return innerFunction;\n}\n\nconst inner = outerFunction(\"User\");\ninner(); // Output: \"Hello User! I am in the outer function's scope.\"",
+      "status": "[1]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Hello User! I am in the outer function's scope. <br>",
+      "type": "code"
+    },
+    {
+      "code": "function createCounter() {\n    let count = 0;\n\n    return function() {\n        return ++count;\n    };\n}\n\nconst counter = createCounter();\nscrib.show(counter()); // Output: 1\nscrib.show(counter()); // Output: 2",
+      "status": "[3]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "1 <br>2 <br>",
+      "type": "code"
+    },
+    {
+      "code": "function memoize(func) {\n    const cache = {};\n\n    return function(...args) {\n        const key = JSON.stringify(args);\n        if (!cache[key]) {\n            cache[key] = func(...args);\n        }\n        return cache[key];\n    };\n}\n\nconst expensiveCalculation = memoize(function(n) {\n    scrib.show('Performing expensive calculation...');\n    return n * n;\n});\n\nscrib.show(expensiveCalculation(5)); // Output: Performing expensive calculation... 25\nscrib.show(expensiveCalculation(5)); // Output: 25 (result retrieved from cache)",
+      "status": "[4]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Performing expensive calculation... <br>25 <br>25 <br>",
+      "type": "code"
+    },
+    {
+      "code": "//Creating a closure of moments\nconst population = [1,2,3,5,8,2,6,3,5,10,7,4] //Can be any sequence\n//We, will create an encapsulated power function:\nconst power_k=function(k){\n\treturn x=>x^k;\n} //The power_k returns a function that encapsulates k using closure\n//Creating a function for calculating the mean\nmean = function(arr){\n\tconst sum = arr.reduce((accumulator, num) => {\n\t  return accumulator + num;\n\t}, 0);\n\treturn sum/arr.length\n\t\n}\n\n//Now that we have the power function and mean function defined, we can easily calculate any moment in a single line. For example, if you want 5th moment, you can do so in a single line:\n\n\nscrib.show(mean(population.map(power_k(5)))) //Output 5.333333333333333",
+      "status": "[7]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "5.333333333333333 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
