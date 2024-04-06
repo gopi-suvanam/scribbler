@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "name": "Numerical Methods for Integration",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Numerical Methods for Integration Using JavaScript</h1>",
+      "status": "",
+      "output": "<h1>Numerical Methods for Integration Using JavaScript</h1>",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Riemann Sum</h2>\n",
+      "status": "",
+      "output": "<h2>Riemann Sum</h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "// Riemann Sum Implementation\nfunction riemannSum(func, a, b, n) {\n    const dx = (b - a) / n;\n    let sum = 0;\n    for (let i = 0; i < n; i++) {\n        const xi = a + i * dx;\n        sum += func(xi) * dx;\n    }\n    return sum;\n}\n\n// Example Usage\nvar f = x => 1/(1+x ** 2); // Function to integrate\nvar a = 0; // Lower bound\nvar b = 1; // Upper bound\nvar n = 1000; // Number of subintervals\nconst result = riemannSum(f, a, b, n);\nscrib.show('Riemann Sum Result:', result);",
+      "status": "[2]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Riemann Sum Result: 0.7856481217307805 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Trapezoidal Rule</h2>",
+      "status": "",
+      "output": "<h2>Trapezoidal Rule</h2>",
+      "type": "html"
+    },
+    {
+      "code": "// Trapezoidal Rule Implementation\nfunction trapezoidalRule(func, a, b, n) {\n    const dx = (b - a) / n;\n    let sum = 0.5 * (func(a) + func(b)); // Include endpoints\n    for (let i = 1; i < n; i++) {\n        const xi = a + i * dx;\n        sum += func(xi);\n    }\n    return sum * dx;\n}\n\n// Example Usage\nconst result = trapezoidalRule(f, a, b, n);\nscrib.show('Trapezoidal Rule Result:', result);\n",
+      "status": "[4]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "Trapezoidal Rule Result: 0.7853981217307812 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Simpson's Rule </h2>",
+      "status": "",
+      "output": "<h2>Simpson's Rule </h2>",
+      "type": "html"
+    },
+    {
+      "code": "// Simpson's Rule Implementation\nfunction simpsonsRule(func, a, b, n) {\n    if (n % 2 !== 0) throw new Error('Number of subintervals must be even for Simpson\\'s Rule');\n    const dx = (b - a) / n;\n    let sum = func(a) + func(b); // Include endpoints\n    for (let i = 1; i < n; i++) {\n        const xi = a + i * dx;\n        sum += 2 * (i % 2 ? 4 : 2) * func(xi);\n    }\n    return sum * dx / 6;\n}\n\n// Example Usage\nconst result = simpsonsRule(f, a, b, n);\nscrib.show('Simpson\\'s Rule Result:', result);",
+      "status": "[6]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Simpson's Rule Result: 0.7851481633974479 <br>",
+      "type": "code"
+    },
+    {
+      "code": "Math.tanh(1)-Math.tanh(0)",
+      "status": "[8]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "0.7615941559557649 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
