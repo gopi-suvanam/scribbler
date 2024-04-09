@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "name": "Monte Carlo Simulation<br>",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Monte Carlo Simulation in JavaScript </h1>\n<h3 class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Learn  • Experiment  • Build\n    </h3><br></div>",
+      "status": "",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Monte Carlo Simulation in JavaScript </h1>\n<h3 class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        Learn  • Experiment  • Build\n    </h3><br></div>",
+      "type": "html"
+    },
+    {
+      "code": "\n<h2>Monte Carlo Simulation for Estimating the Value of π</h2>\nLet's demonstrate a simple Monte Carlo simulation in JavaScript to estimate the value of π using random sampling in a unit square and circle:\n\n\n\n\n   ",
+      "status": "",
+      "output": "\n<h2>Monte Carlo Simulation for Estimating the Value of π</h2>\nLet's demonstrate a simple Monte Carlo simulation in JavaScript to estimate the value of π using random sampling in a unit square and circle:\n\n\n\n\n   ",
+      "type": "html"
+    },
+    {
+      "code": "function estimatePi(numSamples) {\n    let insideCircle = 0;\n\n    for (let i = 0; i < numSamples; i++) {\n        const x = Math.random(); // Random x-coordinate in [0, 1)\n        const y = Math.random(); // Random y-coordinate in [0, 1)\n\n        // Check if the point (x, y) is inside the unit circle\n        if (x * x + y * y < 1) {\n            insideCircle++;\n        }\n    }\n\n    // Estimate pi as the ratio of points inside the circle to total points\n    const piEstimate = (4 * insideCircle) / numSamples;\n    return piEstimate;\n}\n\n// Example: Estimate pi using 1 million samples\nconst numSamples = 1000000;\nconst estimatedPi = estimatePi(numSamples);\nscrib.show(\"Estimated value of π:\", estimatedPi);",
+      "status": "[8]<br><span style=\"font-size:8px\">53ms<span></span></span>",
+      "output": "Estimated value of π: 3.140244 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2> Monte Carlo Integration for Area Estimation</h2>\nSuppose we want to estimate the area under the curve of a given function f(x) within a specified interval [a, b] using Monte Carlo integration:\n",
+      "status": "",
+      "output": "<h2> Monte Carlo Integration for Area Estimation</h2>\nSuppose we want to estimate the area under the curve of a given function f(x) within a specified interval [a, b] using Monte Carlo integration:\n",
+      "type": "html"
+    },
+    {
+      "code": "function monteCarloIntegration(func, a, b, numSamples) {\n    let areaEstimate = 0;\n\n    for (let i = 0; i < numSamples; i++) {\n        const x = a + Math.random() * (b - a); // Random x in [a, b]\n        const y = func(x); // Evaluate the function at x\n\n        // Check if the point (x, y) is below the curve y = f(x)\n        if (Math.random() * (b - a) < y) {\n            areaEstimate += 1; // Point is below the curve, count it\n        }\n    }\n\n    // Estimate the area as the ratio of counted points to total points\n    areaEstimate = areaEstimate / numSamples * (b - a);\n    return areaEstimate;\n}\n\n// Example: Estimate the area under the curve y = x^2 from 0 to 1 using 1 million samples\nconst func = x => x * x;\nconst a = 0;\nconst b = 1;\nconst numSamples = 10000;\n\nconst estimatedArea = monteCarloIntegration(func, a, b, numSamples);\nscrib.show(\"Estimated area under the curve y = x^2 from 0 to 1:\", estimatedArea);",
+      "status": "[9]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "Estimated area under the curve y = x^2 from 0 to 1: 0.3322 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Monte Carlo Simulation of a Dice Game</h2>\nLet's simulate a simple dice game using Monte Carlo methods to estimate the probability of rolling a sum of 7 with two dice:\n",
+      "status": "",
+      "output": "<h2>Monte Carlo Simulation of a Dice Game</h2>\nLet's simulate a simple dice game using Monte Carlo methods to estimate the probability of rolling a sum of 7 with two dice:\n",
+      "type": "html"
+    },
+    {
+      "code": "function rollDice() {\n    return Math.floor(Math.random() * 6) + 1; // Roll a 6-sided die\n}\nfunction simulateDiceGame(numTrials) {\n    let countSum7 = 0;\n\n    for (let i = 0; i < numTrials; i++) {\n        const dice1 = rollDice();\n        const dice2 = rollDice();\n\n        // Check if the sum of two dice is equal to 7\n        if (dice1 + dice2 === 7) {\n            countSum7++; // Count successful outcomes (sum of 7)\n        }\n    }\n\n    // Estimate the probability of rolling a sum of 7\n    const probabilitySum7 = countSum7 / numTrials;\n    return probabilitySum7;\n}\n\n// Example: Estimate the probability of rolling a sum of 7 with two dice using 1 million trials\nconst numTrials = 1000000;\nconst estimatedProbability = simulateDiceGame(numTrials);\nscrib.show(\"Estimated probability of rolling a sum of 7 with two dice:\", estimatedProbability);",
+      "status": "[10]<br><span style=\"font-size:8px\">49ms<span></span></span>",
+      "output": "Estimated probability of rolling a sum of 7 with two dice: 0.166572 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
