@@ -15,7 +15,7 @@
       "type": "html"
     },
     {
-      "code": "<h2>Loading Lodash Dynamically</h2>\n It offers a wide range of utility functions, including ones for data manipulation, functional programming, and simplifying common tasks. Lodash is widely used in both front-end and back-end JavaScript development and is known for its performance and versatility.\n",
+      "code": "<h2>Loading Lodash Dynamically</h2>\n It offers a wide range of utility functions, including ones for data manipulation, functional programming, and simplifying common tasks. Lodash is widely used in both front-end and back-end JavaScript development and is known for its performance and versatility.\n <br>Also checkout <a href=\"https://app.scribbler.live/?jsnb=./examples/Underscore-JS.jsnb\">Underscore a similar project</a>.\n",
       "status": "",
       "output": "<h2>Loading Lodash Dynamically</h2>\n It offers a wide range of utility functions, including ones for data manipulation, functional programming, and simplifying common tasks. Lodash is widely used in both front-end and back-end JavaScript development and is known for its performance and versatility.\n",
       "type": "html"
