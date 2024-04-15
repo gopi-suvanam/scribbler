@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "name": "Parallel.js Example",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Example Using Paralle.js</h1>",
+      "status": "",
+      "output": "<h1>Example Using Paralle.js</h1>",
+      "type": "html"
+    },
+    {
+      "code": "//Load parallel.js\nscrib.loadScript(\"https://cdn.jsdelivr.net/npm/paralleljs/lib/parallel.js\",false)",
+      "status": "[6]<br><span style=\"font-size:8px\">57ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "const task = x => {\n  // Perform computation on data\n  return x*x;\n};\n\nconst data = [1, 2, 3, 4, 5];\nconst parallel = new Parallel(data);\nparallel.map( task).then(scrib.show);\n\n'';",
+      "status": "[13]<br><span style=\"font-size:8px\">5ms<span></span></span>",
+      "output": " <br>[\n  1,\n  4,\n  9,\n  16,\n  25\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h1>Calculating Value of PI using Parallel.js</h1>",
+      "status": "",
+      "output": "<h1>Enumerating Prime Numbers Parallelly using Parallel.js</h1>",
+      "type": "html"
+    },
+    {
+      "code": "function monteCarloPi(numPoints) {\n            let insideCount = 0;\n\n            // Generate random points and count points inside the quarter circle\n            for (let i = 0; i < numPoints; i++) {\n                const x = Math.random(); // Random x-coordinate between 0 and 1\n                const y = Math.random(); // Random y-coordinate between 0 and 1\n                if (x * x + y * y <= 1) {\n                    insideCount++;\n                }\n            }\n\n            // Estimate π using Monte Carlo method\n            const estimatedPi = (4 * insideCount) / numPoints;\n            return estimatedPi;\n        }\n",
+      "status": "[17]<br><span style=\"font-size:8px\">15ms<span></span></span>",
+      "output": "3.1444 <br>",
+      "type": "code"
+    },
+    {
+      "code": "        async function parallelMonteCarloPi(numPoints, numWorkers) {\n\n\n            // Divide the total number of points among workers\n            const pointsPerWorker = Math.ceil(numPoints / numWorkers);\n\n            // Create a new Parallel instance\n            const dataPoints=Array.from({ length: numWorkers }, () => pointsPerWorker);\n            const parallel = new Parallel(dataPoints);\n            \n            // Array to hold results from each worker\n            const  results=await parallel.map(monteCarloPi);\n            \n            return(results.reduce((sum, value) => sum + value, 0) / results.length);\n        }",
+      "status": "[32]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "const numPoints = 100000; // Total number of random points\nconst numWorkers = 4; // Number of parallel workers\n\nparallelMonteCarloPi(numPoints, numWorkers).then(scrib.show);",
+      "status": "[33]<br><span style=\"font-size:8px\">8ms<span></span></span>",
+      "output": "{} <br>3.14084 <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
