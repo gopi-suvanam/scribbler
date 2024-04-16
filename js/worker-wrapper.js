@@ -117,8 +117,13 @@ worker.run_in=function(processor,func, ...parameters) {
 // Function for running a function in a web-worker
 // This will convert the function into string and send to the web-worker
 worker.web_workers=[]
-worker.run_in_ww=function(func, ...parameters) { 
-  const web_worker = new Worker('js/web-worker.js');
+worker.runInWW=function(func, ...parameters) { 
+  const workerScript="("+String(webWorkerCode)+")()";
+  const workerBlob = new Blob([workerScript], { type: 'application/javascript' });
+  const workerScriptUrl = URL.createObjectURL(workerBlob);
+  const web_worker = new Worker(workerScriptUrl);
+
+  //const web_worker = new Worker('js/web-worker.js');
   worker.web_workers.push(web_worker);
   functionString=func.toString();
   return new Promise((resolve, reject) => {

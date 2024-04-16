@@ -27,6 +27,7 @@
 		<script > scrib={};</script>
 		<script src="js/libs.js"></script> <!-- libs for some functionality -->
 		<script src="js/sandbox-controller.js"></script> <!-- Controls the UI -->
+		<script src="js/web-worker.js"></script> <!-- Runs the user generated code -->
 		<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
 				
 		<!-- Styling using pico.css and some custom css -->
@@ -73,11 +74,11 @@
   
   <!-- Loading some libraries for power experience. Putting at the end so that these do not block rest of the UI. -->
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js"></script>
-	<script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
-	<script src="https://decentralized-intelligence.com/di-libs/build/di-libs.js"></script>
-	<script id="libs-loaded">
 
+	<script src="https://cdn.plot.ly/plotly-2.16.1.min.js" async></script>
+	<script src="https://cdn.jsdelivr.net/gh/gopi-suvanam/di-libs/build/di-libs.js"></script>
+	<script id="libs-loaded">
+		console.log("Pltly/DI libraries loaded");
 	</script>
 
   

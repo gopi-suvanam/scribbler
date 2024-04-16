@@ -61,8 +61,6 @@ load_from_url=function(){
   		else if(url.split(":")[0].trim()=='local') loadLocalFile(url.split(":")[1].trim());
   		else scrib.readFile(url,load_jsnb,err=>{alert(err.message)});
   	}else{
-
-  		
   		scrib.getDom("nb_name").innerHTML="New JSNB";
   		insert_cell("code");
   	}
@@ -331,28 +329,29 @@ keyDown=function(e) {
 	}
 insitialize_page=async function(){
 
-	window.onload = async function() {
+	window.onload =  function() {
 		first_load=true;
 		scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		scrib.getDom("sandbox").setAttribute("src","sandbox.html");
 		scrib.getDom("break-sandbox").style.display='inline';
+	      	initialize_git();
 	      	
-	      	
-		sandbox_iframe = await scrib.waitForDom('sandbox');
+		 scrib.waitForDom('sandbox').then(result=>{
+			sandbox_iframe=result;
+			sandbox_iframe.addEventListener("load", function() {
+				if(first_load){
+					console.log("Loading from URL");
+					load_from_url();
+				}else{
+					console.log("Ignoring");
+				}
+				first_load=false;
+			},{once:true});
+			
+			
+		  	document.addEventListener('keydown', keyDown);
+		  });
 		
-		sandbox_iframe.addEventListener("load", function() {
-			if(first_load){
-				console.log("Loading from URL");
-				load_from_url();
-			}else{
-				console.log("Ignoring");
-			}
-			first_load=false;
-		},{once:true});
-		
-		
-	  	document.addEventListener('keydown', keyDown);
-		initialize_git();
 	};
 	
 	  	
