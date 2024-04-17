@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "Gradient Descent",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Gradient Descent for Minimizing a Generic Function (Two Variables)</h1>\n- We define a `gradientDescent2D` function that takes a generic function `f(x, y)` as input and performs gradient descent to minimize it.\n<br>- The `exampleFunction` represents the function _f(x, y)_ that we want to minimize (e.g., _f(x, y) = (x-3)^2 + (y-5)^2_ for a simple quadratic function).\n<br>- Inside the loop, the gradients ∂f/∂x and ∂f/∂y are calculated using finite differences.\n<br>- The parameters _x_ and _y_ are updated using the gradient descent update rule.\n<br>- Convergence is checked based on the magnitude of the gradient.\n<br>- The process continues until convergence or a maximum number of iterations is reached",
+      "status": "",
+      "output": "<h1>Gradient Descent for Minimizing a Generic Function (Two Variables)</h1>\n- We define a `gradientDescent2D` function that takes a generic function `f(x, y)` as input and performs gradient descent to minimize it.\n<br>- The `exampleFunction` represents the function _f(x, y)_ that we want to minimize (e.g., _f(x, y) = (x-3)^2 + (y-5)^2_ for a simple quadratic function).\n<br>- Inside the loop, the gradients ∂f/∂x and ∂f/∂y are calculated using finite differences.\n<br>- The parameters _x_ and _y_ are updated using the gradient descent update rule.\n<br>- Convergence is checked based on the magnitude of the gradient.\n<br>- The process continues until convergence or a maximum number of iterations is reached",
+      "type": "html"
+    },
+    {
+      "code": "\nfunction gradientDescent2D(f, initialX, initialY, learningRate, maxIterations, tolerance, epsilon) {\n  let x = initialX;\n  let y = initialY;\n\n  for (let i = 0; i < maxIterations; i++) {\n    // Compute gradient using numerical approximation\n    const gradientX = (f(x + epsilon, y) - f(x, y)) / epsilon;\n    const gradientY = (f(x, y + epsilon) - f(x, y)) / epsilon;\n\n    // Update parameters using gradient descent\n    x = x - learningRate * gradientX;\n    y = y - learningRate * gradientY;\n\n    // Compute magnitude of gradient\n    const gradientMagnitude = Math.sqrt(gradientX ** 2 + gradientY ** 2);\n\n    // Check convergence\n    if (gradientMagnitude < tolerance) {\n      console.log(`Gradient descent converged at iteration ${i}, (x, y) = (${x}, ${y})`);\n      break;\n    }\n  }\n\n  return { x, y };\n}\n\n// Define the function f(x, y) - Example: f(x, y) = (x-3)^2 + (y-5)^2\nfunction exampleFunction(x, y) {\n  return (x-3)**2 + (y-5)**2;\n}\n\n// Parameters\nconst initialX = 1; // Initial guess for x\nconst initialY = 1; // Initial guess for y\nconst learningRate = 0.1; // Learning rate (step size)\nconst maxIterations = 100; // Maximum iterations\nconst tolerance = 0.0001; // Convergence tolerance\nconst epsilon = 0.0001; // Small perturbation for gradient calculation\n\n// Perform gradient descent\nconst minimizedParams = gradientDescent2D(exampleFunction, initialX, initialY, learningRate, maxIterations, tolerance, epsilon);\n\nscrib.show(`Minimized (x, y): (${minimizedParams.x}, ${minimizedParams.y})`);\n",
+      "status": "[3]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Minimized (x, y): (2.9999353853490023, 4.999920770332628) <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
