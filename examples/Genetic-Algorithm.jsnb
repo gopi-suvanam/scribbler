@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "name": "Genetic Algorithm",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Sample Impltementation of Genetic Algorithm </h1>\n",
+      "status": "",
+      "output": "<h1>Sample Impltementation of Genetic Algorithm </h1>\n",
+      "type": "html"
+    },
+    {
+      "code": "function GeneticAlgorithm(populationSize, mutationRate, crossoverRate, generations, objectiveFunction) {\n    this.populationSize = populationSize;\n    this.mutationRate = mutationRate;\n    this.crossoverRate = crossoverRate;\n    this.generations = generations;\n    this.objectiveFunction = objectiveFunction;\n    this.population = [];\n\n\n  // Initialize the population with random individuals\n  this.initializePopulation=function() {\n    for (let i = 0; i < this.populationSize; i++) {\n      let individual = {\n        value: Math.random() * 10, // Random initial value within a defined range\n        fitness: 0 // Initialize fitness\n      };\n      this.population.push(individual);\n    }\n  }\n\n  // Evaluate the fitness of each individual based on the objective function\n  this.evaluateFitness=function() {\n    for (let individual of this.population) {\n      // Evaluate fitness by applying the objective function to the individual's value\n      individual.fitness = this.objectiveFunction(individual.value);\n    }\n  }\n\n  // Select individuals from the population based on their fitness\n  this.selection=function() {\n    let totalFitness = this.population.reduce((sum, individual) => sum + individual.fitness, 0);\n    let avgFitness=totalFitness/this.population.length+0.000000001;\n\tlet qualifyingIndividuals=this.population.filter(indiv=>(indiv.fitness<=avgFitness));\n   console.log(this.population);\n\treturn qualifyingIndividuals[Math.floor(Math.random() * qualifyingIndividuals.length)];\n\n  }\n\n  // Apply single-point crossover to produce offspring\n  this.crossover=function(parent1, parent2) {\n\t\n    if (Math.random() < this.crossoverRate) {\n\t  \n      let offspringValue = (parent1.value + parent2.value) / 2; // Average value of parents\n      return { value: offspringValue, fitness: 0 }; // Create new offspring\n    } else {\n      return parent1; // No crossover\n    }\n  }\n\n  // Apply mutation to alter the value of an individual\n  this.mutation=function(individual) {\n    if (Math.random() < this.mutationRate) {\n      individual.value += (Math.random() - 0.5); // Small random change in value\n    }\n  }\n\n  // Evolve the population through multiple generations\n   this.evolve=function() {\n    this.initializePopulation();\n\n    for (let generation = 0; generation < this.generations; generation++) {\n      this.evaluateFitness();\n      let newPopulation = [];\n\n      while (newPopulation.length < this.populationSize) {\n        let parent1 = this.selection();\n        let parent2 = this.selection();\n        let offspring = this.crossover(parent1, parent2);\n        this.mutation(offspring);\n        newPopulation.push(offspring);\n      }\n\n      this.population = newPopulation;\n    }\n\n    // Find the individual with the highest fitness (optimal value)\n    let bestIndividual = this.population.reduce((best, current) => current.fitness > best.fitness ? current : best);\n    return bestIndividual.value; // Return the optimal value\n  } \n}\n\n\n\n\n",
+      "status": "[26]<br><span style=\"font-size:8px\">11ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Create a GeneticAlgorithm instance to optimize the quadratic function\n// Example: Minimize a simple quadratic function f(x) = (x-5)^2\nfunction quadraticFunction(x) {\n  return (x-5) ** 2;\n}\n\nconst ga = new GeneticAlgorithm(10, 0.1, 0.8, 100, quadraticFunction);\nconst optimalValue = ga.evolve();\n\nscrib.show(\"Optimal value:\", optimalValue);",
+      "status": "[27]<br><span style=\"font-size:8px\">1.243s<span></span></span>",
+      "output": "Optimal value: 4.999588353205443 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2> Explanation of the Genetic Algorithm Implementation</h2>\n<h3> GeneticAlgorithm Class</h3>\n- The `GeneticAlgorithm` class represents the genetic algorithm with parameters such as population size, mutation rate, crossover rate, number of generations, and the objective function to be optimized.\n<h3>Initialization (`initializePopulation`)</h3>\n  - The `initializePopulation` method creates a population of random individuals, where each individual has a `value` (initial solution) and `fitness` (fitness score).\n<h3>Fitness Evaluation (`evaluateFitness`)</h3>\n - The `evaluateFitness` method evaluates the fitness of each individual in the population by applying the objective function to their respective values.\n<h3> Selection (`selection`)</h3>\n- The `selection` method implements roulette wheel selection to choose individuals from the population based on their fitness scores.\n<h3>Crossover (`crossover`)</h3>\n - The `crossover` method performs single-point crossover between two selected parents to generate new offspring (children) with mixed genetic material (values).\n<h3> Mutation (`mutation`)</h3>\n - The `mutation` method introduces genetic diversity by randomly altering the value of an individual with a certain probability (mutation rate).\n<h3>Evolution (`evolve`)</h3>\n - The `evolve` method iteratively evolves the population through multiple generations:\n<br>    - Selects parents based on fitness.\n<br>    - Generates new offspring through crossover and mutation.\n<br>    - Updates the population with the new offspring.\n<br>    - Returns the optimal value (value of the individual with the highest fitness) after evolution.\n",
+      "status": "",
+      "output": "<h2> Explanation of the Genetic Algorithm Implementation</h2>\n<h3> GeneticAlgorithm Class</h3>\n- The `GeneticAlgorithm` class represents the genetic algorithm with parameters such as population size, mutation rate, crossover rate, number of generations, and the objective function to be optimized.\n<h3>Initialization (`initializePopulation`)</h3>\n  - The `initializePopulation` method creates a population of random individuals, where each individual has a `value` (initial solution) and `fitness` (fitness score).\n<h3>Fitness Evaluation (`evaluateFitness`)</h3>\n - The `evaluateFitness` method evaluates the fitness of each individual in the population by applying the objective function to their respective values.\n<h3> Selection (`selection`)</h3>\n- The `selection` method implements roulette wheel selection to choose individuals from the population based on their fitness scores.\n<h3>Crossover (`crossover`)</h3>\n - The `crossover` method performs single-point crossover between two selected parents to generate new offspring (children) with mixed genetic material (values).\n<h3> Mutation (`mutation`)</h3>\n - The `mutation` method introduces genetic diversity by randomly altering the value of an individual with a certain probability (mutation rate).\n<h3>Evolution (`evolve`)</h3>\n - The `evolve` method iteratively evolves the population through multiple generations:\n<br>    - Selects parents based on fitness.\n<br>    - Generates new offspring through crossover and mutation.\n<br>    - Updates the population with the new offspring.\n<br>    - Returns the optimal value (value of the individual with the highest fitness) after evolution.\n",
+      "type": "html"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
