@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "name": "Tensorflow Pretrained Models",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Using Pretrained Models in Tensorflow.js</h1>",
+      "status": "",
+      "output": "<h1>Using Pretrained Models in Tensorflow.js</h1>",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Load Tensorflow and Model</h2>",
+      "status": "",
+      "output": "<h2>Load Tensorflow and Model</h2>",
+      "type": "html"
+    },
+    {
+      "code": "import(\"https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js\").then(_=>scrib.show(\"loaded\")).catch(error=>scrib.show(error.message))",
+      "status": "[88]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "{} <br>loaded <br>",
+      "type": "code"
+    },
+    {
+      "code": " scrib.loadScript('https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder')\n   .then(_=>scrib.show(\"loaded\"))\n   .catch(error=>scrib.show(error.message))",
+      "status": "[89]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "{} <br>loaded <br>",
+      "type": "code"
+    },
+    {
+      "code": "var embedder;\nvar tokenizer;\n//This will take time to load...\nuse.loadQnA().then(m=>{model=m;scrib.show(\"model loaded\")});",
+      "status": "[90]<br><span style=\"font-size:8px\">11ms<span></span></span>",
+      "output": "{} <br>model loaded <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2> Define inputs and load embeddings </h2>",
+      "status": "",
+      "output": "<h2> Define inputs and load embeddings </h2>",
+      "type": "html"
+    },
+    {
+      "code": "var input = {\n    queries: ['How are you feeling today?', 'What is the captial of China?'],\n    responses: [\n      'I\\'m not feeling very well.',\n      'Beijing is the capital of China.',\n      'You have five fingers on your hand.'\n    ]\n  };\n  var scores = {};\n  var embeddings = model.embed(input);\nvar results=[];",
+      "status": "[91]<br><span style=\"font-size:8px\">317ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Calculate Matching Scores and Filter</h2>",
+      "status": "",
+      "output": "<h2>Calculate Matching Scores and Filter</h2>",
+      "type": "html"
+    },
+    {
+      "code": "// Calculate the dot product of two vector arrays.\nconst dotProduct = (xs, ys) => {\n  const sum = xs => xs ? xs.reduce((a, b) => a + b, 0) : undefined;\n\n  return xs.length === ys.length ?\n    sum(zipWith((a, b) => a * b, xs, ys))\n    : undefined;\n}\n\n// zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]\nconst zipWith =\n    (f, xs, ys) => {\n      const ny = ys.length;\n      return (xs.length <= ny ? xs : xs.slice(0, ny))\n          .map((x, i) => f(x, ys[i]));\n    }\n\n\nconst embed_query = embeddings['queryEmbedding'].arraySync();\n  const embed_responses = embeddings['responseEmbedding'].arraySync();\n  // compute the dotProduct of each query and response pair.\n  for (let i = 0; i < input['queries'].length; i++) {\n\tconst sc={};\n    for (let j = 0; j < input['responses'].length; j++) {\n\t  sc[j]=dotProduct(embed_query[i], embed_responses[j]);\n\t \n\t  if(sc[j]>10){\n\t\t console.log(sc[j],i,j,input['queries'][i],input['responses'][j]);\n\t\tresults.push([input['queries'][i], input['responses'][j]]);\n\n\t  }\n    }\n\tscores[i]=sc;\n  }\n\n",
+      "status": "[92]<br><span style=\"font-size:8px\">10ms<span></span></span>",
+      "output": "{\n  \"0\": 7.192470621016925,\n  \"1\": 19.018232901179697,\n  \"2\": 9.66905268712712\n} <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Display QnA</h2>",
+      "status": "",
+      "output": "<h2>Display QnA</h2>",
+      "type": "html"
+    },
+    {
+      "code": "results.forEach(q=>{\n  scrib.show(\"Q:\",q[0]);\n  scrib.show(\"A:\",q[1]);\n  scrib.show(\"--------\");\n})\n",
+      "status": "[87]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "Q: How are you feeling today? <br>A: I'm not feeling very well. <br>-------- <br>Q: What is the captial of China? <br>A: Beijing is the capital of China. <br>-------- <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
