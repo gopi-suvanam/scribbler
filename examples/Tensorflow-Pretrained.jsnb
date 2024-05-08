@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1>Using Pretrained Models in Tensorflow.js</h1>",
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Using Pretrained Tensorflow Text Models </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        TensorFlow.js empowers web developers to harness the full potential of machine learning directly within the browser environment\n    </p><br></div>",
       "status": "",
-      "output": "<h1>Using Pretrained Models in Tensorflow.js</h1>",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Using Pretrained Tensorflow Text Models </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        TensorFlow.js empowers web developers to harness the full potential of machine learning directly within the browser environment\n    </p><br></div>",
       "type": "html"
     },
     {
