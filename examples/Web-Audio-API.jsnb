@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "name": "Web Audio API",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1  style=\"color:#555\">Web Audio API for Interactive Sound Applications in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        The Web Audio API represents a groundbreaking technology that empowers developers to push the boundaries of creativity in web development.\n    </p><br></div>",
+      "status": "",
+      "output": "<div style=\"text-align:center;background-color:#fede02;color:#555;margin:-10px;margin-left:-20px;margin-right:-20px;\">\n        <br><h1 style=\"color:#555\">Web Audio API for Interactive Sound Applications in JavaScript </h1>\n<p class=\"site-masthead__description mb-0\" style=\"color:#555\">\n        The Web Audio API represents a groundbreaking technology that empowers developers to push the boundaries of creativity in web development.\n    </p><br></div>",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Getting Started with Web Audio API </h2>",
+      "status": "",
+      "output": "<h2>Getting Started with Web Audio API </h2>",
+      "type": "html"
+    },
+    {
+      "code": "// Create an AudioContext instance\nvar audioContext = new AudioContext();\n\n// Load an audio file\n//This link points to a sample MP3 file hosted on. You can use this URL in your JavaScript code to test the Web Audio API functionalities.\n\nvar audioElement = new Audio(\"https://ia800100.us.archive.org/30/items/cd_taylor-swift_taylor-swift/disc1/08.%20Taylor%20Swift%20-%20Stay%20Beautiful_sample.mp3\");\naudioElement.crossOrigin = \"anonymous\";\n\nconst source = audioContext.createMediaElementSource(audioElement);\n\n// Connect audio nodes\nsource.connect(audioContext.destination);\n\n// Play the audio\naudioElement.play();",
+      "status": "[11]<br><span style=\"font-size:8px\">8ms<span></span></span>",
+      "output": "{} <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Real-time Audio Synthesis</h2>",
+      "status": "",
+      "output": "<h2>Real-time Audio Synthesis</h2>",
+      "type": "html"
+    },
+    {
+      "code": "//const audioContext = new AudioContext();\nvar oscillator = audioContext.createOscillator();\noscillator.type = 'sine'; // Set waveform type\noscillator.frequency.value = 440; // Set frequency (440 Hz)\noscillator.connect(audioContext.destination); // Connect to audio destination\noscillator.start(); // Start oscillator\n\n// Stop the oscillator after 5 seconds\nsetTimeout(() => {\n  oscillator.stop();\n}, 5000);",
+      "status": "[32]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "5363 <br>",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Add Chorus</h2>",
+      "status": "",
+      "output": "<h2>Add Chorus</h2>",
+      "type": "html"
+    },
+    {
+      "code": "// Create an AudioContext instance\nconst audioContext = new (window.AudioContext || window.webkitAudioContext)();\n\n// Load an audio file\nconst audioElement = new Audio(\"https://ia800100.us.archive.org/30/items/cd_taylor-swift_taylor-swift/disc1/08.%20Taylor%20Swift%20-%20Stay%20Beautiful_sample.mp3\");\naudioElement.crossOrigin = \"anonymous\";\n\n// Create a media element source\nconst source = audioContext.createMediaElementSource(audioElement);\n\n// Create gain nodes for dry and wet signals\nconst dryGain = audioContext.createGain();\nconst wetGain = audioContext.createGain();\n\n// Create delay node\nconst delayNode = audioContext.createDelay();\ndelayNode.delayTime.value = 0.03; // 30 ms delay\n\n// Create an oscillator for modulation\nconst oscillator = audioContext.createOscillator();\noscillator.type = 'sine';\noscillator.frequency.value = 0.5; // Low frequency for chorus effect\n\n// Create a gain node to control the depth of modulation\nconst modulationGain = audioContext.createGain();\nmodulationGain.gain.value = 0.002; // Small modulation depth\n\n// Connect oscillator to modulation gain\noscillator.connect(modulationGain);\n\n// Connect modulation gain to delay node's delayTime parameter\nmodulationGain.connect(delayNode.delayTime);\n\n// Connect the source to the dry gain node and to the delay node (wet signal)\nsource.connect(dryGain);\nsource.connect(delayNode);\n\n// Connect delay node to the wet gain node\ndelayNode.connect(wetGain);\n\n// Connect dry and wet gain nodes to the destination\ndryGain.connect(audioContext.destination);\nwetGain.connect(audioContext.destination);\n\n// Set gain values to balance dry/wet signal\ndryGain.gain.value = 0.5;\nwetGain.gain.value = 0.5;\n\n// Start the oscillator\noscillator.start();\n\n// Play the audio\naudioElement.play();\n",
+      "status": "[29]<br><span style=\"font-size:8px\">12ms<span></span></span>",
+      "output": "{} <br>",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
