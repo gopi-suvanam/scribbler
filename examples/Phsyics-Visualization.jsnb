@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "name": "Computational Physics Visualization",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<h1>Computational Physics Visualization</h1>\n  JavaScript, with its accessibility and powerful visualization capabilities, is a valuable tool for computational physics, especially in educational contexts and interactive web applications. ",
+      "status": "",
+      "output": "<h1>Computational Physics Visualization</h1>\n  JavaScript, with its accessibility and powerful visualization capabilities, is a valuable tool for computational physics, especially in educational contexts and interactive web applications. ",
+      "type": "html"
+    },
+    {
+      "code": "<h2>Visualizing the Harmonic Oscillator</h2>\n<style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n<canvas id=\"oscillatorCanvas\" width=\"800\" height=\"400\"></canvas>",
+      "status": "",
+      "output": "<h2>Visualizing the Harmonic Oscillator</h2>\n<style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n<canvas id=\"oscillatorCanvas\" width=\"800\" height=\"400\"></canvas>",
+      "type": "html"
+    },
+    {
+      "code": "const canvas = document.getElementById('oscillatorCanvas');\n            const ctx = canvas.getContext('2d');\n            const omega = 1.0;\n            let x = 1.0;\n            let v = 0.0;\n            const dt = 0.01;\n            const numSteps = 1000;\n            const positions = [];\n\n            for (let i = 0; i < numSteps; i++) {\n                let newX = x + v * dt;\n                let newV = v - omega * omega * x * dt;\n                x = newX;\n                v = newV;\n                positions.push(x);\n            }\n\n            ctx.beginPath();\n            ctx.moveTo(0, canvas.height / 2);\n\n            for (let i = 0; i < positions.length; i++) {\n                ctx.lineTo(i * canvas.width / positions.length, canvas.height / 2 - positions[i] * 100);\n            }\n\n            ctx.stroke();\n",
+      "status": "[7]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Double Pendulum (Chaotic System)</h2>\n <style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n<canvas id=\"doublePendulumCanvas\" width=\"800\" height=\"800\"></canvas>",
+      "status": "",
+      "output": "<h2>Double Pendulum (Chaotic System)</h2>\n <style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n<canvas id=\"doublePendulumCanvas\" width=\"800\" height=\"800\"></canvas>",
+      "type": "html"
+    },
+    {
+      "code": "const canvas = document.getElementById('doublePendulumCanvas');\nconst ctx = canvas.getContext('2d');\n\nconst g = 9.81;\nconst length1 = 200;\nconst length2 = 200;\nconst mass1 = 10;\nconst mass2 = 10;\nlet angle1 = Math.PI / 2;\nlet angle2 = Math.PI / 2;\nlet angle1Vel = 0;\nlet angle2Vel = 0;\nconst dt = 0.05;\n\nfunction drawPendulum() {\n  ctx.clearRect(0, 0, canvas.width, canvas.height);\n  const x1 = length1 * Math.sin(angle1);\n  const y1 = length1 * Math.cos(angle1);\n  const x2 = x1 + length2 * Math.sin(angle2);\n  const y2 = y1 + length2 * Math.cos(angle2);\n\n  ctx.beginPath();\n  ctx.moveTo(canvas.width / 2, canvas.height / 2);\n  ctx.lineTo(canvas.width / 2 + x1, canvas.height / 2 + y1);\n  ctx.lineTo(canvas.width / 2 + x2, canvas.height / 2 + y2);\n  ctx.stroke();\n\n  ctx.beginPath();\n  ctx.arc(canvas.width / 2 + x1, canvas.height / 2 + y1, 10, 0, 2 * Math.PI);\n  ctx.fill();\n\n  ctx.beginPath();\n  ctx.arc(canvas.width / 2 + x2, canvas.height / 2 + y2, 10, 0, 2 * Math.PI);\n  ctx.fill();\n\n  let num1 = -g * (2 * mass1 + mass2) * Math.sin(angle1);\n  let num2 = -mass2 * g * Math.sin(angle1 - 2 * angle2);\n  let num3 = -2 * Math.sin(angle1 - angle2) * mass2;\n  let num4 = angle2Vel * angle2Vel * length2 + angle1Vel * angle1Vel * length1 * Math.cos(angle1 - angle2);\n  let den = length1 * (2 * mass1 + mass2 - mass2 * Math.cos(2 * angle1 - 2 * angle2));\n  let angle1Acc = (num1 + num2 + num3 * num4) / den;\n\n  num1 = 2 * Math.sin(angle1 - angle2);\n  num2 = (angle1Vel * angle1Vel * length1 * (mass1 + mass2) + g * (mass1 + mass2) * Math.cos(angle1) + angle2Vel * angle2Vel * length2 * mass2 * Math.cos(angle1 - angle2));\n  den = length2 * (2 * mass1 + mass2 - mass2 * Math.cos(2 * angle1 - 2 * angle2));\n  let angle2Acc = (num1 * num2) / den;\n\n  angle1Vel += angle1Acc * dt;\n  angle2Vel += angle2Acc * dt;\n  angle1 += angle1Vel * dt;\n  angle2 += angle2Vel * dt;\n\n  requestAnimationFrame(drawPendulum);\n}\n\ndrawPendulum();",
+      "status": "[9]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "<h2>Wave Propagation</h2>\n<style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n<canvas id=\"waveCanvas\" width=\"800\" height=\"400\"></canvas>",
+      "status": "",
+      "output": "<h2>Wave Propagation</h2>\n<style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n<canvas id=\"waveCanvas\" width=\"800\" height=\"400\"></canvas>",
+      "type": "html"
+    },
+    {
+      "code": "const canvas = document.getElementById('waveCanvas');\nconst ctx = canvas.getContext('2d');\n\nconst numPoints = 200;\nconst wave = new Float32Array(numPoints).fill(0);\nconst wavePrev = new Float32Array(numPoints).fill(0);\nconst c = 1;  // Wave speed\nconst dt = 0.1;\nconst dx = 1;\nconst damping = 0.99;\n\n// Initialize wave with a pulse in the middle\nwave[Math.floor(numPoints / 2)] = 1;\n\nfunction drawWave() {\n  ctx.clearRect(0, 0, canvas.width, canvas.height);\n  ctx.beginPath();\n  for (let i = 1; i < numPoints - 1; i++) {\n\tlet waveNew = 2 * wave[i] - wavePrev[i] + (c * c * dt * dt / (dx * dx)) * (wave[i + 1] - 2 * wave[i] + wave[i - 1]);\n\twaveNew *= damping;\n\twavePrev[i] = wave[i];\n\twave[i] = waveNew;\n  }\n\n  for (let i = 0; i < numPoints; i++) {\n\tctx.lineTo(i * canvas.width / numPoints, canvas.height / 2 - wave[i] * 100);\n  }\n\n  ctx.stroke();\n  requestAnimationFrame(drawWave);\n}\n\ndrawWave();",
+      "status": "[10]<br><span style=\"font-size:8px\">4ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": false
+}
