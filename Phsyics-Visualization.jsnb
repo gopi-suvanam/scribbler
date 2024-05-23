@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Computational Physics",
+    "name": "Computational Physics Visualization",
     "language_info": {
       "name": "JavaScipt",
       "version": "8.0"
@@ -9,9 +9,9 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1>Computational Physics</h1>\n  JavaScript, with its accessibility and powerful visualization capabilities, is a valuable tool for computational physics, especially in educational contexts and interactive web applications. ",
+      "code": "<h1>Computational Physics Visualization</h1>\n  JavaScript, with its accessibility and powerful visualization capabilities, is a valuable tool for computational physics, especially in educational contexts and interactive web applications. ",
       "status": "",
-      "output": "<h1>Computational Physics</h1>\n  JavaScript, with its accessibility and powerful visualization capabilities, is a valuable tool for computational physics, especially in educational contexts and interactive web applications. ",
+      "output": "<h1>Computational Physics Visualization</h1>\n  JavaScript, with its accessibility and powerful visualization capabilities, is a valuable tool for computational physics, especially in educational contexts and interactive web applications. ",
       "type": "html"
     },
     {
