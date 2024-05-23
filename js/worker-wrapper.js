@@ -7,7 +7,52 @@
 ***/
 
 const worker={};
+worker.type='browser';
 
+worker.webworker=null;
+
+worker.addWebWorker=()=>{
+	if(worker.webworker==undefined){
+		  const workerScript="("+String(webWorkerCode)+")()";
+		  const workerBlob = new Blob([workerScript], { type: 'application/javascript' });
+		  const workerScriptUrl = URL.createObjectURL(workerBlob);
+		  var web_worker = new Worker(workerScriptUrl);
+		  worker.webworker=web_worker;
+
+		}
+
+}
+worker.evaluate= function(code){
+	if(worker.type==='browser')
+		return (0,eval)(code);
+	if(worker.type==='webworker'){
+	
+		if(worker.webworker==undefined) worker.addWebWorker();
+		return new Promise((resolve, reject) => {
+		    worker.webworker.addEventListener('message', (e) => {
+		    	const response=e.data;
+		    	if(response.action=='result'){
+		    		
+		        	resolve(response.data);
+		        }else if(response.action=='show'){
+		        	scrib.show(response.data);
+		        
+		        }
+		      
+		    });
+		    worker.webworker.addEventListener('error', (e) => {
+			  console.log(e);
+		      reject(e.message);
+		    });
+		    
+		    worker.webworker.postMessage({ code });
+		  });
+
+	
+	}
+	
+	
+}
 worker.run= function(_block_id){
 	
 	/*var show =function(x){
@@ -56,7 +101,7 @@ worker.run= function(_block_id){
 					scrib.show("<span style='color:orange'>Warning! show() is being deprecated. Use scrib.show().</span>");
 					scrib.show(...args);
 				}		
-				opt=(0,eval)(code); // This is where the magic happens.
+				opt=await worker.evaluate(code); // This is where the magic happens.
 				if(opt!=undefined) scrib.show(opt);
 				
 	
@@ -95,7 +140,7 @@ worker.run= function(_block_id){
 			scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
 			}
 		, 5000);
-	},10);
+	},100);
 }
 
 
@@ -108,7 +153,7 @@ worker.run= function(_block_id){
 worker.run_in=function(processor,func, ...parameters) {
   if(is_sandboxed()) scrib.show("May not work in sandbox");
   if(processor=="web-worker" || processor=="webworker" || processor=="ww"){
-	return worker.run_in_ww(func, ...parameters);
+	return worker.runInWW(func, ...parameters);
    }else{
    	return new Promise((resolve,reject)=>{resolve(func(...parameters))});
    }
@@ -158,4 +203,4 @@ worker.terminateAllWebWorkers=function() {
 
 /** Making worker immutable so that user generated scripts cannot change the functions **/
 
-Object.freeze(worker);
+//Object.freeze(worker);
