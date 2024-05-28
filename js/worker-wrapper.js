@@ -23,15 +23,37 @@ worker.addWebWorker=()=>{
 
 }
 worker.evaluate= function(code){
+	// console.log(worker.type)
 	if(worker.type==='browser')
-		return (0,eval)(code);
-	if(worker.type==='webworker'){
+
+
+		try {
+
+			return (0,eval)(code);
+		}
+		catch(err){
+		
+			
+			
+			// console.log(Object.getOwnPropertyDescriptors(err))
+			// console.log(err.message);
+			if (err.message==='await is only valid in async functions, async generators and modules'){
+				return(0,eval)('(async () => {'+code+'	})();')
+			}
+			// console.log('-----------------------------------')
+			// console.log("CODE")
+			// let pp =(0,eval)(code)
 	
+			// console.log(pp)
+			// return pp
+		}
+	if(worker.type==='webworker'){
+		
 		if(worker.webworker==undefined) worker.addWebWorker();
 		return new Promise((resolve, reject) => {
 		    worker.webworker.addEventListener('message', (e) => {
 		    	const response=e.data;
-		    	if(response.action=='result'){
+		    	if(response.action=='result'){f
 		    		
 		        	resolve(response.data);
 		        }else if(response.action=='show'){
