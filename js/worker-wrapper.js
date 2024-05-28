@@ -41,7 +41,7 @@ worker.evaluate= function(code){
 				return(0,eval)('(async () => {'+code+'	})();')
 			}else{
 
-				return (0,code)(code)
+				return (0,eval)(code)
 			}
 			// console.log('-----------------------------------')
 			// console.log("CODE")
