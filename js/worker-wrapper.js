@@ -23,7 +23,7 @@ worker.addWebWorker=()=>{
 
 }
 worker.evaluate= function(code){
-	// console.log(worker.type)
+	console.log(worker.type)
 	if(worker.type==='browser')
 
 
@@ -39,13 +39,15 @@ worker.evaluate= function(code){
 			// console.log(err.message);
 			if (err.message==='await is only valid in async functions, async generators and modules'){
 				return(0,eval)('(async () => {'+code+'	})();')
+			}else{
+
+				return (0,code)(code)
 			}
 			// console.log('-----------------------------------')
 			// console.log("CODE")
 			// let pp =(0,eval)(code)
 	
 			// console.log(pp)
-			// return pp
 		}
 	if(worker.type==='webworker'){
 		
