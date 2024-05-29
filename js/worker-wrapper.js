@@ -34,8 +34,8 @@ worker.evaluate= function(code){
 		catch(err){
 			
 			
-			if (err.message==='await is only valid in async functions, async generators and modules'){
-				console.log("err")
+			if (/await is only valid in async/.test(err.message)){
+				
 				return(0,eval)('(async () => {'+code+'})();')
 			}else{
 	
