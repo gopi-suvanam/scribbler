@@ -28,33 +28,20 @@ worker.evaluate= function(code){
 
 
 		try {
-			console.log("try block")
-			if (/await/.test(code)){
-				return(0,eval)('(async () => {'+code+'})();')
-			}else{
-
-				return (0,eval)(code);// need to do so that i won't run twice
-			}
+		
+			return (0,eval)(code);
 		}
 		catch(err){
-			console.log('error block')
-			console.log(err)
-			throw err;
-			// console.log(Object.getOwnPropertyDescriptors(err))
-			// console.log(err.message);
-			// if (err.message==='await is only valid in async functions, async generators and modules'){
-				
-			// 	return(0,eval)('(async () => {'+code+'})();')
-
-			// }else{
-			// 	console.log("error block");
-			// 	return (0,eval)(code);
-			// }
-			// console.log('-----------------------------------')
-			// console.log("CODE")
-			// let pp =(0,eval)(code)
+			
+			
+			if (err.message==='await is only valid in async functions, async generators and modules'){
+				console.log("err")
+				return(0,eval)('(async () => {'+code+'})();')
+			}else{
 	
-			// console.log(pp)
+				throw err;
+			}
+			
 		}
 	if(worker.type==='webworker'){
 		
