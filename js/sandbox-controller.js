@@ -362,17 +362,17 @@ sandbox.getHTML=function(view){
 }
 
 
-sandbox.runAll=function(){
+sandbox.runAll=async function(){
 	const main=scrib.getDom("main");
 	const blocks=main.childNodes;
-	blocks.forEach(x=>{
+	for(let blockNum =0; blockNum<blocks.length;blockNum++){
 		try{
-			worker.run(x.id.replace('block',""))
-			console.log(x.id);
+			await worker.run(blocks[blockNum].id.replace('block',""));
+			console.log(blocks[blockNum].id);
 		}catch(err){
-			console.log(err.stack)
+			console.log(err.stack);
 		}
-	});
+	}
 	
 }
 

@@ -11,7 +11,7 @@ worker.type='browser';
 
 worker.webworker=null;
 
-worker.addWebWorker=()=>{
+worker.addWebWorker= ()=>{
 	if(worker.webworker==undefined){
 		  const workerScript="("+String(webWorkerCode)+")()";
 		  const workerBlob = new Blob([workerScript], { type: 'application/javascript' });
@@ -22,7 +22,7 @@ worker.addWebWorker=()=>{
 		}
 
 }
-worker.evaluate= function(code){
+worker.evaluate= async function(code){
 	
 	if(worker.type==='browser')
 
@@ -35,8 +35,9 @@ worker.evaluate= function(code){
 			
 			
 			if (/await is only valid in async/.test(err.message)){
-				
-				return(0,eval)('(async () => {'+code+'})();')
+				const asyncCode =  (0,eval)(' (async function() {' + code + '})');
+				return await asyncCode();
+				//return(0,eval)('(async () => {'+code+'})();')
 			}else{
 	
 				throw err;
@@ -71,7 +72,7 @@ worker.evaluate= function(code){
 	
 	
 }
-worker.run= function(_block_id){
+worker.run= async function(_block_id){
 	
 	/*var show =function(x){
 		show_in_dom(x,"output"+_block_id)
@@ -89,7 +90,7 @@ worker.run= function(_block_id){
 	
 	const code=sandbox.editors[_block_id].getValue()
 	
-	setTimeout(async ()=>{
+
 		try{
 			if(scrib.getDom("cell_type"+_block_id).value=='code'){
 			
@@ -158,7 +159,7 @@ worker.run= function(_block_id){
 			scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
 			}
 		, 5000);
-	},100);
+
 }
 
 
