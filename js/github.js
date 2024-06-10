@@ -138,7 +138,7 @@ load_from_git=function(){
 		nb=>{
 			load_jsnb(nb);
 			closeModal(scrib.getDom('git-import-export'));
-			const nextURL = `#github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
+			const nextURL = `./?jsnb=github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
 			const nextTitle = 'JavaScript Notebook';
 			const nextState = { additionalInformation: 'Updated the URL with JS' };
 			window.history.pushState(nextState, nextTitle, nextURL);
@@ -198,7 +198,7 @@ upload_to_git=async function(){
 		const upload_status= await upload_file_to_git(fileDetails['token'],content,fileDetails['user'],fileDetails['repo'],fileDetails['path']);
 		alert("Successfully pushed");
 		closeModal(scrib.getDom('git-import-export'));
-		const nextURL = `#github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
+		const nextURL = `./?jsnb=github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
 		const nextTitle = 'JavaScript Notebook';
 		const nextState = { additionalInformation: 'Updated the URL with JS' };
 		window.history.pushState(nextState, nextTitle, nextURL);
