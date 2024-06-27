@@ -1,0 +1,21 @@
+{
+  "name": "Scribbler JavaScript Notebook",
+  "short_name": "Scribbler",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fede02",
+  "theme_color": "#fede02",
+  "description": "Simple Interface for Experimenting in JavaScript. Developed for Open Source using Open Source.",
+  "icons": [
+    {
+      "src": "/images/logo2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
