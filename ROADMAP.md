@@ -1,7 +1,7 @@
 # Roadmap for Scribbler
 ## Done
 ### UI
-- UI could be similar to Jupyter Notebook
+- UI similar to Jupyter Notebook
 - There will be cells with results
 - Output could be saved as html
 - HTML output can be shown both as code and as html doc 
@@ -9,7 +9,7 @@
 - Cells can be code and comment cells.. Comment cells will be markdown display
 - Github integration for storing: done through Access Token. Can think of alternative authentication mechanisms.
 - Mimic static import (browser/deno style)
-
+- Dark mode enabled
 
 ### Feartures
 - Ability to import .js files dynamically
@@ -19,19 +19,17 @@
 - Show output using show(var)
 - Asynchronous code execution is halmark of javascript so each cell can be run parallelly. Any asynchronous code within a cell will have to dsiplay errors on its own.
 - Reload for restarting the kernel
+- Store files temporarily in browser cache (indexeddb)
 
 ## To Do
 ### UI
 - Cut-copy-paste whole cells
 - Ctrl-Z
-- Dark mode
 - Sleeker menu
 - More keyboard shortcuts
 - Make it more responsive
 
 ### Features
-- Store files temporarily in browser cache (indexeddb)
-- Mimic node style import/require
 - Use GPU where possible
 - Restart kernel/inturrept kernel features
 - More collaboration features (like share a link,store in google drive etc.)
