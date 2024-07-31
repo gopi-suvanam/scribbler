@@ -5,7 +5,7 @@ decripriont: Links to sample Scribbler notebooks (.jsnb) hosted on Github. Click
 ---
 ## Links to example Notebooks saved in this Repo
  
-Scribbler is a tool to do experimentation in JavaScript like Jupyter for Python. JavaScript Notebooks can be used to test code while developing and also for scientific calculations. The below notebooks are samples/boilerplates to start experimenting/building. Click on each link to play around with the code.
+The below notebooks are samples/boilerplates to start experimenting/building.
 
 ### Introductory Notebooks
 1. [Hello-world for JavaScript Notebook](https://app.scribbler.live/#./examples/Hello-world.jsnb). An introductory notebook with a hello-world example.
