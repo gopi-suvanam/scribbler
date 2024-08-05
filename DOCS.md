@@ -21,20 +21,20 @@
 
 ## Cells
 - The whole notebook is divided into cells. 
-- Each cell can be of two types: html or code (JavaScript). 
+- Each cell can be of two types: doc (html/markdown) or code (JavaScript). 
 - Each code cell will have an input block and an output block. 
-- When the cell is "played" the html cell will show the output as html and the code cell will show output in another block below the code. 
+- When the cell is "played" the doc cell will show the output as html and the code cell will show output in another block below the code. 
 - There will be a status show on the output block of the code cells. Status will show a number indicating the run sequence and time taken to run the cell. Status is left blank if there is an error. 
-- For html cells, to edit the html dbl-click on the output. Once the cell is edited the cell has to be run/played to change the output. 
+- For doc cells, to edit dbl-click on the output. Once the cell is edited the cell has to be run/played to change the output. 
 - Cells can be added, deleted and moved up/down. 
-- HTML cells can have <style> tags also inside them. 
-- All the elements created in html can be accessed in the code cells through document.getelementbyid or document.queryselector. jQuery style $() can also be used by loading/importing jQuery library (see [Using external libraries](#using-external-libraries)). 
+- Doc cells can have <style> tags also inside them. 
+- All the elements created in doc cells using html can be accessed in the code cells through document.getelementbyid or document.queryselector. jQuery style $() can also be used by loading/importing jQuery library (see [Using external libraries](#using-external-libraries)). 
 - Last evaluated expression of a code cell is displayed in the output. Ensure the last expression is not very large (like a large array or a function declaration).
 
 ## Cell Menu
 Certain operations can be done on cell-menu. The cell-menu is at top-right corner of the cell (for smaller screens it is above the cell). The menu consists of:
-- Toggling type of cell from code to html and vice-versa
-- Running/playing (►) the cell to run the code in the cell or to display the html content
+- Toggling type of cell from code to doc and vice-versa
+- Running/playing (►) the cell to run the code in the cell or to display the doc content
 - Moving the cell up (↑) 
 - Moving the cell down (↓)
 - Adding another cell below the current cell (✛)
