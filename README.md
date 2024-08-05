@@ -56,9 +56,9 @@ A few starting notebooks for further experimentation:
 
 ## Features
 - **Cells:**
-    - The notebook consists of cells. Each cell will have user inputted html/code and an output. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
-    - There are two types of cells: code and html. The type of cell can be toggled using a switch in the cell menu.
-    - For code cells input and output are both shown. For html cells, input is hidden and opens up if you click the output.
+    - The notebook consists of cells. Each cell will have user inputted doc/code and an output. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
+    - There are two types of cells: code and doc. The type of cell can be toggled using a switch in the cell menu.
+    - For code cells input and output are both shown. For doc cells, input is hidden and opens up if you click the output.
 - **Cell Buttons:**
     - To get the output of a cell press play ► button on the cell menu (or Cmd/Ctrl-Enter on keyboard after selecting the cell).
     - The cell menu also has buttons for moving the cell up ↑, down ↓, adding a new cell ✛ and deleting the current cell ☓.
