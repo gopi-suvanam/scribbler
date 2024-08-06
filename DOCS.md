@@ -54,7 +54,7 @@ The file menu consists of:
 ## Edit Menu
 The edit menu consists of:
 - Insert code cell: A blank code-type cell is inserted at the end of the current notebook
-- Insert html cell: A blank html-type cell is inserted at the end of the current notebook
+- Insert doc cell: A blank html-type cell is inserted at the end of the current notebook
 - Insert style cell: A blank html-type cell with <style> tags is inserted at the end of the current notebook
   
 ## URL Structure
