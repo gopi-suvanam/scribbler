@@ -10,7 +10,7 @@
 Notebook for javascript experimentation (in the browser). Overview:
 - [x] Easy to use javascript experimentation tool. Runs without backend (node.js/npm/pip install/ngnix etc etc).  Can be used online or offline.
 - [x] Has a minimalistic UI to put focus on user generated code/content. It is light-weight as it uses minimal external libraries for styling.
-- [x] Comes pre-loaded with Plotly, D3 and DI-Libs for power usage. Thirdparty libaries/modules can be easily loaded.
+- [x] Comes pre-loaded with Plotly, and DI-Libs for power usage. Third-party libraries/modules can be easily loaded.
 
 [Join Our Discord Server](https://discord.com/invite/uxNSsWunwU)
 
