@@ -106,7 +106,7 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - Uses [Codemirror](https://github.com/codemirror) for formatting the code area.
 - Uses [Pico CSS](https://github.com/picocss/pico) for styling.
 - Comes loaded with [Plotly](https://github.com/plotly/plotly.js) for charting.
-- Markdown support comes from [Markedjs](https://github.com/markedjs/marked0.
+- Markdown support comes from [Markedjs](https://github.com/markedjs/marked).
 
 ## Links
 
