@@ -103,9 +103,10 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - ObservableHQ is similar in principle to Scribbler but it a walled garden and not an open source tool. Also it uses relies on React framework whereas Scribbler is framework agnostic.
 
 ## Acknowledgements
-- Uses [Codemirror](https://github.com/codemirror) for formatting the code area
+- Uses [Codemirror](https://github.com/codemirror) for formatting the code area.
 - Uses [Pico CSS](https://github.com/picocss/pico) for styling.
-- Comes loaded with [D3](https://github.com/d3/d3) and [Plotly](https://github.com/plotly/plotly.js) for charting.
+- Comes loaded with [Plotly](https://github.com/plotly/plotly.js) for charting.
+- Markdown support comes from [Markedjs](https://github.com/markedjs/marked0.
 
 ## Links
 
