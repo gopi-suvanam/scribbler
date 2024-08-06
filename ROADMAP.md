@@ -26,8 +26,9 @@
 - Cut-copy-paste whole cells
 - Ctrl-Z
 - Sleeker menu
+- Existing keyboard shortcuts not working
 - More keyboard shortcuts
-- Make it more responsive
+- Make it more responsive so that coding on mobile also becomes easy
 
 ### Features
 - Use GPU where possible
