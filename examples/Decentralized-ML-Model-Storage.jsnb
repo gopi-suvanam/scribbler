@@ -15,7 +15,7 @@
       "type": "html"
     },
     {
-      "code": "load_script(\"https://cdn.jsdelivr.net/npm/brain.js\",false) //Brain.js for models\nload_script(\"https://cdnjs.cloudflare.com/ajax/libs/mnist/1.0.4/mnist.js\",false) //MNIST for data sets\nload_script(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\",false) //IPFS JS for storing models in IPFS\n\n",
+      "code": "scrib.loadScript(\"https://cdn.jsdelivr.net/npm/brain.js\",false) //Brain.js for models\nscrib.loadScript(\"https://cdnjs.cloudflare.com/ajax/libs/mnist/1.0.4/mnist.js\",false) //MNIST for data sets\nscrib.loadScript(\"https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js\",false) //IPFS JS for storing models in IPFS\n\n",
       "status": "[3]<br><span style=\"font-size:8px\">3.331s<span></span></span>",
       "output": "",
       "type": "code"
