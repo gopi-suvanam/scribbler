@@ -75,7 +75,7 @@ A few starting notebooks for further experimentation:
     - There are two special functions included in the app: scrib.show(...) for showing some string in the output box. scrib.currCell() for getting the element corresponding to the output cell.
     - Keyboard Shortcuts: Several keyboard shortcuts for running/dowloading/adding cells/deleting cells etc. See [DOCS](DOCS.md#keyboard-shortcuts) for details
 - **External Libraries:**    
-    - [D3](https://github.com/d3/d3) and [Plotly](https://github.com/plotly/plotly.js) (for data manipulation and charting), and sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using reload_script.
+    - [Plotly](https://github.com/plotly/plotly.js) (for charting), and Scribbler's sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using scrib.reloadScript.
     - For adding more functionality import an external library through dynamic import() or through scrib.loadScript(CDN_LINK).
 
 ## Use cases
