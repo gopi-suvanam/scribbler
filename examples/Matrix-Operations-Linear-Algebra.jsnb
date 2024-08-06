@@ -15,9 +15,9 @@
       "type": "html"
     },
     {
-      "code": "load_script(\"https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js\")",
-      "status": "[1]<br><span style=\"font-size:8px\">15ms<span></span></span>",
-      "output": "g9iio <br>",
+      "code": "scrib.loadScript(\"https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js\")",
+      "status": "[1]<br><span style=\"font-size:8px\">189ms<span></span></span>",
+      "output": "",
       "type": "code"
     },
     {
