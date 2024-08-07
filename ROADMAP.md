@@ -24,7 +24,7 @@
 ## To Do
 ### UI
 - Cut-copy-paste whole cells
-- Ctrl-Z
+- Undo-cut
 - Sleeker menu
 - Existing keyboard shortcuts not working
 - More keyboard shortcuts
