@@ -137,7 +137,7 @@ worker.run= async function(_block_id){
 			else{
 				scrib.getDom("status"+_block_id).innerHTML='';
 				
-				scrib.getDom("output"+_block_id).innerHTML=code;
+				scrib.getDom("output"+_block_id).innerHTML=marked.parse(code);
 				scrib.getDom("status"+_block_id).style.display="none";
 				scrib.getDom("input"+_block_id).style.display = "none";
 				scrib.getDom("cell_menu"+_block_id).style.display = "none";

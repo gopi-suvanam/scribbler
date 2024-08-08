@@ -29,6 +29,7 @@
 		<script src="js/sandbox-controller.js"></script> <!-- Controls the UI -->
 		<script src="js/web-worker.js"></script> <!-- Runs the user generated code -->
 		<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
+		<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
 				
 		<!-- Styling using pico.css and some custom css -->
 		<link rel="stylesheet" href="css/pico.min.css">
@@ -47,7 +48,7 @@
 			<select  data-tooltip="Select whether to the cell contains code or html" data-placement="bottom"
 			id="cell_type_block_id" style="height:15px;" class="cell-type" >
 					<option selected value="code">code</option>
-					<option value="html">html</option>
+					<option value="html">doc</option>
 				</select>
 			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" data-placement="bottom" id="run-button_block_id"  onclick="worker.run(_block_id)">&#9658;</a>
 			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"  data-placement="bottom" onclick="sandbox.moveUp(_block_id)">&#x25B2;</a>
