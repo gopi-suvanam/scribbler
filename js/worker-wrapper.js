@@ -7,6 +7,10 @@
 ***/
 
 const worker={};
+
+worker.processHTML = function(code){
+	return marked.parse(code);
+}
 worker.type='browser';
 
 worker.webworker=null;
@@ -23,9 +27,23 @@ worker.addWebWorker= ()=>{
 
 }
 worker.evaluate= async function(code){
+
+	const htmlPrompt = /^\/\/>\s*html/i;
+	 if( htmlPrompt.test(code))
+	 {
+		 const updatedCode = code.replace(htmlPrompt, "");
+	     	 return updatedCode;
+	}
+        const markdownPrompt = /^\/\/>\s*md/i;
+	 if( markdownPrompt.test(code))
+	 {
+		 const updatedCode = marked.parse(code.replace(markdownPrompt,""));
+	     	 return updatedCode;
+	}
+	
 	
 	if(worker.type==='browser')
-
+		
 
 		try {
 		
@@ -35,7 +53,7 @@ worker.evaluate= async function(code){
 			
 			
 			if (/await is only valid in async/.test(err.message)){
-				const asyncCode =  (0,eval)(' (async function() {' + code + '})');
+				const asyncCode =  (0,eval)(' (async function() {' + code + '\n})');
 				return await asyncCode();
 				//return(0,eval)('(async () => {'+code+'})();')
 			}else{
@@ -137,7 +155,7 @@ worker.run= async function(_block_id){
 			else{
 				scrib.getDom("status"+_block_id).innerHTML='';
 				
-				scrib.getDom("output"+_block_id).innerHTML=marked.parse(code);
+				scrib.getDom("output"+_block_id).innerHTML=worker.processHTML(code);;
 				scrib.getDom("status"+_block_id).style.display="none";
 				scrib.getDom("input"+_block_id).style.display = "none";
 				scrib.getDom("cell_menu"+_block_id).style.display = "none";
