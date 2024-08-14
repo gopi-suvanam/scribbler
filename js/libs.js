@@ -4,7 +4,6 @@ scrib.TIMEOUT_FOR_BLOCKING_CALLS=5000;
 	
 
 
-
 scrib.isInIFrame = function() {
     try {
         return window.self !== window.top;
@@ -12,6 +11,23 @@ scrib.isInIFrame = function() {
         return true;
     }
 }
+
+
+scrib.inputText = function() {
+  return new Promise((resolve) => {
+    const inputElement = document.createElement('input');
+    inputElement.type = 'text';
+    inputElement.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        resolve(inputElement.value);
+        inputElement.setAttribute('readonly', true); // make it uneditable
+      }
+    });
+    scrib.currCell().appendChild(inputElement);
+    inputElement.focus();
+  });
+};
+
 
 
 scrib.showInDom=function(output,...objs){

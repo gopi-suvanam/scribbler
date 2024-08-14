@@ -245,10 +245,17 @@ saveLocalFile=async function(){
 	scrib.getDom("save-button").setAttribute("aria-busy","true");
 	try{
 		let nb =await get_nb();
-		let updateTime=new Date();
-		let id=await insertOrUpdateFile(nb, nb.metadata.name,updateTime,fileDetails['id']);
+		const updateTime=new Date();
+		const id=await insertOrUpdateFile(nb, nb.metadata.name,updateTime,fileDetails['id']);
 		openFileNamesModal();
 		fileDetails['id']=id;
+		
+		const nextURL = `./#local:${id}`;
+		const nextTitle = 'JavaScript Notebook: '+nb.metadata.name;
+		const nextState = { additionalInformation: 'Updated the URL with JS' };
+		
+		window.history.pushState(nextState, nextTitle, nextURL);
+		
 	}catch(e){
 		
 		alert("Error saving file locally: "+String(e));
@@ -268,6 +275,13 @@ loadLocalFile=function(id){
 		
 		load_jsnb(obj.nb);
 		fileDetails['id']=obj.id
+		
+		const nextURL = `./#local:${obj.id}`;
+		const nextTitle = 'JavaScript Notebook: '+obj.nb.metadata.name;
+		const nextState = { additionalInformation: 'Updated the URL with JS' };
+		
+		window.history.pushState(nextState, nextTitle, nextURL);
+		
 		
 	}
 	
