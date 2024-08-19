@@ -9,6 +9,8 @@
 const worker={};
 
 worker.processHTML = function(code){
+	if (code.includes("<style>")) 
+		return code;
 	return marked.parse(code);
 }
 worker.type='browser';
