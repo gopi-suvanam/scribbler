@@ -11,7 +11,12 @@ const worker={};
 worker.processHTML = function(code){
 	if (code.includes("<style>")) 
 		return code;
-	return marked.parse(code);
+	const markdownPrompt = /^\/\/>\s*md/i;
+	if markdownPrompt.test(code){
+		const updatedCode = marked.parse(code.replace(markdownPrompt,""));
+		return marked.parse(updatedCode);
+	}
+	return code;
 }
 worker.type='browser';
 
