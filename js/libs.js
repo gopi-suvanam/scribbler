@@ -95,7 +95,7 @@ load_script=(...args)=>{
 	scrib.show("<span style='color:orange'>Warning! load_script() is being deprecated. Use scrib.loadScript().</span>");
 	scrib.loadScript(...args);
 }	
-load_file=scrib.uploadFile;
+
 
 
 scrib.reloadScript = function(url,async){
@@ -230,7 +230,7 @@ scrib.uploadFile= async function(type){
   return(x);
  
 }
-
+load_file=scrib.uploadFile;
 
 var parse_response=async response => {
         const isJson = response.headers.get('content-type')?.includes('application/json');
