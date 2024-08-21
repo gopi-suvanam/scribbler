@@ -91,6 +91,15 @@ scrib.loadScript = function(url,async){
 
 }
 
+load_script=(...args)=>{
+	scrib.show("<span style='color:orange'>Warning! load_script() is being deprecated. Use scrib.loadScript().</span>");
+	scrib.loadScript(...args);
+}	
+load_file=()=>{
+	scrib.show("<span style='color:orange'>Warning! load_file() is being deprecated. Use scrib.uploadFile().</span>");
+	scrib.uploadFile();
+}
+
 scrib.reloadScript = function(url,async){
 	if(url.includes('?')) url=url+'&' +(Math.random() + 1).toString(36).substring(7);
 	else url=url+'?' +(Math.random() + 1).toString(36).substring(7);
