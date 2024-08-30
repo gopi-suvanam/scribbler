@@ -7,10 +7,13 @@
 ### _Simple Interface for Experimenting in JavaScript. Developed for Open Source using Open Source_
 ### [Use here (No login required)](https://app.scribbler.live/#github:gopi-suvanam/jsnb/examples/Hello-world.jsnb). 
 
-Notebook for javascript experimentation (in the browser). Overview:
-- [x] Easy to use javascript experimentation tool. Runs without backend (node.js/npm/pip install/ngnix etc etc).  Can be used online or offline.
-- [x] Has a minimalistic UI to put focus on user generated code/content. It is light-weight as it uses minimal external libraries for styling.
-- [x] Comes pre-loaded with Plotly, and DI-Libs for power usage. Third-party libraries/modules can be easily loaded.
+Browser-based JavaScript Notebook:
+- [x] Easy experimentation with no backend setup (no Node.js or npm required).
+- [x] Accessible online or offline.
+- [x] Minimalistic UI for focused coding.
+- [x] Lightweight with minimal external libraries.
+- [x] Preloaded with Plotly and DI-Libs for enhanced data visualization and functionality.
+- [x] Easily extensible with third-party libraries and modules
 
 [Join Our Discord Server](https://discord.com/invite/uxNSsWunwU)
 
