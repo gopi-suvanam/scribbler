@@ -100,31 +100,29 @@ var get_user=async function (token) {
   return login;
 }
 
-update_owner= function(){
-	var token = scrib.getDom("token").value;
-	get_user(token).then(x=>{
-		const today = new Date(); // Get the current date
-		const thirtyDaysLater = new Date(today); // Create a new date object as a copy of today
-		thirtyDaysLater.setDate(today.getDate() + 30); 
-		localStorage.setItem("gh-token",token);
-		scrib.getDom("user").value=x;
-		update_repos();
-		});
+update_owner= async function(){
+	const token = scrib.getDom("token").value;
+	const user = await get_user(token);
+	const today = new Date(); // Get the current date
+	const thirtyDaysLater = new Date(today); // Create a new date object as a copy of today
+	thirtyDaysLater.setDate(today.getDate() + 30); 
+	localStorage.setItem("gh-token",token);
+	scrib.getDom("user").value=user;
+	update_repos();
 	
 
 }
-update_repos=function(){
-	var token = scrib.getDom("token").value;
-	var user=scrib.getDom("user").value;
+update_repos=async function(){
+	const token = scrib.getDom("token").value;
+	const user=scrib.getDom("user").value;
 	
-	get_repos(token,user).then(repos=>{
-		var str='';
-		repos.forEach(x=>{
-			str += '<option value="'+x+'" />'; // Storing options in variable
-		})
-		scrib.getDom('repos').innerHTML  =  str;
+	const repos=get_repos(token,user);
+	let str='';
+	repos.forEach(x=>{
+		str += '<option value="'+x+'" />'; // Storing options in variable
+	})
+	scrib.getDom('repos').innerHTML  =  str;
 		
-	});
 
 }
 load_from_git=function(){
@@ -209,7 +207,7 @@ upload_to_git=async function(){
 	
 }
 
-initialize_git=function(){
+initialize_git=async function(){
     const token = localStorage.getItem("gh-token");
 
 
