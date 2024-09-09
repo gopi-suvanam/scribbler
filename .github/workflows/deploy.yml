@@ -13,4 +13,5 @@ jobs:
         run: |
           sed -i 's|</html>|<script>console.log("testing")</script></html>|' index.html
       - name: Deploy to GitHub Pages
-        uses: github-pages/deploy@v1
+        uses: github-pages/deploy@v2
+
