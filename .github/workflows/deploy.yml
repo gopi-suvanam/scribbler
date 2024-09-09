@@ -9,9 +9,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Inject GA script
         run: |
           sed -i 's|</html>|<script>console.log("testing")</script></html>|' index.html
-      - name: Deploy to GitHub Pages
-        uses: github-pages/deploy@v2
 
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # or specify your directory (e.g., `publish_dir: ./dist`)
