@@ -3,34 +3,31 @@
 var get_file_sha=async function (token,user,repo,path){
   
   var url=`https://api.github.com/repos/${user}/${repo}/contents/${path}`;
-  result=null;
-  await fetch(url, {
+  let result=null;
+  const response = await fetch(url, {
       method: 'GET',
       headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'}
-    }).then(response=>parse_response(response))
-      .then(
-		function(data){result=data['sha']}
-	
-     ).catch(error=>null);
-  return result;
+    });
+   const data=await parse_response(response);
+
+  return data['sha'];
 }
 
 var get_file_content=async function (token,user,repo,path){
   
   var url=`https://api.github.com/repos/${user}/${repo}/contents/${path}`;
   result=null;
-  await fetch(url, {
+  const response = await fetch(url, {
       method: 'GET',
       headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'}
-    }).then(response=>parse_response(response))
-      .then(
-		function(data){result=atob(data['content'])}
+    });
+    const data=await parse_response(response);
+   const result=atob(data['content']);
 	
-     );
   return result;
 }
 
@@ -43,44 +40,37 @@ var upload_file_to_git=async function (token, content,user,repo,path) {
         "content": `${btoa(content)}`,
 	    'sha':file_sha
     });
-  await fetch(url, {
+  const response =await fetch(url, {
       method: 'PUT',
       headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'},
       body: data
-    }).then(
-		response=>parse_response(response)
-  )
-      .then(function(data){result=data;});
+    });
+    const result=await parse_response(response);
 	return result;
         
 }
 
 var get_repos=async function (token,user) {
-  var repos=[];
+  const repos=[];
   if(user==null) {
 	url=`https://api.github.com/user/repos`
   }
   else{
 	url=`https://api.github.com/users/${user}/repos`;
   }
-  await fetch(url, {
+  const response = await fetch(url, {
       method: 'GET',
       headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'}
-    }).then(response=>parse_response(response))
-      .then(
-	
-	function(data){
-	  	
-			data.forEach(function(x){
-			  			repos.push(x['name'])
-			});
-		}
-	
-     );
+    });
+  const data = await parse_response(response);
+ 
+  data.forEach(x=>{
+  	repos.push(x['name'])
+  });
   return repos;
         
 }
@@ -95,9 +85,8 @@ var get_user=async function (token) {
     });
    const data = await parse_response(response);
    const login=data['login'];
-   username=data['name']
-   scrib.getDom("username").innerHTML=username;
-  return login;
+   scrib.getDom("username").innerHTML=data['name'];
+   return login;
 }
 
 update_owner= async function(){
@@ -109,14 +98,12 @@ update_owner= async function(){
 	localStorage.setItem("gh-token",token);
 	scrib.getDom("user").value=user;
 	update_repos();
-	
-
 }
 update_repos=async function(){
 	const token = scrib.getDom("token").value;
 	const user=scrib.getDom("user").value;
 	
-	const repos=get_repos(token,user);
+	const repos=await get_repos(token,user);
 	let str='';
 	repos.forEach(x=>{
 		str += '<option value="'+x+'" />'; // Storing options in variable
@@ -125,28 +112,20 @@ update_repos=async function(){
 		
 
 }
-load_from_git=function(){
+load_from_git=async function(){
 	fileDetails['source']='github';
 	fileDetails['token']=scrib.getDom("token").value;
 	fileDetails['user']=scrib.getDom("user").value;
 	fileDetails['repo']=scrib.getDom("repo").value;
 	fileDetails['path']=scrib.getDom("path").value;
-	get_file_content(fileDetails['token'],fileDetails['user'],fileDetails['repo'],fileDetails['path'])
-	.then(
-		nb=>{
-			load_jsnb(nb);
-			closeModal(scrib.getDom('git-import-export'));
-			const nextURL = `./?jsnb=github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
-			const nextTitle = 'JavaScript Notebook';
-			const nextState = { additionalInformation: 'Updated the URL with JS' };
-			window.history.pushState(nextState, nextTitle, nextURL);
+	const nb =await get_file_content(fileDetails['token'],fileDetails['user'],fileDetails['repo'],fileDetails['path']);
+	load_jsnb(nb);
+	closeModal(scrib.getDom('git-import-export'));
+	const nextURL = `./?jsnb=github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
+	const nextTitle = 'JavaScript Notebook';
+	const nextState = { additionalInformation: 'Updated the URL with JS' };
+	window.history.pushState(nextState, nextTitle, nextURL);
 
-			
-		}
-	)
-	.catch(error=>alert("Error: "+error));
-	
-		
 }
 
  initialize_from_git= async function(link){
