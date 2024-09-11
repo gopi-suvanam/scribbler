@@ -34,12 +34,20 @@ var get_file_content=async function (token,user,repo,path){
 
 var upload_file_to_git=async function (token, content,user,repo,path) {
 	var url=`https://api.github.com/repos/${user}/${repo}/contents/${path}`
-	file_sha=await get_file_sha(token,user,repo,path);
-    var data = JSON.stringify({
-        "message": "JSNB File Uploded to Git by User",
-        "content": `${btoa(content)}`,
-	    'sha':file_sha
-    });
+	let file_sha = null;
+
+	  // Try to get the file SHA
+	  try {
+	    file_sha = await get_file_sha(token, user, repo, path);
+	  } catch (error) {
+	    console.log("File does not exist. Uploading a new file.");
+	  }
+	  
+	    var data = JSON.stringify({
+	        "message": "JSNB File Uploded to Git by User",
+	        "content": `${btoa(content)}`,
+		    'sha':file_sha
+	    });
   const response =await fetch(url, {
       method: 'PUT',
       headers: {
