@@ -43,6 +43,10 @@ article,textarea{
  color:var(--color);
  background-color:var(--background-color); 
  border:0.5px solid #212d39;
+ @media   (prefers-color-scheme: light) {
+ 	border-color:white;
+	
+ }
  border-radius:0px;
  
  
@@ -104,7 +108,11 @@ ul[role=listbox]{
 .CodeMirror {
 	/* font-family: Arial, monospace !important;  */
 	font-size: 18px !important; 
+
 	border: 0.5px solid #33302a;
+	@media (prefers-color-scheme:light) {
+		border: 0px;
+	}
 	border-radius: 0px;
 	margin:10px;
 	height: auto !important;
