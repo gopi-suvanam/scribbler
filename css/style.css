@@ -42,7 +42,7 @@ article,textarea{
  font-size:18px !important;
  color:var(--color);
  background-color:var(--background-color); 
- border:0.5px solid #212d39;
+ 
  @media   (prefers-color-scheme: light) {
  	border-color:white;
 	
