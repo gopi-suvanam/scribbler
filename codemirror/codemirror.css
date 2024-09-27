@@ -132,6 +132,8 @@
 .cm-s-default .cm-hr {color: #999;}
 .cm-s-default .cm-link {color: #00c;}
 
+
+
 .cm-s-default .cm-error {color: #f00;}
 .cm-invalidchar {color: #f00;}
 
@@ -238,7 +240,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
   border-width: 0;
   background: transparent;
-  font-family: inherit;
+  font-family: monospace  ;
   font-size: inherit;
   margin: 0;
   white-space: pre;
