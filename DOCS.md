@@ -4,15 +4,16 @@
 1. [Installing](#installing)
 2. [Cells](#cells)
 3. [Cell Menu](#cell-menu)
-4. [File Menu](#file-menu)
-5. [Edit Menu](#edit-menu)
-6. [URL Structure](#url-structure)
-7. [Special Functions](#special-functions)
-8. [Keyboard Shortcuts](#keyboard-shortcuts)
-9. [Exporting-Importing](#exporting-importing)
-10. [Sandboxed Environment](#sandboxed-enviroment)
-11. [Embedding Notebooks](#embedding-notebooks)
-12. [Using external libraries](#using-external-libraries)
+4. [Documentation](#documentation)
+5. [File Menu](#file-menu)
+6. [Edit Menu](#edit-menu)
+7. [URL Structure](#url-structure)
+8. [Special Functions](#special-functions)
+9. [Keyboard Shortcuts](#keyboard-shortcuts)
+10. [Exporting-Importing](#exporting-importing)
+11. [Sandboxed Environment](#sandboxed-enviroment)
+12. [Embedding Notebooks](#embedding-notebooks)
+13. [Using external libraries](#using-external-libraries)
 
 ## Installing
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub.
@@ -50,6 +51,22 @@ The file menu consists of:
 - Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
 - Download only output as HTML: Save only the output of the current notebook as HTML on local machine.
 - Download as JS: Down load the code in cells as a single JavaSript file.
+
+## Documentation
+- Create documentation cells by selecting "Doc" from the cell menu
+- Documentation is rendered in HTML format
+
+### Markdown Support
+
+- Prefix text with //>md to render documentation in Markdown format
+
+### Magic Words
+- //>md: Treat cell content as Markdown
+- //>html: Treat cell content as HTML
+### Usage
+- Use magic words in documentation cells and code cells
+- Render code comments or explanations in Markdown
+- Embed HTML content in code cells
 
 ## Edit Menu
 The edit menu consists of:
