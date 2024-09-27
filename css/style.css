@@ -105,14 +105,15 @@ footer span{
 ul[role=listbox]{
 	font-size:12px !important;
 }
+
+
+	
 .CodeMirror {
 	/* font-family: Arial, monospace !important;  */
 	font-size: 18px !important; 
 
-	border: 0.5px solid #ddd;
-	@media (prefers-color-scheme:light) {
-		border: 0px;
-	}
+	border: 0.5px solid #33302a;
+	
 	border-radius: 0px;
 	margin:10px;
 	height: auto !important;
@@ -121,6 +122,11 @@ ul[role=listbox]{
 
 }
 
+@media (prefers-color-scheme:light) {
+.CodeMirror{
+		border: 0.5px solid #ddd;
+		}
+	}
 .CodeMirror-scroll{
   margin-right:5px !important;
 }
