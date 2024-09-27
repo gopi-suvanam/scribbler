@@ -1,15 +1,15 @@
 ﻿body{
-	//color:dark-grey;
+	color:dark-grey;
 
 	height: 100%;
-	    display: flex;
-	    flex-direction: column;
-	    font-family:  "Roboto", sans-serif;
+	display: flex;
+	flex-direction: column;
+	font-family:  "Roboto", sans-serif;
 }
 
 
-h1, h2, h3, h4, h5, h6, p, a, span, div, article,textarea, td {
-	font-family: "Inter", sans-serif;
+h1, h2, h3, h4, h5, h6, p, a, div, article,textarea, td {
+	font-family: "Roboto", sans-serif;
 	
 }
 
@@ -42,7 +42,11 @@ article,textarea{
  font-size:18px !important;
  color:var(--color);
  background-color:var(--background-color); 
- border:thin solid white;
+ border:0.5px solid #212d39;
+ @media   (prefers-color-scheme: light) {
+ 	border-color:white;
+	
+ }
  border-radius:0px;
  
  
@@ -102,9 +106,13 @@ ul[role=listbox]{
 	font-size:12px !important;
 }
 .CodeMirror {
-	font-family: Arial, monospace !important; 
+	/* font-family: Arial, monospace !important;  */
 	font-size: 18px !important; 
-	border: 1px solid #d0d7de;
+
+	border: 0.5px solid #33302a;
+	@media (prefers-color-scheme:light) {
+		border: 0px;
+	}
 	border-radius: 0px;
 	margin:10px;
 	height: auto !important;
@@ -161,7 +169,7 @@ ul[role=listbox]{
 	top:5px;
 	right:0px;
 	margin-right:15px;
-	//color:darkgray ;
+	color:darkgray ;
 	
 }
 
@@ -224,7 +232,7 @@ input{
     }
     .cell-menu a{
 
-	//color:unset;
+	color:unset;
 	margin:10px;
 	font-size:24px;
 	
