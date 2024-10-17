@@ -201,6 +201,7 @@
 	  <article>
 	    <h2>Share The Notebook</h2>
 	    <div style="border:thin solid grey;width:100%;margin:5px;padding:5px">
+	    
 	    <span>
 	      Sharable Link:&nbsp;
 	    </span>
@@ -210,6 +211,17 @@
 	    	This will show the notebook with all controls. This link is ideal for collaboration. Any user with the link and access to the Github repo of the notebook and push the changes to Github.
 	    </p>
 	    </div>
+	    
+	    <hr>
+	    <span>
+	      Sharable Link Without Menu/Code:&nbsp;
+	    </span>
+	    <span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px" id="sharableLinkClean"></span>&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('sharableLinkClean')">&#128203;</a>
+	    <hr>
+	    <p>
+	    	This will show the notebook without controls. The code is also note show. This link is ideal for using published notebooks. 	    </p>
+	    </div>
+	    
 	    <div style="border:thin solid grey;width:100%;margin:5px;padding:5px">
 	     <span>
 	      iFrame to embed::&nbsp;
