@@ -85,8 +85,8 @@ load_from_url=async function(){
 	 			 nb=await reponse.json();
   		}
   		else if(url.split(":")[0].trim()=='local') {
-	  	 nb=await getFileById(url.split(":")[1].trim()).nb;
-	  		    
+	  	 nb=await getFileById(url.split(":")[1].trim());
+	  	 nb=nb.nb;
   		}
   		else {
 			const reponse=await fetch(url);	
@@ -94,7 +94,6 @@ load_from_url=async function(){
 	 		
   		}
   		if(hideCode === 'true') nb['hideCode']=true;
-	    console.log("hideCode",hideCode,nb.hideCode);
   	    load_jsnb(nb);
 		  	    
   	}else{
