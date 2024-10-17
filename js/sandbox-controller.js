@@ -270,6 +270,8 @@ sandbox.loadJSNB=async function(nb){
 		sandbox.editors={}
 		main.innerHTML='';
 		
+		console.log("nb.hideCode",nb.hideCode);
+		
 		sandbox.statusData.num_blocks=0;
 		for(let i=0;i<nb.cells.length;i++){
 			x=nb.cells[i];
@@ -288,11 +290,11 @@ sandbox.loadJSNB=async function(nb){
 			await scrib.waitForDom("libs-loaded");
 			sandbox.runAll();
 		}
-		if(sandbox.statusData.running_embedded){
+		if(sandbox.statusData.running_embedded || nb.hideCode){
 			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
-	  		document.querySelectorAll(".output").forEach(a=>a.ondblclick = "");
+	  		document.querySelectorAll("article").forEach(a=>a.ondblclick = "");
 		}
 		document.activeElement.blur(); 
 		document.body.scrollTop = 0;
@@ -390,38 +392,11 @@ sandbox.messageHandler=async function(action,data,call_bk){
 		
 }
 
-sandbox.loadFromGit= async function(link){
-	var i = link.indexOf('/');
-	var user = link.slice(0,i); 
-	var rest = link.slice(i+1);
-	
-	var i = rest.indexOf('/');
-	var repo = rest.slice(0,i);
-	var path = rest.slice(i+1);
-	
 
-	
-	
-	url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
-	
-	 try{
-		 var response= await fetch(url, {method: 'GET'});
-		  var data=await parse_response(response);
-		sandbox.loadJSNB(data);
-		
-		
-	}catch(error){
-		console.log(error);
-		alert("The published notebook is not available or not in the right format.");
-	}
-			  
-  
-	
-}
 
-sandbox.initialize=function(){
+sandbox.initialize=async function(){
 	console.log("Initializing sanbox...");
-	
+	var url='';
 	try{ url=window.location.href.split("#")[1];} catch(e){url=''}
   	if(url!=undefined && url.length>1 ){
   		if(!scrib.isInIFrame()){
@@ -430,11 +405,18 @@ sandbox.initialize=function(){
   		}
   		console.log("Loading from url inside Sandbox");
   		sandbox.statusData.running_embedded=true;
-  		if(url.split(":")[0].trim()=='github') sandbox.loadFromGit(url.split(":")[1].trim());
-  		else scrib.readFile(url,sandbox.loadJSNB,err=>{console.log(err.message)});
+  		if(url.split(":")[0].trim()=='github') {
+  			url="https://raw.githubusercontent.com/"+url.split(":")[1].trim();
+  		}
+
+		const reponse=await fetch(url);	
+ 		const nb=await reponse.text();
+ 		await sandbox.loadJSNB(nb);
+
   		document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
   		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
+  		document.querySelectorAll(".output").forEach(a=>a.ondblclick = "");
 
   		return;
   	}	  	

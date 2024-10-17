@@ -47,28 +47,61 @@ load_file_click=async function() {
 	},{once:true});
 
 }
-load_from_url=function(){
+load_from_url=async function(){
 	let url='';
-	try{ 
-		const urlParams = new URLSearchParams(window.location.search);
-	const jsnb_path = urlParams.get('jsnb');
+	const urlParams = new URLSearchParams(window.location.search);
 	const hideMenu = urlParams.get('hide-menu');
 	if(hideMenu === 'true'){
 		scrib.getDom("menu").style.display= "none";
 		scrib.getDom("sub-menu").style.display= "none";
 	}
-	if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
-		else url=window.location.href.split("#")[1];
-	} catch(e){url="./examples/Hello-world.jsnb"}
+	
+	const hideCode = urlParams.get('hide-code');
+	
+	try{ 
+		
+		const jsnb_path = urlParams.get('jsnb');
+		if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
+			else url=window.location.href.split("#")[1];
+	} 
+	catch(e){url="./examples/Hello-world.jsnb"}
 	if(url==undefined) url="./examples/Hello-world.jsnb";
+	let nb='';
   	if( url.length>1){
-  		if(url.split(":")[0].trim()=='github') initialize_from_git(url.split(":")[1].trim());
-  		else if(url.split(":")[0].trim()=='local') loadLocalFile(url.split(":")[1].trim());
-  		else scrib.readFile(url,load_jsnb,err=>{alert(err.message)});
+  		if(url.split(":")[0].trim()=='github'){
+  				const link=url.split(":")[1].trim();
+  			 	let components = link.split("/")
+				const user=components.shift();
+				const repo=components.shift();
+				const path=components.join("/");
+				
+				scrib.getDom("user").value=user;
+				scrib.getDom("repo").value=repo;
+				scrib.getDom("path").value=path;
+				
+				
+				url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
+				const reponse=await fetch(url);	
+	 			 nb=await reponse.json();
+  		}
+  		else if(url.split(":")[0].trim()=='local') {
+	  	 nb=await getFileById(url.split(":")[1].trim()).nb;
+	  		    
+  		}
+  		else {
+			const reponse=await fetch(url);	
+	 		 nb=await reponse.json();
+	 		
+  		}
+  		if(hideCode === 'true') nb['hideCode']=true;
+	    console.log("hideCode",hideCode,nb.hideCode);
+  	    load_jsnb(nb);
+		  	    
   	}else{
   		scrib.getDom("nb_name").innerHTML="New JSNB";
   		insert_cell("code");
   	}
+  	
 }
 
 /***** Downloading ************/
@@ -350,23 +383,32 @@ insitialize_page=async function(){
 
 	window.onload =  function() {
 		first_load=true;
-		scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
-		scrib.getDom("sandbox").setAttribute("src","sandbox.html");
+		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
+		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
 		scrib.getDom("break-sandbox").style.display='inline';
 	      	initialize_git();
 	      	
+	      	
+
 		 scrib.waitForDom('sandbox').then(result=>{
 			sandbox_iframe=result;
-			sandbox_iframe.addEventListener("load", function() {
-				if(first_load){
-					console.log("Loading from URL");
-					load_from_url();
-				}else{
-					console.log("Ignoring");
-				}
-				first_load=false;
-			},{once:true});
 			
+			//if (true){
+				console.log("Loading from URL");
+				load_from_url();
+				first_load=false;
+			//}
+			/*else{
+				sandbox_iframe.addEventListener("load", function() {
+					if(first_load){
+						console.log("Loading from URL");
+						load_from_url();
+					}else{
+						console.log("Ignoring");
+					}
+					first_load=false;
+				},{once:true});
+			}*/
 			
 		  	document.addEventListener('keydown', keyDown);
 		  });

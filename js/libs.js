@@ -165,22 +165,12 @@ scrib.downloadString=function(str, exportName,char_set){
   
 
 	
-scrib.readFile=function(url,callbk,failure){
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-		  if (this.readyState == 4 && this.status == 200) {
-			 callbk(xhttp.responseText);
-		  }
-		else{
-		  
-		}
-	  };
-	  xhttp.open("GET", url, true);
-	  try{
-	  	xhttp.send();
-	  }catch(err){
-	  	failure(err)
-	  };
+scrib.readFile=async function(url,callbk,failure){
+
+  	 const reponse=await fetch(url);	
+  	 const result=await reponse.text();
+  	 return result;
+	  
  }
 
 scrib.isSandboxed=function(){
