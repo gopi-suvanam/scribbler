@@ -288,13 +288,17 @@ sandbox.loadJSNB=async function(nb){
 		
 		if (run_on_load) {
 			await scrib.waitForDom("libs-loaded");
-			sandbox.runAll();
+			await sandbox.runAll();
 		}
 		if(sandbox.statusData.running_embedded || nb.hideCode){
 			document.querySelectorAll(".code").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".status").forEach(a=>a.style.display = "none");
 	  		document.querySelectorAll(".cell-menu").forEach(a=>a.style.display = "none");
-	  		document.querySelectorAll("article").forEach(a=>a.ondblclick = "");
+	  		document.querySelectorAll("article").forEach(a=>{
+	  			a.ondblclick = "";
+	  			if(a.lastElementChild.innerHTML.length===0) a.style.display='none';
+	  		});
+	  		
 		}
 		document.activeElement.blur(); 
 		document.body.scrollTop = 0;

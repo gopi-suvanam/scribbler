@@ -54,6 +54,7 @@ load_from_url=async function(){
 	if(hideMenu === 'true'){
 		scrib.getDom("menu").style.display= "none";
 		scrib.getDom("sub-menu").style.display= "none";
+		scrib.getDom("footer").style.display= "none";
 	}
 	
 	const hideCode = urlParams.get('hide-code');
