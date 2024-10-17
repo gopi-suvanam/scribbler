@@ -52,6 +52,11 @@ load_from_url=function(){
 	try{ 
 		const urlParams = new URLSearchParams(window.location.search);
 	const jsnb_path = urlParams.get('jsnb');
+	const hideMenu = urlParams.get('hide-menu');
+	if(hideMenu === 'true'){
+		scrib.getDom("menu").style.display= "none";
+		scrib.getDom("sub-menu").style.display= "none";
+	}
 	if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
 		else url=window.location.href.split("#")[1];
 	} catch(e){url="./examples/Hello-world.jsnb"}
