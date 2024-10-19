@@ -5,3 +5,5 @@
 - scrib.uploadFile(): Opens file browser, resolves to selected file contents (asynchronous).
 - scrib.downloadString(string, exportName, charSet): Downloads a string as a file.
 - scrib.loadScript(url, async=true): Loads an external JavaScript file from a URL. Use false for synchronous loading.
+- import: Used for dynamically importing modules.
+
