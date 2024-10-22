@@ -110,6 +110,7 @@ The tool does not store data on cloud as it is intended to be a fully open sourc
 - Uses [Pico CSS](https://github.com/picocss/pico) for styling.
 - Comes loaded with [Plotly](https://github.com/plotly/plotly.js) for charting.
 - Markdown support comes from [Markedjs](https://github.com/markedjs/marked).
+- A special thanks to [WebLLM](https://github.com/mlc-ai/web-llm) and [MLC-AI](https://mlc.ai/) for providing compiled LLMs that can be used in the browsers. Scribbler's AI capabilities come from WebLLM.
 
 ## Links
 
