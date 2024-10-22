@@ -22,6 +22,7 @@
 		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
 		<script src="js/local-storage.js"></script> <!-- Functions for storing and retreiving JSNBs in indexddb -->
 		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
+		<script src="js/ai-coder.js"></script> <!-- Handling AI coding using WebLLM -->
 
 		
 
@@ -53,6 +54,7 @@
 	    	<details role="list" dir="ltr">
 	      <summary tabindex="0" aria-haspopup="listbox">Edit</summary>
 	      <ul role="listbox">
+			
 	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
 	        <li><a onclick="insert_cell('html')">Insert doc cell</a></li>
 	        <li><a onclick="insert_cell('style')">Insert style cell</a><hr></li>
@@ -62,6 +64,15 @@
 	      </ul>
 	      </details>
 	    </li>
+		<li role="list" dir="ltr">
+	      <details role="list" dir="ltr">
+	      <summary tabindex="0" aria-haspopup="listbox">AI</summary>
+	      <ul role="listbox" id="AI-Models">
+			
+	      </ul>
+	      </details>
+	    </li>
+		
 	   <li role="list" dir="ltr">
 	    	<details role="list" dir="ltr">
 	      <summary tabindex="0" aria-haspopup="listbox">Run</summary>
@@ -125,6 +136,10 @@
 	    	 data-tooltip="Take the notebook out of sandbox" data-placement="bottom"  id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯</a>		    
 	    </div>
 	    
+	</div>
+	<div class="container" id="ai-loading" style="margin-top:5px;display:none">
+		<progress id="ai-loading-progress-bar" style="display:block" value="0" max="1"></progress>
+		<div id="ai-loading-progress-text" style="display:block" >AI Not loaded</div>
 	</div>
 	<iframe id="sandbox" src="sandbox.html" sandbox="allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals" style="width:100%;height:100%" ></iframe>
 	

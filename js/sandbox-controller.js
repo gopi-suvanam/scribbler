@@ -257,6 +257,32 @@ sandbox.getNB=function(){
 }
 
 
+sandbox.getMarkdownNB=function(){
+	let nb='';
+ 	
+ 	const main=scrib.getDom("main");
+ 	const blocks=main.childNodes;
+ 	
+ 	
+ 	blocks.forEach(x=>{
+ 		const block_id=x.id.replace("block","")
+ 		let input ='';
+ 		const code=scrib.getDom("input"+block_id).childNodes[0].CodeMirror.getValue();
+		if(scrib.getDom("cell_type"+block_id).value=='code'){
+			input="```javascript\n"+code+"\n```";
+		}
+		else{
+			
+			input="```doc\n"+code+"\n```";
+		}
+		
+		nb=nb+"\n"+input;
+	 	
+ 	});
+	
+ 	return nb;
+	
+}
 
 sandbox.loadJSNB=async function(nb){
 	try{

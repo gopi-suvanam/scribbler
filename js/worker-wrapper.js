@@ -42,12 +42,18 @@ worker.evaluate= async function(code){
 	     	 return updatedCode;
 	}
         const markdownPrompt = /^\/\/>\s*md/i;
-	 if( markdownPrompt.test(code))
-	 {
+	if( markdownPrompt.test(code))
+	{
 		 const updatedCode = marked.parse(code.replace(markdownPrompt,""));
-	     	 return updatedCode;
+	     return updatedCode;
 	}
 	
+	const aiPrompt = /^\/\/>/i;
+	if( aiPrompt.test(code)){
+		 const updatedCode = await sandboxAI.query(code.replace(aiPrompt,""));
+	     return marked.parse(updatedCode.finalReply);
+		 //return;
+	}
 	
 	if(worker.type==='browser')
 		
@@ -106,6 +112,7 @@ worker.run= async function(_block_id){
 		return scrib.getDom("output"+_block_id);
 	}
 	
+	scrib.currBlock=_block_id;
 	
 	scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Running the cell");
 	scrib.getDom("status"+_block_id).innerHTML='[*]'
