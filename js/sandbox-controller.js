@@ -436,7 +436,20 @@ sandbox.initialize=async function(){
   		console.log("Loading from url inside Sandbox");
   		sandbox.statusData.running_embedded=true;
   		if(url.split(":")[0].trim()=='github') {
-  			url="https://raw.githubusercontent.com/"+url.split(":")[1].trim();
+			const link=url.split(":")[1];
+			var i = link.indexOf('/');
+			var user = link.slice(0,i); 
+			var rest = link.slice(i+1);
+			
+			var i = rest.indexOf('/');
+			var repo = rest.slice(0,i);
+			var path = rest.slice(i+1);
+			
+
+			
+			
+			url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
+			
   		}
 
 		const reponse=await fetch(url);	
