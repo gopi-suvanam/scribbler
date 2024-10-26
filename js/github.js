@@ -18,7 +18,7 @@ var get_file_sha=async function (token,user,repo,path){
 var get_file_content=async function (token,user,repo,path){
   
   var url=`https://api.github.com/repos/${user}/${repo}/contents/${path}`;
-  result=null;
+  let result=null;
   const response = await fetch(url, {
       method: 'GET',
       headers: {
