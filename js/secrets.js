@@ -36,6 +36,8 @@ function getSecretNames(){
 	if(secretStore){
 		secrets=JSON.parse(secretStore);
 		return Object.keys(secrets);
+	}else{
+		return [];
 	}
 }
 
