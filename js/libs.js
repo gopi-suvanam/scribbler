@@ -12,6 +12,18 @@ scrib.isInIFrame = function() {
     }
 }
 
+scrib.getSecret=function(name){
+	if(scrib.isSandboxed()) throw("The code is sandboxed. Please take it out of sandbox");
+	
+	
+	let secretStore=localStorage.getItem('secrets');
+	if(secretStore){
+		secretStore=JSON.parse(secretStore);
+		return secretStore[name];
+	}
+	
+
+}
 
 scrib.inputText = function() {
   return new Promise((resolve) => {
@@ -29,6 +41,9 @@ scrib.inputText = function() {
 };
 
 
+scrib.error=message=>{
+	scrib.show("<p class='red'>"+message+"</p>");
+}
 
 scrib.showInDom=function(output,...objs){
 	var to_show='';

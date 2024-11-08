@@ -344,7 +344,7 @@ shareBtn=function(){
   	
   	
 	if(url.length>0)	
-		scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src ="'+window.location.origin+window.location.pathname+'sandbox.html#='+url+'"></iframe>';
+		scrib.getDom("iframeLink").innerText='<iframe id="sandbox" style="width:100%;height:100%" src ="'+window.location.origin+window.location.pathname+'sandbox.html?jsnb='+url+'"></iframe>';
   	else alert("Push the notebook to Github first to publish the notebook in an iFrame");
   	openModal(scrib.getDom('shareNB'));
 
