@@ -12,11 +12,14 @@ function setSecret(name,value){
 	let secretStore=localStorage.getItem('secrets');
 	if(secretStore){
 		secrets=JSON.parse(secretStore);
-		secrets[name]=value;
-		localStorage.setItem('secrets', JSON.stringify(secrets));
-		return true;
-
 	}
+	else secrets={};
+	
+	secrets[name]=value;
+	localStorage.setItem('secrets', JSON.stringify(secrets));
+	return true;
+
+	
 }
 
 
