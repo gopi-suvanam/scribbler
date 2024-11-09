@@ -106,6 +106,16 @@ scrib.loadScript = function(url,async){
 
 }
 
+scrib.loadCSS = 
+  function(css){
+  
+	 const link = document.createElement('link');
+	link.rel = 'stylesheet';
+	link.href = css;
+	document.head.appendChild(link); 
+}
+
+
 load_script=(...args)=>{
 	scrib.show("<span style='color:orange'>Warning! load_script() is being deprecated. Use scrib.loadScript().</span>");
 	scrib.loadScript(...args);
