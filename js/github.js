@@ -149,6 +149,8 @@ load_from_git=async function(){
 	scrib.getDom("path").value=path;
 	
 	
+	scrib.getDom("git-stars").src=`https://ghbtns.com/github-btn.html?user=${user}&repo=${repo}&type=star&count=true&size=small`;
+	
 	url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 	
 	 try{

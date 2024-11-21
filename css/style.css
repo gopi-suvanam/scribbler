@@ -203,6 +203,11 @@ ul[role=listbox]{
 	margin-right:5px ;
 }
 
+#git-stars{
+	margin-top: 5px;
+	height:30px;
+}
+
 #logo{
 	height:37px;
 	width:35px;
