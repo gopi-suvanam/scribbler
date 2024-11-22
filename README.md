@@ -57,6 +57,12 @@ A few starting notebooks for further experimentation:
 6. [Numerical Recipes in JavaScript](https://app.scribbler.live/#./examples/Numerical-Analysis-Recipes.jsnb)
 7. [Machine Learning Using Brain.js](https://app.scribbler.live/#./examples/Decentralized-ML-Model-Storage.jsnb)
 
+## CLI for Installation
+```
+git clone https://github.com/gopi-suvanam/scribbler
+cd scribbler
+npx serve
+```
 ## Features
 - **Cells:**
     - The notebook consists of cells. Each cell will have user inputted doc/code and an output. There is a menu at the top right corner of the cell (or above the cell in case of smaller screens).
