@@ -124,5 +124,5 @@ Additional documentation for Scribbler:
 1. [Docs](https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md)
 2. [Code-docs](https://github.com/gopi-suvanam/jsnb/blob/main/CODE-DOCS.md)
 3. [Roadmap](https://github.com/gopi-suvanam/jsnb/blob/main/ROADMAP.md)
-4. [Sample Notebooks](https://github.com/gopi-suvanam/jsnb/blob/main/examples/README.md)
+4. [Sample Notebooks](https://examples.scribbler.live)
 
