@@ -94,7 +94,7 @@ npx serve
 Not to be used for:
 1. Production use cases
 2. As an alternative to webapps
-3. Working with sensitive data like login/pwd/private keys etc.
+3. Working with sensitive data like personal information.
 
 ## Collaboration
 The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collabortion is still possible through:
