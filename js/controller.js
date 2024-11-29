@@ -69,6 +69,11 @@ load_from_url=async function(){
 	if(url==undefined) url="./examples/Hello-world.jsnb";
 	let nb='';
   	if( url.length>1){
+		if(url.split(":")[0].trim()=='local') {
+			const id=url.split(":")[1].trim();
+			loadLocalFile(id);
+			return;
+		}
   		if(url.split(":")[0].trim()=='github'){
   				const link=url.split(":")[1].trim();
   			 	let components = link.split("/")
@@ -86,14 +91,9 @@ load_from_url=async function(){
 				url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 				const reponse=await fetch(url);	
 	 			 nb=await reponse.json();
-  		}
-  		else if(url.split(":")[0].trim()=='local') {
-	  	 nb=await getFileById(url.split(":")[1].trim());
-	  	 nb=nb.nb;
-  		}
-  		else {
+  		}else {
 			const reponse=await fetch(url);	
-	 		 nb=await reponse.json();
+	 		nb=await reponse.json();
 	 		
   		}
   		if(hideCode === 'true') nb['hideCode']=true;
@@ -177,11 +177,11 @@ download_nb=async function(){
 		url=''
 	}
 		
-	if(url!=undefined && url.length>1){
+	if(url!=undefined && url.length>1 && url.split(":")[0].trim()!='local'){
 		 file_name = url.split('/').slice(-1)[0]
 	}else{
 		
-		 file_name=nb.metadata.name.replaceAll(' ','_')+'.jsnb'
+		 file_name=nb.metadata.name.replaceAll(' ','-')+'.jsnb'
 	}
 	scrib.downloadString(JSON.stringify(nb,undefined,2),file_name,"data:text/json;charset=utf-8");	
 	
@@ -285,6 +285,9 @@ saveLocalFile=async function(){
 	scrib.getDom("save-button").setAttribute("aria-busy","true");
 	try{
 		let nb =await get_nb();
+		if(scrib.getDom("sandbox").getAttribute("sandbox")) nb['trustLocally']=false;
+		else nb['trustLocally']=true;
+		
 		const updateTime=new Date();
 		const id=await insertOrUpdateFile(nb, nb.metadata.name,updateTime,fileDetails['id']);
 		openFileNamesModal();
@@ -310,22 +313,34 @@ deleteLocalFile=function(id,name){
 	deleteFileById(parseInt(id)).then(x=>openFileNamesModal()).catch(err=>{alert("Error in deletion:"+error)});
 
 }
-loadLocalFile=function(id){
-	getFileById(id).then(obj=>{
+
+
+loadLocalFile= async function(id){
+	try{
+		const obj = await getFileById(id);
+			
+		if(obj.nb.trustLocally){
+			scrib.getDom("sandbox").removeAttribute("sandbox");
+			scrib.getDom("break-sandbox").style.display='none';
+		}
+		else{
+			scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
+			scrib.getDom("break-sandbox").style.display='inline';
+		}
+		scrib.getDom("sandbox").setAttribute("src","sandbox.html?var=xxx");
+		sandbox_iframe=await scrib.waitForDom("sandbox");
+		sandbox_iframe.addEventListener("load", function() {
+		  load_jsnb(obj.nb);
+		  fileDetails['id']=obj.id
 		
-		load_jsnb(obj.nb);
-		fileDetails['id']=obj.id
+			const nextURL = `./#local:${obj.id}`;
+			const nextTitle = 'JavaScript Notebook: '+obj.nb.metadata.name;
+			const nextState = { additionalInformation: 'Updated the URL with JS' };
+			
+			window.history.pushState(nextState, nextTitle, nextURL);
 		
-		const nextURL = `./#local:${obj.id}`;
-		const nextTitle = 'JavaScript Notebook: '+obj.nb.metadata.name;
-		const nextState = { additionalInformation: 'Updated the URL with JS' };
-		
-		window.history.pushState(nextState, nextTitle, nextURL);
-		
-		
-	}
-	
-	).catch(err=>{alert("Error in Loading file:"+err)});
+		},{once:true});
+	}catch(err){alert("Error in Loading file:"+err)};
 
 }
 /********* Share and Publish *********/
@@ -337,7 +352,7 @@ shareBtn=function(){
 		const urlParams = new URLSearchParams(window.location.search);
 		const jsnb_path = urlParams.get('jsnb');
 		if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
-			else url=window.location.href.split("#")[1];
+			else r6=window.location.href.split("#")[1];
 	} catch(e){
 		url='';
 	}
