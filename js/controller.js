@@ -352,7 +352,7 @@ shareBtn=function(){
 		const urlParams = new URLSearchParams(window.location.search);
 		const jsnb_path = urlParams.get('jsnb');
 		if(jsnb_path !=null && typeof jsnb_path!=='undefined') url=jsnb_path;
-			else r6=window.location.href.split("#")[1];
+			else url=window.location.href.split("#")[1];
 	} catch(e){
 		url='';
 	}
