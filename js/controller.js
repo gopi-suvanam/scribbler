@@ -51,6 +51,7 @@ load_from_url=async function(){
 	let url='';
 	const urlParams = new URLSearchParams(window.location.search);
 	const hideMenu = urlParams.get('hide-menu');
+	const runOnLoad = urlParams.get('run-on-load');
 	if(hideMenu === 'true'){
 		scrib.getDom("menu").style.display= "none";
 		scrib.getDom("sub-menu").style.display= "none";
@@ -97,6 +98,9 @@ load_from_url=async function(){
 	 		
   		}
   		if(hideCode === 'true') nb['hideCode']=true;
+		if(runOnLoad==='true') nb['run_on_load']= true;
+		if(runOnLoad==='false') nb['run_on_load']= false;
+		
   	    load_jsnb(nb);
 		  	    
   	}else{
