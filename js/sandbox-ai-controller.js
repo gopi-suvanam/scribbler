@@ -39,11 +39,15 @@ sandboxAI.query = function (query) {
             if (event.data && event.data.hasOwnProperty('final-reply')) {
 				codemirror.setValue( extractCode(event.data['final-reply'] ));
 				console.log(event.data['final-reply']);
-                resolve({ chunks, finalReply: event.data['final-reply'] }); // Resolve with chunks and final reply
+				codemirror.setValue(extractCode(reply));
+				chunks.push(event.data.chunk);
+                resolve({ chunks, finalReply: "\nTotal tokens: "+chunks.length }); // Resolve with chunks and final reply
 				
             } else if (event.data && event.data.hasOwnProperty('chunk')) {
+				chunks.push(event.data.chunk);
                 reply=reply+event.data.chunk;
-				codemirror.setValue(originalContent+"\n"+extractCode(reply));
+				scrib.currCell().innerHTML=marked.parse(reply);
+				//codemirror.setValue(originalContent+"\n"+extractCode(reply));
             } else if (event.data && event.data.hasOwnProperty('error')) {
 				reject(new Error(event.data.error)); // Reject on error				
 			}
