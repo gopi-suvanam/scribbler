@@ -22,7 +22,7 @@ load_jsnb=function(content){
 
       const run_on_load = nb.run_on_load || false;
       scrib.getDom("nb_name").innerHTML=nb.metadata.name;
-      document.title = nb.metadata.name+":  Scribbler JavaScript Notebook";
+      document.title = nb.metadata.name+":  Scribbler Notebook";
       const metaDescription = document.querySelector('meta[name="description"]');
 
 	// Set the description dynamically
