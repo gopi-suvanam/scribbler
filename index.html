@@ -25,7 +25,8 @@
 		<script src="js/local-storage.js"></script> <!-- Functions for storing and retreiving JSNBs in indexddb -->
 		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
 		<script src="js/ai-coder.js"></script> <!-- Handling AI coding using WebLLM -->
-
+		<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
+		<script src="js/api-wrapper.js"></script> <!-- Convert Markdown to HTML -->
 
 	
 	</head>
@@ -39,8 +40,11 @@
 	      <ul role="listbox">
 	        <li><a href="./#" target="_blank">New Blank NB</a></li>
 	        <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
-		<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
-		<li><a onclick="load_file_click()">Upload NB</a></li>
+			<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
+			<li><a onclick="loadFileClick()">Upload NB</a></li>
+			<li><a onclick="loadFileClick('md')">Upload Markdown</a></li>
+			<li><a onclick="loadFileClick('js')">Upload JS Script</a></li>
+
 	        <li><a onclick="download_nb()">Download NB</a><hr></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
 	        <li><a href="#"  onclick="event.preventDefault();shareBtn()">Share/Publish</a><hr></li>
@@ -70,9 +74,11 @@
 		<li role="list" dir="ltr">
 	      <details role="list" dir="ltr">
 	      <summary tabindex="0" aria-haspopup="listbox">AI</summary>
+		  
 	      <ul role="listbox" id="AI-Models">
 			
 	      </ul>
+		 
 	      </details>
 	    </li>
 		
@@ -142,6 +148,10 @@
 	   
 	      <a href="#" class="secondary" id='save-button' style="margin-right:5px;font-size:11px"
 	      onclick="event.preventDefault();saveLocalFile()"   >&#128190;</a>
+		  
+		  <a href="#" class="secondary" id='reset-button' style="margin-right:5px;font-size:11px"
+	      onclick="event.preventDefault();resetNB()"   >&#8634;</a>
+		  
 	    
 	    	<a href="#" class="secondary" style="margin-right:5px;font-size:16px"
 	    	 data-tooltip="Take the notebook out of sandbox" data-placement="bottom"  id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯</a>		    

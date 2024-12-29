@@ -1,5 +1,6 @@
 sandboxAI = {};
 
+
 sandboxAI.query = function (query) {
 	
 	function extractCode(input) {
@@ -37,11 +38,12 @@ sandboxAI.query = function (query) {
         port2.onmessage = (event) => {
 			
             if (event.data && event.data.hasOwnProperty('final-reply')) {
-				codemirror.setValue( extractCode(event.data['final-reply'] ));
-				console.log(event.data['final-reply']);
-				codemirror.setValue(extractCode(reply));
+				//codemirror.setValue( extractCode(event.data['final-reply'] ));
+				
+				
+				
 				chunks.push(event.data.chunk);
-                resolve({ chunks, finalReply: "\nTotal tokens: "+chunks.length }); // Resolve with chunks and final reply
+                resolve({ chunks, finalReply: event.data['final-reply'] }); // Resolve with chunks and final reply
 				
             } else if (event.data && event.data.hasOwnProperty('chunk')) {
 				chunks.push(event.data.chunk);
@@ -65,4 +67,6 @@ sandboxAI.query = function (query) {
         window.parent.postMessage({ 'ai-query': query,'markedownNB':markedownNB }, '*', [port1]);
     });
 };
+
+
 

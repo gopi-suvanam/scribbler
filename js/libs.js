@@ -2,8 +2,79 @@
 scrib.MAX_LENGTH_TO_SHOW=10000;
 scrib.TIMEOUT_FOR_BLOCKING_CALLS=5000;
 	
+scrib.blankNB={
+  "metadata" : {
+     "name":"Scribbler Notebook",
+    "language_info": {
+        "name" : "JavaScipt",
+        "version": "8.0"
+    }
+  },
+  "jsnbversion":"v0.1",
+  "cells" : [],
+  "source":"https://github.com/gopi-suvanam/scribbler",
+  "run_on_load":false
+};
 
 
+scrib.markdownToJSNB=function(markdown,blankNB) {
+    const languageMap={'html':'html','markdown':'md','javascript':''};
+	blankNB=blankNB||{};
+    const cells = [];
+    const lines = markdown.split('\n');
+    let currentSection = '';
+    let currentType = 'doc'; // Start with documentation by default
+    let currentLang = '';
+
+    lines.forEach(line => {
+        if (line.trim().startsWith('```')) {
+            const lang = line.trim().slice(3).trim(); // Extract the language (e.g., 'html', 'javascript')
+            
+            if (currentType === 'code') {
+                // End the current code block
+                cells.push({ code: currentSection, type: 'code', status: "", output: "" });
+                currentSection = '';
+                currentType = 'doc'; // Switch to documentation
+                currentLang = '';
+            } else {
+                // End the current documentation section
+                const output = marked.parse(currentSection); // Render documentation as HTML
+                if (currentSection.trim()) {
+                    cells.push({ code: currentSection, type: 'html', status: "", output });
+                }
+			    
+			    if(lang in languageMap) currentLang=languageMap[lang];
+			    else currentLang=lang;
+                currentSection = currentLang?'//>'+currentLang:'';
+                currentType = 'code'; // Switch to code
+                
+            }
+        } else {
+            currentSection += (currentSection ? '\n' : '') + line;
+        }
+    });
+
+    // Push the last section
+    if (currentSection.trim()) {
+        let output = "";
+        if (currentType === 'doc') {
+            output = marked.parse(currentSection); // Render final doc section as HTML
+        }
+        cells.push({ code: currentSection, type: currentType=='doc'?'html':'code', status: "", output });
+    }
+
+    blankNB.cells = cells;
+    return blankNB;
+}
+
+scrib.jsToJSNB=function(code,blankNB) {
+	blankNB=blankNB||{};
+	const cells =[];
+	cells.push({code:code,type:'code',output:"",status:""});
+	blankNB.cells = cells;
+    return blankNB;
+}
+	
 scrib.isInIFrame = function() {
     try {
         return window.self !== window.top;

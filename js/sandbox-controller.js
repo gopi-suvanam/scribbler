@@ -8,19 +8,7 @@ sandbox.statusData={
 	running_embedded:false
 }
 
-blankNB={
-  "metadata" : {
-     "name":"Starting JS Notebook Example",
-    "language_info": {
-        "name" : "JavaScipt",
-        "version": "8.0"
-    }
-  },
-  "jsnbversion":"v0.1",
-  "cells" : [],
-  "source":"https://github.com/gopi-suvanam/jsnb",
-  "run_on_load":false
-}
+
 
 sandbox.editors={}
 
@@ -173,9 +161,16 @@ sandbox.codeMirrorOptions={
           }
 }
 
-sandbox.insertCell=async function(type,after){
-	let i=sandbox.statusData.num_blocks;
 	
+		
+			
+
+	
+
+
+sandbox.insertCell=async function(type,after,content,output,status){
+	let i=sandbox.statusData.num_blocks;
+	const blockId=i;
 	
 	// Apply the appropriate CodeMirror theme
 	
@@ -185,18 +180,19 @@ sandbox.insertCell=async function(type,after){
 
 	const div = document.createElement('div');
   	div.innerHTML = block_html; 
-  	div.setAttribute('id','block'+i);
+  	div.setAttribute('id','block'+blockId);
 
   	//
   	if(after==undefined){
   		scrib.getDom("main").appendChild(div);
   		
   	}else{
+		console.log("block Id for after...",after);
   		scrib.getDom("block"+after).after(div)
   	}
 
 	const input_div=await scrib.waitForDom("input"+i); 
-	{
+	if(input_div){
 	
 		cm = new CodeMirror(
 			node=>{input_div.appendChild(node);}, 
@@ -220,12 +216,27 @@ sandbox.insertCell=async function(type,after){
 	  	cm.focus();
 		cm.setCursor(1,0);
 	  	sandbox.editors[i]=cm;
+		
+		
+		if(content) {
+			const input_i=await scrib.waitForDom("input"+i);
+			input_i.childNodes[0].CodeMirror.setValue(content);
+		}
+		if(output)	{
+			const output_i=await scrib.waitForDom("output"+i);
+			output_i.innerHTML=output;
+		}
+		if(status){
+			const status_i=await scrib.waitForDom("status"+i);
+			status_i.innerHTML=status;
+		}
+			
 
 	}
 	
 
 	sandbox.statusData.num_blocks=i+1;
-
+	return blockId;
 }
 
 
@@ -235,7 +246,7 @@ sandbox.insertCell=async function(type,after){
 
 
 sandbox.getNB=function(){
-	const nb=JSON.parse(JSON.stringify(blankNB));
+	const nb=JSON.parse(JSON.stringify(scrib.blankNB));
  	
  	const main=scrib.getDom("main");
  	const blocks=main.childNodes;
@@ -284,6 +295,34 @@ sandbox.getMarkdownNB=function(){
 	
 }
 
+sandbox.markdownToCells = async function(content){
+	const cells = scrib.markdownToJSNB(content).cells;
+	
+	if (cells.length==0) return;
+	let currBlock=scrib.currBlock;
+	const initBlock=currBlock;
+	
+	scrib.getDom('cell_type'+initBlock).value=cells[0].type;
+		
+	if(cells[0].code) {
+		const input_i=await scrib.waitForDom("input"+initBlock);
+		input_i.childNodes[0].CodeMirror.setValue(cells[0].code);
+	}
+	if(cells[0].output)	{
+		const output_i=await scrib.waitForDom("output"+initBlock);
+		output_i.innerHTML=cells[0].output;
+	}
+	if(cells[0].status){
+		const status_i=await scrib.waitForDom("status"+initBlock);
+		status_i.innerHTML=cells[0].status;
+	}
+	for(let cellNum=1;cellNum<cells.length;cellNum+=1){
+		const cell=cells[cellNum];
+		//await sandbox.insertCell(x['type'],undefined,x['code'],x['output'],x['status']);
+		currBlock=await sandbox.insertCell(cell.type,currBlock,cell.code,cell.output,cell.status);
+	};
+	return;
+}
 sandbox.loadJSNB=async function(nb){
 	try{
 		const main = await scrib.waitForDom("main");
@@ -301,14 +340,8 @@ sandbox.loadJSNB=async function(nb){
 		sandbox.statusData.num_blocks=0;
 		for(let i=0;i<nb.cells.length;i++){
 			x=nb.cells[i];
-			await sandbox.insertCell(x['type']);
-			const input_i=await scrib.waitForDom("input"+i);
-			input_i.childNodes[0].CodeMirror.setValue(x['code']);
-			const output_i=await scrib.waitForDom("output"+i);
-			output_i.innerHTML=x['output'];
-			const status_i=await scrib.waitForDom("status"+i);
-			status_i.innerHTML=x['status'];
-			
+			await sandbox.insertCell(x['type'],undefined,x['code'],x['output'],x['status']);
+
 		};
 		sandbox.statusData.num_blocks=nb.cells.length;
 		

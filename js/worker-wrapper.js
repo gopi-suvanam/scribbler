@@ -12,7 +12,8 @@ worker.processHTML = function(code){
 	if (code.includes("<style>")) 
 		return code;
 	const markdownPrompt = /^\/\/>\s*md/i;
-	if (markdownPrompt.test(code)){
+	const isMarkDown=true;//markdownPrompt.test(code);
+	if (isMarkDown){
 		const updatedCode = marked.parse(code.replace(markdownPrompt,""));
 		return marked.parse(updatedCode);
 	}
@@ -29,29 +30,46 @@ worker.addWebWorker= ()=>{
 		  const workerScriptUrl = URL.createObjectURL(workerBlob);
 		  var web_worker = new Worker(workerScriptUrl);
 		  worker.webworker=web_worker;
-
 		}
 
 }
 worker.evaluate= async function(code){
 
 	const htmlPrompt = /^\/\/>\s*html/i;
-	 if( htmlPrompt.test(code))
-	 {
+	if( htmlPrompt.test(code))
+	{
 		 const updatedCode = code.replace(htmlPrompt, "");
-	     	 return updatedCode;
+	     return updatedCode;
 	}
-        const markdownPrompt = /^\/\/>\s*md/i;
+	const cssPrompt = /^\/\/>\s*css/i;
+	if( cssPrompt.test(code))
+	{
+		 const updatedCode = code.replace(cssPrompt, "");
+	     return "<style>"+updatedCode+"</style>";
+	}
+	
+	const markdownPrompt = /^\/\/>\s*md/i;
 	if( markdownPrompt.test(code))
 	{
-		 const updatedCode = marked.parse(code.replace(markdownPrompt,""));
-	     return updatedCode;
+		 const inputBlock=scrib.currBlock;
+		 sandbox.markdownToCells(code.replace(markdownPrompt,""));
+		 scrib.getDom("input"+inputBlock).childNodes[0].CodeMirror.setValue('')
+		 return '';
+	     //return updatedCode;
 	}
 	
 	const aiPrompt = /^\/\/>/i;
 	if( aiPrompt.test(code)){
-		 const updatedCode = await sandboxAI.query(code.replace(aiPrompt,""));
-	     return marked.parse(updatedCode.finalReply);
+		 const aiReponse = await sandboxAI.query(code.replace(aiPrompt,""));
+		 
+		 const inputBlock=scrib.currBlock;
+		 sandbox.markdownToCells(aiReponse.finalReply);
+		 
+		 scrib.getDom("input"+inputBlock).childNodes[0].CodeMirror.setValue('')
+		 
+		 //scrib.getDom("input"+inputBlock).childNodes[0].CodeMirror.setValue('')
+		 
+	     return '';//marked.parse(aiReponse.finalReply);
 		 //return;
 	}
 	
