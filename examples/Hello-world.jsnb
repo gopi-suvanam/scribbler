@@ -75,9 +75,9 @@
       "type": "code"
     },
     {
-      "code": "## Sample Notebooks\n___\n  You can do a lot more using Scribbler. Some sample notebooks are below:\n1.  [Dynamic Simulation](.?jnsb=./examples/Dynamic-Simulation.jsnb)\n2.  [Option Pricing](.?jnsb=./examples/Black-Scholes.jsnb)\n3.  [Solving Differential Equation](.?jnsb=./examples/Runge-Kutta-for-Differential-Equations.jsnb)\n4.  [Machine Learning](.?jnsb=./examples/Decentralized-ML-Model-Storage.jsnb)\n5.  [Charts Using Plotly](.?jnsb=./examples/Plotly-Example.jsnb)",
+      "code": "## Sample Notebooks\n___\n  You can do a lot more using Scribbler. Some sample notebooks are below:\n1.  [Dynamic Simulation](.?jsnb=./examples/Dynamic-Simulation.jsnb)\n2.  [Option Pricing](.?jsnb=./examples/Black-Scholes.jsnb)\n3.  [Solving Differential Equation](.?jsnb=./examples/Runge-Kutta-for-Differential-Equations.jsnb)\n4.  [Machine Learning](.?jsnb=./examples/Decentralized-ML-Model-Storage.jsnb)\n5.  [Charts Using Plotly](.?jsnb=./examples/Plotly-Example.jsnb)",
       "status": "",
-      "output": "<h2>Sample Notebooks</h2>\n<hr>\n<p>  You can do a lot more using Scribbler. Some sample notebooks are below:</p>\n<ol>\n<li><a href=\".?jnsb=./examples/Dynamic-Simulation.jsnb\">Dynamic Simulation</a></li>\n<li><a href=\".?jnsb=./examples/Black-Scholes.jsnb\">Option Pricing</a></li>\n<li><a href=\".?jnsb=./examples/Runge-Kutta-for-Differential-Equations.jsnb\">Solving Differential Equation</a></li>\n<li><a href=\".?jnsb=./examples/Decentralized-ML-Model-Storage.jsnb\">Machine Learning</a></li>\n<li><a href=\".?jnsb=./examples/Plotly-Example.jsnb\">Charts Using Plotly</a></li>\n</ol>\n",
+      "output": "<h2>Sample Notebooks</h2>\n<hr>\n<p>  You can do a lot more using Scribbler. Some sample notebooks are below:</p>\n<ol>\n<li><a href=\".?jsnb=./examples/Dynamic-Simulation.jsnb\">Dynamic Simulation</a></li>\n<li><a href=\".?jsnb=./examples/Black-Scholes.jsnb\">Option Pricing</a></li>\n<li><a href=\".?jsnb=./examples/Runge-Kutta-for-Differential-Equations.jsnb\">Solving Differential Equation</a></li>\n<li><a href=\".?jsnb=./examples/Decentralized-ML-Model-Storage.jsnb\">Machine Learning</a></li>\n<li><a href=\".?jsnb=./examples/Plotly-Example.jsnb\">Charts Using Plotly</a></li>\n</ol>\n",
       "type": "html"
     },
     {
