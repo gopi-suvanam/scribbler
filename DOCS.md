@@ -13,7 +13,8 @@
 10. [Exporting-Importing](#exporting-importing)
 11. [Sandboxed Environment](#sandboxed-enviroment)
 12. [Embedding Notebooks](#embedding-notebooks)
-13. [Using external libraries](#using-external-libraries)
+13. [Publishing Notebooks](#publishing-notebooks)
+14. [Using external libraries](#using-external-libraries)
 
 ## Installing
 - The tool does not require any special installation. It can be downloaded/cloned from GitHub.
@@ -133,6 +134,14 @@ These shortcuts are global
 <iframe id="sandbox" style="width:100%;height:100%" src ="https://app.scribbler.live/sandbox.html?jsnb=github:user/repository/path-to-file"></iframe>
 ```
 - Note: Embed a notebook in your page only if you trust the notebook.
+
+## Publishing Notebooks
+First, push the notebook to Github or any other online repo. Now that your notebook is connected to GitHub, click on the Publish button at the top menu. This will generate three published links:
+
+1. Notebook Link: This link allows you to continue editing and updating your notebook. Share this link with collaborators or use it to make further changes to your code.
+2. Published App Link: This link can be used directly as an application in the browser. Share this link with others to showcase your interactive application. Note: This will not give access to secured features like cookies, camera etc. For accessing those you will have to embed the notebook in another html page as an iframe using the embedding code in the next point.
+3. Code Snippet for Embedding: This code snippet can be used to embed your notebook as an iframe in other applications. Simply copy and paste the code into your desired platform to share your interactive content. Build any static html page and embed the notebook inside the html page.
+
 
 ## Using external libraries
 External libraries can be used using two specially built functions:
