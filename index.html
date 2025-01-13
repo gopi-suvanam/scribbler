@@ -47,7 +47,7 @@
 
 	        <li><a onclick="download_nb()">Download NB</a><hr></li>
 	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
-	        <li><a href="#"  onclick="event.preventDefault();shareBtn()">Share/Publish</a><hr></li>
+	        <li><a href="#"  onclick="event.preventDefault();shareBtn()">Publish the Notebook</a><hr></li>
 	        <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
 	        <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
 	        <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
@@ -110,7 +110,7 @@
 	    
 	    <li>
 	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()">
-	    Share</summary>
+	    Publish</summary>
 	    </li>
 	  </ul>
 	  
@@ -186,7 +186,7 @@
 	      <a href="#" tabindex="0"   onclick="event.preventDefault();upload_to_git()" style="background-color:#fed302" role="button">Push to Git</a>
 	      <a href="#" tabindex="0" onclick="event.preventDefault();load_from_git()"  style="background-color:#fed302" role="button">Load from Git</a>
 	     <br>
-	     <a href='#' onclick="closeModal(scrib.getDom('git-import-export'));openModal(scrib.getDom('shareNB'));">Share the notebook with the world!</a>
+	     <a href='#' onclick="closeModal(scrib.getDom('git-import-export'));openModal(scrib.getDom('shareNB'));">Publsih and share the notebook with the world!</a>
 	     <footer>
 	     	<p>The app does not store the access token on any server. It is stored only used to send requests to GitHub API. The notebook script cannot access this token as it is running in a sandboxed iframe.<p>
 	     </footer>
@@ -239,28 +239,20 @@
 	    <div style="border:thin solid grey;width:100%;margin:5px;padding:5px">
 	    
 	    <span>
-	      Sharable Link:&nbsp;
+	      <b>Link for Collaboration:</b>&nbsp;
 	    </span>
 	    <span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px" id="sharableLink"></span>&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('sharableLink')">&#128203;</a>
 	    <hr>
-	    <p>
-	    	This will show the notebook with all controls. This link is ideal for collaboration. Any user with the link and access to the Github repo of the notebook and push the changes to Github.
-	    </p>
-	    </div>
+	   
 	    
-	    <hr>
 	    <span>
-	      Sharable Link Without Menu/Code:&nbsp;
+	      <b>Published Notebook:</b>&nbsp;
 	    </span>
 	    <span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px" id="sharableLinkClean"></span>&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('sharableLinkClean')">&#128203;</a>
 	    <hr>
-	    <p>
-	    	This will show the notebook without controls. The code is also note show. This link is ideal for using published notebooks. 	    </p>
-	    </div>
 	    
-	    <div style="border:thin solid grey;width:100%;margin:5px;padding:5px">
 	     <span>
-	      iFrame to embed::&nbsp;
+	      <b>iFrame to Embed</b>&nbsp;
 	    </span>
 	    <span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px"  id="iframeLink"></span>
 	    &nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('iframeLink')">&#128203;</a>
