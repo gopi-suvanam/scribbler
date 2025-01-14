@@ -112,6 +112,10 @@
 	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()">
 	    Publish</summary>
 	    </li>
+		    <li>
+	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" >
+	    <a href="https://hub.scribbler.live">Hub</a></summary>
+	    </li>
 	  </ul>
 	  
 	  
@@ -186,7 +190,7 @@
 	      <a href="#" tabindex="0"   onclick="event.preventDefault();upload_to_git()" style="background-color:#fed302" role="button">Push to Git</a>
 	      <a href="#" tabindex="0" onclick="event.preventDefault();load_from_git()"  style="background-color:#fed302" role="button">Load from Git</a>
 	     <br>
-	     <a href='#' onclick="closeModal(scrib.getDom('git-import-export'));openModal(scrib.getDom('shareNB'));">Publsih and share the notebook with the world!</a>
+	     <a href='#' onclick="closeModal(scrib.getDom('git-import-export'));openModal(scrib.getDom('shareNB'));">Publish and share the notebook with the world!</a>
 	     <footer>
 	     	<p>The app does not store the access token on any server. It is stored only used to send requests to GitHub API. The notebook script cannot access this token as it is running in a sandboxed iframe.<p>
 	     </footer>
