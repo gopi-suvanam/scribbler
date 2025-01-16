@@ -31,137 +31,132 @@
 	
 	</head>
   <body style="height:100%" >
-	<nav id="menu"> <!-- Menu bar -->
-	  <ul style="width:50%;float:left">
-	    <li id="logo"><img src='images/logo2.png' id=""/></li>
-	    <li >
-	      <details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">File</summary>
-	      <ul role="listbox">
-	        <li><a href="./#" target="_blank">New Blank NB</a></li>
-	        <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
-			<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
-			<li><a onclick="loadFileClick()">Upload NB</a></li>
-			<li><a onclick="loadFileClick('md')">Upload Markdown</a></li>
-			<li><a onclick="loadFileClick('js')">Upload JS Script</a></li>
 
-	        <li><a onclick="download_nb()">Download NB</a><hr></li>
-	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
-	        <li><a href="#"  onclick="event.preventDefault();shareBtn()">Publish the Notebook</a><hr></li>
-	        <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
-	        <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
-	        <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
-	        <li><a onclick="download_js()">Download as JS</a><hr></li>
-	        
-	      </ul>
-	      </details>
-	    </li>
-	    <li role="list" dir="ltr">
-	    	<details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">Edit</summary>
-	      <ul role="listbox">
+	<header id="page-header" class="header sticky-header">
+		<div class="top-header">
+			<div class="logo-wrapper">
+				<img src='images/logo2.png' id="logo1" alt="Scribbler Logo"/>
+			</div>
+			<div class="navigation-wrapper">
+				<nav class="main-navigation">
+					<ul>
+						<li>
+							<details role="list" dir="ltr">
+							<summary tabindex="0" aria-haspopup="listbox">File</summary>
+							<ul role="listbox">
+							  <li><a href="./#" target="_blank">New Blank NB</a></li>
+							  <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
+							  <li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
+							  <li><a onclick="loadFileClick()">Upload NB</a></li>
+							  <li><a onclick="loadFileClick('md')">Upload Markdown</a></li>
+							  <li><a onclick="loadFileClick('js')">Upload JS Script</a></li>
+				  
+							  <li><a onclick="download_nb()">Download NB</a><hr></li>
+							  <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
+							  <li><a href="#"  onclick="event.preventDefault();shareBtn()">Publish the Notebook</a><hr></li>
+							  <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
+							  <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
+							  <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
+							  <li><a onclick="download_js()">Download as JS</a><hr></li>
+							  
+							</ul>
+							</details>
+						</li>
+						<li role="list" dir="ltr">
+							<details role="list" dir="ltr">
+							<summary tabindex="0" aria-haspopup="listbox">Edit</summary>
+							<ul role="listbox">
+							  <li><a onclick="insert_cell('code')">Insert code cell</a></li>
+							  <li><a onclick="insert_cell('html')">Insert doc cell</a></li>
+							  <li><a onclick="insert_cell('style')">Insert style cell</a><hr></li>
+							  <li><a data-target="options" onClick="toggleModal(event)">Options</li>
+							  <li><a onclick="event.preventDefault();break_sandbox()" >Trust the NB</a></li>
+							  <li><a href="./secrets.html" target="_blank">Secrets</a></li>
+							</ul>
+							</details>
+						</li>
+						<li role="list" dir="ltr">
+							<details role="list" dir="ltr">
+							<summary tabindex="0" aria-haspopup="listbox">AI</summary>
+							
+							<ul role="listbox" id="AI-Models">
+							  
+							</ul>
+						   
+							</details>
+						</li>
+						  
+						<li role="list" dir="ltr">
+							<details role="list" dir="ltr">
+							<summary tabindex="0" aria-haspopup="listbox">Run</summary>
+							<ul role="listbox">
+							  <li><a onclick="run_all()">Run all</a></li>
+							</ul>
+							</details>
+						</li>
+						 
+						<li role="list" dir="ltr">
+						    <details role="list" dir="ltr">
+							<summary tabindex="0" aria-haspopup="listbox">Help</summary>
+							<ul role="listbox">
+							  <li><a href="https://join.scribbler.live" target="_blank" >Discord</a> </li>
+							  <li><a href='https://scribbler.live/docs' target='_blank'>Docs</a></li>
+							  <li><a href="https://scribbler.live/samples.html" target='_blank'>Gallery</a></li>
+							  <li><a href="https://scribbler.live/tutorials/" target='_blank'>Tutorials</a></li>
+						  	  <li><a href="https://github.com/gopi-suvanam/jsnb/" target="_blank" >Source</a></li>
+							</ul>
+							</details>
+						</li>
+						  
+						  <!--<li>
+							  <summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()">
+						  Publish</summary>
+						  </li>-->
+						<li>
+							<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" >
+						    <a href="https://hub.scribbler.live">Hub</a></summary>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div id="welcome" class="info-wrapper">
+				<p class="secondary" style="display:inline;float:right;margin-right:5px"  id='username'></p>
+				<p style="display:inline;float:right" class="secondary">Welcome&nbsp;</p>
+			</div>
+		</div>
+		<div class="bottom-header container">
+			<div class="nb-name-wrapper">
+				<!-- Title of the notebook -->
+					<a id="nb_name" class="nb-name" contentEditable="true">Loading a note book...
+					</a>
+					<iframe 
+					frameborder="0"
+					scrolling="0"
+					width="170"
+					height="30"
+					title="GitHub"
+					style="display:none"
+					id="git-stars">
+				   </iframe>
+			</div>
+			<div class="nb-tools-wrapper">
+				<a href="#" class="nb-tool" data-tooltip="Sharable link/ IFrame code" data-placement="bottom" 
+	      		onclick="event.preventDefault();shareBtn()">⎘</a>
+
+				<a href="#" class="nb-tool" data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
+				onclick="event.preventDefault();run_all()"  >&#9658;</a>
 			
-	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
-	        <li><a onclick="insert_cell('html')">Insert doc cell</a></li>
-	        <li><a onclick="insert_cell('style')">Insert style cell</a><hr></li>
-	        <li><a data-target="options" onClick="toggleModal(event)">Options</li>
-	        <li><a onclick="event.preventDefault();break_sandbox()" >Trust the NB</a></li>
-	        <li><a href="./secrets.html" target="_blank">Secrets</a></li>
-	        
-	      </ul>
-	      </details>
-	    </li>
-		<li role="list" dir="ltr">
-	      <details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">AI</summary>
+				<a href="#" class="secondary nb-tool" style="font-size:12px" id='save-button' onclick="event.preventDefault();saveLocalFile()"   >&#128190;</a>
 		  
-	      <ul role="listbox" id="AI-Models">
-			
-	      </ul>
-		 
-	      </details>
-	    </li>
-		
-	   <li role="list" dir="ltr">
-	    	<details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">Run</summary>
-	      <ul role="listbox">
-	        <li><a onclick="run_all()">Run all</a></li>
+				<a href="#" class="secondary nb-tool" id='reset-button'
+				onclick="event.preventDefault();resetNB()"   >&#8634;</a>
 
-	      </ul>
-	      </details>
-	    </li>
-	   
-	    <li role="list" dir="ltr">
-	    <details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">Help</summary>
-	      <ul role="listbox">
-	        <li><a href="https://join.scribbler.live" target="_blank" >Discord</a> </li>
-	        <li><a href='https://scribbler.live/docs' target='_blank'>Docs</a></li>
-	        <li><a href="https://scribbler.live/samples.html" target='_blank'>Gallery</a></li>
-	        <li><a href="https://scribbler.live/tutorials/" target='_blank'>Tutorials</a></li>
-	        
-	    <li>
-	   	<a href="https://github.com/gopi-suvanam/jsnb/" target="_blank" >Source</a> 
-	    </li>
-	      </ul>
-	      </details>
-	    </li>
-	    
-	    <!--<li>
-	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()">
-	    Publish</summary>
-	    </li>-->
-		    <li>
-	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" >
-	    <a href="https://hub.scribbler.live">Hub</a></summary>
-	    </li>
-	  </ul>
-	  
-	  
-	  <div id="welcome" style="float:right;width:50%;">
-	    <p class="secondary" style="display:inline;float:right;margin-right:5px"  id='username'></p>
-	    <p style="display:inline;float:right" class="secondary">Welcome&nbsp;</p>
-	    
-	  </div>
-	</nav>
-	<div class="container" id="sub-menu" style='display:flex;overflow:visible'>
-	    <div style="float:left;width:70%">
-	    <a id="nb_name" contentEditable="true">Loading a note book...</a> 
-	    
-	    <iframe 
-		frameborder="0"
-		scrolling="0"
-		width="170"
-		height="30"
-		title="GitHub"
-		style="display:none"
-		id="git-stars">
-	   </iframe>
-			    
-	    </div><!-- Title of the notebook -->
-	    <div style="float:right;text-align:right;width:30%">
-	
+				<a href="#" class="secondary nb-tool"
+				data-tooltip="Take the notebook out of sandbox" data-placement="bottom"  id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯</a>
+			</div>
+		</div>
+	</header>
 
-	       <a href="#"  style="margin-right:5px;font-size:17px" data-tooltip="Sharable link/ IFrame code" data-placement="bottom" 
-	      onclick="event.preventDefault();shareBtn()">⎘</a>
-	      
-
-	      <a href="#" style="margin-right:5px;font-size:14px"  data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
-	      onclick="event.preventDefault();run_all()"  >&#9658;</a>
-	   
-	      <a href="#" class="secondary" id='save-button' style="margin-right:5px;font-size:11px"
-	      onclick="event.preventDefault();saveLocalFile()"   >&#128190;</a>
-		  
-		  <a href="#" class="secondary" id='reset-button' style="margin-right:5px;font-size:16px"
-	      onclick="event.preventDefault();resetNB()"   >&#8634;</a>
-		  
-	    
-	    	<a href="#" class="secondary" style="margin-right:5px;font-size:16px"
-	    	 data-tooltip="Take the notebook out of sandbox" data-placement="bottom"  id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯</a>		    
-	    </div>
-	    
-	</div>
 	<div class="container" id="ai-loading" style="margin-top:5px;display:none">
 		<progress id="ai-loading-progress-bar" style="display:block" value="0" max="1"></progress>
 		<div id="ai-loading-progress-text" style="display:block" >AI Not loaded</div>

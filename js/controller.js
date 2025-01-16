@@ -56,9 +56,8 @@ load_from_url=async function(){
 	const urlParams = new URLSearchParams(window.location.search);
 	const hideMenu = urlParams.get('hide-menu');
 	const runOnLoad = urlParams.get('run-on-load');
-	if(hideMenu === 'true'){
-		scrib.getDom("menu").style.display= "none";
-		scrib.getDom("sub-menu").style.display= "none";
+	if(hideMenu === 'true'){	
+		scrib.getDom("page-header").style.display= "none";
 		scrib.getDom("footer").style.display= "none";
 	}
 	
