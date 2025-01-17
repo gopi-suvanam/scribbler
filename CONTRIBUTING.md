@@ -23,9 +23,8 @@ the original codebase.
 
 ### 2. Clone The Fork Repository
 
-Copy The Fork Repo Link Url
+Use this link for forking: [Scribbler Fork](https://github.com/gopi-suvanam/scribbler/fork)
 
-<img src="./github/Assets/step2.png" width="100%">
 
 ### 2. Open Terminal
 
