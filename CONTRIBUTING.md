@@ -6,6 +6,8 @@ our contribution guidelines to help keep
 the process smooth and efficient for
 everyone.
 
+Go through code documenation before contributing: [Code-Docs](CODE-DOCS.md)
+
 ## How to Contribute
 
 We welcome contributions to improve this
