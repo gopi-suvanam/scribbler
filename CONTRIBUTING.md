@@ -28,9 +28,9 @@ Use this link for forking: [Scribbler Fork](https://github.com/gopi-suvanam/scri
 
 ### 2. Open Terminal
 
-- Open Terminal in Linux or Git Bash if
+- Open Terminal in Linux or Git Bash/Cmd/Power Shell if
   You are Using Window and then follow
-  these Collond
+  these commands:
 
 **Example**
 
