@@ -1,63 +1,30 @@
-# Product and Code Ownership Notice
-
-This product, including its design and
-code, is our intellectual property. Any
-attempt to replicate, clone, or steal
-our design and/or code will be
-considered a violation of our rights.
-You will be held responsible for any
-legal consequences that arise from such
-actions. We will also pursue legal
-action and file complaints against any
-individual or entity attempting to copy
-our work.
-
----
 
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
 
-We, as members, contributors, and
-leaders, pledge to create a
-harassment-free environment in our
-community. This includes promoting
-respect for individuals regardless of
-their background, appearance, identity,
-experience, or other personal
-characteristics.
+We, as members, contributors, and leaders, pledge to create a harassment-free environment in our community. This includes promoting respect for individuals regardless of their background, appearance, identity, experience, or other personal characteristics.
 
-We are committed to fostering a
-community that is inclusive, welcoming,
-and healthy for all participants.
+We are committed to fostering a community that is inclusive, welcoming, and healthy for all participants.
 
 ## Our Standards
 
 The following behaviors help ensure a
 positive environment:
 
-- Demonstrating empathy and kindness
-  toward others
-- Respecting differing opinions and
-  experiences
-- Giving and accepting constructive
-  feedback graciously
-- Accepting responsibility for mistakes
-  and learning from them
-- Focusing on the community’s well-being
-  as a whole
+- Demonstrating empathy and kindness toward others
+- Respecting differing opinions and experiences
+- Giving and accepting constructive feedback graciously
+- Accepting responsibility for mistakes and learning from them
+- Focusing on the community’s well-being as a whole
 
 Unacceptable behaviors include:
 
-- Sexualized language or imagery, sexual
-  advances, or harassment
-- Trolling, insults, derogatory
-  comments, and personal attacks
+- Sexualized language or imagery, sexual advances, or harassment
+- Trolling, insults, derogatory comments, and personal attacks
 - Harassment, both public and private
-- Publishing private information without
-  permission
-- Copying or cloning our designs and
-  code
+- Publishing private information without permission
+
 
 ## Enforcement Responsibilities
 
@@ -83,7 +50,7 @@ accounts.
 Instances of abuse, harassment, or other
 unacceptable behavior can be reported to
 the community leaders at
-**abhishek9661342993@gmail.com**. All
+**team@scribbler.live**. All
 reports will be taken seriously and
 investigated promptly and fairly.
 
@@ -133,50 +100,4 @@ aggression.
 all community activities and
 interactions.
 
-### Key Points to Note:
 
-1. **Branch Naming Conventions**:
-   - Clear examples of naming
-     conventions (`bugfix/`, `feature/`,
-     `doc/`, `modified/`, `other/`).
-   - The instructions emphasize
-     consistent and descriptive naming
-     for easier identification of
-     changes.
-2. **Steps to Create a Branch**:
-   - Step-by-step guidance for creating
-     a new branch in Git.
-   - Example commands to help users who
-     may be unfamiliar with Git
-     operations.
-3. **How to Handle Modifications**:
-
-   - Added instructions for creating
-     branches related to modifications
-     like messages, which follow the
-     structure
-     `modified/[pageName]/[message]`.
-   - Example:
-     `modified/homepage/update-welcome-message`.
-
-4. **Commit Message Format**:
-
-   - Emphasized the importance of clear
-     and consistent commit messages for
-     better readability and
-     traceability.
-
-5. **Format Code**:
-
-   - Always Format Code After Push code
-     use Pritter to format Code
-
-   ```bash
-    $ npm run format
-
-   ```
-
-6. **Clean Cole**:
-
-   - Always Write Clean Code and Follow
-     Proper File Structute
