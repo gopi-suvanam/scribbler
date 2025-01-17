@@ -21,8 +21,6 @@ the original codebase.
 
 
 
-
-
 ### 2. Clone The Fork Repository
 
 Copy The Fork Repo Link Url
@@ -39,18 +37,19 @@ Copy The Fork Repo Link Url
 
 ```bash
 $ git clone https://github.com/gopi-suvanam/scribbler #you can also give forked repo link here.
-
 $ cd scribbler
-
 ```
 
 **Start Server**
-
+If you are using node:
 ```bash
-$ npx serve #If you are using node.. else you can use "python -m http.server" or put the folder in www of your webserver
-
+$ npx serve 
 ```
-
+If you are comfortable with python:
+```bash
+$ python -m http.server
+```
+Alternatively you can place scribble in the www of any webserver.
 
 
 ### 3. Create a Branch
@@ -173,4 +172,4 @@ git push origin [branch-name]
 
 7. **Create a Pull Request**:
 
-- Once your changes are ready, open a
+- Once your changes are ready, open a pull request on GithHub
