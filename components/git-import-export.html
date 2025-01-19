@@ -1,0 +1,21 @@
+<dialog id="git-import-export"> <!-- Modal for Github export/import -->
+	  <article>
+	    <h5>Load or push your code from/to GitHub</h5>
+	    <p>
+	      Load a JSNB from public repositories on GitHub or private repositories where you have access. Will require access token. <a  target="_blank" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">How to get access token?</a>
+	    </p>
+	    <input type='text' onchange="update_owner()" id='token' xplaceholder='Access Token'></input>
+	    <input type='text' onchange="update_repos()" id='user' placeholder='Owner'></input>
+	    <input list='repos' id='repo' placeholder='Repo'></input><datalist id='repos'></datalist>
+	    <input type='text' id='path' placeholder='Path'></input>
+
+	      <a href="#" data-target="git-import-export" onClick="event.preventDefault();toggleModal(event)" role="button" class="secondary">Cancel</a>
+	      <a href="#" tabindex="0"   onclick="event.preventDefault();upload_to_git()" style="background-color:#fed302" role="button">Push to Git</a>
+	      <a href="#" tabindex="0" onclick="event.preventDefault();load_from_git()"  style="background-color:#fed302" role="button">Load from Git</a>
+	     <br>
+	     <a href='#' onclick="closeModal(scrib.getDom('git-import-export'));openModal(scrib.getDom('shareNB'));">Publish and share the notebook with the world!</a>
+	     <footer>
+	     	<p>The app does not store the access token on any server. It is stored only used to send requests to GitHub API. The notebook script cannot access this token as it is running in a sandboxed iframe.<p>
+	     </footer>
+	  </article>
+	</dialog>

@@ -42,7 +42,7 @@ loadFileClick=async function(type) {
 	if (type=='js') content=scrib.jsToJSNB(content,scrib.blankNB);
 	
 	
-	scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
+	scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-same-origin allow-top-navigation allow-popups allow-modals");
         scrib.getDom("sandbox").setAttribute("src","sandbox.html?var=xxx");
       	scrib.getDom("break-sandbox").style.display='inline';
       	sandbox_iframe=await scrib.waitForDom("sandbox");
@@ -342,7 +342,7 @@ loadLocalFile= async function(id){
 			scrib.getDom("break-sandbox").style.display='none';
 		}
 		else{
-			scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
+			scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-modals allow-same-origin allow-camera allow-payment-request");
 			scrib.getDom("break-sandbox").style.display='inline';
 		}
 		scrib.getDom("sandbox").setAttribute("src","sandbox.html?var=xxx");
@@ -422,13 +422,29 @@ keyDown=function(e) {
 			
 	  }
 	}
+	
+	
+//This loads components dynamically
+  class DynamicInclude extends HTMLElement {
+	connectedCallback() {
+	  const url = this.getAttribute('data');
+	  fetch(url)
+		.then(response => response.text())
+		.then(content => {
+		  this.innerHTML = content;
+		});
+	}
+  }
+
+  customElements.define('html-component', DynamicInclude);
+		  
 insitialize_page=async function(){
 
 	window.onload =  function() {
 		first_load=true;
 		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
-		scrib.getDom("break-sandbox").style.display='inline';
+		scrib.waitForDom("break-sandbox").then(result=>result.style.display='inline');
 	      	initialize_git();
 	      	
 	      	
@@ -456,8 +472,13 @@ insitialize_page=async function(){
 		  	document.addEventListener('keydown', keyDown);
 		  });
 		
+
+		
+		
 	};
 	
 	  	
+
+  
 }
 
