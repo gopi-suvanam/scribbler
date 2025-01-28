@@ -5,7 +5,8 @@ aiConfig={
 		"Qwen2.5-Coder-7B-Instruct":"Qwen2.5-Coder-7B-Instruct-q4f32_1-MLC",
 		"Mistral-7B-Instruct-v0.3":"Mistral-7B-Instruct-v0.3-q4f32_1-MLC",
 		"Llama-3.2-1B-Instruct":"Llama-3.2-1B-Instruct-q4f16_0-MLC",
-		"Llama-3.1-8B-Instruct":"Llama-3.1-8B-Instruct-q4f32_1-MLC"
+		"Llama-3.1-8B-Instruct":"Llama-3.1-8B-Instruct-q4f32_1-MLC",
+		"OpenVino":"OpenVino"
 	},
 	apis:{
 		"Google AI Studio":"google-ai-studio"
@@ -52,18 +53,18 @@ window.addEventListener("load", function() {
         const li = document.createElement("li");
         
         // Create an <a> element within the li
-		  const a = document.createElement("a");
+	  const a = document.createElement("a");
 
-		  
+	  
 
-		  // Set the inner text of the <a> to the dictionary value
-		  a.textContent = key;
+	  // Set the inner text of the <a> to the dictionary value
+	  a.textContent = key;
 
-		  // Add the onclick event to the <a> element
-		  a.setAttribute("onclick", `loadAI('${aiConfig.models[key]}')`);
+	  // Add the onclick event to the <a> element
+	  a.setAttribute("onclick", `loadAI('${aiConfig.models[key]}')`);
 
-		  // Append the <a> to the li element
-		  li.appendChild(a);
+	  // Append the <a> to the li element
+	  li.appendChild(a);
 
 
         // Append the li to the dropdown
@@ -87,7 +88,11 @@ setAIAPI=function(api){
 	}
 	let statusMsg='';
 	const progressText = document.getElementById('ai-loading-progress-text');
-	if(!secretStore ||  !(api in JSON.parse(secretStore))){
+	if(api=='OpenVino'){
+		progressText.style.color='green';
+		statusMsg="Local OpenVino API will be used for AI";
+	}
+	else if(!secretStore ||  !(api in JSON.parse(secretStore))){
 		progressText.style.color='red';
 		statusMsg="Missing API Key. Please save it in <a href='/secrets.html' target='_blank'>Secrets</a>";
 		
@@ -120,7 +125,9 @@ initializeAIAPI();
 
 /********* Accessing the AI ************/
 
+
 async function loadAI(model){
+	if(model=="OpenVino") return setAIAPI('OpenVino');
 	webllm = await import("https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.72/lib/index.min.js");
 	
 	// Callback function to update model loading progress
@@ -174,7 +181,8 @@ async function queryAI(query,code,streaming=true){
 	if(preferredAIAPI){
 		try{
 			let secretStore=localStorage.getItem('api-keys');
-			const apiKey=JSON.parse(secretStore)[preferredAIAPI];
+			let apiKey=null;
+			if(preferredAIAPI!='OpenVino') apiKey=JSON.parse(secretStore)[preferredAIAPI];
 				
 		
 			

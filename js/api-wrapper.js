@@ -26,5 +26,13 @@ APIWrapper.call = async function(source,key,params){
 		if("error" in result) return result.error.message;	
 		else return result.candidates[0].content.parts.map(part=>part.text).join("\n");	
 	}
+	if(source=='local-openvino'){
+		const url = `http://localhost:5000/generate?prompt=${params.prompt}`;
+		const response = await fetch(url);
+		const result= await response.json();
+		if("error" in result) throw "No reponse";
+		else return result[0]['generated_text'];
+				
+	}
 	throw("API not implemented");
 }
