@@ -220,7 +220,7 @@ worker.run= async function(_block_id){
 
 // Wrapper function to execute a function in the worker with dynamic parameters
 worker.run_in=function(processor,func, ...parameters) {
-  if(is_sandboxed()) scrib.show("May not work in sandbox");
+  if(scrib.isSandboxed()) scrib.show("May not work in sandbox");
   if(processor=="web-worker" || processor=="webworker" || processor=="ww"){
 	return worker.runInWW(func, ...parameters);
    }else{
