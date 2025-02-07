@@ -1,6 +1,4 @@
-﻿
-
-const sandbox={}
+﻿const sandbox={}
 
 sandbox.statusData={
 	num_blocks:0,
@@ -74,6 +72,21 @@ sandbox.moveDown=function(i){
 	cm=input_dom.childNodes[0].CodeMirror;
 	cm.focus();
 	cm.setCursor(1,0)
+}
+
+sandbox.copyCell=function(i){
+	const code = sandbox.editors[i].getValue();
+	navigator.clipboard.writeText(code).then(() => {
+		// Show a temporary tooltip or status message
+		const copyButton = scrib.getDom("cell_menu"+i).querySelector('[data-tooltip="Copy cell content"]');
+		const originalTooltip = copyButton.getAttribute('data-tooltip');
+		copyButton.setAttribute('data-tooltip', 'Copied!');
+		setTimeout(() => {
+			copyButton.setAttribute('data-tooltip', originalTooltip);
+		}, 1000);
+	}).catch(err => {
+		console.error('Failed to copy text: ', err);
+	});
 }
 
 sandbox.goToNextCell=function(i){
@@ -433,6 +446,8 @@ sandbox.getHTML=function(view){
 		 	
 		 	let output=scrib.getDom("output"+block_id).outerHTML;
 	 	}
+	 	
+	 	
 	 	
 	 	
 	 	
