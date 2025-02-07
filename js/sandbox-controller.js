@@ -240,6 +240,25 @@ sandbox.insertCell=async function(type,after,content,output,status){
 }
 
 
+// Handle sandbox content shortcuts for paste events
+document.addEventListener('paste', (e) => {
+    // check if the paste event is happening inside an input field,
+    // textarea, or inside a CodeMirror instance
+    if (e.target.closest('input, textarea, .CodeMirror')) {
+        // If it is, let the event behave normally (do nothing here)
+        return;
+    }
+
+    // get pasted text from clipboard
+    const pastedData = e.clipboardData.getData('text');
+    
+    // insert a new cell and then set its content to the pasted data
+    sandbox.insertCell('code').then((newBlockId) => {
+        sandbox.editors[newBlockId].setValue(pastedData);
+    });
+
+    e.preventDefault();
+});
 
 
 
