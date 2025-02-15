@@ -58,5 +58,25 @@
 	
 	  gtag('config', 'G-45Z12S039Z');
 	</script>
-	
+	<script>
+		// listen for messages from iframe(child)
+		window.addEventListener("message", async (event) => {
+		  // verify message is from the sandbox iframe
+		  if (event.source !== document.getElementById("sandbox").contentWindow) return;
+	  
+		  const data = event.data;
+		  if (!data || data.type !== "writeClipboard") return;
+	  
+		  try {
+			await navigator.clipboard.writeText(data.text);
+			event.source.postMessage({ type: "clipboardWriteSuccess" }, "*");
+		  } catch (err) {
+			console.error("Failed to write to clipboard:", err);
+			event.source.postMessage({ 
+			  type: "clipboardWriteError", 
+			  error: err.message 
+			}, event.origin);
+		  }
+		});
+	  </script>
  </html>
