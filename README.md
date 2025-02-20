@@ -126,4 +126,6 @@ Additional documentation for Scribbler:
 3. [Roadmap](https://github.com/gopi-suvanam/jsnb/blob/main/ROADMAP.md)
 4. [Sample Notebooks](https://examples.scribbler.live)
 
-![Star-History](https://star-history.com/#gopi-suvanam/scribbler&Date)
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=gopi-suvanam/scribbler&type=Date)](https://star-history.com/#gopi-suvanam/scribbler&Date)
