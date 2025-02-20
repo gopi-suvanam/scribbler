@@ -74,20 +74,26 @@ sandbox.moveDown=function(i){
 	cm.setCursor(1,0)
 }
 
-sandbox.copyCell=function(i){
-	const code = sandbox.editors[i].getValue();
-	navigator.clipboard.writeText(code).then(() => {
-		// Show a temporary tooltip or status message
-		const copyButton = scrib.getDom("cell_menu"+i).querySelector('[data-tooltip="Copy cell content"]');
-		const originalTooltip = copyButton.getAttribute('data-tooltip');
-		copyButton.setAttribute('data-tooltip', 'Copied!');
-		setTimeout(() => {
-			copyButton.setAttribute('data-tooltip', originalTooltip);
-		}, 1000);
-	}).catch(err => {
-		console.error('Failed to copy text: ', err);
-	});
-}
+sandbox.copyCell = async function(i) {
+  const code = sandbox.editors[i].getValue();
+  try {
+    // request the parent to write to clipboard
+    window.parent.postMessage({ 
+      type: "writeClipboard", 
+      text: code 
+    }, "*");
+
+    // update UI (tooltip)
+    const copyButton = scrib.getDom("cell_menu" + i).querySelector('[data-tooltip="Copy cell content"]');
+    const originalTooltip = copyButton.getAttribute('data-tooltip');
+    copyButton.setAttribute('data-tooltip', 'Copied!');
+    setTimeout(() => {
+      copyButton.setAttribute('data-tooltip', originalTooltip);
+    }, 1000);
+  } catch (err) {
+    console.error('Failed to copy text: ', err);
+  }
+};
 
 sandbox.goToNextCell=function(i){
 
