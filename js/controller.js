@@ -450,26 +450,37 @@ insitialize_page=async function(){
 
 		 scrib.waitForDom('sandbox').then(result=>{
 			sandbox_iframe=result;
-			
-			//if (true){
+
 				console.log("Loading from URL");
 				load_from_url();
 				first_load=false;
-			//}
-			/*else{
-				sandbox_iframe.addEventListener("load", function() {
-					if(first_load){
-						console.log("Loading from URL");
-						load_from_url();
-					}else{
-						console.log("Ignoring");
-					}
-					first_load=false;
-				},{once:true});
-			}*/
+
 			
 		  	document.addEventListener('keydown', keyDown);
 		  });
+
+		
+		// listen for messages from iframe(child)
+		window.addEventListener("message", async (event) => {
+		  // verify message is from the sandbox iframe
+		  if (event.source !== document.getElementById("sandbox").contentWindow) return;
+	  
+		  const data = event.data;
+		  if (!data || data.type !== "writeClipboard") return;
+	  
+		  try {
+			await navigator.clipboard.writeText(data.text);
+			event.source.postMessage({ type: "clipboardWriteSuccess" }, "*");
+		  } catch (err) {
+			console.error("Failed to write to clipboard:", err);
+			event.source.postMessage({ 
+			  type: "clipboardWriteError", 
+			  error: err.message 
+			}, event.origin);
+		  }
+		});
+	
+	
 		
 
 		
