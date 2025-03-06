@@ -45,6 +45,7 @@ article,textarea{
  
  @media   (prefers-color-scheme: light) {
  	border-color:white;
+
 	
  }
  border-radius:0px;
@@ -54,6 +55,18 @@ article,textarea{
  
 }
 
+
+.light-img{
+	display:block;
+	margin-left:5px;
+	margin-right:5px;
+}
+.dark-img{
+	display:none;
+	margin-left:5px;
+	margin-right:5px;
+}
+	
 
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -89,6 +102,8 @@ footer span{
 ul[role=listbox]{
 	font-size:12px !important;
 }
+
+
 	
 .CodeMirror {
 	/* font-family: Arial, monospace !important;  */
@@ -338,6 +353,7 @@ pre{
   --font-color:#555;
   --secondary: #555;
   --form-element-background-color:white;
+ 
   
 }
 
@@ -350,6 +366,13 @@ pre{
   --font-color:#fede02;
   --secondary: #fede02;
   --form-element-background-color:white;
+  
+  .light-img{
+		display:none !important
+	}
+	.dark-img{
+		display:block !important
+	}
 
 }
 
@@ -366,7 +389,16 @@ pre{
   --secondary: #fede02;
   --form-element-background-color:white;
 
+
   }
+  
+    
+  .light-img{
+		display:none !important
+	}
+	.dark-img{
+		display:block !important
+	}
 }
 
 @media only screen and (prefers-color-scheme: light) {
@@ -378,6 +410,13 @@ pre{
   --font-color:#555;
   --secondary: #fede02;
   --form-element-background-color:white;
+	.light-img{
+	display:block !important
+	}
+	.dark-img{
+	display:none !important
+	}
+
 
   }
 }
