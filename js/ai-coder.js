@@ -1,12 +1,11 @@
 /***** Basic Setting and UI ************/
 aiConfig={
 	models:{
-		"Qwen2.5-Coder-1.5B-Instruct":"Qwen2.5-Coder-1.5B-Instruct-q4f32_1-MLC",
+		"Qwen2.5-Coder-1.5B-Instruct":"Qwen2.5-Coder-1.5B-Instruct-q4f16_1-MLC",
 		"Qwen2.5-Coder-7B-Instruct":"Qwen2.5-Coder-7B-Instruct-q4f32_1-MLC",
-		"Mistral-7B-Instruct-v0.3":"Mistral-7B-Instruct-v0.3-q4f32_1-MLC",
-		"Llama-3.2-1B-Instruct":"Llama-3.2-1B-Instruct-q4f16_0-MLC",
-		"Llama-3.1-8B-Instruct":"Llama-3.1-8B-Instruct-q4f32_1-MLC",
-		"OpenVino":"OpenVino"
+		
+		"Llama-3.2-3B-Instruct":"Llama-3.2-3B-Instruct-q4f16_1-MLC",
+		//"OpenVino":"OpenVino"
 	},
 	apis:{
 		"Google AI Studio":"google-ai-studio"
