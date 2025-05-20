@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "New JSNB",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "\n// In this example this data is used: \n// google drive: https://drive.google.com/file/d/1yAGPqilew7W7B9JNfMR-sLJaSXWHT1nv/view?usp=sharing\n// github: https://github.com/radheydetroja/scribbler_csv/blob/main/updated_social_media_data.csv\n\n// Step 0: Clear previous charts\nif (window.container) window.container.remove();\n\nwindow.container = document.createElement(\"div\");\nwindow.container.id = \"chart-container\";\nwindow.container.style.display = \"flex\";\nwindow.container.style.flexDirection = \"column\";\nwindow.container.style.gap = \"20px\";\nwindow.container.style.padding = \"10px\";\ndocument.body.appendChild(window.container);\n\n// Step 1: Upload and parse CSV\nlet csvData = await scrib.uploadFile();\nlet parsedData = csvData.split('\\n').slice(1, 51); // Skip header, take first 50 rows\n\n// Store finalData globally\nwindow.finalData = parsedData.map(row => row.split(','));",
+      "status": "[*]",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Load Chart.js\nawait scrib.loadScript(\"https://cdn.jsdelivr.net/npm/chart.js\", true);\n\n// Define canvas helper globally\nwindow.createCanvas = function(id) {\n  const canvas = document.createElement('canvas');\n  canvas.id = id;\n  canvas.width = 500;\n  canvas.height = 300;\n  window.container.appendChild(canvas);\n  return canvas.getContext('2d');\n};",
+      "status": "[14]<br><span style=\"font-size:8px\">385ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Chart 1: Bar Chart (Avg Likes by Post Type)\nlet finalData = window.finalData;\nlet likeMap = {};\nfor (let row of finalData) {\n  let type = row[1];\n  let likes = parseInt(row[2]);\n  if (!likeMap[type]) likeMap[type] = [];\n  likeMap[type].push(likes);\n}\nlet barData = Object.entries(likeMap).map(([type, arr]) => ({\n  type,\n  avg: Math.round(arr.reduce((a, b) => a + b, 0) / arr.length * 100) / 100\n}));\nlet barX = barData.map(d => d.type);\nlet barY = barData.map(d => d.avg);\n\nnew Chart(window.createCanvas('barChart'), {\n  type: 'bar',\n  data: {\n    labels: barX,\n    datasets: [{\n      label: 'Avg Likes',\n      data: barY,\n      backgroundColor: barX.map((_, i) => `hsl(${i * 60}, 70%, 70%)`),\n      borderColor: barX.map((_, i) => `hsl(${i * 60}, 70%, 50%)`),\n      borderWidth: 1\n    }]\n  },\n  options: {\n    plugins: {\n      title: { display: true, text: 'Avg Likes by Post Type', font: { size: 14 } },\n      legend: { display: false }\n    },\n    scales: {\n      x: { ticks: { font: { size: 10 } } },\n      y: { beginAtZero: true, ticks: { font: { size: 10 } } }\n    }\n  }\n});\nundefined;",
+      "status": "[15]<br><span style=\"font-size:8px\">13ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Chart 2: Pie Chart (Total Shares by Post Type)\nlet finalData = window.finalData;\nlet shareMap = {};\nfor (let row of finalData) {\n  let type = row[1];\n  let shares = parseInt(row[3]);\n  if (!shareMap[type]) shareMap[type] = 0;\n  shareMap[type] += shares;\n}\nlet pieX = Object.keys(shareMap);\nlet pieY = Object.values(shareMap);\n\nnew Chart(window.createCanvas('pieChart'), {\n  type: 'pie',\n  data: {\n    labels: pieX,\n    datasets: [{\n      label: 'Total Shares',\n      data: pieY,\n      backgroundColor: pieX.map((_, i) => `hsl(${i * 60}, 70%, 70%)`)\n    }]\n  },\n  options: {\n    plugins: {\n      title: { display: true, text: 'Total Shares by Post Type', font: { size: 14 } },\n      legend: { labels: { font: { size: 10 } } }\n    }\n  }\n});\nundefined;",
+      "status": "[16]<br><span style=\"font-size:8px\">48ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Chart 3: Line Chart (Total Comments over Date Posted)\nlet finalData = window.finalData;\nlet dateMap = {};\nfor (let row of finalData) {\n  let date = row[5].split('T')[0];\n  let comments = parseInt(row[4]);\n  if (!dateMap[date]) dateMap[date] = 0;\n  dateMap[date] += comments;\n}\nlet lineX = Object.keys(dateMap).sort();\nlet lineY = lineX.map(d => dateMap[d]);\n\nnew Chart(window.createCanvas('lineChart'), {\n  type: 'line',\n  data: {\n    labels: lineX,\n    datasets: [{\n      label: 'Total Comments',\n      data: lineY,\n      fill: false,\n      borderColor: 'rgb(75, 192, 192)',\n      tension: 0.3\n    }]\n  },\n  options: {\n    plugins: {\n      title: { display: true, text: 'Comments Over Time', font: { size: 14 } }\n    },\n    scales: {\n      x: {\n        title: { display: true, text: 'Date', font: { size: 12 } },\n        ticks: { font: { size: 10 } }\n      },\n      y: {\n        title: { display: true, text: 'Comments', font: { size: 12 } },\n        beginAtZero: true,\n        ticks: { font: { size: 10 } }\n      }\n    }\n  }\n});\nundefined;",
+      "status": "[17]<br><span style=\"font-size:8px\">42ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Chart 4: Doughnut Chart (AI vs Human Generated Posts)\nlet finalData = window.finalData;\nlet aiCount = 0, humanCount = 0;\nfor (let row of finalData) {\n  if (row[7]?.toLowerCase().includes(\"yes\")) aiCount++;\n  else humanCount++;\n}\n\nnew Chart(window.createCanvas('doughnutChart'), {\n  type: 'doughnut',\n  data: {\n    labels: ['AI Generated', 'Human Generated'],\n    datasets: [{\n      label: 'Post Origin',\n      data: [aiCount, humanCount],\n      backgroundColor: ['#36A2EB', '#FF6384']\n    }]\n  },\n  options: {\n    plugins: {\n      title: { display: true, text: 'AI vs Human Generated Posts', font: { size: 14 } },\n      legend: { labels: { font: { size: 10 } } }\n    }\n  }\n});\nundefined;",
+      "status": "[18]<br><span style=\"font-size:8px\">43ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/scribbler",
+  "run_on_load": false
+}
