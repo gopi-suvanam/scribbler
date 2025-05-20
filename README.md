@@ -86,7 +86,10 @@ npx serve
 - **External Libraries:**    
     - [Plotly](https://github.com/plotly/plotly.js) (for charting), and Scribbler's sister project [DI-Libs](https://github.com/gopi-suvanam/di-libs) are preloaded and can be used in the notebooks without seperately loading. They can also be reloaded using scrib.reloadScript.
     - For adding more functionality import an external library through dynamic import() or through scrib.loadScript(CDN_LINK).
-
+## HTML and CSS
+You can write HTML and CSS also in cells using two ways. 
+1. In code cells you can start the cell with `//> html` or `//> css` or
+2. In doc cell you can directly use HTML. For css in doc cell you can use `<style></style>` tags
 ## Use cases
 1. For trying new libraries for testing and building
 2. For building reproducible research and sharing the results with others
