@@ -468,13 +468,14 @@ pre{
 
 .nb-name-wrapper {
 	padding: 5px 10px;
-    background-color: #f1f1f1;
+    background-color: var(--background-color);
     border-radius: 2px;
 	@media (max-width: 768px) {
 		width: 100%;
 	}
 	a {
 		text-decoration: none;
+		color: #28a745;
 		&#nb_name::after {
 			content: "\270E";
 			padding: 0 10px;
