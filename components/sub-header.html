@@ -13,18 +13,18 @@
 		</iframe>			
 	</div>
 	<div class="nb-tools-wrapper">
-		<a href="#"  class="nb-tool" data-tooltip="Sharable link/ IFrame code" data-placement="bottom" 
+		<a href="#"  class="nb-tool-sharable-btn" data-tooltip="Sharable link/ IFrame code" data-placement="bottom" 
 		onclick="event.preventDefault();shareBtn()">⎘</a>
 
-		<a href="#" class="nb-tool"  data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
+		<a href="#" class="nb-tool-run-btn"  data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
 		onclick="event.preventDefault();run_all()"  >&#9658;</a>
    
-		<a href="#" class="secondary nb-tool" style="font-size:12px" id='save-button' onclick="event.preventDefault();saveLocalFile()"   >&#128190;</a>
+		<a href="#" class="secondary nb-tool-save-btn" id='save-button' onclick="event.preventDefault();saveLocalFile()"   >&#128190;</a>
 		
-		<a href="#" class="secondary nb-tool" id='reset-button'
+		<a href="#" class="secondary nb-tool-reset-btn" id='reset-button'
 		onclick="event.preventDefault();resetNB()"   >&#8634;</a>
 	  
-		<a href="#" class="secondary nb-tool"
+		<a href="#" class="secondary nb-tool-sandbox-btn"
 			 data-tooltip="Take the notebook out of sandbox"
 			 data-placement="bottom"  data-placement-edge="right" id='break-sandbox' onclick="event.preventDefault();break_sandbox()"  >⤯
 		</a>		    

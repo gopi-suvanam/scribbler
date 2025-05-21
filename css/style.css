@@ -500,9 +500,26 @@ pre{
 	gap: 15px;
 	margin-left: auto;
     padding: 0 10px;
-	.nb-tool {
-		font-size: 17px;
-	}
+}
+.nb-tool-sharable-btn {
+	font-size: 30px;
+	color: #04AA6D
+}
+.nb-tool-run-btn {
+	font-size: 22px;
+	padding-top: 7px;
+}
+.nb-tool-save-btn {
+	font-size: 19px;
+	padding-top: 7px;
+}
+.nb-tool-reset-btn {
+	font-size: 30px;
+	padding-top: 7px;
+	padding-bottom: 9px;
+}
+.nb-tool-sandbox-btn {
+	font-size: 30px;
 }
 
 [contenteditable='true'] {
