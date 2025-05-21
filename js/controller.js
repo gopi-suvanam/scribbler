@@ -332,9 +332,19 @@ saveLocalFile=async function(){
 }
 
 resetNB = async function(){
-	load_jsnb(scrib.blankNB);
-	insert_cell("code");
+      scrib.getDom("sandbox").removeAttribute("sandbox");
+      scrib.getDom("sandbox").setAttribute("src","sandbox.html");
+      sandbox_iframe=await scrib.waitForDom("sandbox")
+      sandbox_iframe.addEventListener("load",async function(){
+		console.log("Sanbox loaded");
+		scrib.getDom("nb_name").innerHTML="Scribbler Notebook";
+		insert_cell("code");
+	}
+	,{once:true}
+      );
+      scrib.getDom("break-sandbox").style.display='none';
 }
+
 deleteLocalFile=function(id,name){
 	let c=confirm("Deleting : "+name);
 	if(c)
