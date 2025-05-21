@@ -107,8 +107,19 @@ load_from_url=async function(){
   	    load_jsnb(nb);
 		  	    
   	}else{
-  		scrib.getDom("nb_name").innerHTML="New JSNB";
-  		insert_cell("code");
+		      scrib.getDom("sandbox").removeAttribute("sandbox");
+		      scrib.getDom("sandbox").setAttribute("src","sandbox.html");
+		      
+		      sandbox_iframe=await scrib.waitForDom("sandbox")
+		      sandbox_iframe.addEventListener("load",async function(){
+		      		console.log("Sanbox loaded");
+		      		scrib.getDom("nb_name").innerHTML="New JSNB";
+  				insert_cell("code");
+		      	}
+		      	,{once:true}
+		      );
+		      scrib.getDom("break-sandbox").style.display='none';
+
   	}
   	
 }
