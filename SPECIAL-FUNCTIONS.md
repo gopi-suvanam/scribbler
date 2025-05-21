@@ -36,7 +36,7 @@
    }
    ```
 
-5. `scrib.uploadFile()`:  
+4. `scrib.uploadFile()`:  
    Opens a file browser and returns a promise that resolves with the contents of the selected file. Since Scribbler allows top-level `await`, you can directly use `await` without chaining `.then()`.
 
    Example Usage:
@@ -45,7 +45,7 @@
    scrib.show("File content: ", fileContent);
    ```
 
-6. `scrib.downloadString(string, exportName, charSet)`:  
+5. `scrib.downloadString(string, exportName, charSet)`:  
    Allows downloading a string as a file. You can specify the file name and character set. 
 
    Example Usage:
@@ -54,7 +54,7 @@
    scrib.downloadString(data, "example.txt", "utf-8");
    ```
 
-7. `scrib.loadScript(url, async=true)`:  
+6. `scrib.loadScript(url, async=true)`:  
    Loads an external JavaScript file from a given URL. By default, it loads the script asynchronously; you can set `async` to `false` for synchronous loading. Since Scribbler allows top-level `await`, you can directly use `await` without chaining `.then()`.
 
    Example Usage:
@@ -67,7 +67,7 @@
    }
    ```
 
-8. Dynamic `import()`:  
+7. Dynamic `import()`:  
    Standard JavaScript dynamic `import()` can be used for importing modules within Scribbler. This allows you to load ES6 modules on demand. Since Scribbler allows top-level `await`, you can directly use `await` without chaining `.then()`.
 
    Example Usage:
