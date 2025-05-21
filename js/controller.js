@@ -118,7 +118,7 @@ load_from_url=async function(){
 		      	}
 		      	,{once:true}
 		      );
-		      scrib.getDom("break-sandbox").style.display='none';
+		      scrib.getDom("break-sandbox").style.display='inline';
 
   	}
   	
