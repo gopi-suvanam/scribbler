@@ -1,12 +1,21 @@
-﻿body{
-	color:dark-grey;
-
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	font-family:  "Roboto", sans-serif;
+﻿body {
+    color: #333;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
 }
 
+.container.nb-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#main > div {
+    margin-bottom: 30px;
+    position: relative;
+}
 
 h1, h2, h3, h4, h5, h6, p, a, div, article,textarea, td {
 	font-family: "Roboto", sans-serif;
@@ -106,19 +115,28 @@ ul[role=listbox]{
 .CodeMirror {
 	/* font-family: Arial, monospace !important;  */
 	font-size: 18px !important; 
-
+    border-radius: 5px !important;
 	border: 0.5px solid #33302a;
-	
-	border-radius: 0px;
 	margin:10px;
 	height: auto !important;
 	min-height:50px !important;
 	padding:0px !important;
+}
 
+.output-block{
+	border-radius: 5px!important;
+}
+
+.CodeMirror-gutter {
+	background-color: #fffade;
+}
+
+.CodeMirror-linenumber {
+	color: #a69d8d;
 }
 
 .CodeMirror-sizer{
-	margin-top:25px!important;
+	margin-top:30px!important;
 }
 
 @media (prefers-color-scheme:light) {
@@ -219,6 +237,21 @@ input{
 	font-size:12px;
 }
 
+#footer{
+	padding: 12px 0;
+	text-align: center;
+	border-top: 1px solid #ddd;
+	font-size: 14px;
+	color: #555;
+	background: #f9f9f9;
+}
+
+.header-button{
+	margin:0px;
+	padding:2px;
+	text-decoration: none!important;
+}
+
 @media (max-width: 600px) {
    #welcome{
    	display:none;
@@ -233,8 +266,6 @@ input{
     display:flex;
 	justify-content: center;
 	align-items: center;
-    border-top:thin solid black;
-    
     }
     .cell-menu a{
 
@@ -276,7 +307,7 @@ nav details[role=list] summary{
 	border:none !important;
 	font-size:14px !important;
 	line-height:33px !important;
-	font-weight:700;
+	font-weight:500;
 }
 
 nav details[role=list] summary:hover{
@@ -289,8 +320,8 @@ nav details[role=list]{
 
 details[role=list] summary::after{
 	height:33px;
-	line-height:33px;
-	font-size:10px;
+	line-height:5px;
+	font-size:5px;
 }
 
 nav [role=button]{
@@ -332,12 +363,6 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 	float:right;
 	margin:0px;
 }
-
-#break-sandbox{
-	color:red;
-}
-
-
 
 /* For WebKit-based browsers */
 ::-webkit-scrollbar {
@@ -471,15 +496,16 @@ pre{
 
 .top-header {
 	display: flex;
-	padding-right: 10px;
-    padding-left: 10px;
-	border-bottom:1px solid lightgrey;
+	padding: 15px;
+	border-bottom:1px solid #eceff0;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.01), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .bottom-header {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	padding: 5px 10px;
 	align-items: center;
 }
 
@@ -492,16 +518,25 @@ pre{
 		width: 100%;
 	}
 	a {
-		text-decoration: none;
-		color: #28a745;
+		text-decoration: none !important;
 		&#nb_name::after {
 			content: "\270E";
 			padding: 0 10px;
 			float: right;
+			font-size: 16px;
 		}
 	}
 }
 
+.nb-tools-wrapper a i {
+	font-size: 20px;
+	vertical-align: middle;
+	text-decoration: none !important;
+}
+
+.nb-tools-wrapper a {
+	text-decoration: none !important;
+}
 
 .logo-wrapper {
 	width: 35px;
@@ -519,26 +554,6 @@ pre{
 	margin-left: auto;
     padding: 0 10px;
 }
-.nb-tool-sharable-btn {
-	font-size: 30px;
-	color: #04AA6D
-}
-.nb-tool-run-btn {
-	font-size: 22px;
-	padding-top: 7px;
-}
-.nb-tool-save-btn {
-	font-size: 19px;
-	padding-top: 7px;
-}
-.nb-tool-reset-btn {
-	font-size: 30px;
-	padding-top: 7px;
-	padding-bottom: 9px;
-}
-.nb-tool-sandbox-btn {
-	font-size: 30px;
-}
 
 [contenteditable='true'] {
 	caret-color: red;
@@ -553,4 +568,24 @@ pre{
 
 [data-tooltip][data-placement-edge="left"]::before {
 	transform: translate(-10%,.25rem);
+}
+
+/* Add animation for cell insertion */
+@keyframes cell-appear {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#main > div {
+    animation: cell-appear 0.3s ease-out;
+}
+
+/* Add animation for cell deletion */
+@keyframes cell-disappear {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(10px); }
+}
+
+.cell-deleting {
+    animation: cell-disappear 0.3s ease-out;
 }

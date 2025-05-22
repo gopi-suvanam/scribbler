@@ -128,6 +128,34 @@ sandbox.goToInputCell=function(i){
 	}
 }
 
+sandbox.toggleCellType = function(i) {
+  const cellTypeSelect = scrib.getDom("cell_type"+i);
+
+  // Toggle between code and doc
+  if(cellTypeSelect.value === 'code') {
+    cellTypeSelect.value = 'html';
+
+    // Apply doc mode styling
+    scrib.getDom('result'+i).style.display = 'flex';
+    scrib.getDom('input'+i).style.display = 'none';
+    scrib.getDom('status'+i).style.display = 'none';
+    scrib.getDom("cell_menu"+i).style.display = "none";
+  } else {
+    cellTypeSelect.value = 'code';
+    
+    // Apply code mode styling
+    scrib.getDom('input'+i).style.display = 'block';
+    scrib.getDom('cell_menu'+i).style.display = 'block';
+    scrib.getDom('result'+i).style.display = 'none';
+    
+    // Focus on the editor
+    const input_dom = scrib.getDom("input"+i);
+    const cm = input_dom.childNodes[0].CodeMirror;
+    cm.focus();
+    cm.setCursor(1,0);
+  }
+};
+
 // Custom hint function to dynamically show function parameters
 CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
   const cur = editor.getCursor();
@@ -165,12 +193,14 @@ sandbox.codeMirrorOptions={
           'Cmd-Enter': (cm) => {worker.run(cm.i)},
           'Shift-Enter': (cm) => {worker.run(cm.i);sandbox.goToNextCell(cm.i) },
           'Alt-Enter': (cm) => {sandbox.insertCell('code',cm.i);},
-           'Alt-R':(cm)=>{sandbox.runAll()},	
-           'Alt-D':(cm)=>{sandbox.deleteCell(cm.i)},	
-           'Alt-Up':(cm)=>{sandbox.moveUp(cm.i)},	
-           'Alt-Down':(cm)=>{sandbox.moveDown(cm.i)},	
-           "Ctrl-Space": "autocomplete",
-           ".": function(cm) {
+          'Alt-R':(cm)=>{sandbox.runAll()},	
+          'Alt-D':(cm)=>{sandbox.deleteCell(cm.i)},	
+          'Alt-Up':(cm)=>{sandbox.moveUp(cm.i)},	
+          'Alt-Down':(cm)=>{sandbox.moveDown(cm.i)},	
+          'Ctrl-M': (cm) => {sandbox.toggleCellType(cm.i)},
+          'Cmd-M': (cm) => {sandbox.toggleCellType(cm.i)},
+          "Ctrl-Space": "autocomplete",
+          ".": function(cm) {
 		      setTimeout(function() {
 		        CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
 		      }, 100);
@@ -400,7 +430,13 @@ sandbox.loadJSNB=async function(nb){
 		document.activeElement.blur(); 
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
-		
+		setTimeout(() => {
+			document.querySelectorAll('.ti').forEach(el => {
+			  el.style.display = 'none';
+			  void el.offsetHeight;
+			  el.style.display = '';
+			});
+		  }, 500);
 	}catch(err){
 		console.log(err.stack);
 		sandbox.editors=bkup_editors;
