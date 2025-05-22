@@ -11,7 +11,7 @@
    Example Usage For HTML:
    ```javascript
    //Show a button 
-   scrib.show("<input type='button' onclick='btnClick()'>Click me</input>");
+   scrib.show("<input type='button' onclick='btnClick()' value='Click me'>");
    ```
 
 2. `scrib.currCell()`:  
@@ -67,8 +67,8 @@
    }
    ```
 
-7. `import`:  
-   Used for dynamically importing modules within Scribbler. This allows you to load ES6 modules on demand. Since Scribbler allows top-level `await`, you can directly use `await` without chaining `.then()`.
+7. Dynamic `import()`:  
+   Standard JavaScript dynamic `import()` can be used for importing modules within Scribbler. This allows you to load ES6 modules on demand. Since Scribbler allows top-level `await`, you can directly use `await` without chaining `.then()`.
 
    Example Usage:
    ```javascript

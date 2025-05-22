@@ -11,7 +11,7 @@
 8. [Special Functions](#special-functions)
 9. [Keyboard Shortcuts](#keyboard-shortcuts)
 10. [Exporting-Importing](#exporting-importing)
-11. [Sandboxed Environment](#sandboxed-enviroment)
+11. [Sandboxed Environment](#sandboxed-environment)
 12. [Embedding Notebooks](#embedding-notebooks)
 13. [Publishing Notebooks](#publishing-notebooks)
 14. [Using external libraries](#using-external-libraries)
@@ -62,12 +62,12 @@ The file menu consists of:
 - Prefix text with //>md to render documentation in Markdown format
 
 ### Magic Words
-- //>md: Treat cell content as Markdown
-- //>html: Treat cell content as HTML
+- //>md: Treat cell content as Markdown. Primarily for doc cells, but can be used in code cell comments for Markdown rendering of those comments.
+- //>html: Treat cell content as HTML. Primarily for doc cells.
 ### Usage
-- Use magic words in documentation cells and code cells
-- Render code comments or explanations in Markdown
-- Embed HTML content in code cells
+- Use magic words in documentation cells.
+- Render code comments or explanations in Markdown within code cells.
+- Embed HTML content in documentation cells.
 
 ## Edit Menu
 The edit menu consists of:
@@ -78,7 +78,7 @@ The edit menu consists of:
 ## URL Structure
 - The URL of Github pages deployment is [https://app.scribbler.live](https://app.scribbler.live). 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
-- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://app.scribbler.live/#./examples/Hello-world.jsnb](https://app.scribbler.live#./examples/Hello-world.jsnb) will "GET" the file https://app.scribbler.live/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
+- Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://app.scribbler.live/#examples/Hello-world.jsnb](https://app.scribbler.live#examples/Hello-world.jsnb) will "GET" the file https://app.scribbler.live/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
 - Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://app.scribbler.live#github:gopi-suvanam/scribbler/examples/Hello-world.jsnb](https://app.scribbler.live#github:gopi-suvanam/scirbbler/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialoge will pop up. 
 - When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
 
@@ -89,15 +89,15 @@ There are a few special functions:
 Both these functions might behave differently when called from within asynchronous code.
   
 Other useful functions:
-- scrib.getDom(id) is short form for window.getElementById
-- scrib.waitForDom(id) is an asynchronous version of scrib.waitForDom, where the function waits for a dom to be available and resolves to the element once it is available. This is useful if a dom is being created by another asynchronous activity. scrib.waitForDom can be used as: scrib.waitForDom(id).then(dom=>{stuff to do with dom}) or inside and async function it can be used as dom = await scrib.waitForDom(id).\
+- scrib.getDom(id) is short form for document.getElementById
+- scrib.waitForDom(id) is an asynchronous version of scrib.waitForDom, where the function waits for a dom to be available and resolves to the element once it is available. This is useful if a dom is being created by another asynchronous activity. scrib.waitForDom can be used as: scrib.waitForDom(id).then(dom => { /* stuff to do with dom */ }) or inside an async function it can be used as dom = await scrib.waitForDom(id).
 - scrib.uploadFile opens file browser and resolves to the contents of a file if selected.
-- scrib.loadScript(url) to load the url as script. Example: To load JQuery use: scrib.loadScript("https://code.jquery.com/jquery-3.6.3.min.js")
+- scrib.loadScript(url, async) to load the url as script (async defaults to true). Example: To load JQuery use: scrib.loadScript("https://code.jquery.com/jquery-3.6.3.min.js")
 
 ## Keyboard Shortcuts
 These shortcuts work when a code cell is in focus:
 - Ctrl-Enter/Cmd-Enter: Run the current cell
-- Shift-Enter': Run the current cell and go to next cell
+- Shift-Enter: Run the current cell and go to next cell
 - Alt-Enter/Option-Enter: Insert new cell
 - Alt-D/Option-D: Delete the current cell (no undo at the moment, so be careful)
 - Alt/Option-Up Arrow: Move the cell up
@@ -118,7 +118,7 @@ These shortcuts are global
 - The output of a notebook can be downloaded as an HTML file (with code or wothout code)
 - The code of a notebook can be downloaded as a JavaScript file
   
-## Sandboxed Enviroment
+## Sandboxed Environment
 - The Scribbler notebook runs in a sandboxed iFrame. This blocks several functionalities including accessing certain browser APIs, accessing external resources where CORS is not allowed, accessing cookies etc.
 - To enable these features, click on the icon ⤯ at the top-right corner above the notebook. After confirmation, the notebook will be reloaded without the sandbox.
 
