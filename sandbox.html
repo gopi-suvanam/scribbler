@@ -1,86 +1,111 @@
 ﻿<!DOCTYPE html>
-<html lang="en" >
-	<head>
-		<!-- Meta data for SEO etc -->
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		
-		<link rel="icon"  href="images/logo2.png">
-		<meta name="description" content="Scribbler: A notebook for experimenting in JavaScript. Play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.">
-		<script>global=globalThis</script>
-		<title>JSNB: JavaScript Notebook</title>
+<html lang="en">
 
-		<!-- Codemirror for code box -->
-		<script src="codemirror/codemirror.js"></script>
-		<link rel="stylesheet" href="codemirror/codemirror.css">
-		<link rel="stylesheet" href="codemirror/cobalt.css">
-		<link rel="stylesheet" href="codemirror/duotone-light.css">
-		<link rel="stylesheet" href="codemirror/show-hint.css">
-		
-		<script src="codemirror/javascript.js"></script> <!--For styling javascript code -->
-		<script src="codemirror/show-hint.js"></script> <!--For providing hints -->
-		<script src="codemirror/javascript-hint.js"></script> <!--For JavaScript hints -->
-		
+<head>
+	<!-- Meta data for SEO etc -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="icon" href="images/logo2.png">
+	<meta name="description"
+		content="Scribbler: A notebook for experimenting in JavaScript. Play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.">
+	<script>global = globalThis</script>
+	<title>JSNB: JavaScript Notebook</title>
+
+	<!-- Codemirror for code box -->
+	<script src="codemirror/codemirror.js"></script>
+	<link rel="stylesheet" href="codemirror/codemirror.css">
+	<link rel="stylesheet" href="codemirror/cobalt.css">
+	<link rel="stylesheet" href="codemirror/duotone-light.css">
+	<link rel="stylesheet" href="codemirror/show-hint.css">
+
+	<script src="codemirror/javascript.js"></script> <!--For styling javascript code -->
+	<script src="codemirror/show-hint.js"></script> <!--For providing hints -->
+	<script src="codemirror/javascript-hint.js"></script> <!--For JavaScript hints -->
 
 
-		<!-- Controllers and libs -->
-		<script > scrib={};</script>
-		<script src="js/libs.js"></script> <!-- libs for some functionality -->
-		<script src="js/sandbox-controller.js"></script> <!-- Controls the UI -->
-		<script src="js/web-worker.js"></script> <!-- Runs the user generated code -->
-		<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
-		<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
-		<script src="js/sandbox-ai-controller.js"></script> <!-- Controls the UI -->
-				
-		<!-- Styling using pico.css and some custom css -->
-		<link rel="stylesheet" href="css/pico.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		
-		<!-- For opening links in the parent frame by default -->
-		<base target="_parent">	
-		
-	</head>
-  <body style="height:100%" >
-  	<span id="top"></span>	
+
+	<!-- Controllers and libs -->
+	<script> scrib = {};</script>
+	<script src="js/libs.js"></script> <!-- libs for some functionality -->
+	<script src="js/sandbox-controller.js"></script> <!-- Controls the UI -->
+	<script src="js/web-worker.js"></script> <!-- Runs the user generated code -->
+	<script src="js/worker-wrapper.js"></script> <!-- Runs the user generated code -->
+	<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
+	<script src="js/sandbox-ai-controller.js"></script> <!-- Controls the UI -->
+
+	<!-- Styling using pico.css and some custom css -->
+	<link rel="stylesheet" href="css/pico.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--Icons from tabler icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+	<!-- For opening links in the parent frame by default -->
+	<base target="_parent">
+
+</head>
+
+<body style="height:100%">
+	<span id="top"></span>
+
 	<!-- Template code block. This html will be copied and udpated for each cell -->
 	<div id="code_block_template" style="display:none">
-		<div  id="cell_menu_block_id" class="cell-menu">
-			
-			<select  data-tooltip="Select whether to the cell contains code or html" data-placement="bottom"
-			id="cell_type_block_id" style="height:15px;" class="cell-type" >
-					<option selected value="code">code</option>
-					<option value="html">doc</option>
-				</select>
-			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" data-placement="bottom" id="run-button_block_id"  onclick="worker.run(_block_id)">&#9658;</a>
-			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow"  data-placement="bottom" onclick="sandbox.moveUp(_block_id)">&#x25B2;</a>
-			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow"  data-placement="bottom"  onclick="sandbox.moveDown(_block_id)">&#x25BC;</a>
-			<a tabindex="0" data-tooltip="Add a cell bellow: Alt/Option-Enter" data-placement="bottom"  onclick="sandbox.insertCell('code',_block_id)">&#10011;</a>
-			<a tabindex="0" data-tooltip="Copy cell content"  data-placement="bottom" onclick="sandbox.copyCell(_block_id)">&#xf0c5;</a>
-			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D"  data-placement="bottom" onclick="sandbox.deleteCell(_block_id)">&#9747;</a>
-			
+		<div id="cell_menu_block_id" class="cell-menu">
+			<select data-tooltip="Toggle between code and doc modes (Cmd/Ctrl+M)" data-placement="bottom"
+				id="cell_type_block_id" style="height:15px;" class="cell-type">
+				<option selected value="code">Code</option>
+				<option value="html">Doc</option>
+			</select>
+
+			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" data-placement="bottom" id="run-button_block_id"
+				onclick="worker.run(_block_id)">
+				<i class="ti ti-player-play"></i>
+			</a>
+			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow" data-placement="bottom"
+				onclick="sandbox.moveUp(_block_id)">
+				<i class="ti ti-arrow-up"></i>
+			</a>
+			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow" data-placement="bottom"
+				onclick="sandbox.moveDown(_block_id)">
+				<i class="ti ti-arrow-down"></i>
+			</a>
+			<a tabindex="0" data-tooltip="Add a cell below: Alt/Option-Enter" data-placement="bottom"
+				onclick="sandbox.insertCell('code',_block_id)">
+				<i class="ti ti-circle-plus"></i>
+			</a>
+			<a tabindex="0" data-tooltip="Copy cell content" data-placement="bottom"
+				onclick="sandbox.copyCell(_block_id)">
+				<i class="ti ti-copy"></i>
+			</a>
+			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D" data-placement="bottom"
+				onclick="sandbox.deleteCell(_block_id)">
+				<i class="ti ti-trash"></i>
+			</a>
 		</div>
+
 		<div id="input_block_id" tabindex='0' onfocusout="sandbox.unfocusEditor(_block_id)" class='code'>
-		
+
 		</div>
-		<article ondblclick="sandbox.toggleEditor(_block_id)" style="display:flex"  id="result_block_id">
-			<p class="status" id="status_block_id"></p> 
-			<div class="output" id="output_block_id"  ></div>
+		<article ondblclick="sandbox.toggleEditor(_block_id)" style="display:flex" id="result_block_id">
+			<p class="status" id="status_block_id"></p>
+			<div class="output" id="output_block_id"></div>
 		</article>
 	</div>
 	<div class="container nb-content">
-		<div  class='' id='main'></div> <!-- All the cells go inside this div -->
+		<div class='' id='main'></div> <!-- All the cells go inside this div -->
 	</div>
-  </body>
-  <script>
-  	sandbox.initialize(); <!-- Load the notebook or insert an empty cell -->
-  </script>
-  
-  <!-- Loading some libraries for power experience. Putting at the end so that these do not block rest of the UI. -->
-	
+</body>
+<script>
+	sandbox.initialize(); <!-- Load the notebook or insert an empty cell -->
+</script>
 
-	<script src="https://cdn.plot.ly/plotly-2.16.1.min.js" async></script>
-	<script src="https://cdn.jsdelivr.net/gh/gopi-suvanam/di-libs/build/di-libs.js"></script>
-	<!-- <script type="module">
+<!-- Loading some libraries for power experience. Putting at the end so that these do not block rest of the UI. -->
+
+
+<script src="https://cdn.plot.ly/plotly-2.16.1.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/gh/gopi-suvanam/di-libs/build/di-libs.js"></script>
+<!-- <script type="module">
 		import * as di from "../di-libs/src/index.js";
 		window.random=di.random;
 		
@@ -88,9 +113,9 @@
 		
 	</script> -->
 
-	<script id="libs-loaded">
-		console.log("Pltly/DI libraries loaded");
-	</script>
+<script id="libs-loaded">
+	console.log("Pltly/DI libraries loaded");
+</script>
 
-  
- </html>
+
+</html>

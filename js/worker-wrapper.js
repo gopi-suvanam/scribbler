@@ -136,7 +136,7 @@ worker.run= async function(_block_id){
 	scrib.getDom("status"+_block_id).innerHTML='[*]'
 	scrib.getDom("output"+_block_id).innerHTML=''
 	
-	scrib.getDom("run-button"+_block_id).innerHTML="&#8856;";
+	scrib.getDom("run-button"+_block_id).innerHTML = `<i class="ti ti-loader-2 ti-spin"></i>`;
 	
 	const code=sandbox.editors[_block_id].getValue()
 	
@@ -204,19 +204,13 @@ worker.run= async function(_block_id){
 		}
 		
 		scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Finished running the cell");
-		scrib.getDom("run-button"+_block_id).innerHTML="&#9658";
+		scrib.getDom("run-button"+_block_id).innerHTML = `<i class="ti ti-player-play-filled"></i>`;
 		setTimeout(()=>{
 			scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
 			}
 		, 5000);
 
 }
-
-
-
-
-
-
 
 // Wrapper function to execute a function in the worker with dynamic parameters
 worker.run_in=function(processor,func, ...parameters) {
