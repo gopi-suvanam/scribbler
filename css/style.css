@@ -250,6 +250,7 @@ input{
 	margin:0px;
 	padding:2px;
 	text-decoration: none!important;
+	color: #333;
 }
 
 @media (max-width: 600px) {
@@ -428,7 +429,7 @@ pre{
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fede02
+  --font-color:#fede02;
   --secondary: #fede02;
   --form-element-background-color:white;
 
