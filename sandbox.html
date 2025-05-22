@@ -34,12 +34,11 @@
 	<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
 	<script src="js/sandbox-ai-controller.js"></script> <!-- Controls the UI -->
 
-	<!-- Styling using pico.css and some custom css -->
+	<!-- Styling using pico.css, tabler-icons css and some custom css -->
 	<link rel="stylesheet" href="css/pico.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tabler-icons.min.css" />
 
-	<!--Icons from tabler icons -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 
 	<!-- For opening links in the parent frame by default -->
 	<base target="_parent">
@@ -87,7 +86,9 @@
 		<div id="input_block_id" tabindex='0' onfocusout="sandbox.unfocusEditor(_block_id)" class='code'>
 
 		</div>
-		<article ondblclick="sandbox.toggleEditor(_block_id)" style="display:flex" id="result_block_id">
+		<article 
+		class="output-block"
+		ondblclick="sandbox.toggleEditor(_block_id)" style="display:flex" id="result_block_id">
 			<p class="status" id="status_block_id"></p>
 			<div class="output" id="output_block_id"></div>
 		</article>
