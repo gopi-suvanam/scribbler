@@ -103,8 +103,6 @@ ul[role=listbox]{
 	font-size:12px !important;
 }
 
-
-	
 .CodeMirror {
 	/* font-family: Arial, monospace !important;  */
 	font-size: 18px !important; 
@@ -117,6 +115,10 @@ ul[role=listbox]{
 	min-height:50px !important;
 	padding:0px !important;
 
+}
+
+.CodeMirror-sizer{
+	margin-top:25px!important;
 }
 
 @media (prefers-color-scheme:light) {
@@ -165,7 +167,6 @@ ul[role=listbox]{
 	float:right;
 	margin-bottom:-15px;
 	height:15px;
-	line-height:15px;
 	font-size:12px;
 	z-index:100;
 	position:relative;
@@ -177,11 +178,16 @@ ul[role=listbox]{
 }
 
 .cell-menu a{
-
 	color: var(--font-color);
 	margin:5px;
-	font-size:14px;
+	font-size:18px;
+	text-decoration: none !important;
 }
+
+.cell-menu a i {
+	text-decoration: none !important;
+  }
+  
 
 .cell-menu select{
 
@@ -225,6 +231,8 @@ input{
     right: unset;
     height:unset;
     display:flex;
+	justify-content: center;
+	align-items: center;
     border-top:thin solid black;
     
     }
@@ -233,8 +241,13 @@ input{
 	color:unset;
 	margin:10px;
 	font-size:24px;
+	text-decoration: none!important;
 	
 	}
+	.cell-menu a i{
+		text-decoration: none!important;
+	}
+
     .cell-menu span{
 	
 	margin:10px;
@@ -290,20 +303,25 @@ h1, h2, h3, h4, h5, h6, p, a, li, ul,ol {
 }
 
 
-
-
 .cell-type{
     color:var(--font-color) !important;
-    height: 32px !important;
-    width: 50px !important;
-    padding: 0px !important; 
+	text-align: start;
+	height: 25px!important;
+    line-height: 15px!important;
+    width: 85px !important;
+    padding: 2px 0px !important;
+	padding-left: 12px !important;
     margin: 0px !important;
-    text-align: center !important;
-    margin-top: -10px !important;
-    border: none !important;
+    text-align: start !important;
     font-weight: 400 !important;
-    background-image: unset !important;
-    background-color: unset !important;
+	background-color: rgba(254, 222, 0, 0.1);
+	border: 1px solid var(--primary);
+	border-radius: 4px;
+	border-bottom: 1px solid var(--primary)!important;
+}
+
+.cell-type:hover{
+	cursor: pointer !important;
 }
 
 #github_link{
