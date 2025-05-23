@@ -136,10 +136,10 @@ sandbox.toggleCellType = function(i) {
     cellTypeSelect.value = 'html';
 
     // Apply doc mode styling
-    scrib.getDom('result'+i).style.display = 'flex';
-    scrib.getDom('input'+i).style.display = 'none';
-    scrib.getDom('status'+i).style.display = 'none';
-    scrib.getDom("cell_menu"+i).style.display = "none";
+    //scrib.getDom('result'+i).style.display = 'flex';
+    //scrib.getDom('input'+i).style.display = 'none';
+    //scrib.getDom('status'+i).style.display = 'none';
+    //scrib.getDom("cell_menu"+i).style.display = "none";
   } else {
     cellTypeSelect.value = 'code';
     
