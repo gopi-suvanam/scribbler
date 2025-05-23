@@ -58,5 +58,32 @@
 	
 	  gtag('config', 'G-45Z12S039Z');
 	</script>
+	<script>
+    // console.log("here");
+    function waitForHamburger() {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (hamburger && navMenu) {
+            // console.log("Hamburger and nav-menu found");
+            hamburger.addEventListener('click', function () {
+                // console.log("clicked");
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
 
+            // Close the menu when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        } else {
+            // console.log("Waiting for hamburger...");
+            setTimeout(waitForHamburger, 100); 
+        }
+    }
+    document.addEventListener('DOMContentLoaded', waitForHamburger);
+</script>
  </html>

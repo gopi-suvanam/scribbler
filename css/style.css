@@ -509,6 +509,178 @@ pre{
 	align-items: center;
 }
 
+/* Hamburger Icon Styles */
+.hamburger {
+    display: none; /* Hidden by default on larger screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff; /* Adjust for light theme */
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px) !important;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px) !important;
+}
+
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Show hamburger on mobile */
+        margin-left: auto; 
+        position: relative;
+        z-index: 1001;
+    }
+
+    .hamburger span {
+        background-color: var(--font-color);
+    }
+
+    .navigation-wrapper {
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 0; 
+        background-color: var(--background-color);
+        z-index: 1000;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navigation-wrapper.active {
+        max-height: 500px; /* Show menu when active */
+        overflow-y: auto;
+    }
+
+    .main-navigation ul {
+        flex-direction: column;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    .main-navigation > ul > li {
+        width: 100%;
+        border-bottom: 1px solid rgba(254, 222, 0, 0.2);
+    }
+
+    .main-navigation details[role="list"] {
+        width: 100%;
+    }
+
+    .main-navigation details[role="list"] summary {
+        padding: 15px 20px !important;
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .main-navigation details[role="list"] ul[role="listbox"] {
+        position: static !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: rgba(254, 222, 0, 0.05);
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    .main-navigation details[role="list"] ul[role="listbox"] li {
+        border-bottom: 1px solid rgba(254, 222, 0, 0.1);
+    }
+
+    .main-navigation details[role="list"] ul[role="listbox"] li a {
+        padding: 12px 40px;
+        display: block;
+        font-size: 14px !important;
+    }
+
+    .main-navigation > ul > li:nth-last-child(-n+2) {
+        display: block;
+        border-top: 1px solid rgba(254, 222, 0, 0.2);
+    }
+
+    .main-navigation > ul > li:nth-last-child(-n+2) summary {
+        padding: 15px 20px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-navigation > ul > li:nth-last-child(-n+2) img {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .main-navigation > ul > li:nth-child(6) summary .header-button { /*hub button*/
+        background-color: var(--primary);
+        color: #000;
+        padding: 8px 16px !important;
+        border-radius: 4px;
+        font-weight: 500;
+        margin: 0 !important;
+    }
+
+    .top-header {
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-wrapper {
+        flex-shrink: 0;
+    }
+
+    .info-wrapper {
+        margin-left: 0;
+        margin-right: 10px;
+        display: none; 
+    }
+
+    .hamburger {
+        background-color: transparent !important;
+        border: none !important;
+        padding: 8px !important;
+    }
+
+    .hamburger span {
+        background-color: var(--font-color) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Dark theme hamburger fix */
+@media (prefers-color-scheme: dark) {
+    .hamburger span {
+        background-color: #fede02 !important;
+    }
+}
+
+[data-theme="dark"] .hamburger span {
+    background-color: #fede02 !important;
+}
 
 .nb-name-wrapper {
 	padding: 5px 10px;
