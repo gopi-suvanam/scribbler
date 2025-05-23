@@ -362,7 +362,7 @@ loadLocalFile= async function(id){
 			scrib.getDom("break-sandbox").style.display='none';
 		}
 		else{
-			scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-modals allow-same-origin allow-camera allow-payment-request");
+			scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-modals allow-same-origin");
 			scrib.getDom("break-sandbox").style.display='inline';
 		}
 		scrib.getDom("sandbox").setAttribute("src","sandbox.html?var=xxx");
