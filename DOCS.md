@@ -102,6 +102,7 @@ These shortcuts work when a code cell is in focus:
 - Alt-D/Option-D: Delete the current cell (no undo at the moment, so be careful)
 - Alt/Option-Up Arrow: Move the cell up
 - Alt/Option-Up Down: Move the cell down
+- Ctrl/Cmd-M: Toggle between code and document type for a cell
 
 These shortcuts are global
 - Alt-R/Option-R: Run all the cells
