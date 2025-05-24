@@ -13,7 +13,7 @@
 }
 
 #main > div {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -125,6 +125,8 @@ ul[role=listbox]{
 
 .output-block{
 	border-radius: 5px!important;
+    border: 1px solid #f3f1ee1e;
+
 }
 
 .CodeMirror-gutter {
