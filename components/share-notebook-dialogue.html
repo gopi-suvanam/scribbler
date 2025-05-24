@@ -1,39 +1,37 @@
-<dialog id="shareNB"> <!-- Modal for Loading Local Files -->
-  <article>
-	<h2>Share The Notebook</h2>
-	<div style="border:thin solid grey;width:100%;margin:5px;padding:5px">
-	
-	<span>
-	  <b>Link for Collaboration:</b>&nbsp;
-	</span>
-	<span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px" id="sharableLink"></span>&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('sharableLink')">&#128203;</a>
-	<hr>
-   
-	
-	<span>
-	  <b>Published Notebook:</b>&nbsp;
-	</span>
-	<span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px" id="sharableLinkClean"></span>&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('sharableLinkClean')">&#128203;</a>
-	<hr>
-	
-	 <span>
-	  <b>iFrame to Embed</b>&nbsp;
-	</span>
-	<span style="background-color:#fede02; color:#555; border-radius:5px;padding:5px"  id="iframeLink"></span>
-	&nbsp;&nbsp;&nbsp;<a href='#' onclick="event.preventDefault();scrib.copyText('iframeLink')">&#128203;</a>
-	<hr>
-		  <p>
-		   NB:<br>
-		   - Push to github if you have made changes.
-		   <br>
-		   - When embedded using this iFrame, the controls will be hidden. 
-		   <br>- Ensure the iFrame is inserted in another page. 
-		   <br>- The sandbox parameters can be removed/altered while embedding if you trust the code.
-		   <br>- If you want the code of the cells also to run when the page is loaded, check the "Run On Load" from Edit->Options before publishing.
-		</p>
-	 </div>
+<dialog id="shareNB" class="share-modal">
+	<article>
+		<h3 class="modal-title">Share Your Notebook</h3>
 
-  </article>
-  
+		<div class="share-section">
+			<label>Link for Collaboration</label>
+			<div class="copy-box">
+				<span id="sharableLink"></span>
+				<a href="#" onclick="event.preventDefault();scrib.copyText('sharableLink')">&#128203;</a>
+			</div>
+		</div>
+
+		<div class="share-section">
+			<label>Published Notebook</label>
+			<div class="copy-box">
+				<span id="sharableLinkClean"></span>
+				<a href="#" onclick="event.preventDefault();scrib.copyText('sharableLinkClean')">&#128203;</a>
+			</div>
+		</div>
+
+		<div class="share-section">
+			<label>Embed via iFrame</label>
+			<div class="copy-box">
+				<span id="iframeLink"></span>
+				<a href="#" onclick="event.preventDefault();scrib.copyText('iframeLink')">&#128203;</a>
+			</div>
+		</div>
+
+		<p class="share-note">
+			<strong>Note:</strong><br />
+			- Push to GitHub if you’ve made changes.<br />
+			- iFrame embeds hide the UI controls.<br />
+			- You may edit the sandbox params if you trust the code.<br />
+			- To auto-run cells on page load, enable <em>"Run on Load"</em> under Edit → Options.
+		</p>
+	</article>
 </dialog>
-	
