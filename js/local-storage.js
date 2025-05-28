@@ -34,7 +34,6 @@ function createIndexedDB() {
 // Call the function to create the IndexedDB database and object store
 createIndexedDB();
 
-
 function getAllFileNames() {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open('Scribbler', 1);
@@ -43,13 +42,17 @@ function getAllFileNames() {
       const db = event.target.result;
       const transaction = db.transaction(['FileSystem'], 'readonly');
       const objectStore = transaction.objectStore('FileSystem');
-      const files= [];
+      const files = [];
 
       objectStore.openCursor().onsuccess = function(cursorEvent) {
         const cursor = cursorEvent.target.result;
         if (cursor) {
           // Push each fileName into the array
-          files.push({name:cursor.value.name,id:cursor.value.id,updateTime:cursor.value.updateTime});
+          files.push({
+            name: cursor.value.name,
+            id: cursor.value.id,
+            updateTime: cursor.value.updateTime
+          });
           cursor.continue();
         } else {
           // Resolve the promise with the array of fileNames when cursor iteration is done
@@ -68,14 +71,13 @@ function getAllFileNames() {
   });
 }
 
-
- insertOrUpdateFile=function(nb, name,update_time,id) {
-  object = {};
-  object['nb']=nb;
-  object['name']=name;
-  object['updateTime']=update_time;
-  if(typeof(id)!=='undefined')
-  	object['id']=id;
+insertOrUpdateFile = function(nb, name, update_time, id) {
+  const object = {};
+  object['nb'] = nb;
+  object['name'] = name;
+  object['updateTime'] = update_time;
+  if (typeof(id) !== 'undefined')
+    object['id'] = id;
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open('Scribbler', 1);
 
@@ -104,8 +106,7 @@ function getAllFileNames() {
       reject(event.target.error);
     };
   });
-}
-
+};
 
 function deleteFileById(id) {
   return new Promise((resolve, reject) => {
@@ -136,7 +137,6 @@ function deleteFileById(id) {
     };
   });
 }
-
 
 function getFileById(id) {
   return new Promise((resolve, reject) => {
@@ -172,6 +172,3 @@ function getFileById(id) {
     };
   });
 }
-
-
-

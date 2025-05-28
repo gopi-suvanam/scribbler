@@ -33,22 +33,19 @@
 	<html-component data="components/header.html"></html-component>
 	<html-component data="components/ai-message.html"></html-component>
 	
-	
 	<iframe id="sandbox" src="sandbox.html" sandbox="allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals" style="width:100%;height:100%" ></iframe>
 	
 	<html-component data="components/footer.html"></html-component>
-    <html-component data="components/git-import-export.html"></html-component>
+	<html-component data="components/git-import-export.html"></html-component>
 	<html-component data="components/options-dialogue.html"></html-component>
 	<html-component data="components/local-files.html"></html-component>
 	<html-component data="components/share-notebook-dialogue.html"></html-component>
 	
-	
-	
-  </body>
-  <script>
-  	insitialize_page(); <!-- Load the keyboard shortcuts and initialization scripts -->
-  </script>
-	  <!-- Google Analytics for Understanding Usage -->
+	<script>
+		// Load the keyboard shortcuts and initialization scripts
+		initialize_page();
+	</script>
+	<!-- Google Analytics for Understanding Usage -->
 	<script  src="https://www.googletagmanager.com/gtag/js?id=G-45Z12S039Z" async></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -58,31 +55,32 @@
 	  gtag('config', 'G-45Z12S039Z');
 	</script>
 	<script>
-    // console.log("here");
-    function waitForHamburger() {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        if (hamburger && navMenu) {
-            // console.log("Hamburger and nav-menu found");
-            hamburger.addEventListener('click', function () {
-                // console.log("clicked");
-                this.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
+		// console.log("here");
+		function waitForHamburger() {
+			const hamburger = document.getElementById('hamburger');
+			const navMenu = document.getElementById('nav-menu');
+			
+			if (hamburger && navMenu) {
+				// console.log("Hamburger and nav-menu found");
+				hamburger.addEventListener('click', function () {
+					// console.log("clicked");
+					this.classList.toggle('active');
+					navMenu.classList.toggle('active');
+				});
 
-            // Close the menu when clicking outside
-            document.addEventListener('click', function (event) {
-                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
-                    navMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
-            });
-        } else {
-            // console.log("Waiting for hamburger...");
-            setTimeout(waitForHamburger, 100); 
-        }
-    }
-    document.addEventListener('DOMContentLoaded', waitForHamburger);
-</script>
- </html>
+				// Close the menu when clicking outside
+				document.addEventListener('click', function (event) {
+					if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+						navMenu.classList.remove('active');
+						hamburger.classList.remove('active');
+					}
+				});
+			} else {
+				// console.log("Waiting for hamburger...");
+				setTimeout(waitForHamburger, 100); 
+			}
+		}
+		document.addEventListener('DOMContentLoaded', waitForHamburger);
+	</script>
+  </body>
+</html>
