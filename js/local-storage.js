@@ -1,4 +1,5 @@
-﻿
+﻿import { scrib } from './libs.js';
+
 function createIndexedDB() {
   // Open (or create) the database
   const request = window.indexedDB.open('Scribbler', 1);

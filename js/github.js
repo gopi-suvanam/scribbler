@@ -1,4 +1,4 @@
-﻿
+﻿import { scrib, parse_response } from './libs.js';
 
 var get_file_sha=async function (token,user,repo,path){
   

@@ -2,7 +2,7 @@
 scrib.MAX_LENGTH_TO_SHOW=10000;
 scrib.TIMEOUT_FOR_BLOCKING_CALLS=5000;
 	
-scrib.blankNB={
+scrib.blankNB = {
   "metadata" : {
      "name":"Scribbler Notebook",
     "language_info": {
@@ -132,7 +132,6 @@ scrib.showInDom=function(output,...objs){
 	if(to_show.length>0) document.getElementById(output).innerHTML=document.getElementById(output).innerHTML+"<br>";
 }
 
-scrib.getDom=x=>document.getElementById(x);
 scrib.getDom = x=>document.getElementById(x);
 
 
@@ -401,3 +400,11 @@ scrib.runNBFromUrl=async url=>{
 	const js=scrib.nbToJS(nb);
 	eval(js);
 }
+
+// Export only the necessary front-end functions and the scrib object
+export {
+  scrib,
+  parse_response, // used in github.js and possibly others
+  load_script, // legacy, used in some places
+  load_file // legacy, used in some places
+};

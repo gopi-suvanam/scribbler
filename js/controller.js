@@ -1,3 +1,5 @@
+import { scrib } from './libs.js';
+
 let fileDetails={};
 let username='';
 
