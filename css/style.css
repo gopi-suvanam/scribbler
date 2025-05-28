@@ -9,7 +9,7 @@
 .container.nb-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    //padding: 20px;
 }
 
 #main > div {
@@ -704,7 +704,8 @@ pre{
 
 .top-header {
 	display: flex;
-	padding: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	border-bottom:1px solid #eceff0;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.01), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
