@@ -100,7 +100,7 @@ var get_user = async function (token) {
 	return login;
 }
 
-update_owner = async function () {
+const update_owner = async function () {
 	const token = scrib.getDom("token").value;
 	const user = await get_user(token);
 	const today = new Date(); // Get the current date
@@ -111,7 +111,7 @@ update_owner = async function () {
 	update_repos();
 }
 
-update_repos = async function () {
+const update_repos = async function () {
 	const token = scrib.getDom("token").value;
 	const user = scrib.getDom("user").value;
 
@@ -123,7 +123,7 @@ update_repos = async function () {
 	scrib.getDom('repos').innerHTML = str;
 }
 
-load_from_git = async function () {
+const load_from_git = async function () {
 	fileDetails['source'] = 'github';
 	fileDetails['token'] = scrib.getDom("token").value;
 	fileDetails['user'] = scrib.getDom("user").value;
@@ -138,7 +138,7 @@ load_from_git = async function () {
 	window.history.pushState(nextState, nextTitle, nextURL);
 }
 
-initialize_from_git = async function (link) {
+const initialize_from_git = async function (link) {
 	var i = link.indexOf('/');
 	var user = link.slice(0, i);
 	var rest = link.slice(i + 1);
@@ -166,7 +166,7 @@ initialize_from_git = async function (link) {
 	}
 }
 
-upload_to_git = async function () {
+const upload_to_git = async function () {
 	fileDetails['source'] = 'github';
 	fileDetails['token'] = scrib.getDom("token").value;
 	fileDetails['user'] = scrib.getDom("user").value;
@@ -190,10 +190,12 @@ upload_to_git = async function () {
 	}
 }
 
-initialize_git = async function () {
+const initialize_git = async function () {
 	const token = localStorage.getItem("gh-token");
 
 	if (token == null) return;
 	scrib.getDom("token").value = token;
 	update_owner();
 }
+
+export { initialize_git }

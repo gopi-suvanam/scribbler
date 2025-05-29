@@ -71,7 +71,7 @@ function getAllFileNames() {
   });
 }
 
-insertOrUpdateFile = function(nb, name, update_time, id) {
+const insertOrUpdateFile = function(nb, name, update_time, id) {
   const object = {};
   object['nb'] = nb;
   object['name'] = name;
@@ -172,3 +172,5 @@ function getFileById(id) {
     };
   });
 }
+
+export { getAllFileNames, insertOrUpdateFile, getFileById, deleteFileById }

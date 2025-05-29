@@ -18,22 +18,15 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/tabler-icons.min.css" />
 
-		<!-- Controllers and libs -->
+		<!-- Controller -->
 		<script type="module" src="js/controller.js"></script> <!-- Controls the UI -->
-		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
-		<script src="js/local-storage.js"></script> <!-- Functions for storing and retreiving JSNBs in indexddb -->
-		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
-		<script src="js/ai-coder.js"></script> <!-- Handling AI coding using WebLLM -->
-		<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
-		<script src="js/api-wrapper.js"></script> <!-- Convert Markdown to HTML -->
-
 	
 	</head>
   <body style="height:100%" >
 	<html-component data="components/header.html"></html-component>
 	<html-component data="components/ai-message.html"></html-component>
-	
-	<iframe id="sandbox" src="sandbox.html" sandbox="allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals" style="width:100%;height:100%" ></iframe>
+	se
+	<iframe id="sandbox" src="sandbox.html" sandbox="allow-scripts allow-downloads allow-same-origin allow-top-navigation allow-popups allow-modals" style="width:100%;height:100%" ></iframe>
 	
 	<html-component data="components/footer.html"></html-component>
 	<html-component data="components/git-import-export.html"></html-component>
@@ -41,7 +34,8 @@
 	<html-component data="components/local-files.html"></html-component>
 	<html-component data="components/share-notebook-dialogue.html"></html-component>
 	
-	<script>
+	<script type="module">
+		import { initialize_page } from './js/controller.js';
 		// Load the keyboard shortcuts and initialization scripts
 		initialize_page();
 	</script>

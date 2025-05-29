@@ -1,37 +1,43 @@
 import { scrib } from './libs.js';
+import { initialize_git } from './github.js';
+import { getAllFileNames, insertOrUpdateFile, getFileById, deleteFileById } from './local-storage.js';
+import { openModal, closeModal } from './modal.js';
 
 let fileDetails = {};
 let username = '';
+let sandbox_iframe;
 
 
 /****** Loading JSNB *********/
 
-load_jsnb = function (content) {
+const load_jsnb = async function (content) {
+    if (!sandbox_iframe) {
+        sandbox_iframe = await scrib.waitForDom("sandbox");
+    }
+    if (typeof (content) == 'string') var nb = JSON.parse(content);
+    else var nb = content;
 
-	if (typeof (content) == 'string') var nb = JSON.parse(content);
-	else var nb = content;
+    const message = {
+        action: "sandbox.loadJSNB",
+        data: nb,
+        call_bk: ""
+    };
 
-	const message = {
-		action: "sandbox.loadJSNB",
-		data: nb,
-		call_bk: ""
-	};
+    sandbox_iframe.contentWindow.postMessage(message, '*');
 
-	sandbox_iframe.contentWindow.postMessage(message, '*');
+    const run_on_load = nb.run_on_load || false;
+    scrib.getDom("nb_name").innerHTML = nb.metadata.name;
+    document.title = nb.metadata.name + ":  Scribbler Notebook";
+    const metaDescription = document.querySelector('meta[name="description"]');
 
-	const run_on_load = nb.run_on_load || false;
-	scrib.getDom("nb_name").innerHTML = nb.metadata.name;
-	document.title = nb.metadata.name + ":  Scribbler Notebook";
-	const metaDescription = document.querySelector('meta[name="description"]');
-
-	// Set the description dynamically
-	const newDescription = nb.metadata.name + " - Notebook for experimenting in JavaScript. Contains editable code and output. Play with html and code using a simple interface - Scribbler.";
-	metaDescription.setAttribute("content", newDescription);
-	scrib.getDom("run_on_load").checked = run_on_load;
+    // Set the description dynamically
+    const newDescription = nb.metadata.name + " - Notebook for experimenting in JavaScript. Contains editable code and output. Play with html and code using a simple interface - Scribbler.";
+    metaDescription.setAttribute("content", newDescription);
+    scrib.getDom("run_on_load").checked = run_on_load;
 
 }
 
-loadFileClick = async function (type) {
+const loadFileClick = async function (type) {
 
 	let content = await scrib.uploadFile();
 
@@ -48,7 +54,7 @@ loadFileClick = async function (type) {
 
 }
 
-load_from_url = async function () {
+const load_from_url = async function () {
 	let url = '';
 	const urlParams = new URLSearchParams(window.location.search);
 	const hideMenu = urlParams.get('hide-menu');
@@ -100,7 +106,7 @@ load_from_url = async function () {
 		if (runOnLoad === 'true') nb['run_on_load'] = true;
 		if (runOnLoad === 'false') nb['run_on_load'] = false;
 
-		load_jsnb(nb);
+		await load_jsnb(nb);
 
 	} else {
 		scrib.getDom("sandbox").removeAttribute("sandbox");
@@ -159,7 +165,7 @@ function get_html(view) {
 	});
 }
 
-download_js = async function () {
+const download_js = async function () {
 	const nb = await get_nb();
 	let js = nb.cells.filter(x => x.type == 'code').map(x => x['code']);
 
@@ -174,7 +180,7 @@ download_js = async function () {
 
 }
 
-download_html = async function (view) {
+const download_html = async function (view) {
 	// Send a message object to the iframe
 	let doc = await get_html(view);
 	doc = doc.replace("______title", scrib.getDom("nb_name").innerHTML);
@@ -182,7 +188,8 @@ download_html = async function (view) {
 	scrib.downloadString(doc, file_name, "data:text/html;charset=utf-8");
 
 }
-download_nb = async function () {
+
+const download_nb = async function () {
 	// Send a message object to the iframe
 	const nb = await get_nb();
 	let url = '';
@@ -211,7 +218,7 @@ download_nb = async function () {
 
 
 /****** Other Functionality ************/
-run_all = function () {
+const run_all = function () {
 
 	// Send a message object to the iframe
 
@@ -223,7 +230,7 @@ run_all = function () {
 
 }
 
-insert_cell = function (type) {
+const insert_cell = function (type) {
 	// Send a message object to the iframe
 
 	const message = {
@@ -234,7 +241,7 @@ insert_cell = function (type) {
 	sandbox_iframe.contentWindow.postMessage(message, '*');
 }
 
-break_sandbox = async function () {
+const break_sandbox = async function () {
 	const confirmation = prompt("!!! Alert !!! You are about to break the Sandbox. This can give the notebook access to your cookies, cache etc. Do so only if you trust the code in the notebook !!! Enter 'I trust' below if you trust the notebook.");
 	if (confirmation !== 'I trust') return;
 	const nb = await get_nb();
@@ -253,7 +260,7 @@ break_sandbox = async function () {
 
 
 /******** Functions for handling local (IndexedDB) files */
-openFileNamesModal = function () {
+const openFileNamesModal = function () {
 	// Get the modal
 	const modal = document.getElementById('fileNamesModal');
 
@@ -299,7 +306,7 @@ openFileNamesModal = function () {
 		});
 }
 
-saveLocalFile = async function () {
+const saveLocalFile = async function () {
 	scrib.getDom("save-button").setAttribute("aria-busy", "true");
 	try {
 		let nb = await get_nb();
@@ -326,7 +333,7 @@ saveLocalFile = async function () {
 		500);
 }
 
-resetNB = async function () {
+const resetNB = async function () {
 	scrib.getDom("sandbox").removeAttribute("sandbox");
 	scrib.getDom("sandbox").setAttribute("src", "sandbox.html");
 	sandbox_iframe = await scrib.waitForDom("sandbox")
@@ -340,14 +347,14 @@ resetNB = async function () {
 	scrib.getDom("break-sandbox").style.display = 'none';
 }
 
-deleteLocalFile = function (id, name) {
+const deleteLocalFile = function (id, name) {
 	let c = confirm("Deleting : " + name);
 	if (c)
 		deleteFileById(parseInt(id)).then(x => openFileNamesModal()).catch(err => { alert("Error in deletion:" + error) });
 
 }
 
-loadLocalFile = async function (id) {
+const loadLocalFile = async function (id) {
 	try {
 		const obj = await getFileById(id);
 
@@ -378,7 +385,7 @@ loadLocalFile = async function (id) {
 
 
 /********* Share and Publish *********/
-shareBtn = function () {
+const shareBtn = function () {
 	let url = '';
 	scrib.getDom("sharableLink").innerHTML = window.location;//.origin+window.location.pathname+'?jsnb='+url;
 
@@ -393,7 +400,6 @@ shareBtn = function () {
 	if (url == undefined) url = '';
 	scrib.getDom("sharableLinkClean").innerHTML = window.origin + window.location.pathname + `?jsnb=${url}&hide-menu=true&hide-code=true`;
 
-
 	if (url.length > 0) {
 
 		scrib.getDom("iframeLink").innerText = '<iframe id="sandbox" style="width:100%;height:100%" src ="' + window.location.origin + window.location.pathname + 'sandbox.html?jsnb=' + url + '"></iframe>';
@@ -403,10 +409,9 @@ shareBtn = function () {
 		alert("Push the notebook to Github first to publish the notebook in an iFrame");
 		openModal(scrib.getDom('git-import-export'));
 	}
-
 }
-toggleJsDlvr = function () {
 
+const toggleJsDlvr = function () {
 	let jsDlvrUrl = 'https://cdn.jsdelivr.net/gh/';
 	if (scrib.getDom("iframeLink").innerText(":")[0].trim() == 'github') {
 		scrib.getDom("iframeLink").innerText = scrib.getDom("iframeLink").innerText.replace('github:', jsDlvrUrl);
@@ -414,12 +419,11 @@ toggleJsDlvr = function () {
 	else if (scrib.getDom("iframeLink").innerText(":")[0].trim() == jsDlvrUrl) {
 		scrib.getDom("iframeLink").innerText = scrib.getDom("iframeLink").innerText.replace('github:', jsDlvrUrl);
 	}
-
 }
 
 
 /********* Initialize Certain Global Variables and Load the JSNB from URL *****/
-keyDown = function (e) {
+const keyDown = function (e) {
 	if (e.ctrlKey && e.key === 's') {
 		saveLocalFile();
 	} else if (e.ctrlKey && e.key === 'g') {
@@ -427,15 +431,12 @@ keyDown = function (e) {
 	} else if (e.ctrlKey && e.key === 'o') {
 		openModal(scrib.getDom('fileNamesModal'));
 		openFileNamesModal()
-
 	}
 	else if (e.altKey && e.key === '®') {
 		run_all()
-
 	}
 	else if (e.altKey && e.key === 'r') {
 		run_all()
-
 	}
 }
 
@@ -454,17 +455,17 @@ class DynamicInclude extends HTMLElement {
 
 customElements.define('html-component', DynamicInclude);
 
-insitialize_page = async function () {
+const initialize_page = async function () {
 
 	window.onload = function () {
-		first_load = true;
+		let first_load = true;
 		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
 		scrib.waitForDom("break-sandbox").then(result => result.style.display = 'inline');
 		initialize_git();
 
 		scrib.waitForDom('sandbox').then(result => {
-			sandbox_iframe = result;
+			const sandbox_iframe = result;
 
 			console.log("Loading from URL");
 			load_from_url();
@@ -492,7 +493,8 @@ insitialize_page = async function () {
 				}, event.origin);
 			}
 		});
-
 	};
 
 }
+
+export { initialize_page }

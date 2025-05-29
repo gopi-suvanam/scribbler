@@ -171,7 +171,7 @@ scrib.loadCSS = function (css) {
 	document.head.appendChild(link);
 }
 
-load_script = (...args) => {
+const load_script = (...args) => {
 	scrib.show("<span style='color:orange'>Warning! load_script() is being deprecated. Use scrib.loadScript().</span>");
 	scrib.loadScript(...args);
 }
@@ -279,7 +279,7 @@ scrib.uploadFile = async function (type) {
 	return x;
 }
 
-load_file = scrib.uploadFile;
+const load_file = scrib.uploadFile;
 
 var parse_response = async response => {
 	const isJson = response.headers.get('content-type')?.includes('application/json');
@@ -355,17 +355,13 @@ scrib.getFileFromUrl = async url => {
 		}
 	}
 	return nb;
-}
+};
+
 scrib.runNBFromUrl = async url => {
 	const nb = await scrib.getFileFromUrl(url);
 	const js = scrib.nbToJS(nb);
 	eval(js);
-}
+};
 
 // Export only the necessary front-end functions and the scrib object
-export {
-	scrib,
-	parse_response, // used in github.js and possibly others
-	load_script, // legacy, used in some places
-	load_file // legacy, used in some places
-};
+export { scrib, parse_response, load_script, load_file };

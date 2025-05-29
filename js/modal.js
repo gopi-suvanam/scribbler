@@ -93,3 +93,8 @@ const getScrollbarWidth = () => {
 const isScrollbarVisible = () => {
   return document.body.scrollHeight > screen.height;
 }
+
+export {
+  openModal,
+  closeModal
+}
