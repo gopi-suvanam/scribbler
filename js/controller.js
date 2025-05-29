@@ -120,7 +120,7 @@ const load_from_url = async function () {
 		}
 			, { once: true }
 		);
-		scrib.getDom("break-sandbox").style.display = 'none';
+		// scrib.getDom("break-sandbox").style.display = 'none';
 
 	}
 
@@ -496,5 +496,17 @@ const initialize_page = async function () {
 	};
 
 }
+
+window.openFileNamesModal = openFileNamesModal;
+window.saveLocalFile = saveLocalFile;
+window.loadFileClick = loadFileClick;
+window.download_nb = download_nb;
+window.download_js = download_js;
+window.download_html = download_html;
+window.shareBtn = shareBtn;
+window.insert_cell = insert_cell;
+window.break_sandbox = break_sandbox;
+window.run_all = run_all;
+window.resetNB = resetNB;
 
 export { initialize_page }

@@ -253,7 +253,7 @@ scrib.isSandboxed = function () {
 
 scrib.uploadFile = async function (type) {
 	const file_loader = document.createElement('input');
-	file_id = (Math.random() + 1).toString(36).substring(7);
+	let file_id = (Math.random() + 1).toString(36).substring(7);
 	file_loader.id = file_id;
 	file_loader.type = "file";
 	file_loader.style.display = 'none';
@@ -261,11 +261,11 @@ scrib.uploadFile = async function (type) {
 
 	await scrib.waitForDom(file_id);
 
-	x = await new Promise(resolve => {
+	let x = await new Promise(resolve => {
 		scrib.getDom(file_id).addEventListener("change", () => {
 			const fr = new FileReader();
 			fr.onload = async function (event) {
-				content = event.target.result;
+				let content = event.target.result;
 				scrib.getDom(file_id).remove();
 				resolve(content);
 			};
@@ -362,6 +362,8 @@ scrib.runNBFromUrl = async url => {
 	const js = scrib.nbToJS(nb);
 	eval(js);
 };
+
+window.scrib = scrib; // Expose the scrib object globally
 
 // Export only the necessary front-end functions and the scrib object
 export { scrib, parse_response, load_script, load_file };

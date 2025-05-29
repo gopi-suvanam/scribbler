@@ -1,4 +1,4 @@
-﻿import { scrib } from './libs.js';
+﻿// import { scrib } from './libs.js';
 
 function createIndexedDB() {
   // Open (or create) the database

@@ -1,6 +1,6 @@
 ﻿import { scrib } from './libs.js';
 
-const sandbox = {}
+const sandbox = {};
 
 sandbox.statusData = {
 	num_blocks: 0,
@@ -14,11 +14,11 @@ sandbox.toggleEditor = function(i) {
 	if (scrib.getDom("cell_type" + i).value == 'code') return;
 
 	{
-		input_dom = scrib.getDom("input" + i)
+		let input_dom = scrib.getDom("input" + i)
 		input_dom.style.display = "block";
 		scrib.getDom("cell_menu" + i).style.display = "block";
 		scrib.getDom("result" + i).style.display = "none";
-		cm = input_dom.childNodes[0].CodeMirror;
+		let cm = input_dom.childNodes[0].CodeMirror;
 		cm.focus();
 		cm.setCursor(1, 0)
 	}
@@ -557,6 +557,8 @@ sandbox.initialize = async function() {
 		})
 	}
 }
+
+window.sandbox = sandbox;
 
 /** Making sandbox immutable so that user generated scripts cannot change the functions **/
 // Object.freeze(sandbox);
