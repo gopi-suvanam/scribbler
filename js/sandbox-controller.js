@@ -48,6 +48,7 @@ sandbox.deleteCell = function(i) {
 	delete sandbox.editors[i];
 }
 
+let curr, prev, next, input_dom, cm;
 sandbox.moveUp = function(i) {
 	curr = scrib.getDom("block" + i)
 	prev = curr.previousSibling

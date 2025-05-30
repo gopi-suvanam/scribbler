@@ -508,5 +508,10 @@ window.insert_cell = insert_cell;
 window.break_sandbox = break_sandbox;
 window.run_all = run_all;
 window.resetNB = resetNB;
+window.load_from_url = load_from_url;
+window.toggleJsDlvr = toggleJsDlvr;
+window.loadLocalFile = loadLocalFile;
+window.openModal = openModal;
+window.closeModal = closeModal;
 
 export { initialize_page }
