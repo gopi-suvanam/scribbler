@@ -9,7 +9,7 @@
 .container.nb-content {
     max-width: 1600px;
     margin: 0 auto;
-    //padding: 20px;
+    /* padding: 20px; */
 }
 
 #main > div {
@@ -818,6 +818,7 @@ pre{
 
     .main-navigation details[role="list"] ul[role="listbox"] li {
         border-bottom: 1px solid rgba(254, 222, 0, 0.1);
+        z-index: inherit;
     }
 
     .main-navigation details[role="list"] ul[role="listbox"] li a {
