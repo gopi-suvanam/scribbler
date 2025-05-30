@@ -1,4 +1,5 @@
 ﻿import { scrib, parse_response } from './libs.js';
+import { get_nb } from './controller.js';
 
 var get_file_sha = async function (token, user, repo, path) {
 	var url = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
@@ -123,6 +124,7 @@ const update_repos = async function () {
 	scrib.getDom('repos').innerHTML = str;
 }
 
+let fileDetails = {};
 const load_from_git = async function () {
 	fileDetails['source'] = 'github';
 	fileDetails['token'] = scrib.getDom("token").value;
@@ -198,4 +200,4 @@ const initialize_git = async function () {
 	update_owner();
 }
 
-export { initialize_git }
+export { initialize_git, upload_to_git,load_from_git }

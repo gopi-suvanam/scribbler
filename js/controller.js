@@ -1,7 +1,7 @@
 import { scrib } from './libs.js';
-import { initialize_git } from './github.js';
+import { initialize_git, upload_to_git, load_from_git } from './github.js';
 import { getAllFileNames, insertOrUpdateFile, getFileById, deleteFileById } from './local-storage.js';
-import { openModal, closeModal } from './modal.js';
+import { openModal, closeModal, toggleModal } from './modal.js';
 
 let fileDetails = {};
 let username = '';
@@ -11,29 +11,29 @@ let sandbox_iframe;
 /****** Loading JSNB *********/
 
 const load_jsnb = async function (content) {
-    if (!sandbox_iframe) {
-        sandbox_iframe = await scrib.waitForDom("sandbox");
-    }
-    if (typeof (content) == 'string') var nb = JSON.parse(content);
-    else var nb = content;
+	if (!sandbox_iframe) {
+		sandbox_iframe = await scrib.waitForDom("sandbox");
+	}
+	if (typeof (content) == 'string') var nb = JSON.parse(content);
+	else var nb = content;
 
-    const message = {
-        action: "sandbox.loadJSNB",
-        data: nb,
-        call_bk: ""
-    };
+	const message = {
+		action: "sandbox.loadJSNB",
+		data: nb,
+		call_bk: ""
+	};
 
-    sandbox_iframe.contentWindow.postMessage(message, '*');
+	sandbox_iframe.contentWindow.postMessage(message, '*');
 
-    const run_on_load = nb.run_on_load || false;
-    scrib.getDom("nb_name").innerHTML = nb.metadata.name;
-    document.title = nb.metadata.name + ":  Scribbler Notebook";
-    const metaDescription = document.querySelector('meta[name="description"]');
+	const run_on_load = nb.run_on_load || false;
+	scrib.getDom("nb_name").innerHTML = nb.metadata.name;
+	document.title = nb.metadata.name + ":  Scribbler Notebook";
+	const metaDescription = document.querySelector('meta[name="description"]');
 
-    // Set the description dynamically
-    const newDescription = nb.metadata.name + " - Notebook for experimenting in JavaScript. Contains editable code and output. Play with html and code using a simple interface - Scribbler.";
-    metaDescription.setAttribute("content", newDescription);
-    scrib.getDom("run_on_load").checked = run_on_load;
+	// Set the description dynamically
+	const newDescription = nb.metadata.name + " - Notebook for experimenting in JavaScript. Contains editable code and output. Play with html and code using a simple interface - Scribbler.";
+	metaDescription.setAttribute("content", newDescription);
+	scrib.getDom("run_on_load").checked = run_on_load;
 
 }
 
@@ -493,25 +493,87 @@ const initialize_page = async function () {
 				}, event.origin);
 			}
 		});
+
+		// Add event listeners for all buttons and links
+		document.querySelectorAll('.openFileNames').forEach((el) => {
+			el.addEventListener('click', openFileNamesModal);
+		});
+		document.querySelectorAll('[data-target]').forEach((el) => {
+			el.addEventListener('click', (event) => {
+				toggleModal(event);
+			});
+		});
+		document.querySelectorAll('.saveLocally').forEach((el) => {
+			el.addEventListener('click', saveLocalFile);
+		});
+		document.querySelectorAll('.loadFile').forEach((el) => {
+			el.addEventListener('click', () => {
+				if (el.textContent == "Upload NB") loadFileClick();
+				else if (el.textContent == "Upload Markdown")  loadFileClick('md');
+				else if (el.textContent == "Upload JS Script") loadFileClick('js');
+			});
+		});
+		document.querySelectorAll(".downloadNB").forEach((el) => {
+			el.addEventListener('click', download_nb);
+		});
+		document.querySelectorAll(".downloadNB").forEach((el) => {
+			el.addEventListener('click', download_nb);
+		});
+		document.querySelectorAll(".downloadNB").forEach((el) => {
+			el.addEventListener('click', download_nb);
+		});
+		
+		let downloadHTMLs = document.querySelectorAll('.downloadHTML');
+		downloadHTMLs[0].addEventListener('click', () => {
+			download_html('nb');
+		});
+		downloadHTMLs[1].addEventListener('click', () => {
+			download_html('output');
+		});
+		downloadHTMLs[2].addEventListener('click', () => {
+			download_html('html+js');
+		});
+		
+		document.querySelectorAll(".downloadJS").forEach((el) => {
+			el.addEventListener('click', download_js);
+		});
+
+		let insertCells = document.querySelectorAll('.insertCell');
+		insertCells[0].addEventListener('click', () => {
+			insert_cell('code');
+		});
+		insertCells[1].addEventListener('click', () => {
+			insert_cell('html');
+		});
+		insertCells[2].addEventListener('click', () => {
+			insert_cell('style');
+		});
+
+		document.querySelectorAll(".breakSandbox").forEach((el) => {
+			el.addEventListener('click', break_sandbox);
+		});
+		document.querySelectorAll(".runAll").forEach((el) => {
+			el.addEventListener('click', run_all);
+		});
+		document.querySelectorAll(".resetNotebook").forEach((el) => {
+			el.addEventListener('click', resetNB);
+		});
+		document.querySelectorAll(".shareNB").forEach((el) => {
+			el.addEventListener('click', shareBtn);
+		});
+		document.querySelectorAll(".uploadTOGit").forEach((el) => {
+			el.addEventListener('click', upload_to_git);
+		});
+		document.querySelectorAll(".loadFromGit").forEach((el) => {
+			el.addEventListener('click', load_from_git);
+		});
+		document.querySelectorAll(".Call_open_close_modal").forEach((el) => {
+			el.addEventListener('click', () => {
+				openModal(scrib.getDom('shareNB'));
+				closeModal(scrib.getDom('git-import-export'));
+			});
+		});
 	};
+};
 
-}
-
-window.openFileNamesModal = openFileNamesModal;
-window.saveLocalFile = saveLocalFile;
-window.loadFileClick = loadFileClick;
-window.download_nb = download_nb;
-window.download_js = download_js;
-window.download_html = download_html;
-window.shareBtn = shareBtn;
-window.insert_cell = insert_cell;
-window.break_sandbox = break_sandbox;
-window.run_all = run_all;
-window.resetNB = resetNB;
-window.load_from_url = load_from_url;
-window.toggleJsDlvr = toggleJsDlvr;
-window.loadLocalFile = loadLocalFile;
-window.openModal = openModal;
-window.closeModal = closeModal;
-
-export { initialize_page }
+export { initialize_page, get_nb }
