@@ -28,13 +28,13 @@
 		</div>
 
 		<div class="button-row">
-			<button class="secondary" onclick="toggleModal(event)">Cancel</button>
-			<button class="primary" onclick="upload_to_git()">Push to Git</button>
-			<button class="primary" onclick="load_from_git()">Load from Git</button>
+			<button class="secondary" data-target="git-import-export">Cancel</button>
+			<button class="primary uploadTOGit">Push to Git</button>
+			<button class="primary loadFromGit" >Load from Git</button>
 		</div>
 
 		<p class="publish-link">
-			<a href="#" onclick="closeModal(scrib.getDom('git-import-export')); openModal(scrib.getDom('shareNB'));">
+			<a href="#" class="Call_open_close_modal">
 				Publish and share the notebook with the world!
 			</a>
 		</p>
