@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "name": "New JSNB",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "## Web Workers explained",
+      "status": "",
+      "output": "<h2>Web Workers explained</h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "//>md\nJavaScript Web Workers allow you to run scripts in background threads, separate from the main execution thread of a web page.                                                                 \nThis helps you do heavy or long-running tasks (like computations, data processing, or I/O) without freezing or slowing down the UI.                                                           \n\n### Why use Web Workers?\n  In JavaScript, everything typically runs on a single thread (the \"main thread\"). This includes:\n- UI updates\n- Event handling (clicks, scrolls, etc.)\n- Your JavaScript logic                                                                                                                                   \nIf you run a CPU-heavy task (like parsing a huge JSON or doing image processing), the browser can't update the UI or respond to user input until the task finishes.                        \nThis makes the page feel laggy or unresponsive.                                                                                                                                             \nWeb Workers fix this by offloading work to a separate thread.",
+      "status": "",
+      "output": "<p>JavaScript Web Workers allow you to run scripts in background threads, separate from the main execution thread of a web page.<br>This helps you do heavy or long-running tasks (like computations, data processing, or I/O) without freezing or slowing down the UI.                                                           </p>\n<h3>Why use Web Workers?</h3>\n<p>  In JavaScript, everything typically runs on a single thread (the \"main thread\"). This includes:</p>\n<ul>\n<li>UI updates</li>\n<li>Event handling (clicks, scrolls, etc.)</li>\n<li>Your JavaScript logic<br>If you run a CPU-heavy task (like parsing a huge JSON or doing image processing), the browser can't update the UI or respond to user input until the task finishes.<br>This makes the page feel laggy or unresponsive.<br>Web Workers fix this by offloading work to a separate thread.</li>\n</ul>\n",
+      "type": "html"
+    },
+    {
+      "code": "### Core Concepts\n- Web Workers run in the background, separate from the main thread.\n- They don’t have access to the DOM (no `document`, `window`, etc.).\n- Communication with workers is done via messages using `postMessage`.",
+      "status": "",
+      "output": "<h3>Core Concepts</h3>\n<ul>\n<li>Web Workers run in the background, separate from the main thread.</li>\n<li>They don’t have access to the DOM (no <code>document</code>, <code>window</code>, etc.).</li>\n<li>Communication with workers is done via messages using <code>postMessage</code>.</li>\n</ul>\n",
+      "type": "html"
+    },
+    {
+      "code": "## How to use a Web Worker?",
+      "status": "",
+      "output": "<h2>How to use a Web Worker?</h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "You can use web workers in mainly two ways:\n1. Create a separate JS file (e.g. worker.js)\n2. Inline worker \n\nSince we are using Scribbler JS Notebook, we will use Inline worker",
+      "status": "",
+      "output": "<p>You can use web workers in mainly two ways:</p>\n<ol>\n<li>Create a separate JS file (e.g. worker.js)</li>\n<li>Inline worker</li>\n</ol>\n<p>Since we are using Scribbler JS Notebook, we will use Inline worker</p>\n",
+      "type": "html"
+    },
+    {
+      "code": "//>html\n<div>\n    <label for=\"calcCount\">Prime Count (up to 10 million): </label>\n    <input type=\"number\" id=\"calcCount\" min=\"1000000\" max=\"10000000\" value=\"7000000\">\n    <br>\n    <button id=\"startWorker\">Start Computation</button>\n    <button id=\"animate\">Toggle Animation</button>\n    <p>Worker Status: <span id=\"workerStatus\">Idle</span></p>\n    <p>Task: <span id=\"taskInfo\">None</span></p>\n    <p>Result: <span id=\"result\">Not started</span></p>\n    <p>Computation Time: <span id=\"computeTime\">0 ms</span></p>\n    <p>Animation State: <span id=\"animationStatus\">Stopped</span></p>\n    <canvas id=\"canvas\" width=\"150\" height=\"150\"></canvas>\n</div>\n\n<style>\n    body { font-family: sans-serif; }\n    button { margin: 10px; padding: 8px 16px; }\n    canvas { border: 2px solid #333; margin: 10px; background: #fafafa; }\n    label, p { margin: 8px; display: block; }\n</style>",
+      "status": "[30]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "\n<div>\n    <label for=\"calcCount\">Prime Count (up to 10 million): </label>\n    <input type=\"number\" id=\"calcCount\" min=\"1000000\" max=\"10000000\" value=\"7000000\">\n    <br>\n    <button id=\"startWorker\">Start Computation</button>\n    <button id=\"animate\">Toggle Animation</button>\n    <p>Worker Status: <span id=\"workerStatus\">Idle</span></p>\n    <p>Task: <span id=\"taskInfo\">Done</span></p>\n    <p>Result: <span id=\"result\">Primes Found: 476648</span></p>\n    <p>Computation Time: <span id=\"computeTime\">1486 ms</span></p>\n    <p>Animation State: <span id=\"animationStatus\">Stopped</span></p>\n    <canvas id=\"canvas\" width=\"150\" height=\"150\"></canvas>\n</div>\n\n<style>\n    body { font-family: sans-serif; }\n    button { margin: 10px; padding: 8px 16px; }\n    canvas { border: 2px solid #333; margin: 10px; background: #fafafa; }\n    label, p { margin: 8px; display: block; }\n</style> <br>",
+      "type": "code"
+    },
+    {
+      "code": "// Web Worker script as a string\nconst workerScript = `\nself.onmessage = function(e) {\n    if (e.data.type === 'compute') {\n        const limit = e.data.value;\n        const isPrime = n => {\n            if (n < 2) return false;\n            for (let i = 2; i * i <= n; i++) {\n                if (n % i === 0) return false;\n            }\n            return true;\n        };\n        let count = 0;\n        const start = performance.now();\n        for (let i = 2; i <= limit; i++) {\n            if (isPrime(i)) count++;\n            if (i % Math.floor(limit / 10) === 0) {\n                const progress = Math.floor(i / limit * 100);\n                self.postMessage({ type: 'progress', value: progress });\n            }\n        }\n        const end = performance.now();\n        self.postMessage({ type: 'result', count, duration: Math.round(end - start) });\n    }\n};\n`;\n\nconst worker = new Worker(URL.createObjectURL(new Blob([workerScript], { type: \"application/javascript\" })));\n\n// Handle worker messages\nworker.onmessage = function(e) {\n    if (e.data.type === 'progress') {\n        document.getElementById('taskInfo').textContent = `Calculating primes... (${e.data.value}%)`;\n    } else if (e.data.type === 'result') {\n        document.getElementById('result').textContent = `Primes Found: ${e.data.count}`;\n        document.getElementById('computeTime').textContent = `${e.data.duration} ms`;\n        document.getElementById('workerStatus').textContent = 'Idle';\n        document.getElementById('taskInfo').textContent = 'Done';\n    }\n};\n\n// Start worker on button click\ndocument.getElementById('startWorker').addEventListener('click', () => {\n    const limit = parseInt(document.getElementById('calcCount').value);\n    if (isNaN(limit) || limit < 1000000) {\n        alert('Please enter a number above 1,000,000');\n        return;\n    }\n    document.getElementById('workerStatus').textContent = 'Running';\n    document.getElementById('taskInfo').textContent = 'Preparing task...';\n    document.getElementById('result').textContent = 'Computing...';\n    document.getElementById('computeTime').textContent = '...';\n    worker.postMessage({ type: 'compute', value: limit });\n});",
+      "status": "[31]<br><span style=\"font-size:8px\">1ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "// Simple animation\nlet animating = false;\nconst canvas = document.getElementById('canvas');\nconst ctx = canvas.getContext('2d');\nlet size = 20, grow = true;\n\nfunction simpleAnimation() {\n    if (!animating) return;\n    ctx.clearRect(0, 0, canvas.width, canvas.height);\n    ctx.fillStyle = `hsl(${Date.now() % 360}, 70%, 50%)`;\n    ctx.fillRect((canvas.width - size) / 2, (canvas.height - size) / 2, size, size);\n\n    size += grow ? 2 : -2;\n    if (size > 100 || size < 20) grow = !grow;\n\n    requestAnimationFrame(simpleAnimation);\n}\n\n// Toggle animation\ndocument.getElementById('animate').addEventListener('click', () => {\n    animating = !animating;\n    document.getElementById('animationStatus').textContent = animating ? 'Running' : 'Stopped';\n    if (animating) simpleAnimation();\n});",
+      "status": "[32]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "output": "",
+      "type": "code"
+    },
+    {
+      "code": "## Explaination",
+      "status": "",
+      "output": "<h2>Explaination</h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "`const workerScript = '...';` - This string defines the code that will run in a background thread.                                                                                           \n`const worker = new Worker(URL.createObjectURL(new Blob([workerScript], ...)));` - This turns the string into a working Web Worker using a Blob (kind of like a file in memory).\n\n### Receiving Messages:\n`worker.onmessage = function(e) { ... }`                                                                                                                                               \n**Handles:**\n- progress updates - updates the UI with percentage.\n- result - updates the final count and computation time.",
+      "status": "",
+      "output": "<p><code>const workerScript = '...';</code> - This string defines the code that will run in a background thread.<br><code>const worker = new Worker(URL.createObjectURL(new Blob([workerScript], ...)));</code> - This turns the string into a working Web Worker using a Blob (kind of like a file in memory).</p>\n<h3>Receiving Messages:</h3>\n<p><code>worker.onmessage = function(e) { ... }</code><br><strong>Handles:</strong></p>\n<ul>\n<li>progress updates - updates the UI with percentage.</li>\n<li>result - updates the final count and computation time.</li>\n</ul>\n",
+      "type": "html"
+    },
+    {
+      "code": "- The prime calculation (a heavy task) is sent to a Web Worker, which runs in a separate thread from the main UI thread.\n- Meanwhile, the animation runs on the main thread using requestAnimationFrame.\n- The main thread is free to handle UI updates, event listeners, and rendering.\n- The worker thread does the number crunching (finding primes), and only sends progress updates and final results back via `postMessage`.\n- This setup shows non-blocking behavior and proper use of Web Workers to offload computationally intensive tasks - a key technique for maintaining a responsive UI in web apps.",
+      "status": "",
+      "output": "<ul>\n<li>The prime calculation (a heavy task) is sent to a Web Worker, which runs in a separate thread from the main UI thread.</li>\n<li>Meanwhile, the animation runs on the main thread using requestAnimationFrame.</li>\n<li>The main thread is free to handle UI updates, event listeners, and rendering.</li>\n<li>The worker thread does the number crunching (finding primes), and only sends progress updates and final results back via <code>postMessage</code>.</li>\n<li>This setup shows non-blocking behavior and proper use of Web Workers to offload computationally intensive tasks - a key technique for maintaining a responsive UI in web apps.</li>\n</ul>\n",
+      "type": "html"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/scribbler",
+  "run_on_load": false
+}
