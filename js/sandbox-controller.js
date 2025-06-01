@@ -182,9 +182,9 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
       displayText: `Math.${fn}(...)`
     }));
 
-  // 3. Parse user-defined function names from the current editor content
-  const allText = editor.getValue();
-  const userDefinedHints = [...allText.matchAll(/function\s+(\w+)\s*\(([^)]*)\)/g)]
+  // 3a. Parse traditional user-defined function names from the current editor content
+  const code = editor.getValue();
+  const userDefinedHints = [...code.matchAll(/function\s+(\w+)\s*\(([^)]*)\)/g)]
     .map(match => {
 		const name = match[1];
 		const args = match[2].split(',').map(arg => arg.trim()).filter(Boolean).join(', ');
@@ -194,8 +194,19 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
 		}
 	});
 
+  // 3b. Parse arrow functions: const fnName = (...) => {...}
+  const arrowFunctionHints = [...code.matchAll(/(?:const|let|var)\s+(\w+)\s*=\s*\(([^)]*)\)\s*=>/g)]
+	.map(match => {
+		const name = match[1];
+		const args = match[2].split(',').map(arg => arg.trim()).filter(Boolean).join(', ');
+		return{
+			text: `${name}()`,
+			displayText: `${name}(${args})`
+		}
+	})
+
   // 4. Combine all hints
-  const allHints = [...staticHints, ...mathHints, ...userDefinedHints];
+  const allHints = [...staticHints, ...mathHints, ...userDefinedHints, ...arrowFunctionHints];
 
   // 5. Filter based on what the user is typing
   const list = allHints.filter(f =>
