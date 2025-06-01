@@ -243,7 +243,25 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
 	})
 
   // 4. Combine all hints
-  const allHints = [...staticHints, ...mathHints, ...userDefinedHints, ...arrowFunctionHints];
+  const allHints = [...staticHints, ...mathHints, ...userDefinedHints, ...arrowFunctionHints]
+	.map(hint => ({
+      ...hint,
+      // hint method that positions cursor appropriately
+      hint: function(cm, data, completion) {
+        // Insert the text
+        cm.replaceRange(completion.text, data.from, data.to);
+        
+        // move cursor inside parentheses only if the completion ends with ()
+        if (completion.text.endsWith('()')) {
+          const newPos = {
+            line: data.from.line,
+            ch: data.from.ch + completion.text.length - 1 // -1 to go before the closing )
+          };
+          cm.setCursor(newPos);
+        }
+        // for non-function completions, cursor stays at the end (default behavior)
+      }
+    })); 
 
   // 5. Filter based on what the user is typing
   const filteredHints = allHints.filter(f =>
