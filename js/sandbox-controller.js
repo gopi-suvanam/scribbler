@@ -167,10 +167,30 @@ function rankHint(hintText, word){
 // Custom hint function to dynamically show function parameters
 CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
   const cur = editor.getCursor();
-  const token = editor.getTokenAt(cur);
-  const start = token.start;
-  const end = token.end;
-  const word = token.string;
+  const line = editor.getLine(cur.line);
+
+  // Find the start of the prefix by scanning backwards until a non-word/dot char
+  let startCh = cur.ch - 1;
+  while (startCh >= 0) {
+    const c = line.charAt(startCh);
+    if (/[\w\.]/.test(c)) {
+      startCh--;
+    } else {
+      break;
+    }
+  }
+
+ // replaced the token-based range detection with a manual backward scan 
+ // that includes letters, digits, underscore, and importantly the dot (.)
+ // this means if you typed scrib.s, it replaces all of scrib.s when completing with scrib.show() -> no double insertion
+ const from = CodeMirror.Pos(cur.line, startCh + 1);
+ const to = cur;
+ const word = line.slice(startCh + 1, cur.ch);
+
+//   const token = editor.getTokenAt(cur);
+//   const start = token.start;
+//   const end = token.end;
+//   const word = token.string;
 
   // 1. Static built-in function hints
   const staticHints = [
@@ -235,8 +255,8 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
 
   return {
     list: filteredHints,
-    from: CodeMirror.Pos(cur.line, start),
-    to: CodeMirror.Pos(cur.line, end)
+    from: from,
+    to: to
   };
 });
 
