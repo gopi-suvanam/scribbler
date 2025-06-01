@@ -156,6 +156,14 @@ sandbox.toggleCellType = function(i) {
   }
 };
 
+function rankHint(hintText, word){
+	hintText = hintText.toLowerCase();
+	word = word.toLowerCase();
+	if(hintText.startsWith(word)) return 0; // best match
+	if(hintText.includes(word)) return 1; // okay match
+	return 2; // no match (should be filtered out)
+}
+
 // Custom hint function to dynamically show function parameters
 CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
   const cur = editor.getCursor();
@@ -218,12 +226,15 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
   const allHints = [...staticHints, ...mathHints, ...userDefinedHints, ...arrowFunctionHints];
 
   // 5. Filter based on what the user is typing
-  const list = allHints.filter(f =>
+  const filteredHints = allHints.filter(f =>
     f.text.toLowerCase().includes(word.toLowerCase())
   );
 
+  // Sort by rank so best matches come first
+  filteredHints.sort((a, b) => rankHint(a.text, word) - rankHint(b.text, word));
+
   return {
-    list: list,
+    list: filteredHints,
     from: CodeMirror.Pos(cur.line, start),
     to: CodeMirror.Pos(cur.line, end)
   };
