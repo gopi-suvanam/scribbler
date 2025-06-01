@@ -160,12 +160,49 @@ sandbox.toggleCellType = function(i) {
 CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
   const cur = editor.getCursor();
   const token = editor.getTokenAt(cur);
+  const start = token.start;
+  const end = token.end;
+  const word = token.string;
 
-  if (token.type === 'variable') {
-    return token.string;
-  }
+  // 1. Static built-in function hints
+  const staticHints = [
+	{ text: "scrib.show()", displayText: "scrib.show(msg)" },
+    { text: "console.log()", displayText: "console.log(msg)" },
+    { text: "setTimeout()", displayText: "setTimeout(fn, delay)" },
+    { text: "setInterval()", displayText: "setInterval(fn, delay)" },
+    { text: "JSON.stringify()", displayText: "JSON.stringify(obj)" },
+    { text: "fetch()", displayText: "fetch(url)" },
+  ];
 
-  return null;
+  // 2. Dynamic Math.* function hints
+  const mathHints = Object.getOwnPropertyNames(Math)
+    .filter(fn => typeof Math[fn] === "function")
+    .map(fn => ({
+      text: `Math.${fn}()`,
+      displayText: `Math.${fn}(...)`
+    }));
+
+  // 3. Parse user-defined function names from the current editor content
+  const allText = editor.getValue();
+  const userDefinedHints = [...allText.matchAll(/function\s+(\w+)\s*\(/g)]
+    .map(match => ({
+      text: `${match[1]}()`,
+      displayText: `${match[1]}(...)`
+    }));
+
+  // 4. Combine all hints
+  const allHints = [...staticHints, ...mathHints, ...userDefinedHints];
+
+  // 5. Filter based on what the user is typing
+  const list = allHints.filter(f =>
+    f.text.toLowerCase().includes(word.toLowerCase())
+  );
+
+  return {
+    list: list,
+    from: CodeMirror.Pos(cur.line, start),
+    to: CodeMirror.Pos(cur.line, end)
+  };
 });
 
 
@@ -248,6 +285,15 @@ sandbox.insertCell=async function(type,after,content,output,status){
 			sandbox.codeMirrorOptions
 		);
 		cm.i=i;
+		
+		// sets up the hook that listens to typing events 
+		// and calls custom functionParams helper when typing function names
+		cm.on("inputRead", function(cm, change) {
+			if(change.text[0].match(/[\w.]/)){
+				CodeMirror.showHint(cm, CodeMirror.hint.functionParams, { completeSingle: false });
+			}
+		});
+		
 		scrib.getDom('cell_type'+i).value=type;
 
 		if(type=='code'){
