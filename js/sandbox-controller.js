@@ -184,11 +184,15 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
 
   // 3. Parse user-defined function names from the current editor content
   const allText = editor.getValue();
-  const userDefinedHints = [...allText.matchAll(/function\s+(\w+)\s*\(/g)]
-    .map(match => ({
-      text: `${match[1]}()`,
-      displayText: `${match[1]}(...)`
-    }));
+  const userDefinedHints = [...allText.matchAll(/function\s+(\w+)\s*\(([^)]*)\)/g)]
+    .map(match => {
+		const name = match[1];
+		const args = match[2].split(',').map(arg => arg.trim()).filter(Boolean).join(', ');
+		return{
+			text: `${name}()`,
+			displayText: `${name}(${args})`
+		}
+	});
 
   // 4. Combine all hints
   const allHints = [...staticHints, ...mathHints, ...userDefinedHints];
