@@ -166,7 +166,16 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
 
   // 1. Static built-in function hints
   const staticHints = [
+	// Scribbler special functions
 	{ text: "scrib.show()", displayText: "scrib.show(msg)" },
+	{ text: "scrib.loadScript()", displayText: "scrib.loadScript(url)" },
+	{ text: "scrib.currCell()", displayText: "scrib.currCell()" },
+	{ text: "scrib.getDom()", displayText: "scrib.getDom(id)" },
+	{ text: "scrib.waitForDom()", displayText: "scrib.waitForDom(id)" },
+	{ text: "scrib.uploadFile()", displayText: "scrib.uploadFile()" },
+	{ text: "scrib.downloadString()", displayText: "scrib.downloadString(string, exportName, char_set)" },
+
+	// Other functions
     { text: "console.log()", displayText: "console.log(msg)" },
     { text: "setTimeout()", displayText: "setTimeout(fn, delay)" },
     { text: "setInterval()", displayText: "setInterval(fn, delay)" },
