@@ -368,6 +368,11 @@ sandbox.insertCell=async function(type,after,content,output,status){
 			sandbox.codeMirrorOptions
 		);
 		cm.i=i;
+
+		cm.setOption("hintOptions", {
+			hint: CodeMirror.hint.functionParams // default hint is now custom one
+		});
+
 		
 		// sets up the hook that listens to typing events 
 		// and calls custom functionParams helper when typing function names
