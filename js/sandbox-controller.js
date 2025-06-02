@@ -209,6 +209,16 @@ CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
     { text: "setInterval()", displayText: "setInterval(fn, delay)" },
     { text: "JSON.stringify()", displayText: "JSON.stringify(obj)" },
     { text: "fetch()", displayText: "fetch(url)" },
+
+	// DOM selectors
+    { text: "document.getElementById()", displayText: "document.getElementById(id)" },
+    { text: "document.querySelector()", displayText: "document.querySelector(selector)" },
+    { text: "document.querySelectorAll()", displayText: "document.querySelectorAll(selector)" },
+    { text: "document.getElementsByClassName()", displayText: "document.getElementsByClassName(className)" },
+    { text: "document.getElementsByTagName()", displayText: "document.getElementsByTagName(tagName)" },
+
+    // DOM manipulation
+    { text: "document.createElement()", displayText: "document.createElement(tagName)" },
   ];
 
   // 2. Dynamic Math.* function hints
