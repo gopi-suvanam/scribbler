@@ -75,9 +75,7 @@ worker.evaluate= async function(code){
 	
 	if(worker.type==='browser')
 		
-
 		try {
-		
 			return (0,eval)(code);
 		}
 		catch(err){

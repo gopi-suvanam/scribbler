@@ -13,24 +13,26 @@
 		</iframe>			
 	</div>
 	<div class="nb-tools-wrapper">
-		<a href="#" class="nb-tool-sharable-btn" data-tooltip="Sharable link / IFrame code" data-placement="bottom" 
-		   onclick="event.preventDefault();shareBtn()">
+		<a href="#" class="shareNB nb-tool-sharable-btn" data-tooltip="Sharable link / IFrame code" data-placement="bottom" 
+		   onclick="event.preventDefault()">
 			<i class="ti ti-share-3"></i>
 		</a>
-		<a href="#" class="nb-tool-run-btn" data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
-		   onclick="event.preventDefault();run_all()">
+		<a href="#" class="runAll nb-tool-run-btn" data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
+		   onclick="event.preventDefault()">
 			<i class="ti ti-player-play"></i>
 		</a>
-		<a href="#" class="secondary nb-tool-save-btn" data-tooltip="Save" id="save-button" onclick="event.preventDefault();saveLocalFile()">
+		<a href="#" class="saveLocally secondary nb-tool-save-btn" data-tooltip="Save" id="save-button"
+			onclick="event.preventDefault()">
 			<i class="ti ti-device-floppy"></i>
 		</a>
-		<a href="#" class="secondary nb-tool-reset-btn" data-tooltip="Reset" id="reset-button" onclick="event.preventDefault();resetNB()">
+		<a href="#" class="resetNotebook secondary nb-tool-reset-btn" data-tooltip="Reset" id="reset-button" 
+			onclick="event.preventDefault()">
 			<i class="ti ti-rotate-clockwise-2"></i>
 		</a>
-		<a href="#" id="break-sandbox" class="secondary nb-tool-sandbox-btn"
+		<a href="#" id="break-sandbox" class="breakSandbox secondary nb-tool-sandbox-btn"
 		   data-tooltip="Take the notebook out of sandbox"
 		   data-placement="bottom" data-placement-edge="right"
-			onclick="event.preventDefault();break_sandbox()">
+			onclick="event.preventDefault()">
 			<i class="ti ti-box-off"></i>
 		</a>
 	</div>
