@@ -15,9 +15,9 @@
       "type": "html"
     },
     {
-      "code": "Welcome to Scribbler\n====================\n\nA Javascript Compiler and Notebook Tool\n--------------------------\n\n[Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Docs](https://scribbler.live/docs) • [Discussions](https://github.com/gopi-suvanam/scribbler/discussions/) • [Github](https://github.com/gopi-suvanam/scribbler/)\n\n* * *\n\t\t  \n\n### Double-click this cell to edit\n\nScribbler is an interactive environment for experimenting in javascript using a simple interface (without servers and backend deployment) - essentially an easy-to-use online compiler. Scribbler can be used for:\n\n*   Scientific Computation\n*   Data Science/Machine Learning\n*   Dashboard Development\n*   Experimenting With new Code/Libraries\n\nPlease feel free to send in pull requests/issues on Github. Next few cells give you the \"hello world\" notebook.\n\n\n\n\n   ",
+      "code": "# Welcome to Scribbler\n\n### A JavaScript Compiler and Notebook Tool\n\n[Gallery](https://scribbler.live/samples.html) • [Tutorials](https://scribbler.live/tutorials) • [Docs](https://scribbler.live/docs) • [Discussions](https://github.com/gopi-suvanam/scribbler/discussions/) • [GitHub](https://github.com/gopi-suvanam/scribbler)\n\n---\n\nScribbler is an interactive notebook and compiler for JavaScript — a fast, browser-native environment for:\n\n- 🚀 Scientific Computation\n- 📊 Data Science and Machine Learning\n- 📈 Dashboards and Data Visualizations\n- 🧪 Rapid Prototyping with Code & Libraries\n\nScribbler runs entirely in your browser — **no server, no backend deployment** — just open and start coding.\n\n\n---\n",
       "status": "",
-      "output": "<h1>Welcome to Scribbler</h1>\n<h2>A Javascript Compiler and Notebook Tool</h2>\n<p><a href=\"https://scribbler.live/samples.html\">Gallery</a> • <a href=\"https://scribbler.live/tutorials\">Tutorials</a> • <a href=\"https://scribbler.live/docs\">Docs</a> • <a href=\"https://github.com/gopi-suvanam/scribbler/discussions/\">Discussions</a> • <a href=\"https://github.com/gopi-suvanam/scribbler/\">Github</a></p>\n<hr>\n<h3>Double-click this cell to edit</h3>\n<p>Scribbler is an interactive environment for experimenting in javascript using a simple interface (without servers and backend deployment) - essentially an easy-to-use online compiler. Scribbler can be used for:</p>\n<ul>\n<li>Scientific Computation</li>\n<li>Data Science/Machine Learning</li>\n<li>Dashboard Development</li>\n<li>Experimenting With new Code/Libraries</li>\n</ul>\n<p>Please feel free to send in pull requests/issues on Github. Next few cells give you the \"hello world\" notebook.</p>\n",
+      "output": "<h1>Welcome to Scribbler</h1>\n<h3>A JavaScript Compiler and Notebook Tool</h3>\n<p><a href=\"https://scribbler.live/samples.html\">Gallery</a> • <a href=\"https://scribbler.live/tutorials\">Tutorials</a> • <a href=\"https://scribbler.live/docs\">Docs</a> • <a href=\"https://github.com/gopi-suvanam/scribbler/discussions/\">Discussions</a> • <a href=\"https://github.com/gopi-suvanam/scribbler\">GitHub</a></p>\n<hr>\n<p>Scribbler is an interactive notebook and compiler for JavaScript — a fast, browser-native environment for:</p>\n<ul>\n<li>🚀 Scientific Computation</li>\n<li>📊 Data Science and Machine Learning</li>\n<li>📈 Dashboards and Data Visualizations</li>\n<li>🧪 Rapid Prototyping with Code &amp; Libraries</li>\n</ul>\n<p>Scribbler runs entirely in your browser — <strong>no server, no backend deployment</strong> — just open and start coding.</p>\n<hr>\n",
       "type": "html"
     },
     {
@@ -33,43 +33,43 @@
       "type": "code"
     },
     {
+      "code": "// Or uee functions\nfunction greet(who){\n   scrib.show(\"Hello \"+who); \n}\ngreet(\"world\")",
+      "status": "[1]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "Hello world <br>",
+      "type": "code"
+    },
+    {
+      "code": "\n<h2>  Get Started with a Ready-to-Use Template 👇</h2>\n\nUse one of our curated starter notebooks to start experimenting right away.\n\n<style>\n  .template-grid {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n\n  .template-button {\n    background: #2d2d2d;\n    color: #f0f0f0;\n    padding: 10px 16px;\n    border: 1px solid #555;\n    border-radius: 10px;\n    font-size: 14px;\n    cursor: pointer;\n    text-decoration: none;\n    transition: all 0.2s ease;\n  }\n\n  .template-button:hover {\n    background: #444;\n    border-color: #888;\n    color: #fff;\n  }\n\n  .template-section {\n    margin-bottom: 24px;\n  }\n\n  .template-title {\n    font-weight: bold;\n    font-size: 16px;\n    margin-bottom: 10px;\n    color: #ddd;\n  }\n\n  .premium {\n  background: linear-gradient(135deg, #7a4de2, #d857a5);\n  color: white;\n  border: none;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.15);\n\n  }\n\n  .premium:hover {\n    background: linear-gradient(135deg, #6922cc, #e53672);\n  }\n</style>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🎮 Board Games</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/?jsnb=https://examples.scribbler.live/Advanced%20JavaScript/Chessboard.jsnb\" class=\"template-button\" target=\"_blank\">Chessboard</a>\n    <a href=\"https://scribblerlive.gumroad.com/l/mqewcn\" class=\"template-button premium\" target=\"_blank\">AI for Chess (Premium)</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">📈 Plotting</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/Plotly-Example.jsnb\" class=\"template-button\" target=\"_blank\">Plotly Example</a>\n    <a href=\"https://app.scribbler.live/#./examples/Crypto-Currency-TimeSeries.jsnb\" class=\"template-button\" target=\"_blank\">Crypto Price Plots</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🧠 AI</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/?jsnb=https://examples.scribbler.live/AI-DataScience/AI-Podcast-Generator.jsnb\" class=\"template-button\" target=\"_blank\">Podcast Generator</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">💰 Finance</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/Black-Scholes.jsnb\" class=\"template-button\" target=\"_blank\">Option Pricing (B-S)</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🖼️ Canvas & Simulations</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/?jsnb=https://examples.scribbler.live/XR-ImageProcessing/HTML5-Image-Processing.jsnb\" class=\"template-button\" target=\"_blank\">Image Processing</a>\n    <a href=\"https://app.scribbler.live/#./examples/Dynamic-Simulation.jsnb\" class=\"template-button\" target=\"_blank\">Bouncing Ball</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🔬 Math & Scientific</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/Runge-Kutta-for-Differential-Equations.jsnb\" class=\"template-button\" target=\"_blank\">Runge-Kutta Method</a>\n    <a href=\"https://app.scribbler.live/#./examples/Fibonacci-Sequence-Golden-Ratio.jsnb\" class=\"template-button\" target=\"_blank\">Fibonacci & Golden Ratio</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🕸️ Decentralized Web</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/IPFS-in-Browser.jsnb\" class=\"template-button\" target=\"_blank\">IPFS in Browser</a>\n  </div>\n</div>\n",
+      "status": "",
+      "output": "\n<h2>  Get Started with a Ready-to-Use Template 👇</h2>\n\nUse one of our curated starter notebooks to start experimenting right away.\n\n<style>\n  .template-grid {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 12px;\n    margin-bottom: 20px;\n  }\n\n  .template-button {\n    background: #2d2d2d;\n    color: #f0f0f0;\n    padding: 10px 16px;\n    border: 1px solid #555;\n    border-radius: 10px;\n    font-size: 14px;\n    cursor: pointer;\n    text-decoration: none;\n    transition: all 0.2s ease;\n  }\n\n  .template-button:hover {\n    background: #444;\n    border-color: #888;\n    color: #fff;\n  }\n\n  .template-section {\n    margin-bottom: 24px;\n  }\n\n  .template-title {\n    font-weight: bold;\n    font-size: 16px;\n    margin-bottom: 10px;\n    color: #ddd;\n  }\n\n  .premium {\n  background: linear-gradient(135deg, #7a4de2, #d857a5);\n  color: white;\n  border: none;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.15);\n\n  }\n\n  .premium:hover {\n    background: linear-gradient(135deg, #6922cc, #e53672);\n  }\n</style>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🎮 Board Games</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/?jsnb=https://examples.scribbler.live/Advanced%20JavaScript/Chessboard.jsnb\" class=\"template-button\" target=\"_blank\">Chessboard</a>\n    <a href=\"https://scribblerlive.gumroad.com/l/mqewcn\" class=\"template-button premium\" target=\"_blank\">AI for Chess (Premium)</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">📈 Plotting</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/Plotly-Example.jsnb\" class=\"template-button\" target=\"_blank\">Plotly Example</a>\n    <a href=\"https://app.scribbler.live/#./examples/Crypto-Currency-TimeSeries.jsnb\" class=\"template-button\" target=\"_blank\">Crypto Price Plots</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🧠 AI</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/?jsnb=https://examples.scribbler.live/AI-DataScience/AI-Podcast-Generator.jsnb\" class=\"template-button\" target=\"_blank\">Podcast Generator</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">💰 Finance</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/Black-Scholes.jsnb\" class=\"template-button\" target=\"_blank\">Option Pricing (B-S)</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🖼️ Canvas &amp; Simulations</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/?jsnb=https://examples.scribbler.live/XR-ImageProcessing/HTML5-Image-Processing.jsnb\" class=\"template-button\" target=\"_blank\">Image Processing</a>\n    <a href=\"https://app.scribbler.live/#./examples/Dynamic-Simulation.jsnb\" class=\"template-button\" target=\"_blank\">Bouncing Ball</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🔬 Math &amp; Scientific</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/Runge-Kutta-for-Differential-Equations.jsnb\" class=\"template-button\" target=\"_blank\">Runge-Kutta Method</a>\n    <a href=\"https://app.scribbler.live/#./examples/Fibonacci-Sequence-Golden-Ratio.jsnb\" class=\"template-button\" target=\"_blank\">Fibonacci &amp; Golden Ratio</a>\n  </div>\n</div>\n\n<div class=\"template-section\">\n  <div class=\"template-title\">🕸️ Decentralized Web</div>\n  <div class=\"template-grid\">\n    <a href=\"https://app.scribbler.live/#./examples/IPFS-in-Browser.jsnb\" class=\"template-button\" target=\"_blank\">IPFS in Browser</a>\n  </div>\n</div>\n",
+      "type": "html"
+    },
+    {
+      "code": "#### You can use html too in code",
+      "status": "",
+      "output": "<h4>You can use html too in code</h4>\n",
+      "type": "html"
+    },
+    {
       "code": "//> html\n<b> You can use HTML also by putting <i>//> html</i>. </b>\n\n<br>\n<a href=\"scirbbler.live\" targe=\"_blank\">Scribbler website </a>",
       "status": "[5]<br><span style=\"font-size:8px\">1ms<span></span></span>",
       "output": "\n<b> You can use HTML also by putting <i>//&gt; html</i>. </b>\n\n<br>\n<a href=\"scirbbler.live\" targe=\"_blank\">Scribbler website </a> <br>",
       "type": "code"
     },
     {
-      "code": "#### Or to show off you could write a function to do that.",
+      "code": "#### And of course you can make the world greener using dynamic HTML! ",
       "status": "",
-      "output": "<h4>Or to show off you could write a function to do that.</h4>\n",
-      "type": "html"
-    },
-    {
-      "code": "function greet(who){\n   scrib.show(\"Hello \"+who); \n}\ngreet(\"world\")",
-      "status": "[2]<br><span style=\"font-size:8px\">1ms<span></span></span>",
-      "output": "Hello world <br>",
-      "type": "code"
-    },
-    {
-      "code": "#### And of course you can make the world greener! ",
-      "status": "",
-      "output": "<h4>And of course you can make the world greener!</h4>\n",
+      "output": "<h4>And of course you can make the world greener using dynamic HTML!</h4>\n",
       "type": "html"
     },
     {
       "code": "greet('<span style=\"background-color:green;color:white\">World</span>')",
-      "status": "[3]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "status": "[2]<br><span style=\"font-size:8px\">2ms<span></span></span>",
       "output": "Hello <span style=\"background-color:green;color:white\">World</span> <br>",
       "type": "code"
     },
     {
-      "code": "## Working with Cells\nScribbler notebooks have two types of cells: \n- an html cell, the cell you are reading right now. \n- a code cell, where you may input some JS code for the browser to execute. \n\n New cells can be added (✛/Option-Enter), deleted (☓), moved up (▲), moved down (▼) using the menu on the top right corner of the cell. The cell type can be toggled between html and code as well. \n A code cell can be run using the run button (►) or the keyboard shortcut: Ctrl-Enter/Shift-Enter.\n\n Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. \nFor more details checkout the [Docs](https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md).  ",
-      "status": "",
-      "output": "<h2>Working with Cells</h2>\n<p>Scribbler notebooks have two types of cells: </p>\n<ul>\n<li>an html cell, the cell you are reading right now. </li>\n<li>a code cell, where you may input some JS code for the browser to execute.</li>\n</ul>\n<p> New cells can be added (✛/Option-Enter), deleted (☓), moved up (▲), moved down (▼) using the menu on the top right corner of the cell. The cell type can be toggled between html and code as well. \n A code cell can be run using the run button (►) or the keyboard shortcut: Ctrl-Enter/Shift-Enter.</p>\n<p> Double click on this cell to edit the html. You can download the notebook as a json object to load it later or you can download it as a static html. \nFor more details checkout the <a href=\"https://github.com/gopi-suvanam/jsnb/blob/main/DOCS.md\">Docs</a>.  </p>\n",
-      "type": "html"
-    },
-    {
-      "code": "//>md\n## Math and Plotting\nYou can use all JS functionality in a sandboxed environment easily. Next cell shows illustrates use of array function and plotting of a chart.",
+      "code": "## Math and Plotting\nYou can use all JS functionality in a sandboxed environment easily. Next cell shows illustrates use of array function and plotting of a chart.",
       "status": "",
       "output": "<h2>Math and Plotting</h2>\n<p>You can use all JS functionality in a sandboxed environment easily. Next cell shows illustrates use of array function and plotting of a chart.</p>\n",
       "type": "html"
@@ -81,22 +81,10 @@
       "type": "code"
     },
     {
-      "code": "//Write your code here and test",
-      "status": "[5]<br><span style=\"font-size:8px\">0ms<span></span></span>",
+      "code": "// Strt writing your code to experiment here!!",
+      "status": "[2]<br><span style=\"font-size:8px\">2ms<span></span></span>",
       "output": "",
       "type": "code"
-    },
-    {
-      "code": "## Sample Notebooks\n___\n  You can do a lot more using Scribbler. Some sample notebooks are below:\n1.  [Dynamic Simulation](.?jsnb=./examples/Dynamic-Simulation.jsnb)\n2.  [Option Pricing](.?jsnb=./examples/Black-Scholes.jsnb)\n3.  [Solving Differential Equation](.?jsnb=./examples/Runge-Kutta-for-Differential-Equations.jsnb)\n4.  [Machine Learning](.?jsnb=./examples/Decentralized-ML-Model-Storage.jsnb)\n5.  [Charts Using Plotly](.?jsnb=./examples/Plotly-Example.jsnb)",
-      "status": "",
-      "output": "<h2>Sample Notebooks</h2>\n<hr>\n<p>  You can do a lot more using Scribbler. Some sample notebooks are below:</p>\n<ol>\n<li><a href=\".?jsnb=./examples/Dynamic-Simulation.jsnb\">Dynamic Simulation</a></li>\n<li><a href=\".?jsnb=./examples/Black-Scholes.jsnb\">Option Pricing</a></li>\n<li><a href=\".?jsnb=./examples/Runge-Kutta-for-Differential-Equations.jsnb\">Solving Differential Equation</a></li>\n<li><a href=\".?jsnb=./examples/Decentralized-ML-Model-Storage.jsnb\">Machine Learning</a></li>\n<li><a href=\".?jsnb=./examples/Plotly-Example.jsnb\">Charts Using Plotly</a></li>\n</ol>\n",
-      "type": "html"
-    },
-    {
-      "code": "## [More Articles on Scribbler - Online JavaScript Compiler and Notebook](https://scribbler.live/categories/Scribbler)\n",
-      "status": "",
-      "output": "<h2><a href=\"https://scribbler.live/categories/Scribbler\">More Articles on Scribbler - Online JavaScript Compiler and Notebook</a></h2>\n",
-      "type": "html"
     }
   ],
   "source": "https://github.com/gopi-suvanam/scribbler",

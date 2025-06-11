@@ -610,12 +610,12 @@ pre{
 
 
 :root:not([data-theme="light"]){
-  --primary: #fede02;
+  --primary: #ece9d9;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fede02;
-  --secondary: #fede02;
+  --font-color:#ece9d9;
+  --secondary: #ece9d9;
   --form-element-background-color:white;
   
   .light-img{
@@ -632,12 +632,12 @@ pre{
 /* Keeping it same as light mode for now.. will change later */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --primary: #fede02;
+  --primary: #ece9d9;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
-  --font-color:#fede02;
-  --secondary: #fede02;
+  --font-color:#ece9d9;
+  --secondary: #ece9d9;
   --form-element-background-color:white;
 
 
