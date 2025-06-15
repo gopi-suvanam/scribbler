@@ -31,7 +31,7 @@ var get_file_content=async function (token,user,repo,path){
 }
 
 
-var upload_file_to_git=async function (token, content,user,repo,path) {
+var upload_file_to_git=async function (token, content,user,repo,path,commitMessage) {
 	var url=`https://api.github.com/repos/${user}/${repo}/contents/${path}`
 	let file_sha = null;
 
@@ -48,7 +48,7 @@ var upload_file_to_git=async function (token, content,user,repo,path) {
     };
 
     var data = JSON.stringify({
-        "message": "JSNB File Uploaded to Git by User",
+        "message": commitMessage,
         "content": toBase64(content),
         'sha': file_sha || undefined
     });
@@ -179,6 +179,7 @@ upload_to_git=async function(){
 	fileDetails['user']=scrib.getDom("user").value;
 	fileDetails['repo']=scrib.getDom("repo").value;
 	fileDetails['path']=scrib.getDom("path").value;
+	fileDetails['commitMessage']=scrib.getDom("commit-msg").value
 	
 	
 	// Send a message object to the iframe
@@ -186,7 +187,7 @@ upload_to_git=async function(){
       	
 	const content=JSON.stringify(nb,undefined,2);
 	try{
-		const upload_status= await upload_file_to_git(fileDetails['token'],content,fileDetails['user'],fileDetails['repo'],fileDetails['path']);
+		const upload_status= await upload_file_to_git(fileDetails['token'],content,fileDetails['user'],fileDetails['repo'],fileDetails['path'],fileDetails['commitMessage']||"JSNB File Uploaded by User");
 		alert("Successfully pushed");
 		closeModal(scrib.getDom('git-import-export'));
 		const nextURL = `./?jsnb=github:${fileDetails['user']}/${fileDetails['repo']}/${fileDetails['path']}`;
