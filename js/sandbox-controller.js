@@ -320,6 +320,8 @@ sandbox.codeMirrorOptions={
           'Ctrl-M': (cm) => {sandbox.toggleCellType(cm.i)},
           'Cmd-M': (cm) => {sandbox.toggleCellType(cm.i)},
           "Ctrl-Space": "autocomplete",
+		  'Ctrl-/': 'toggleComment',
+  		  'Cmd-/': 'toggleComment',
           ".": function(cm) {
 		      setTimeout(function() {
 		        CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
