@@ -1,0 +1,98 @@
+{
+  "metadata": {
+    "name": "Scribbler Notebook",
+    "language_info": {
+      "name": "JavaScipt",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "\n\n# 🔥 Powering Up Scribbler Notebooks with ESM Modules via `//> module`\n\nScribbler is already a flexible, code-first environment for writing interactive notebooks in JavaScript. But with the addition of the `//> module` directive, it's now possible to tap directly into the vast ecosystem of **ESM-compatible packages**—from libraries like `lodash` and `three.js`, to utility-first tools like `marked`, `chart.js`, or even entire UI frameworks.\n\nThis article explores how to use `//> module` in Scribbler to load and run ESM modules dynamically and effectively.\n\n---\n\n## 🧠 What is `//> module`?\n\nThe `//> module` directive tells Scribbler to treat the cell as an ECMAScript module (`<script type=\"module\">` under the hood). This means you can use:\n\n* `import` statements from CDNs like [esm.sh](https://esm.sh) or [skypack.dev](https://www.skypack.dev/)\n* Top-level `await`\n* Isolated module scopes\n* Advanced ES6+ syntax natively\n\nYou can also expose things to the global `window` or Scribbler context (like `scrib`) for reuse across other cells.\n\n---\n\n\n  \n",
+      "status": "",
+      "output": "<h1>🔥 Powering Up Scribbler Notebooks with ESM Modules via <code>//&gt; module</code></h1>\n<p>Scribbler is already a flexible, code-first environment for writing interactive notebooks in JavaScript. But with the addition of the <code>//&gt; module</code> directive, it's now possible to tap directly into the vast ecosystem of <strong>ESM-compatible packages</strong>—from libraries like <code>lodash</code> and <code>three.js</code>, to utility-first tools like <code>marked</code>, <code>chart.js</code>, or even entire UI frameworks.</p>\n<p>This article explores how to use <code>//&gt; module</code> in Scribbler to load and run ESM modules dynamically and effectively.</p>\n<hr>\n<h2>🧠 What is <code>//&gt; module</code>?</h2>\n<p>The <code>//&gt; module</code> directive tells Scribbler to treat the cell as an ECMAScript module (<code>&lt;script type=\"module\"&gt;</code> under the hood). This means you can use:</p>\n<ul>\n<li><code>import</code> statements from CDNs like <a href=\"https://esm.sh\">esm.sh</a> or <a href=\"https://www.skypack.dev/\">skypack.dev</a></li>\n<li>Top-level <code>await</code></li>\n<li>Isolated module scopes</li>\n<li>Advanced ES6+ syntax natively</li>\n</ul>\n<p>You can also expose things to the global <code>window</code> or Scribbler context (like <code>scrib</code>) for reuse across other cells.</p>\n<hr>\n",
+      "type": "html"
+    },
+    {
+      "code": "## 📦 Example 1: Using `lodash` utilities\n",
+      "status": "",
+      "output": "<h2>📦 Example 1: Using <code>lodash</code> utilities</h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "//> module\n  import _ from 'https://esm.sh/lodash';\n\n  window._ = _; // Make lodash available globally\n  scrib.show('✅ Lodash is now available as `_`');\n\n  // Example usage\n  const arr = [1, 2, 3, 4, 5];\n  scrib.show(_.shuffle(arr));\n",
+      "status": "[11]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": " <br>✅ Lodash is now available as `_` <br>[\n  4,\n  5,\n  3,\n  1,\n  2\n] <br>",
+      "type": "code"
+    },
+    {
+      "code": "Once this runs, `_` becomes available in any other cell—just like in a normal code environment.\n\n---",
+      "status": "",
+      "output": "<p>Once this runs, <code>_</code> becomes available in any other cell—just like in a normal code environment.</p>\n<hr>\n",
+      "type": "html"
+    },
+    {
+      "code": "\n\n\n## 📈 Example 2: Render charts with `Chart.js`\n\n",
+      "status": "",
+      "output": "<h2>📈 Example 2: Render charts with <code>Chart.js</code></h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "//> module\n  import Chart from 'https://esm.sh/chart.js/auto';\n\n  window.Chart = Chart;\n  scrib.show('📊 Chart.js loaded and ready');\n",
+      "status": "[2]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": " <br>📊 Chart.js loaded and ready <br>",
+      "type": "code"
+    },
+    {
+      "code": "Then in another cell:",
+      "status": "",
+      "output": "<p>Then in another cell:</p>\n",
+      "type": "html"
+    },
+    {
+      "code": "//> html\n<canvas id=\"chart\"></canvas>\n",
+      "status": "[23]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": "\n<canvas id=\"chart\" style=\"display: block; box-sizing: border-box; height: 608px; width: 1217px;\" width=\"1217\" height=\"608\"></canvas>\n <br>",
+      "type": "code"
+    },
+    {
+      "code": "myChart=scrib.getDom('chart');\n\nnew Chart(myChart, {\n  type: 'bar',\n  data: {\n    labels: ['Red', 'Blue', 'Yellow'],\n    datasets: [{\n      label: 'Colors',\n      data: [12, 19, 3],\n      backgroundColor: ['#f00', '#00f', '#ff0'],\n    }]\n  }\n});\n''",
+      "status": "[24]<br><span style=\"font-size:8px\">12ms<span></span></span>",
+      "output": " <br>",
+      "type": "code"
+    },
+    {
+      "code": "\n\n## 📜 Example 3: Convert Markdown to HTML with `marked`\n\n",
+      "status": "",
+      "output": "<h2>📜 Example 3: Convert Markdown to HTML with <code>marked</code></h2>\n",
+      "type": "html"
+    },
+    {
+      "code": "//> module\n  import { marked } from 'https://esm.sh/marked';\n\n  window.marked = marked;\n\n  scrib.show('✅ Markdown renderer is ready');\n",
+      "status": "[25]<br><span style=\"font-size:8px\">2ms<span></span></span>",
+      "output": " <br>✅ Markdown renderer is ready <br>",
+      "type": "code"
+    },
+    {
+      "code": "\nAnd use it later:\n\n",
+      "status": "",
+      "output": "<p>And use it later:</p>\n",
+      "type": "html"
+    },
+    {
+      "code": "const markdown = `# Hello World\\n- This is **Markdown**\\n- Rendered with \\`marked\\``;\nmarked(markdown);\n",
+      "status": "[26]<br><span style=\"font-size:8px\">3ms<span></span></span>",
+      "output": "<h1>Hello World</h1>\n<ul>\n<li>This is <strong>Markdown</strong></li>\n<li>Rendered with <code>marked</code></li>\n</ul>\n <br>",
+      "type": "code"
+    },
+    {
+      "code": "\n\n## 💡 Tips for Working with `//> module`\n\n| Tip                   | Description                                                                                        |\n| --------------------- | -------------------------------------------------------------------------------------------------- |\n| 🧩 Modular Scope      | Each `//> module` cell is isolated—great for avoiding polluting global scope unless you choose to. |\n| 🌐 Global Access      | Use `window.foo = bar` to share variables across cells.                                            |\n| 🚀 CDN Best Practices | Use fast, ESM-compatible CDNs like `esm.sh`, `skypack.dev`, or `jsdelivr.net`.                     |\n| 🔄 Reload Safely      | If re-importing, clear old references from `window` to avoid conflicts.                            |\n\n---\n\n## 🔮 Use Cases: What You Can Build\n\n* **Data Dashboards** with real-time APIs and charts\n* **Markdown or LaTeX Editors** powered by live rendering libraries\n* **3D Visualizations** with `three.js`\n* **Educational Notebooks** using `math.js`, `plotly`, or `d3.js`\n* **Interactive Widgets** built from UI component libraries\n\n---\n\n## ✨ Final Thoughts\n\nThe `//> module` feature transforms Scribbler from a JavaScript scratchpad into a powerful, modular, web-native notebook environment. With seamless ESM integration, you’re no longer limited by what’s built-in—you can bring in the full power of modern JavaScript tooling, directly from the browser.\n\nIf you haven’t already, give it a try: define a module, import a library, and bring your notebooks to life.\n\n---\n\nWould you like this article as Markdown, HTML, or ready to publish to a blog or documentation platform?\n",
+      "status": "",
+      "output": "<h2>💡 Tips for Working with <code>//&gt; module</code></h2>\n<table>\n<thead>\n<tr>\n<th>Tip</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>🧩 Modular Scope</td>\n<td>Each <code>//&gt; module</code> cell is isolated—great for avoiding polluting global scope unless you choose to.</td>\n</tr>\n<tr>\n<td>🌐 Global Access</td>\n<td>Use <code>window.foo = bar</code> to share variables across cells.</td>\n</tr>\n<tr>\n<td>🚀 CDN Best Practices</td>\n<td>Use fast, ESM-compatible CDNs like <code>esm.sh</code>, <code>skypack.dev</code>, or <code>jsdelivr.net</code>.</td>\n</tr>\n<tr>\n<td>🔄 Reload Safely</td>\n<td>If re-importing, clear old references from <code>window</code> to avoid conflicts.</td>\n</tr>\n</tbody></table>\n<hr>\n<h2>🔮 Use Cases: What You Can Build</h2>\n<ul>\n<li><strong>Data Dashboards</strong> with real-time APIs and charts</li>\n<li><strong>Markdown or LaTeX Editors</strong> powered by live rendering libraries</li>\n<li><strong>3D Visualizations</strong> with <code>three.js</code></li>\n<li><strong>Educational Notebooks</strong> using <code>math.js</code>, <code>plotly</code>, or <code>d3.js</code></li>\n<li><strong>Interactive Widgets</strong> built from UI component libraries</li>\n</ul>\n<hr>\n<h2>✨ Final Thoughts</h2>\n<p>The <code>//&gt; module</code> feature transforms Scribbler from a JavaScript scratchpad into a powerful, modular, web-native notebook environment. With seamless ESM integration, you’re no longer limited by what’s built-in—you can bring in the full power of modern JavaScript tooling, directly from the browser.</p>\n<p>If you haven’t already, give it a try: define a module, import a library, and bring your notebooks to life.</p>\n<hr>\n<p>Would you like this article as Markdown, HTML, or ready to publish to a blog or documentation platform?</p>\n",
+      "type": "html"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/scribbler",
+  "run_on_load": false
+}
