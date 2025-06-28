@@ -156,16 +156,136 @@ sandbox.toggleCellType = function(i) {
   }
 };
 
+function rankHint(hintText, word){
+	hintText = hintText.toLowerCase();
+	word = word.toLowerCase();
+	if(hintText.startsWith(word)) return 0; // best match
+	if(hintText.includes(word)) return 1; // okay match
+	return 2; // no match (should be filtered out)
+}
+
 // Custom hint function to dynamically show function parameters
 CodeMirror.registerHelper('hint', 'functionParams', function(editor) {
   const cur = editor.getCursor();
-  const token = editor.getTokenAt(cur);
+  const line = editor.getLine(cur.line);
 
-  if (token.type === 'variable') {
-    return token.string;
+  // Find the start of the prefix by scanning backwards until a non-word/dot char
+  let startCh = cur.ch - 1;
+  while (startCh >= 0) {
+    const c = line.charAt(startCh);
+    if (/[\w\.]/.test(c)) {
+      startCh--;
+    } else {
+      break;
+    }
   }
 
-  return null;
+ // replaced the token-based range detection with a manual backward scan 
+ // that includes letters, digits, underscore, and importantly the dot (.)
+ // this means if you typed scrib.s, it replaces all of scrib.s when completing with scrib.show() -> no double insertion
+ const from = CodeMirror.Pos(cur.line, startCh + 1);
+ const to = cur;
+ const word = line.slice(startCh + 1, cur.ch);
+
+//   const token = editor.getTokenAt(cur);
+//   const start = token.start;
+//   const end = token.end;
+//   const word = token.string;
+
+  // 1. Static built-in function hints
+  const staticHints = [
+	// Scribbler special functions
+	{ text: "scrib.show()", displayText: "scrib.show(msg)" },
+	{ text: "scrib.loadScript()", displayText: "scrib.loadScript(url)" },
+	{ text: "scrib.currCell()", displayText: "scrib.currCell()" },
+	{ text: "scrib.getDom()", displayText: "scrib.getDom(id)" },
+	{ text: "scrib.waitForDom()", displayText: "scrib.waitForDom(id)" },
+	{ text: "scrib.uploadFile()", displayText: "scrib.uploadFile()" },
+	{ text: "scrib.downloadString()", displayText: "scrib.downloadString(string, exportName, char_set)" },
+
+	// Other functions
+    { text: "console.log()", displayText: "console.log(msg)" },
+    { text: "setTimeout()", displayText: "setTimeout(fn, delay)" },
+    { text: "setInterval()", displayText: "setInterval(fn, delay)" },
+    { text: "JSON.stringify()", displayText: "JSON.stringify(obj)" },
+    { text: "fetch()", displayText: "fetch(url)" },
+
+	// DOM selectors
+    { text: "document.getElementById()", displayText: "document.getElementById(id)" },
+    { text: "document.querySelector()", displayText: "document.querySelector(selector)" },
+    { text: "document.querySelectorAll()", displayText: "document.querySelectorAll(selector)" },
+    { text: "document.getElementsByClassName()", displayText: "document.getElementsByClassName(className)" },
+    { text: "document.getElementsByTagName()", displayText: "document.getElementsByTagName(tagName)" },
+
+    // DOM manipulation
+    { text: "document.createElement()", displayText: "document.createElement(tagName)" },
+  ];
+
+  // 2. Dynamic Math.* function hints
+  const mathHints = Object.getOwnPropertyNames(Math)
+    .filter(fn => typeof Math[fn] === "function")
+    .map(fn => ({
+      text: `Math.${fn}()`,
+      displayText: `Math.${fn}(...)`
+    }));
+
+  // 3a. Parse traditional user-defined function names from the current editor content
+  const code = editor.getValue();
+  const userDefinedHints = [...code.matchAll(/function\s+(\w+)\s*\(([^)]*)\)/g)]
+    .map(match => {
+		const name = match[1];
+		const args = match[2].split(',').map(arg => arg.trim()).filter(Boolean).join(', ');
+		return{
+			text: `${name}()`,
+			displayText: `${name}(${args})`
+		}
+	});
+
+  // 3b. Parse arrow functions: const fnName = (...) => {...}
+  const arrowFunctionHints = [...code.matchAll(/(?:const|let|var)\s+(\w+)\s*=\s*\(([^)]*)\)\s*=>/g)]
+	.map(match => {
+		const name = match[1];
+		const args = match[2].split(',').map(arg => arg.trim()).filter(Boolean).join(', ');
+		return{
+			text: `${name}()`,
+			displayText: `${name}(${args})`
+		}
+	})
+
+  // 4. Combine all hints
+  const allHints = [...staticHints, ...mathHints, ...userDefinedHints, ...arrowFunctionHints]
+	.map(hint => ({
+      ...hint,
+      // hint method that positions cursor appropriately
+      hint: function(cm, data, completion) {
+        // Insert the text
+        cm.replaceRange(completion.text, data.from, data.to);
+        
+        // move cursor inside parentheses only if the completion ends with ()
+        if (completion.text.endsWith('()')) {
+          const newPos = {
+            line: data.from.line,
+            ch: data.from.ch + completion.text.length - 1 // -1 to go before the closing )
+          };
+          cm.setCursor(newPos);
+        }
+        // for non-function completions, cursor stays at the end (default behavior)
+      }
+    })); 
+
+  // 5. Filter based on what the user is typing
+  const filteredHints = allHints.filter(f =>
+    f.text.toLowerCase().includes(word.toLowerCase())
+  );
+
+  // Sort by rank so best matches come first
+  filteredHints.sort((a, b) => rankHint(a.text, word) - rankHint(b.text, word));
+
+  return {
+    list: filteredHints,
+    from: from,
+    to: to
+  };
 });
 
 
@@ -200,6 +320,8 @@ sandbox.codeMirrorOptions={
           'Ctrl-M': (cm) => {sandbox.toggleCellType(cm.i)},
           'Cmd-M': (cm) => {sandbox.toggleCellType(cm.i)},
           "Ctrl-Space": "autocomplete",
+		  'Ctrl-/': 'toggleComment',
+  		  'Cmd-/': 'toggleComment',
           ".": function(cm) {
 		      setTimeout(function() {
 		        CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
@@ -248,6 +370,20 @@ sandbox.insertCell=async function(type,after,content,output,status){
 			sandbox.codeMirrorOptions
 		);
 		cm.i=i;
+
+		cm.setOption("hintOptions", {
+			hint: CodeMirror.hint.functionParams // default hint is now custom one
+		});
+
+		
+		// sets up the hook that listens to typing events 
+		// and calls custom functionParams helper when typing function names
+		cm.on("inputRead", function(cm, change) {
+			if(change.text[0].match(/[\w.]/)){
+				CodeMirror.showHint(cm, CodeMirror.hint.functionParams, { completeSingle: false });
+			}
+		});
+		
 		scrib.getDom('cell_type'+i).value=type;
 
 		if(type=='code'){
