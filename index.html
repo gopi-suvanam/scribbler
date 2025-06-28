@@ -31,6 +31,12 @@
 	
 	</head>
   <body style="height:100%" >
+
+ <div id="splash-screen">
+  <img src="images/brand_logo.gif" alt="Loading..." class="splash-gif">
+</div>
+
+
 	<html-component data="components/header.html"></html-component>
 	<html-component data="components/ai-message.html"></html-component>
 	
@@ -49,6 +55,19 @@
   <script>
   	insitialize_page(); <!-- Load the keyboard shortcuts and initialization scripts -->
   </script>
+
+  <!-- Hide splash screen after delay -->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const splash = document.getElementById("splash-screen");
+      if (splash) splash.style.display = "none";
+    }, 2500); // 2.5 seconds splash duration
+  });
+</script>
+
+
 	  <!-- Google Analytics for Understanding Usage -->
 	<script  src="https://www.googletagmanager.com/gtag/js?id=G-45Z12S039Z" async></script>
 	<script>
