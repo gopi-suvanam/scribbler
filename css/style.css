@@ -1002,3 +1002,28 @@ pre{
   justify-content: center;
   margin: 2rem 0;
 }
+
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fffcd4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Responsive GIF image */
+.splash-gif {
+  width: 30%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .splash-gif {
+    width: 80%;
+  }
+}
