@@ -9,7 +9,8 @@ aiConfig={
 	},
 	apis:{
 		"Google AI Studio":"google-ai-studio",
-		"OpenAI":"openai"
+		"OpenAI":"openai",
+		"Groq":"groq"
 	}
 }
 
