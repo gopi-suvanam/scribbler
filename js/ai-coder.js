@@ -8,7 +8,8 @@ aiConfig={
 		//"OpenVino":"OpenVino"
 	},
 	apis:{
-		"Google AI Studio":"google-ai-studio"
+		"Google AI Studio":"google-ai-studio",
+		"OpenAI":"openai"
 	}
 }
 
