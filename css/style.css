@@ -131,9 +131,8 @@ ul[role=listbox]{
 }
 
 .CodeMirror-gutter {
-	background-color: #fffade;
+	background-color: var(--codemirror-gutter-backrgound)
 }
-
 .CodeMirror-linenumber {
 	color: #a69d8d;
 }
@@ -607,7 +606,8 @@ pre{
   --font-color:#555;
   --secondary: #555;
   --form-element-background-color:white;
- 
+  --codemirror-gutter-backrgound:#fffade;
+	
   
 }
 
@@ -620,7 +620,7 @@ pre{
   --font-color:#ece9d9;
   --secondary: #ece9d9;
   --form-element-background-color:white;
-  
+  --codemirror-gutter-backrgound:#141312; 
   .light-img{
 		display:none !important
 	}
@@ -642,6 +642,8 @@ pre{
   --font-color:#ece9d9;
   --secondary: #ece9d9;
   --form-element-background-color:white;
+--codemirror-gutter-backrgound:#141312 ;
+
 
 
   }
@@ -663,6 +665,7 @@ pre{
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
   --secondary: #fede02;
+    --codemirror-gutter-backrgound:#fffade;	  
   --form-element-background-color:white;
 	.light-img{
 	display:block !important
