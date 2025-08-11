@@ -33,7 +33,7 @@
       "type": "code"
     },
     {
-      "code": "// Or uee functions\nfunction greet(who){\n   scrib.show(\"Hello \"+who); \n}\ngreet(\"world\")",
+      "code": "// Or use functions\nfunction greet(who){\n   scrib.show(\"Hello \"+who); \n}\ngreet(\"world\")",
       "status": "[2]<br><span style=\"font-size:8px\">0ms<span></span></span>",
       "output": "Hello world <br>",
       "type": "code"
