@@ -18,7 +18,7 @@ scrib.blankNB={
 
 
 scrib.markdownToJSNB=function(markdown,blankNB) {
-    const languageMap={'html':'html','markdown':'md','javascript':''};
+    const languageMap={'html':'html','markdown':'md','javascript':'','js':''};
 	blankNB=blankNB||{};
     const cells = [];
     const lines = markdown.split('\n');

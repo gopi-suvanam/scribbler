@@ -41,6 +41,16 @@ worker.evaluate= async function(code){
 		 const updatedCode = code.replace(htmlPrompt, "");
 	     return updatedCode;
 	}
+	const modulePrompt = /^\/\/>\s*module/i;
+	if( modulePrompt.test(code))
+	{
+		 const updatedCode = code.replace(modulePrompt, "");
+	     const script = document.createElement("script");
+		script.type = "module";
+		script.textContent = code;  // Insert your code as the content
+		document.body.appendChild(script);
+		return '';
+	}	
 	const cssPrompt = /^\/\/>\s*css/i;
 	if( cssPrompt.test(code))
 	{

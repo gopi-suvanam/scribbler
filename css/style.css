@@ -131,9 +131,8 @@ ul[role=listbox]{
 }
 
 .CodeMirror-gutter {
-	background-color: #fffade;
+	background-color: var(--codemirror-gutter-backrgound)
 }
-
 .CodeMirror-linenumber {
 	color: #a69d8d;
 }
@@ -600,14 +599,15 @@ pre{
 /* Yellow Light scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme="light"]{
-  --primary: #fede02;
+  --primary: #ece9d9;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
   --secondary: #555;
   --form-element-background-color:white;
- 
+  --codemirror-gutter-backrgound:#fffade;
+	
   
 }
 
@@ -620,7 +620,7 @@ pre{
   --font-color:#ece9d9;
   --secondary: #ece9d9;
   --form-element-background-color:white;
-  
+  --codemirror-gutter-backrgound:#141312; 
   .light-img{
 		display:none !important
 	}
@@ -642,6 +642,8 @@ pre{
   --font-color:#ece9d9;
   --secondary: #ece9d9;
   --form-element-background-color:white;
+--codemirror-gutter-backrgound:#141312 ;
+
 
 
   }
@@ -657,12 +659,13 @@ pre{
 
 @media only screen and (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-  --primary: #fede02;
+  --primary: #ece9d9;
   --primary-hover: #fbc02d;
   --primary-focus: rgba(254, 222, 0,0.125);
   --primary-inverse: rgba(0, 0, 0, 0.75);
   --font-color:#555;
   --secondary: #fede02;
+    --codemirror-gutter-backrgound:#fffade;	  
   --form-element-background-color:white;
 	.light-img{
 	display:block !important
@@ -975,7 +978,34 @@ pre{
     animation: cell-disappear 0.3s ease-out;
 }
 
-/* Splash screen wrapper */
+#add-bottom-cell {
+  background-color: var(--primary);
+  color: black; /* 👈 Now it works */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+
+#add-bottom-cell:hover {
+  background-color: var(--primary-hover, #0056b3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+#bottom-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
 #splash-screen {
   position: fixed;
   top: 0;
@@ -1006,7 +1036,6 @@ pre{
     bottom: 24px;
     right: 24px;
     z-index: 9999;
-    font-family: inherit;
 }
 
 .chat-btn {
