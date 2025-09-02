@@ -1,0 +1,49 @@
+</head>
+<body>
+    <div id="ai-chat-widget">
+        <!-- Toggle button (bottom-right corner) -->
+        <button id="ai-chat-toggle" class="chat-btn">
+            <img src="images/chatbot.png" alt="chatbot-btn" width="30" height="30" >
+        </button>
+
+        <!-- Chat window -->
+        <div id="ai-chat-window" class="chat-window hidden">
+            <!-- Header -->
+            <div class="chat-header">
+                <div class="chat-header-title">
+                    <div class="status-indicator"></div>
+                    <span>Scribbler - AI Chatbot</span>
+                </div>
+                <div class="chat-controls">
+                  <button title="Expand/Collapse">
+                      <img id="ai-chat-expand" src="images/expand.png" alt="Expand" />
+                  </button>
+                  <button id="ai-chat-close" title="Close">
+                      <img src="images/close.svg" alt="Close" />
+                  </button>
+              </div>
+
+            </div>
+
+            <!-- Messages -->
+            <div id="ai-chat-messages" class="chat-messages">
+                <div class="welcome-message">
+                    <h3>Welcome to Scribbler - AI Chatbot</h3>
+                    <p>Make sure you’ve added your API key in <b>secrets.html</b> before chatting.</p>
+                </div>
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-area">
+                <input
+                    id="ai-chat-input"
+                    type="text"
+                    placeholder="Type your message here..."
+                    maxlength="300"
+                />
+                <button id="ai-chat-send" class="send-btn">
+                    <img src="images/send.png" alt="Send" width="16" height="16" />
+                </button>
+            </div>
+        </div>
+    </div>
