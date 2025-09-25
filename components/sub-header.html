@@ -15,23 +15,31 @@
 	<div class="nb-tools-wrapper">
 		<a href="#" class="nb-tool-sharable-btn" data-tooltip="Sharable link / IFrame code" data-placement="bottom" 
 		   onclick="event.preventDefault();shareBtn()">
-			<i class="ti ti-share-3"></i>
+			<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+				<polyline points="15 3 21 3 21 9"></polyline>
+				<line x1="10" y1="14" x2="21" y2="3"></line>
+			</svg>
 		</a>
 		<a href="#" class="nb-tool-run-btn" data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
 		   onclick="event.preventDefault();run_all()">
-			<i class="ti ti-player-play"></i>
+			<svg class="icon"><use href="images/icons-sprite.svg#icon-play"></use></svg>
 		</a>
 		<a href="#" class="secondary nb-tool-save-btn" data-tooltip="Save" id="save-button" onclick="event.preventDefault();saveLocalFile()">
-			<i class="ti ti-device-floppy"></i>
+			<svg class="icon"><use href="images/icons-sprite.svg#icon-save"></use></svg>
 		</a>
 		<a href="#" class="secondary nb-tool-reset-btn" data-tooltip="Reset" id="reset-button" onclick="event.preventDefault();resetNB()">
-			<i class="ti ti-rotate-clockwise-2"></i>
+			<svg class="icon"><use href="images/icons-sprite.svg#icon-reset"></use></svg>
 		</a>
 		<a href="#" id="break-sandbox" class="secondary nb-tool-sandbox-btn"
 		   data-tooltip="Take the notebook out of sandbox"
 		   data-placement="bottom" data-placement-edge="right"
 			onclick="event.preventDefault();break_sandbox()">
-			<i class="ti ti-box-off"></i>
+			<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<rect x="3" y="3" width="20" height="20" rx="3" ry="3"></rect>
+				<path d="M8 9l4-4 4 4"></path>
+				<line x1="12" y1="3" x2="12" y2="15"></line>
+			</svg>
 		</a>
 	</div>
 </div>

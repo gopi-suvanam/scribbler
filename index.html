@@ -13,10 +13,9 @@
 		<script>global=globalThis</script>
 		<title>Scribbler: Online JavaScript Compiler and Notebook</title>
 
-		<!-- Styling using pico.css, tabler-icons css and some custome css -->
+		<!-- Styling using pico.css and custom css -->
 		<link rel="stylesheet" href="css/pico.min.css">
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/tabler-icons.min.css" />
 
 		<!-- Controllers and libs -->
 		<script src="js/libs.js"></script> <!-- libs for some functionality -->
@@ -98,14 +97,17 @@
                     hamburger.classList.remove('active');
                 }
             });
-        } else {
             // console.log("Waiting for hamburger...");
             setTimeout(waitForHamburger, 100); 
         }
     }
     document.addEventListener('DOMContentLoaded', waitForHamburger);
-</script>
-<!-- Chatbot logic -->
-<script src="js/ai-chatbot.js"></script>
+  </script>
+  <!-- SVG Sprite with Icons -->
+  <div style="display: none;">
+    <object type="image/svg+xml" data="images/icons-sprite.svg"></object>
+  </div>
+  <!-- Chatbot logic -->
+  <script src="js/ai-chatbot.js"></script>
 
- </html>
+</html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,10 +37,9 @@
 	<script src="js/marked.min.js"></script> <!-- Convert Markdown to HTML -->
 	<script src="js/sandbox-ai-controller.js"></script> <!-- Controls the UI -->
 
-	<!-- Styling using pico.css, tabler-icons css and some custom css -->
+	<!-- Styling using pico.css and custom css -->
 	<link rel="stylesheet" href="css/pico.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/tabler-icons.min.css" />
 
 	<!-- For opening links in the parent frame by default -->
 	<base target="_parent">
@@ -61,27 +60,45 @@
 
 			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" data-placement="bottom" id="run-button_block_id"
 				onclick="worker.run(_block_id)">
-				<i class="ti ti-player-play"></i>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polygon points="5 3 19 12 5 21 5 3"></polygon>
+				</svg>
 			</a>
 			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow" data-placement="bottom"
 				onclick="sandbox.moveUp(_block_id)">
-				<i class="ti ti-arrow-up"></i>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="12" y1="19" x2="12" y2="5"></line>
+					<polyline points="5 12 12 5 19 12"></polyline>
+				</svg>
 			</a>
 			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow" data-placement="bottom"
 				onclick="sandbox.moveDown(_block_id)">
-				<i class="ti ti-arrow-down"></i>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="12" y1="5" x2="12" y2="19"></line>
+					<polyline points="19 12 12 19 5 12"></polyline>
+				</svg>
 			</a>
 			<a tabindex="0" data-tooltip="Add a cell below: Alt/Option-Enter" data-placement="bottom"
 				onclick="sandbox.insertCell('code',_block_id)">
-				<i class="ti ti-circle-plus"></i>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="10"></circle>
+					<line x1="12" y1="8" x2="12" y2="16"></line>
+					<line x1="8" y1="12" x2="16" y2="12"></line>
+				</svg>
 			</a>
 			<a tabindex="0" data-tooltip="Copy cell content" data-placement="bottom"
 				onclick="sandbox.copyCell(_block_id)">
-				<i class="ti ti-copy"></i>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+					<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+				</svg>
 			</a>
 			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D" data-placement="bottom"
 				onclick="sandbox.deleteCell(_block_id)">
-				<i class="ti ti-trash"></i>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="3 6 5 6 21 6"></polyline>
+					<path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+				</svg>
 			</a>
 		</div>
 
@@ -100,7 +117,11 @@
 	</div>
 	<div id="bottom-button-container">
 		<button id="add-bottom-cell" class="contrast" onclick="sandbox.insertCell('code', null)">
-			<i class="ti ti-circle-plus"></i> Insert Cell
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+				<circle cx="12" cy="12" r="10"></circle>
+				<line x1="12" y1="8" x2="12" y2="16"></line>
+				<line x1="8" y1="12" x2="16" y2="12"></line>
+			</svg> Insert Cell
 		</button>
     </div>
 
