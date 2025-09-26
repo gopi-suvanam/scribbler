@@ -1,176 +1,140 @@
 # Contributing to Our Project
 
-If you want to contribute to this
-project! Please take a moment to review
-our contribution guidelines to help keep
-the process smooth and efficient for
-everyone.
+🎉 This repository is participating in **Hacktoberfest 2025**!
+We welcome contributions from everyone. Please take a moment to review these guidelines so the process stays smooth and efficient for all contributors.
 
-Go through code documenation before contributing: [Code-Docs](CODE-DOCS.md)
+Before contributing, please go through the code documentation here: [Code-Docs](CODE-DOCS.md)
+
+---
 
 ## How to Contribute
 
-We welcome contributions to improve this
-project! Please follow these steps to
-submit your contributions:
-
 ### 1. Fork the Repository
 
-Start by forking this repository to your
-GitHub account. This will allow you to
-work on your changes without affecting
-the original codebase.
+Start by forking this repository to your GitHub account. This lets you work on changes without affecting the original codebase.
 
+👉 [Fork this repository](https://github.com/gopi-suvanam/scribbler/fork)
 
+---
 
-### 2. Clone The Fork Repository
+### 2. Clone Your Fork
 
-Use this link for forking: [Scribbler Fork](https://github.com/gopi-suvanam/scribbler/fork)
-
-
-### 2. Open Terminal
-
-- Open Terminal in Linux or Git Bash/Cmd/Power Shell if
-  You are Using Window and then follow
-  these commands:
-
-**Example**
+Clone your forked repository (replace `<your-username>` with your GitHub handle):
 
 ```bash
-$ git clone https://github.com/gopi-suvanam/scribbler #you can also give forked repo link here.
-$ cd scribbler
+git clone https://github.com/<your-username>/scribbler.git
+cd scribbler
 ```
 
-**Start Server**
-If you are using node:
+---
+
+### 3. Run Locally
+
+Start a local server to preview your changes:
+
+If you are using Node.js:
+
 ```bash
-$ npx serve 
+npx serve
 ```
-If you are comfortable with python:
+
+If you are using Python:
+
 ```bash
-$ python -m http.server
+python -m http.server
 ```
-Alternatively you can place scribble in the www of any webserver.
 
+Alternatively, place `scribbler` in the `www` directory of any web server.
 
-### 3. Create a Branch
+---
 
-- Before making any changes, **create a
-  new branch** for your work. It is
-  crucial to name your branch according
-  to the type of change you are making.
-  This helps us understand your
-  contribution quickly.
+### 4. Create a Branch
+
+Before making changes, create a **new branch**.
+Use a descriptive name based on the type of contribution.
 
 #### Branch Naming Conventions:
 
-We use the following naming convention
-for branches:
+* **bugfix/** for bug fixes
+* **feature/** for new features
+* **docs/** for documentation updates
+* **modified/** for UI/text/content changes
+* **other/** for refactoring or miscellaneous updates
 
-- **bugfix/** for bug fixes
-- **feature/** for new features
-- **doc/** for documentation updates
-- **modified/** for changes related to
-  modifying a page, message, or other
-  content
-- **other/** for any other types of
-  changes (e.g., refactoring)
+**Examples:**
 
-### Examples of Branch Names:
-
-- `bugfix/fix-login-error` — Fix for a
-  login error.
-- `feature/add-new-payment-method` —
-  Adding a new payment method feature.
-- `doc/DocName/update-readme` — Updating
-  the README documentation.
-- `modified/homepage/update-welcome-message`
-  — Updating the welcome message on the
-  homepage.
-- `other/refactor-authentication-logic`
-  — Refactoring the authentication
-  logic.
-
-#### Steps to Create a Branch:
-
-Once you've forked the repository,
-follow these steps to create a branch:
-
-1. **Open your terminal** and navigate
-   to your local copy of the repository.
-2. **Fetch the latest changes** from the
-   main repository:
-   ```bash
-   git fetch origin
-   ```
-3. **Create a new branch** based on the
-   branch you want to modify
-
-   ```bash
-   git checkout -b [branch-name]
-
-   ```
-
-   Replace [branch-name] with a
-   descriptive name using one of the
-   conventions above.
+* `bugfix/fix-login-error`
+* `feature/add-payment-method`
+* `docs/update-readme`
+* `modified/homepage/update-welcome-message`
+* `other/refactor-auth-logic`
 
 ```bash
-   git checkout -b bugfix/fix-login-error
+git checkout -b feature/add-new-feature
 ```
 
-4. **Make Your Changes** Make your
-   changes according to the guidelines
-   and conventions used in this project.
-   Ensure that your code is
-   well-documented and tested (if
-   applicable).
+---
 
-5. **Commit Your Changes**
+### 5. Make and Commit Changes
 
-### Commit Message Guidelines:
+Make your changes according to project conventions.
+When committing, follow these formats:
 
-When committing changes, follow this
-format:
+* **Bug Fixes**:
+  `fix: [short description]`
+  Example: `fix: resolve login error on homepage`
 
-- **Bug Fixes**:
-  `fix: [Short description of the fix]`  
-  _Example_:
-  `fix: resolve login error on homepage`
+* **Features**:
+  `feat: [short description]`
+  Example: `feat: add new payment method option`
 
-- **Features**:
-  `feat: [Short description of the feature]`  
-  _Example_:
-  `feat: add new payment method option`
+* **Documentation**:
+  `docs: [short description]`
+  Example: `docs: update README with branch naming conventions`
 
-  - **modified/Page_OR_Component_Name/message**
-    `modi: [Short description What you modified] `
+* **Modifications (UI/text/content)**:
+  `mod: [short description]`
+  Example: `mod: update welcome message on homepage`
 
-- **Documentation**:
-  `docs: [Short description of the documentation update]`  
-  _Example_:
-  `docs: update README with branch naming conventions`
+* **Other (refactors, chores, etc.)**:
+  `chore: [short description]`
+  Example: `chore: refactor authentication logic for clarity`
 
-- **Other**:
-  `chore: [Short description of other changes]`  
-  _Example_:
-  `chore: refactor authentication logic for clarity`
+```bash
+git commit -m "feat: add user profile page"
+```
 
-  ```bash
-  git commit -m "feat: add user profile page"
+---
 
-  ```
+### 6. Push Changes
 
-6. **Push Your Changes**:
-
-- Push your changes to your forked
-  repository:
+Push your branch to your forked repository:
 
 ```bash
 git push origin [branch-name]
-
 ```
 
-7. **Create a Pull Request**:
+---
 
-- Once your changes are ready, open a pull request on GithHub
+### 7. Open a Pull Request (PR)
+
+* Go to the original repository on GitHub and click **New Pull Request**.
+* Compare your branch from your fork against the `main` branch of this repo.
+* Provide a **clear title** and description.
+* If applicable, reference issues (e.g., “Fixes #42”).
+* Keep PRs focused and small for easier review.
+* Add screenshots or test details if you changed UI or logic.
+
+---
+
+## Code of Conduct
+
+Please be respectful and constructive in all interactions. We value contributions from everyone, and we want this community to remain inclusive and welcoming.
+
+---
+
+✅ That’s it! Thanks for contributing, and happy coding 🎉
+
+---
+
+Would you like me to also create a **`PULL_REQUEST_TEMPLATE.md`** for your repo? That way, contributors will see a ready-to-fill checklist whenever they open a PR.
