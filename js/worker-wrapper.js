@@ -1,4 +1,4 @@
-﻿/**** Run In Other Processors **********/
+/**** Run In Other Processors **********/
 /**** Currently supports WebWorkes 
       To add:
       		GPU
@@ -146,7 +146,7 @@ worker.run= async function(_block_id){
 	scrib.getDom("status"+_block_id).innerHTML='[*]'
 	scrib.getDom("output"+_block_id).innerHTML=''
 	
-	scrib.getDom("run-button"+_block_id).innerHTML = `<i class="ti ti-loader-2 ti-spin"></i>`;
+	scrib.getDom("run-button"+_block_id).innerHTML = `<svg width="16" height="16" style="animation: spin 1s linear infinite;"><use href="../images/icons-sprite.svg#icon-spinner"></use></svg>`;
 	
 	const code=sandbox.editors[_block_id].getValue()
 	
@@ -214,7 +214,7 @@ worker.run= async function(_block_id){
 		}
 		
 		scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Finished running the cell");
-		scrib.getDom("run-button"+_block_id).innerHTML = `<i class="ti ti-player-play-filled"></i>`;
+		scrib.getDom("run-button"+_block_id).innerHTML = `<svg width="16" height="16"><use href="../images/icons-sprite.svg#icon-run-button"></use></svg>`;
 		setTimeout(()=>{
 			scrib.getDom("run-button"+_block_id).setAttribute("data-tooltip","Run again");
 			}
