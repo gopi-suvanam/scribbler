@@ -60,45 +60,27 @@
 
 			<a tabindex="0" data-tooltip="Run the cell: Cmd/Ctrl-Enter" data-placement="bottom" id="run-button_block_id"
 				onclick="worker.run(_block_id)">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<polygon points="5 3 19 12 5 21 5 3"></polygon>
-				</svg>
+				<svg width="16" height="16"><use href="./images/icons-sprite.svg#icon-run-cell"></use></svg>
 			</a>
 			<a tabindex="0" data-tooltip="Move the cell up: Alt-D + Up arrow" data-placement="bottom"
 				onclick="sandbox.moveUp(_block_id)">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<line x1="12" y1="19" x2="12" y2="5"></line>
-					<polyline points="5 12 12 5 19 12"></polyline>
-				</svg>
+				<svg width="16" height="16"><use href="./images/icons-sprite.svg#icon-uparrow"></use></svg>
 			</a>
 			<a tabindex="0" data-tooltip="Move the cell down: Alt-D + Down arrow" data-placement="bottom"
 				onclick="sandbox.moveDown(_block_id)">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<line x1="12" y1="5" x2="12" y2="19"></line>
-					<polyline points="19 12 12 19 5 12"></polyline>
-				</svg>
+				<svg width="16" height="16"><use href="./images/icons-sprite.svg#icon-downarrow"></use></svg>
 			</a>
 			<a tabindex="0" data-tooltip="Add a cell below: Alt/Option-Enter" data-placement="bottom"
 				onclick="sandbox.insertCell('code',_block_id)">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<circle cx="12" cy="12" r="10"></circle>
-					<line x1="12" y1="8" x2="12" y2="16"></line>
-					<line x1="8" y1="12" x2="16" y2="12"></line>
-				</svg>
+				<svg width="16" height="16"><use href="./images/icons-sprite.svg#icon-addcell"></use></svg>
 			</a>
 			<a tabindex="0" data-tooltip="Copy cell content" data-placement="bottom"
 				onclick="sandbox.copyCell(_block_id)">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-					<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-				</svg>
+				<svg width="16" height="16"><use href="./images/icons-sprite.svg#icon-copycell"></use></svg>
 			</a>
 			<a tabindex="0" data-tooltip="Delete the cell: Alt/Option-D" data-placement="bottom"
 				onclick="sandbox.deleteCell(_block_id)">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<polyline points="3 6 5 6 21 6"></polyline>
-					<path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-				</svg>
+				<svg width="16" height="16"><use href="./images/icons-sprite.svg#icon-deletecell"></use></svg>
 			</a>
 		</div>
 
@@ -117,11 +99,7 @@
 	</div>
 	<div id="bottom-button-container">
 		<button id="add-bottom-cell" class="contrast" onclick="sandbox.insertCell('code', null)">
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-				<circle cx="12" cy="12" r="10"></circle>
-				<line x1="12" y1="8" x2="12" y2="16"></line>
-				<line x1="8" y1="12" x2="16" y2="12"></line>
-			</svg> Insert Cell
+			<svg width="16" height="16" style="vertical-align: middle; margin-right: 4px;"><use href="./images/icons-sprite.svg#icon-insertcell"></use></svg> Insert Cell
 		</button>
     </div>
 

@@ -1316,17 +1316,19 @@ margin-bottom: 15px;
 
 
 .nb-tool-sandbox-btn .icon {
-  color: var(--text-color, #333333da);
-  width: 22px;  /* Increased icon size */
-  height: 22px;  /* Increased icon size */
-  /* vertical-align: middle; */
+  color: var(--text-color, #333333);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
 }
 
-
-
-/* .nb-tool-run-btn:hover .icon {
-  color: #218838;
-} */
+/* For icons that should be outlined only */
+.nb-tool-sandbox-btn .icon.outlined {
+  fill: none;
+}
 
 /* Ensure icons are properly aligned in buttons */
 nav a[href*="#"] .icon {
