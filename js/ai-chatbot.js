@@ -1,3 +1,4 @@
+
 /***** Chatbot AI Query Logic *****/
 async function queryAIChatbot(userMessage) {
   const specialFunctionsFetch = await fetch("/SPECIAL-FUNCTIONS.md");
@@ -120,9 +121,15 @@ async function sendMessage() {
       }
     }
 
+    //--Grab code from all cells---
+
+    let nb=await get_nb();
+
     // --- Prepare AI prompt ---
     let fullPrompt = "The following code is in the current notebook cell:\n" +
                      (cellCode || "[No code detected]") +
+                     "all other cell have the code and output:\n"+
+                     (JSON.stringify(nb.cells)||"[No code detected]")+
                      "\n\nDeveloper question: " + message +
                      "\nPlease provide a clear answer or code modification.";
 
