@@ -3,8 +3,8 @@ APIWrapper={};
 // API Provider Configurations
 APIWrapper.providers = {
 	'google-ai-studio': {
-		url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
-		model: 'gemini-1.5-flash-latest',
+		url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
+		model: 'gemini-2.5-flash',
 		authType: 'query', // API key in query parameter
 		requestFormat: 'google',
 		responseFormat: 'google'
