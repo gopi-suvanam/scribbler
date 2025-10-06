@@ -175,9 +175,10 @@ async function loadAI(model){
 
 async function queryAI(query,code,streaming=true){
 	let nb=await get_nb();
+	const cleanedContext=extractCodeOnly(nb.cells)
 	const specialFunctionsFetch =await  fetch("/SPECIAL-FUNCTIONS.md");
 	const specialFunctions = await specialFunctionsFetch.text();
-	const generalInstructions=`You are a helpful AI assistant for Scribbler - the JavaScript notebook tool. Answer the queries of users. In Scribbler you can use these special functions: ${specialFunctions}. You can also use top-level await in scribbler. \n Give code and explanations in markdown. Keep the code only JavaScrpt in HTML. Give separate cells for HTML and JavaScript. For HTML do not give body, head etc just assume it is in a body. For showing output use scrib.show instead of console.log , also take in context the notebook data :${JSON.stringify(nb.cells)}. Do not assume any other function definitions than what is given in the prompt. Do not give the prompt back in the answer` ;
+	const generalInstructions=`You are a helpful AI assistant for Scribbler - the JavaScript notebook tool. Answer the queries of users. In Scribbler you can use these special functions: ${specialFunctions}. You can also use top-level await in scribbler. \n Give code and explanations in markdown. Keep the code only JavaScrpt in HTML. Give separate cells for HTML and JavaScript. For HTML do not give body, head etc just assume it is in a body. For showing output use scrib.show instead of console.log , also take in context the notebook cells : ${cleanedContext} . Do not assume any other function definitions than what is given in the prompt. Do not give the prompt back in the answer` ;
 	const prompt=`User query: ${query} \n`;// Exisitng code:\n ${code}`;
 	
 	if(preferredAIAPI){
