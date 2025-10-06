@@ -7,6 +7,21 @@ sandbox.statusData={
 }
 
 
+//This loads components dynamically
+  class DynamicInclude extends HTMLElement {
+	connectedCallback() {
+	  const url = this.getAttribute('data');
+	  fetch(url)
+		.then(response => response.text())
+		.then(content => {
+		  this.innerHTML = content;
+		});
+	}
+  }
+
+  customElements.define('html-component', DynamicInclude);
+		  
+		  
 
 sandbox.editors={}
 
