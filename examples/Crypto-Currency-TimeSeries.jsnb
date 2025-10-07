@@ -9,7 +9,7 @@
   "jsnbversion": "v0.1",
   "cells": [
     {
-      "code": "<h1>BTC and ETH Chart using APIs </h1>\n Chart Bitcoin and Ethereum prices using just javascript and APIs (without a backend).\n  <a><label for=\"coin\">Choose a coin</label></a>\n<a><select id=\"coin\" onchange=\"graph()\">\n  <option value=\"bitcoin\">BTC</option>\n\t<option value=\"ethereum\">ETH</option>\n</select></a>\n",
+      "code": "<h1>BTC and ETH Chart using APIs </h1>\n Chart Bitcoin and Ethereum prices using just javascript and APIs (without a backend).\n  <a><label for=\"coin\">Choose a coin</label></a>\n<a><select id=\"coin\" onchange=\"graph()\">\n  <option value=\"BTC\">BTC</option>\n\t<option value=\"ETH\">ETH</option>\n</select></a>\n",
       "status": "",
       "output": "<h1>BTC and ETH Chart using APIs </h1>\n Chart Bitcoin and Ethereum prices using just javascript and APIs (without a backend).\n  <a><label for=\"coin\">Choose a coin</label></a>\n<a><select id=\"coin\" onchange=\"graph()\">\n  <option value=\"bitcoin\">BTC</option>\n\t<option value=\"ethereum\">ETH</option>\n</select></a>\n",
       "type": "html"
@@ -21,7 +21,8 @@
       "type": "html"
     },
     {
-      "code": "result={};\ngraph = (async ()=>  {\n  const coin=scrib.getDom(\"coin\").value\n  const url=\"https://api.coincap.io/v2/assets/\"+coin+\"/history?interval=d1\";\n  let x=await fetch(url, {});\n  result= await x.json();\n  data=result['data'].map(x=>[x[\"date\"],x[\"priceUsd\"]]);\n  scrib.getDom(\"grph\").innerHTML='';\n  data.plot('scatter',\"grph\");\n})\n;\ngraph();\n",
+      "code": "result={};\ngraph = (async ()=>  {\n  const coin=scrib.getDom(\"coin\").value\n  const url=\"https://min-api.cryptocompare.com/data/v2/histoday?fsym=\"+coin+\"&tsym=USD&limit=30\";\n  let x=await fetch(url, {});\n  result= await x.json();\n data = result.Data.Data.map(d => [new Date(d.time * 1000).toISOString().split('T')[0],d.close
+  ])\n  scrib.getDom(\"grph\").innerHTML='';\n  data.plot('scatter',\"grph\");\n})\n;\ngraph();\n",
       "status": "[4]<br><span style=\"font-size:8px\">5ms<span></span></span>",
       "output": "{} <br>",
       "type": "code"
