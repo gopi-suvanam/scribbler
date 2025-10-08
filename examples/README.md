@@ -18,6 +18,7 @@ The below notebooks are samples/boilerplates to start experimenting/building.
 6. [Using DI-Libs for Plots](https://app.scribbler.live/#./examples/DI-Lib-Plots.jsnb). Plotting graphs suing the library - [di-libs.js](https://decentralized-intelligence.com/di-libs).
 7. [Crypt-Plots](https://app.scribbler.live/#./examples/Crypto-Currency-TimeSeries.jsnb). Plotting crypto-currency timeseries with data from API calls.
 
+
 ### P2P and Decentralization
 8. [WebTorrent library](https://app.scribbler.live/#./examples/WebTorrent-Example.jsnb). Using webtorrent for writing and reading files to torrents network in the browser.
 9. [Blockchain using Metamask](https://app.scribbler.live/#./examples/Ethereum-Metamask.jsnb). Integrating web-applications with Blockchain via Metamask.
@@ -49,6 +50,9 @@ The below notebooks are samples/boilerplates to start experimenting/building.
 
 ### Machine Learning
 25. [Decentralized ML Using Brain.js](https://app.scribbler.live/#./examples/Decentralized-ML-Model-Storage.jsnb). Machine learming in the browser using Brain.js and storing the model as JSON in the local system. Can be modified to store the model in IPFS/Torrents.
+
+### Simulations
+26. [CFDtion](https://app.scribbler.live/#./examples/Fluid-Dynamics(CFD).jsnb). Fluid Simulation using  WebGL-Fluid-Simulation by Pavel Dobryakov.
 
 ### More examples!
 [List of sample notebooks on Scribbler](https://examples.scribbler.live/)
