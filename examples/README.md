@@ -18,7 +18,6 @@ The below notebooks are samples/boilerplates to start experimenting/building.
 6. [Using DI-Libs for Plots](https://app.scribbler.live/#./examples/DI-Lib-Plots.jsnb). Plotting graphs suing the library - [di-libs.js](https://decentralized-intelligence.com/di-libs).
 7. [Crypt-Plots](https://app.scribbler.live/#./examples/Crypto-Currency-TimeSeries.jsnb). Plotting crypto-currency timeseries with data from API calls.
 
-
 ### P2P and Decentralization
 8. [WebTorrent library](https://app.scribbler.live/#./examples/WebTorrent-Example.jsnb). Using webtorrent for writing and reading files to torrents network in the browser.
 9. [Blockchain using Metamask](https://app.scribbler.live/#./examples/Ethereum-Metamask.jsnb). Integrating web-applications with Blockchain via Metamask.
