@@ -25,6 +25,7 @@
 
 					<li><a onclick="download_nb()">Download NB</a><hr></li>
 					<li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
+					<li><a data-target="gitlab-import-export" onClick="toggleModal(event)">GitLab (Ctrl-L)</a></li>
 					<li><a href="#"  onclick="event.preventDefault();shareBtn()">Publish the Notebook</a><hr></li>
 					<li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
 					<li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
@@ -141,6 +142,13 @@
 					<a title="Github Source Code" href="https://github.com/gopi-suvanam/scribbler" target="_blank">
 					<img src="images/github-mark.png" style="width:20px" class="light-img"/>
 					<img src="images/github-mark-white.png" style="width:20px" class="dark-img"/>
+					</a></summary>
+				</li>
+				<li>
+					<summary tabindex="0" aria-haspopup="listbox" style="margin-left:5px" >
+					<a title="GitLab Integration" href="#" onclick="event.preventDefault(); openModal(scrib.getDom('gitlab-import-export'));">
+					<img src="images/gitlab-dark.jpg" style="width: 20px" class="dark-img"/>
+					<img src="images/gitlab-dark.svg" style="width: 20px" class="light-img"/>
 					</a></summary>
 				</li>
 				<li>

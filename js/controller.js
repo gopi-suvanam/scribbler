@@ -95,6 +95,10 @@ load_from_url=async function(){
 				url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 				const reponse=await fetch(url);	
 	 			 nb=await reponse.json();
+  		}else if(url.split(":")[0].trim()=='gitlab'){
+  				const link=url.split(":")[1].trim();
+  				await gitlab_initialize_from_git(link);
+  				return;
   		}else {
 			const reponse=await fetch(url);	
 	 		nb=await reponse.json();
@@ -428,6 +432,8 @@ keyDown=function(e) {
 	    saveLocalFile();
 	  } else if (e.ctrlKey && e.key === 'g') {
 	    openModal(scrib.getDom('git-import-export'));
+	  } else if (e.ctrlKey && e.key === 'l') {
+	    openModal(scrib.getDom('gitlab-import-export'));
 	  } else if (e.ctrlKey && e.key === 'o') {
 	    openModal(scrib.getDom('fileNamesModal'));
 	    openFileNamesModal()
@@ -466,6 +472,7 @@ insitialize_page=async function(){
 		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
 		scrib.waitForDom("break-sandbox").then(result=>result.style.display='inline');
 	      	initialize_git();
+	      	gitlab_initialize();
 	      	
 	      	
 
