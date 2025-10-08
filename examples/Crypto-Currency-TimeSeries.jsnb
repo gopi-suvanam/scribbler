@@ -21,8 +21,7 @@
       "type": "html"
     },
     {
-      "code": "result={};\ngraph = (async ()=>  {\n  const coin=scrib.getDom(\"coin\").value\n  const url=\"https://min-api.cryptocompare.com/data/v2/histoday?fsym=\"+coin+\"&tsym=USD&limit=30\";\n  let x=await fetch(url, {});\n  result= await x.json();\n data = result.Data.Data.map(d => [new Date(d.time * 1000).toISOString().split('T')[0],d.close
-  ])\n  scrib.getDom(\"grph\").innerHTML='';\n  data.plot('scatter',\"grph\");\n})\n;\ngraph();\n",
+      "code": "result={};\ngraph = (async ()=>  {\n  const coin=scrib.getDom(\"coin\").value\n  const url=\"https://min-api.cryptocompare.com/data/v2/histoday?fsym=\"+coin+\"&tsym=USD&limit=30\";\n  let x=await fetch(url, {});\n  result= await x.json();\n data = result.Data.Data.map(d => [new Date(d.time * 1000).toISOString().split('T')[0],d.close])\n  scrib.getDom(\"grph\").innerHTML='';\n  data.plot('scatter',\"grph\");\n})\n;\ngraph();\n",
       "status": "[4]<br><span style=\"font-size:8px\">5ms<span></span></span>",
       "output": "{} <br>",
       "type": "code"
