@@ -1,3 +1,4 @@
+
 /***** Chatbot AI Query Logic *****/
 async function queryAIChatbot(userMessage) {
   const specialFunctionsFetch = await fetch("/SPECIAL-FUNCTIONS.md");
@@ -86,9 +87,24 @@ function initChatbot() {
   inputField.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
 }
 
+function extractCodeOnly(nb) {
+    let count = 1;
+    return nb
+        .filter(cell => cell.type === 'code')
+        .map(cell => {
+            const result = `Code in Cell ${count}:\n${cell.code}\n`;
+            count++;
+            return result;
+        })
+        .join('\n');
+}
+
+
 async function sendMessage() {
   const inputField = document.getElementById("ai-chat-input");
   const messagesDiv = document.getElementById("ai-chat-messages");
+  let nb=await get_nb();
+  const cleanedContext=extractCodeOnly(nb.cells)
   const message = inputField.value.trim();
   if (!message) return;
 
@@ -122,7 +138,9 @@ async function sendMessage() {
 
     // --- Prepare AI prompt ---
     let fullPrompt = "The following code is in the current notebook cell:\n" +
-                     (cellCode || "[No code detected]") +
+                     (cellCode || "[No code detected]")+
+                     " all other cell have the code :\n"+
+                     (cleanedContext||"[No code detected]")+
                      "\n\nDeveloper question: " + message +
                      "\nPlease provide a clear answer or code modification.";
 
