@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "Interactive Fluid Simulation - CFD Example",
+    "language_info": {
+      "name": "JavaScript",
+      "version": "8.0"
+    }
+  },
+  "jsnbversion": "v0.1",
+  "cells": [
+    {
+      "code": "<div style=\"text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; margin-bottom: 20px;\">\n  <h1 style=\"margin: 0; font-size: 2.5em;\">🌊 Interactive Fluid Simulation</h1>\n  <p style=\"margin: 10px 0 0 0; font-size: 1.2em;\">Computational Fluid Dynamics (CFD) Demo</p>\n  <p style=\"margin: 5px 0 0 0; opacity: 0.9;\">Click and drag to create fluid motion • Adjust parameters in real-time</p>\n</div>",
+      "status": "",
+      "output": "",
+      "type": "html"
+    },
+    {
+      "code": "<style>\n.iframe-container {\n  position: relative;\n  width: 100%;\n  height: 600px;\n  border-radius: 10px;\n  overflow: hidden;\n  box-shadow: 0 10px 40px rgba(0,0,0,0.3);\n}\n.iframe-container iframe {\n  width: 100%;\n  height: 100%;\n  border: none;\n}\n</style>\n\n<div class=\"iframe-container\">\n  <iframe src=\"https://paveldogreat.github.io/WebGL-Fluid-Simulation/\" title=\"WebGL Fluid Simulation\"></iframe>\n</div>",
+      "status": "",
+      "output": "",
+      "type": "html"
+    },
+    {
+      "code": "<div style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin-top: 20px; color: white;\">\n  <h3 style=\"color: #fff; margin-top: 0;\">📚 About This Simulation</h3>\n  <p style=\"color: #f0f4f8; line-height: 1.6;\">\n    This is a real-time fluid dynamics simulation running entirely in your browser using WebGL. \n    The simulation solves the <strong>Navier-Stokes equations</strong> for incompressible fluid flow.\n  </p>\n  \n  <h4 style=\"color: #cfd8dc; margin-top: 15px;\">How to Use:</h4>\n  <ul style=\"color: #f0f4f8; line-height: 1.8;\">\n    <li><strong>Click and Drag:</strong> Create fluid motion by dragging your mouse/finger across the canvas</li>\n    <li><strong>Right Side Panel:</strong> Use the embedded simulation's own controls (visible on desktop)</li>\n    <li><strong>Mobile Friendly:</strong> Works on touch devices too!</li>\n    <li><strong>Experiment:</strong> Try different interaction patterns and speeds</li>\n  </ul>\n  \n  <h4 style=\"color: #cfd8dc; margin-top: 15px;\">What is CFD?</h4>\n  <p style=\"color: #f0f4f8; line-height: 1.6;\">\n    <strong>Computational Fluid Dynamics (CFD)</strong> is a branch of fluid mechanics that uses numerical analysis \n    to solve problems involving fluid flows. This simulation demonstrates:\n  </p>\n  <ul style=\"color: #f0f4f8; line-height: 1.8;\">\n    <li><strong>Velocity Fields:</strong> How fluid particles move through space</li>\n    <li><strong>Pressure Gradients:</strong> Forces that cause fluid to flow</li>\n    <li><strong>Vorticity:</strong> Rotational motion and turbulence</li>\n    <li><strong>Diffusion:</strong> How disturbances spread through the fluid</li>\n  </ul>\n  \n  <h4 style=\"color: #cfd8dc; margin-top: 15px;\">Real-World Applications:</h4>\n  <ul style=\"color: #f0f4f8; line-height: 1.8;\">\n    <li>Aircraft and vehicle aerodynamics</li>\n    <li>Weather prediction and climate modeling</li>\n    <li>Ocean current simulation</li>\n    <li>Industrial mixing and chemical processes</li>\n    <li>Blood flow in medical devices</li>\n    <li>Building ventilation design</li>\n  </ul>\n  \n  <p style=\"color: #f0f4f8; margin-top: 15px;\">\n    <strong>Library Used:</strong> <a href=\"https://github.com/PavelDoGreat/WebGL-Fluid-Simulation\" target=\"_blank\" style=\"color: #fff;\">WebGL-Fluid-Simulation by Pavel Dobryakov</a><br>\n    <strong>Based On:</strong> Jos Stam's \"Real-Time Fluid Dynamics for Games\" and GPU Gems Chapter 38\n  </p>\n</div>",
+      "status": "",
+      "output": "",
+      "type": "html"
+    }
+  ],
+  "source": "https://github.com/gopi-suvanam/jsnb",
+  "run_on_load": true
+}

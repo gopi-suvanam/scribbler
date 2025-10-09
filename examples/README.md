@@ -50,5 +50,8 @@ The below notebooks are samples/boilerplates to start experimenting/building.
 ### Machine Learning
 25. [Decentralized ML Using Brain.js](https://app.scribbler.live/#./examples/Decentralized-ML-Model-Storage.jsnb). Machine learming in the browser using Brain.js and storing the model as JSON in the local system. Can be modified to store the model in IPFS/Torrents.
 
+### Simulations
+26. [CFDtion](https://app.scribbler.live/#./examples/Fluid-Dynamics(CFD).jsnb). Fluid Simulation using  WebGL-Fluid-Simulation by Pavel Dobryakov.
+
 ### More examples!
 [List of sample notebooks on Scribbler](https://examples.scribbler.live/)
