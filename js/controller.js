@@ -716,3 +716,54 @@ window.onclick = (e) => {
   const modal = document.getElementById("notebookModal");
   if (modal && e.target === modal) closeNotebookModal();
 };
+
+loadNotebookEnhanced=async function(cellsData, versionName) {
+  try {
+    if (!cellsData || !Array.isArray(cellsData)) {
+      alert("Invalid notebook data");
+      return;
+    }
+
+    const confirmLoad = confirm(
+      `Load version "${versionName}"?\n\nThis will replace your current notebook content.`
+    );
+    
+    if (!confirmLoad) return;
+
+    const notebookToLoad = {
+      metadata: {
+        name: versionName || "Loaded Version",
+        language_info: {
+          name: "JavaScript",
+          version: "8.0"
+        }
+      },
+      jsnbversion: "v0.1",
+      cells: cellsData,
+      source: "https://github.com/gopi-suvanam/scribbler",
+      run_on_load: false
+    };
+
+    if (sandbox_iframe && sandbox_iframe.contentWindow) {
+      const message = {
+        action: "sandbox.loadJSNB",
+        data: notebookToLoad,
+        call_bk: ""
+      };
+      
+      sandbox_iframe.contentWindow.postMessage(message, '*');
+      
+      // Update the notebook name in the UI
+      scrib.getDom("nb_name").innerHTML = `Welcome To Your Saved Notebook : ${versionName}` || "Loaded Version";
+      
+      console.log("Notebook version loaded:", versionName);
+      closeNotebookModal();
+    } else {
+      throw new Error("Sandbox iframe not available");
+    }
+    
+  } catch (err) {
+    console.error("Error loading notebook version:", err);
+    alert("Failed to load notebook version: " + err.message);
+  }
+}
