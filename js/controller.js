@@ -589,3 +589,14 @@ openNotebookModal=function(){
     input.focus();
   }
 }
+
+closeNotebookModal=function(){
+  const modal = document.getElementById("notebookModal");
+  if (!modal) return;
+  modal.style.display = "none";
+}
+
+window.onclick = (e) => {
+  const modal = document.getElementById("notebookModal");
+  if (modal && e.target === modal) closeNotebookModal();
+};
