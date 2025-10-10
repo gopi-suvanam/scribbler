@@ -1,0 +1,59 @@
+<dialog id="gitlab-import-export" class="git-modal">
+	<article>
+		<h3 class="modal-title">GitLab Integration</h3>
+		<p class="modal-desc">
+			Load a notebook from GitLab or push your work to a repository. Works with both GitLab.com and self-hosted GitLab instances.<br />
+			<a target="_blank"
+				href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html">
+				How to create a personal access token?
+			</a>
+		</p>
+
+		<div class="form-group">
+			<label for="gitlab-url">GitLab URL</label>
+			<input type="text" id="gitlab-url" placeholder="https://gitlab.com" value="https://gitlab.com" />
+			<small>For self-hosted GitLab, enter your instance URL</small>
+		</div>
+		<div class="form-group">
+			<label for="gitlab-token">Access Token</label>
+			<input type="text" id="gitlab-token" onchange="gitlab_update_owner()" placeholder="glpat-..." />
+		</div>
+		<div class="form-group">
+			<label for="gitlab-user">User</label>
+			<input type="text" id="gitlab-user" readonly placeholder="Username" />
+			<span id="gitlab-username"></span>
+		</div>
+		<div class="form-group">
+			<label for="gitlab-project">Project</label>
+			<input list="gitlab-projects" id="gitlab-project" placeholder="Project ID or select from list" onchange="gitlab_project_selected()" />
+			<datalist id="gitlab-projects"></datalist>
+		</div>
+		<div class="form-group">
+			<label for="gitlab-path">Path</label>
+			<input type="text" id="gitlab-path" placeholder="e.g., notebooks/myfile.jsnb" />
+		</div>
+		<div class="form-group">
+			<label for="gitlab-commit-msg">Commit message</label>
+			<input type="text" id="gitlab-commit-msg" placeholder="default: JSNB File Uploaded by User" />
+		</div>
+
+		<div class="button-row">
+			<button class="secondary" data-target="gitlab-import-export" onclick="toggleModal(event)">Cancel</button>
+			<button class="primary" onclick="gitlab_upload_to_git()">Push to GitLab</button>
+			<button class="primary" onclick="gitlab_load_from_git()">Load from GitLab</button>
+		</div>
+
+		<p class="publish-link">
+			<a href="#" onclick="closeModal(scrib.getDom('gitlab-import-export')); openModal(scrib.getDom('shareNB'));">
+				Publish and share the notebook with the world!
+			</a>
+		</p>
+
+		<footer class="modal-footer">
+			<p>
+				Your token is never sent to our server. It's only used locally to call the GitLab API from your browser.
+				Notebooks running in the sandbox cannot access your token.
+			</p>
+		</footer>
+	</article>
+</dialog>

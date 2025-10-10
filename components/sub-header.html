@@ -17,6 +17,16 @@
 		   onclick="event.preventDefault();shareBtn()">
 		   <svg class="icon"><use href="../images/icons-sprite.svg#icon-share"></use></svg>
 		</a>
+		<a href="#" class="secondary nb-tool-github-btn" data-tooltip="GitHub Integration (Ctrl+G)" data-placement="bottom" 
+		   onclick="event.preventDefault();openModal(scrib.getDom('git-import-export'))">
+		   <svg class="icon" style="width:16px; height:16px;"><use href="../images/icons-sprite.svg#icon-github"></use></svg>
+		</a>
+		<a href="#" class="secondary nb-tool-gitlab-btn" data-tooltip="GitLab Integration (Ctrl+L)" data-placement="bottom" 
+		   onclick="event.preventDefault();openModal(scrib.getDom('gitlab-import-export'))">
+		   <svg class="icon" style="width:16px; height:16px; fill: currentColor;" viewBox="0 0 24 24">
+		   	<path d="M12 21.42l-1.2-3.69H2.28L1.08 21.42 12 21.42zM2.28 17.73h8.52L8.52 7.31 2.28 17.73zM8.52 7.31L12 17.73l3.48-10.42H8.52zM15.48 7.31l-2.28 10.42h8.52l-6.24-10.42zM21.72 17.73l-1.2 3.69L12 21.42l9.72-3.69z"/>
+		   </svg>
+		</a>
 		<a href="#" class="nb-tool-run-btn" data-tooltip="Run all: Alt/Option-R" data-placement="bottom" 
 		   onclick="event.preventDefault();run_all()">
 			<svg class="icon"><use href="../images/icons-sprite.svg#icon-play"></use></svg>

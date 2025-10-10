@@ -78,7 +78,7 @@ npx serve # Requires npx and a server package like 'serve' to be installed
 - **Exporting and Importing:**
     - A notebook can be downloaded as json (has a default extension of .jsnb). It can be loaded back into the app. The notebook or only the output can also be downloaded as html.
     - A .jsnb file can also be directly loaded into the app by suffixing the url of the file after "#" something like: https://app.scribbler.live/#link_to_file.jsnb. The url of the file should be accessible by the browser through GET method.
-    - For details on Download/Upload, dowload as html/javascript, push to/pull from Github. See [DOCS](DOCS.md#exporting-importing) for details
+    - For details on Download/Upload, download as html/javascript, push to/pull from GitHub and GitLab. See [DOCS](DOCS.md#exporting-importing) for details
 - **Special Functions & Features:**
     - Scribbler offers several special functions to enhance interactivity. For a full list and details, please see the [Special Functions Documentation](SPECIAL-FUNCTIONS.md).
     - Keyboard Shortcuts: Several keyboard shortcuts for running/dowloading/adding cells/deleting cells etc. See [DOCS](DOCS.md#keyboard-shortcuts) for details
@@ -101,10 +101,11 @@ Not to be used for:
 ## Collaboration
 The tool does not store data on cloud as it is intended to be a fully open source product for self-hosting/use on local machines. A fully hosted solution with collaboration is in the Roadmap. Collaboration is still possible through:
 1. Download and share .jsnb files.
-2. Use github for storing .jsnb files. Make the repo public or add collaborators. The notebooks built on Scribbler can be directly be synced on to GitHub using an access token.
+2. Use GitHub or GitLab for storing .jsnb files. Make the repo public or add collaborators. The notebooks built on Scribbler can be directly be synced to GitHub/GitLab using an access token.
 3. Files in public GitHub repos can be directly accessed as: https://app.scribbler.live/#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
-4. If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://app.scribbler.live/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
-5. Map a cloud drive or LAN drive onto local machine and load from/download to the drive. Share the drive with collaborators.
+4. Files in public GitLab repos can be accessed using: https://app.scribbler.live/#gitlab:[PROJECT_ID]/[PATH_TO_FILE]
+5. If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://app.scribbler.live/#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
+6. Map a cloud drive or LAN drive onto local machine and load from/download to the drive. Share the drive with collaborators.
 
 ## How is Scribbler different
 - Scribbler is an open source application and hence can be downloaded, modified and used freely. Jsfiddle/codepen are cloud based platforms.

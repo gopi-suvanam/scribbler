@@ -48,7 +48,8 @@ The file menu consists of:
 - Open: Opening a notebook from the browser storage
 - Upload: Opening a .jsnb file from local machine
 - Download: Saving the current notebook as .jsnb file on local machine
-- GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Toke, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
+- GitHub: Loading a file from a GitHub repository or pushing a file to a GitHub repository. An authentication dialogue will pop up asking for Access Token, username/owner name, repo and file path. Access token is not stored in the back end and is used to authenticate GitHub API calls.
+- GitLab: Loading a file from a GitLab repository or pushing a file to a GitLab repository. Works with both GitLab.com and self-hosted GitLab instances. An authentication dialogue will pop up asking for GitLab URL, Access Token, project ID, and file path. Access token is not stored in the back end and is used to authenticate GitLab API calls.
 - Download as HTML: Save the current notebook as HTM to local machine. HTLM cells will be displayed as HTML. For code cells both the code and output of the code is displayed as HTML. 
 - Download only output as HTML: Save only the output of the current notebook as HTML on local machine.
 - Download as JS: Down load the code in cells as a single JavaSript file.
@@ -79,8 +80,9 @@ The edit menu consists of:
 - The URL of Github pages deployment is [https://app.scribbler.live](https://app.scribbler.live). 
 - For downloaded file it will be file://path/index.html. For self hosted solutions the main link will be as per the deployment. 
 - Following the main link, there can be an anchor attached. The location of the anchor is taken as the file to be loaded into the notebook. For example, [https://app.scribbler.live/#examples/Hello-world.jsnb](https://app.scribbler.live#examples/Hello-world.jsnb) will "GET" the file https://app.scribbler.live/examples/Hello-world.jsnb and load it into Scribbler. The file has to be available publicly to load in this fashion. 
-- Git hub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://app.scribbler.live#github:gopi-suvanam/scribbler/examples/Hello-world.jsnb](https://app.scribbler.live#github:gopi-suvanam/scirbbler/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialoge will pop up. 
-- When a file is loded from or pushed to GitHub, the URL updates to this format. The URL can be shared with others for easy collaboration.
+- GitHub files can be loaded using a shorter notation of github:user-name/repo/path-of-file. So the above file can be linked as : [https://app.scribbler.live#github:gopi-suvanam/scribbler/examples/Hello-world.jsnb](https://app.scribbler.live#github:gopi-suvanam/scirbbler/examples/Hello-world.jsnb). If the repo is public, Scribbler will try to GET it and load it, else GitHub authentication dialogue will pop up.
+- GitLab files can be loaded using the notation gitlab:project-id/path-of-file. For example: [https://app.scribbler.live#gitlab:12345/notebooks/example.jsnb](https://app.scribbler.live#gitlab:12345/notebooks/example.jsnb). If the project is public, Scribbler will try to GET it and load it, else GitLab authentication dialogue will pop up. 
+- When a file is loaded from or pushed to GitHub/GitLab, the URL updates to this format. The URL can be shared with others for easy collaboration.
 
 ## Special Functions
 There are a few special functions:
@@ -107,14 +109,17 @@ These shortcuts work when a code cell is in focus:
 These shortcuts are global
 - Alt-R/Option-R: Run all the cells
 - Ctrl-G: Import from/Push to GitHub
+- Ctrl-L: Import from/Push to GitLab
 - Ctrl-S: Save the notebook to the browser
 - Ctrl-O: Load a jsnb from local machine
 
 ## Exporting-Importing
-- A file on GitHub repo can be loaded into the .jsnb file. The repo has to be public or you should be a collaborator.
-- A notebook can be pushed to GiHub. You should be a collaborator on the repo for this.
+- A file on GitHub or GitLab repo can be loaded into the .jsnb file. The repo has to be public or you should be a collaborator.
+- A notebook can be pushed to GitHub or GitLab. You should be a collaborator on the repo for this.
 - GitHub operations will require an [access token from GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token)
+- GitLab operations will require an [access token from GitLab](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) and work with both GitLab.com and self-hosted GitLab instances.
 - Files in public GitHub repos can be directly accessed as: https://app.scribbler.live#https://raw.githubusercontent.com/[USERNAME]/[REPO]/[BRANCH]/[PATH_TO_FILE]
+- Files in public GitLab repos can be accessed using: https://app.scribbler.live#gitlab:[PROJECT_ID]/[PATH_TO_FILE]
 - If GitHub pages are enabled for the repo, the files can be accessed also using this link: https://app.scribbler.live#https://[USERNAME].github.io/[REPO]/[PATH_TO_FILE]
 - The output of a notebook can be downloaded as an HTML file (with code or wothout code)
 - The code of a notebook can be downloaded as a JavaScript file
