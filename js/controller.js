@@ -464,9 +464,42 @@ keyDown=function(e) {
 
   customElements.define('html-component', DynamicInclude);
 		  
-insitialize_page=async function(){
+const DB_NAME = "ScribblerDB";
+const DB_VERSION = 1;
+let db;
 
-	window.onload =  function() {
+openDB=function(){
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open("scribblerDB", 1);
+
+        request.onupgradeneeded = (event) => {
+            const db_local = event.target.result; 
+            if (!db_local.objectStoreNames.contains("notebooks")) {
+                db_local.createObjectStore("notebooks", { keyPath: "id", autoIncrement: true });
+                console.log("📁 Created 'notebooks' object store");
+            }
+        };
+
+        request.onsuccess = () => {
+            db = request.result; 
+            resolve(db);         
+        };
+
+        request.onerror = () => reject(request.error);
+    });
+}
+  insitialize_page=async function(){
+
+	window.onload = async function() {
+		try {
+            await openDB();  // 1. Opens the DB and sets the global 'db' variable
+            console.log("IndexedDB initialized successfully");
+            
+			await loadAllVersions(); 
+            
+        } catch (err) {
+            console.error("Failed to initialize IndexedDB:", err);
+        }
 		first_load=true;
 		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
