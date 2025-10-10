@@ -507,16 +507,85 @@ insitialize_page=async function(){
 			}, event.origin);
 		  }
 		});
-	
-	
-		
-
-		
-		
 	};
-	
-	  	
-
-  
 }
 
+//Versioning functions
+
+openNotebookModal=function(){
+  // Check if modal already exists
+  let modal = document.getElementById("notebookModal");
+
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "notebookModal";
+    modal.style.cssText = `
+      display:flex;
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    `;
+
+    // Modal content
+    modal.innerHTML = `
+      <div style="
+        background:#1e1e1e;
+        padding:20px;
+        border-radius:8px;
+        width:320px;
+        position:relative;
+        box-shadow:0 4px 6px rgba(0,0,0,0.2);
+      ">
+        <button onclick="closeNotebookModal()" style="
+          position:absolute;
+          top:10px; right:15px;
+          background:none;
+          border:none;
+          color:#fff;
+          font-size:20px;
+          cursor:pointer;">&times;</button>
+        <h3 style="color:#fff; margin-top:0;">Enter Notebook Name</h3>
+        <input type="text" id="notebookName" placeholder="Notebook Name" style="
+          width:100%;
+          padding:10px;
+          margin:10px 0;
+          border-radius:4px;
+          border:1px solid #333;
+          background:#2c2c2c;
+          color:#fff;">
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button onclick="closeNotebookModal()" style="
+            background:#f44336;
+            color:white;
+            border:none;
+            padding:8px 16px;
+            border-radius:4px;
+            cursor:pointer;">Cancel</button>
+          <button onclick="saveNotebook()" style="
+            background:#4caf50;
+            color:white;
+            border:none;
+            padding:8px 16px;
+            border-radius:4px;
+            cursor:pointer;">Save</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  }
+
+  // Show the modal
+  modal.style.display = "flex";
+
+  // Focus input
+  const input = document.getElementById("notebookName");
+  if (input) {
+    input.value = "";
+    input.focus();
+  }
+}
