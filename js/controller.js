@@ -578,7 +578,7 @@ saveNotebook=async function() {
   }
 
   let nb=await get_nb();
-  const notebookData = nb.cells; // your array of cell objects
+  const notebookData = nb.cells;
 
 
   try {
@@ -587,7 +587,6 @@ saveNotebook=async function() {
     alert(`Notebook ${name} saved!`);
     closeNotebookModal();
 
-    // Dynamically add to Versions list
     appendVersionToList({
       id: versionId,
       name,
@@ -597,6 +596,34 @@ saveNotebook=async function() {
   } catch (err) {
     alert("Error saving notebook: " + err);
   }
+}
+
+appendVersionToList=function(version) {
+  const ul = document.getElementById("version-list");
+  if (!ul) return;
+  console.log("Appending version to list:", version);
+
+  const li = document.createElement("li");
+  li.textContent = `${version.name} - ${new Date(version.created).toLocaleString("en-GB", { hour12: false })}`;
+  li.style.cursor = "pointer";
+  console.log(version.data);
+
+  li.onclick = () => loadNotebookEnhanced(version.data, version.name);
+
+  ul.prepend(li);
+}
+
+loadAllVersions=async function() {
+  if (!db) await openDB();
+
+  const tx = db.transaction(["notebooks"], "readonly");
+  const store = tx.objectStore("notebooks");
+  const request = store.getAll();
+
+  request.onsuccess = () => {
+    const versions = request.result.sort((a,b) => new Date(b.created) - new Date(a.created));
+    versions.forEach(v => appendVersionToList(v));
+  };
 }
 
 //Versioning functions
