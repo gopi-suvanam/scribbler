@@ -543,6 +543,62 @@ openDB=function(){
 	};
 }
 
+saveNotebookVersion=async function(name, notebookData) {
+  if (!db) await openDB();
+  console.log("Database opened:", db);
+
+  return new Promise((resolve, reject) => {
+	console.log("Saving notebook version to IndexedDB:", name, notebookData);
+    const tx = db.transaction(["notebooks"], "readwrite");
+	console.log(tx)
+	console.log("Transaction opened");
+    const store = tx.objectStore("notebooks");
+
+    const notebook = {
+      name,
+      data: notebookData,
+      created: new Date().toISOString()
+    };
+
+    const request = store.add(notebook);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject("Failed to save version");
+  });
+}
+
+saveNotebook=async function() {
+  const input = document.getElementById("notebookName");
+  if (!input) return;
+
+  const name = input.value.trim();
+  if (!name) {
+    alert("Please enter a notebook name.");
+    input.focus();
+    return;
+  }
+
+  let nb=await get_nb();
+  const notebookData = nb.cells; // your array of cell objects
+
+
+  try {
+	console.log("Saving notebook version:", name, notebookData);
+    const versionId = await saveNotebookVersion(name, notebookData);
+    alert(`Notebook ${name} saved!`);
+    closeNotebookModal();
+
+    // Dynamically add to Versions list
+    appendVersionToList({
+      id: versionId,
+      name,
+      created: new Date().toISOString(),
+      data: notebookData
+    });
+  } catch (err) {
+    alert("Error saving notebook: " + err);
+  }
+}
+
 //Versioning functions
 
 openNotebookModal=function(){
