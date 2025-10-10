@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  scribbler-web:
+    build: .
+    container_name: scribbler
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    # Optional: Mount current directory for development
+    # Uncomment the following lines to enable live editing
+    # volumes:
+    #   - .:/usr/share/nginx/html

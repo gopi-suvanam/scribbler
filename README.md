@@ -57,11 +57,35 @@ A few starting notebooks for further experimentation:
 6. [Numerical Recipes in JavaScript](https://app.scribbler.live/#examples/Numerical-Analysis-Recipes.jsnb)
 7. [Machine Learning Using Brain.js](https://app.scribbler.live/#examples/Decentralized-ML-Model-Storage.jsnb)
 
-## CLI for Installation
-```
+## Installation Options
+
+### CLI Installation
+```bash
 git clone https://github.com/gopi-suvanam/scribbler
 cd scribbler
 npx serve # Requires npx and a server package like 'serve' to be installed
+```
+
+### Docker Installation
+Run Scribbler using Docker without any local setup:
+
+```bash
+# Using Docker Compose (recommended)
+docker-compose up -d
+
+# Or using Docker directly
+docker run -d -p 8080:80 --name scribbler [dockerhub-username]/scribbler:latest
+```
+
+The application will be available at `http://localhost:8080`
+
+#### Building the Docker Image Locally
+```bash
+# Build the image
+docker build -t scribbler .
+
+# Run the container
+docker run -d -p 8080:80 --name scribbler scribbler
 ```
 ## Features
 - **Cells:**
