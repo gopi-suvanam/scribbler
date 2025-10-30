@@ -486,37 +486,28 @@ openDB=function() {
     });
 }
 
-
-
-
 insitialize_page=async function(){
 
-	window.onload = async function() {
-    console.log("1")
-        try {
-            await openDB();  // 1. Opens the DB and sets the global 'db' variable
-            console.log("IndexedDB initialized successfully");
-            
-            // ✨ 2. ADD THIS LINE: Load and display versions after the DB is open
-            await loadAllVersions(); 
-            
-        } catch (err) {
-            console.error("Failed to initialize IndexedDB:", err);
-        }
-        first_load=true;
-        // ... (rest of the code)
+	window.onload =  function() {
+		first_load=true;
+		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
+		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
+		scrib.waitForDom("break-sandbox").then(result=>result.style.display='inline');
+	      	initialize_git();
+	      	gitlab_initialize();
+	      	
+	      	
 
-        // The rest of the logic remains the same:
-        scrib.waitForDom('sandbox').then(result=>{
-            sandbox_iframe=result;
+		 scrib.waitForDom('sandbox').then(result=>{
+			sandbox_iframe=result;
 
-                console.log("Loading from URL");
-                load_from_url();
-                first_load=false;
+				console.log("Loading from URL");
+				load_from_url();
+				first_load=false;
 
-            
-            document.addEventListener('keydown', keyDown);
-          });
+			
+		  	document.addEventListener('keydown', keyDown);
+		  });
 
 		
 		// listen for messages from iframe(child)
