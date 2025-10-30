@@ -216,36 +216,63 @@ async function queryAI(query,code,streaming=true){
 	}
 }
 
-function channelInitAI(){
-	
-	// Listen for init message
-	window.addEventListener('message', async (event) => {
-		if (event.data['ai-query']) {
-			const port2 = event.ports[0];
-			if(typeof(llmEngine) === 'undefined' && !preferredAIAPI)  port2.postMessage({error:new Error("AI not loaded")});
-			try{
-				const chunks = await queryAI(event.data['ai-query'],event.data['markedownNB']);
-				console.log(typeof(chunks));
-				if(typeof(chunks)=="string"){
-					port2.postMessage({"final-reply":chunks});
-				}
-				else{
-					let reply="";
-					for await (const chunk of chunks) {
-					  reply += chunk.choices[0]?.delta.content || "";
-						port2.postMessage({"chunk": chunk.choices[0]?.delta.content || ""});
-					}
-					//console.log(reply);				
-					// Send message back to iframe on port2
-					port2.postMessage({"final-reply":reply});
-				}
-			}catch(err){
-				port2.postMessage({error:err});
-			}
-			
-			
-		}
-	});
+function channelInitAI() {
+  // Listen for init message
+  window.addEventListener('message', async (event) => {
+    if (event.data && event.data['ai-query']) {
+      const startTime = performance.now();
+      const port2 = event.ports[0];
+
+      if (typeof llmEngine === 'undefined' && !preferredAIAPI) {
+        port2.postMessage({ error: "AI not loaded" });
+        return;
+      }
+
+      try {
+        const chunks = await queryAI(event.data['ai-query'], event.data['markedownNB']);
+        let reply = "";
+        let tokenCount = 0;
+
+        if (typeof chunks === "string") {
+          reply = chunks;
+          tokenCount = reply.split(/\s+/).length;
+        } else {
+          // Handle streamed chunks
+          for await (const chunk of chunks) {
+            const content = chunk?.choices?.[0]?.delta?.content || "";
+            if (content) {
+              reply += content;
+              tokenCount += content.split(/\s+/).length;
+              port2.postMessage({ "chunk": content });
+            }
+          }
+        }
+
+        // Measure performance
+        const endTime = performance.now();
+        const totalTimeSec = (endTime - startTime) / 1000;
+        const tokensPerSec = tokenCount / totalTimeSec;
+
+        console.log(`⏱️ Total time: ${totalTimeSec.toFixed(2)}s`);
+        console.log(`🔢 Tokens: ${tokenCount}`);
+        console.log(`⚡ Tokens/sec: ${tokensPerSec.toFixed(2)}`);
+
+        // Send final reply + stats
+        port2.postMessage({
+          "final-reply": reply,
+          "stats": {
+            totalTimeSec: totalTimeSec.toFixed(2),
+            tokenCount,
+            tokensPerSec: tokensPerSec.toFixed(2)
+          }
+        });
+
+      } catch (err) {
+        port2.postMessage({ error: err.message || String(err) });
+      }
+    }
+  });
 }
+
 
 channelInitAI(); 
