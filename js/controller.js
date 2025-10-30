@@ -127,7 +127,7 @@ load_from_url=async function(){
 /***** Downloading ************/
 // Sets up a new MessageChannel
 // so we can return a Promise with the nb
-function get_nb() {
+get_nb=function(){
   return new Promise((resolve) => {
     const channel = new MessageChannel();
     // this will fire when iframe will answer
@@ -463,7 +463,7 @@ const DB_NAME = "ScribblerDB";
 const DB_VERSION = 1;
 let db;
 
-function openDB() {
+openDB=function() {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open("scribblerDB", 1);
 
@@ -554,7 +554,6 @@ insitialize_page=async function(){
 appendVersionToList = function(version) {
   const ul = document.getElementById("version-list");
   if (!ul) return;
-  console.log("Appending version to list:", version);
 
   const li = document.createElement("li");
   const link = document.createElement("a");
@@ -583,36 +582,25 @@ appendVersionToList = function(version) {
 }
 
 toggleVersionsMenu = function(event) {
-  console.log("🔘 toggleVersionsMenu called");
   event.preventDefault();
   event.stopPropagation();
   
   const submenu = document.getElementById('versions-submenu');
-  console.log("📂 Versions submenu element:", submenu);
-  console.log("👁️ Current display:", submenu ? submenu.style.display : "not found");
   
   if (submenu) {
     if (submenu.style.display === 'none' || submenu.style.display === '') {
       submenu.style.display = 'block';
-      console.log("✅ Showing versions submenu");
     } else {
       submenu.style.display = 'none';
-      console.log("✅ Hiding versions submenu");
     }
-  } else {
-    console.error("❌ versions-submenu element not found!");
   }
 }
 
-async function saveNotebookVersion(name, notebookData) {
+saveNotebookVersion=async function(name, notebookData) {
   if (!db) await openDB();
-  console.log("Database opened:", db);
 
   return new Promise((resolve, reject) => {
-	console.log("Saving notebook version to IndexedDB:", name, notebookData);
     const tx = db.transaction(["notebooks"], "readwrite");
-	console.log(tx)
-	console.log("Transaction opened");
     const store = tx.objectStore("notebooks");
 
     const notebook = {
@@ -627,7 +615,7 @@ async function saveNotebookVersion(name, notebookData) {
   });
 }
 
-async function saveNotebook() {
+saveNotebook=async function() {
   const input = document.getElementById("notebookName");
   if (!input) return;
 
@@ -643,7 +631,6 @@ async function saveNotebook() {
 
 
   try {
-	console.log("Saving notebook version:", name, notebookData);
     const versionId = await saveNotebookVersion(name, notebookData);
     alert(`Notebook ${name} saved!`);
     closeNotebookModal();
@@ -660,8 +647,7 @@ async function saveNotebook() {
   }
 }
 
-
-async function loadAllVersions() {
+loadAllVersions=async function() {
   if (!db) await openDB();
 
   const tx = db.transaction(["notebooks"], "readonly");
@@ -675,7 +661,7 @@ async function loadAllVersions() {
 }
 
 
-function openNotebookModal() {
+openNotebookModal=function() {
   // Check if modal already exists
   let modal = document.getElementById("notebookModal");
 
@@ -754,7 +740,7 @@ function openNotebookModal() {
   }
 }
 
-function closeNotebookModal() {
+closeNotebookModal=function() {
   const modal = document.getElementById("notebookModal");
   if (!modal) return;
   modal.style.display = "none";
@@ -767,15 +753,12 @@ window.onclick = (e) => {
 };
 
 
-async function loadNotebook(versionData) {
+loadNotebook=async function(versionData) {
   if (!Array.isArray(versionData)) {
-    console.error("Invalid notebook data");
     return;
   }
 
-  console.log("🧩 Loading notebook version:", versionData);
-
-  // 1️⃣ Clear existing cells
+  // Clear existing cells
   if (window.scrib && typeof scrib.clearAllCells === "function") {
     scrib.clearAllCells();
   } else {
@@ -783,18 +766,17 @@ async function loadNotebook(versionData) {
     document.querySelectorAll(".cell").forEach(el => el.remove());
   }
 
-  // 2️⃣ Load each cell from version data
+  // Load each cell from version data
   for (const cell of versionData) {
-    const newCell = scrib.addCell(cell.type || "code"); // 'code' or 'html'
+    const newCell = scrib.addCell(cell.type || "code"); 
     scrib.setCode(newCell, cell.code);
     if (cell.output) scrib.setOutput(newCell, cell.output);
     if (cell.status) scrib.setStatus(newCell, cell.status);
   }
 
-  console.log("✅ Notebook version loaded");
 }
 
-async function loadNotebook(cellsData) {
+loadNotebook=async function(cellsData) {
   try {
     // Verify we have valid data
     if (!cellsData || !Array.isArray(cellsData)) {
@@ -827,9 +809,6 @@ async function loadNotebook(cellsData) {
       
       sandbox_iframe.contentWindow.postMessage(message, '*');
       
-      console.log("Notebook version loaded successfully");
-      
-      // Optional: Close the versions modal after loading
       const modal = document.getElementById("notebookModal");
       if (modal) {
         closeNotebookModal();
@@ -839,20 +818,19 @@ async function loadNotebook(cellsData) {
     }
     
   } catch (err) {
-    console.error("Error loading notebook version:", err);
     alert("Failed to load notebook version: " + err.message);
   }
 }
 
 // Enhanced version with more features
-async function loadNotebookEnhanced(cellsData, versionName) {
+loadNotebookEnhanced=async function(cellsData, versionName) {
   try {
     if (!cellsData || !Array.isArray(cellsData)) {
       alert("Invalid notebook data");
       return;
     }
 
-    // Confirm before loading (optional - prevents accidental overwrites)
+    // Confirm before loading
     const confirmLoad = confirm(
       `Load version "${versionName}"?\n\nThis will replace your current notebook content.`
     );
@@ -885,32 +863,27 @@ async function loadNotebookEnhanced(cellsData, versionName) {
       // Update the notebook name in the UI
       scrib.getDom("nb_name").innerHTML = versionName || "Loaded Version";
       
-      console.log("Notebook version loaded:", versionName);
       closeNotebookModal();
     } else {
       throw new Error("Sandbox iframe not available");
     }
     
   } catch (err) {
-    console.error("Error loading notebook version:", err);
     alert("Failed to load notebook version: " + err.message);
   }
 }
 
 toggleVersionsMenu = function(event) {
-  console.log("🔘 toggleVersionsMenu called");
   event.preventDefault();
   event.stopPropagation();
   
   const menu = document.getElementById('version-list');
-  console.log("📂 Version list element:", menu);
   
   if (menu) {
     const isHidden = menu.style.display === 'none' || menu.style.display === '';
     menu.style.display = isHidden ? 'block' : 'none';
-    console.log("✅", isHidden ? "Showing" : "Hiding", "versions menu");
   } else {
-    console.error("❌ version-list element not found!");
+    console.error("version-list element not found!");
   }
 }
 
