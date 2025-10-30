@@ -18,7 +18,14 @@
 					<ul role="listbox">
 					<li><a href="./#" target="_blank">New Blank NB</a></li>
 					<li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
-					<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
+					<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a></li>
+					<li><a onclick="openNotebookModal()">Save Notebook Version</a><hr></li>
+					<li>
+						<a href="#" onclick="toggleVersionsMenu(event)">Versions ▶</a>
+						<ul id="version-list">
+							
+						</ul>
+					</li>
 					<li><a onclick="loadFileClick()">Upload NB</a></li>
 					<li><a onclick="loadFileClick('md')">Upload Markdown</a></li>
 					<li><a onclick="loadFileClick('js')">Upload JS Script</a></li>
@@ -31,7 +38,6 @@
 					<li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
 					<li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
 					<li><a onclick="download_js()">Download as JS</a><hr></li>
-					
 					</ul>
 					</details>
 				</li>
@@ -115,15 +121,6 @@
 
 				<li role="list" dir="ltr">
 				<details role="list" dir="ltr">
-					<summary tabindex="0" aria-haspopup="listbox">Versions</summary>
-					<ul role="listbox" id="version-list">
-						
-					</ul>
-					</details>
-				</li>
-
-				<li role="list" dir="ltr">
-				<details role="list" dir="ltr">
 					<summary tabindex="0" aria-haspopup="listbox">Help</summary>
 					<ul role="listbox">
 						<li><a href="https://join.scribbler.live" target="_blank" >Discord</a> </li>
@@ -145,11 +142,6 @@
 				<li style="margin-left:4px;">
 					<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" >
 					<a class="header-button" href="https://hub.scribbler.live">Hub</a></summary>
-				</li>
-				<li style="margin-left:4px;">
-					<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button">
-						<button class="header-button" style="font-size:inherit" onclick="openNotebookModal()">Save Notebook</button>
-					</summary>
 				</li>
 				<li>
 					<summary tabindex="0" aria-haspopup="listbox" style="margin-left:5px" >

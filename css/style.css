@@ -1426,3 +1426,39 @@ nav a[href*="#"] .icon {
       right: 16px;
   }
 }
+
+#version-list {
+  margin: 2px 0 0 0;
+  display: none;
+  position: absolute;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 0;
+  list-style: none;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 280px;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+#version-list li {
+  padding: 8px 16px;
+  white-space: nowrap;
+  list-style: none;
+  display: block;
+}
+
+#version-list li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9em;
+}
+
+#version-list li:hover {
+  background: #2a2a2a;
+  cursor: pointer;
+}

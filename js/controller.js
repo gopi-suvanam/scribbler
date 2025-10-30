@@ -95,10 +95,6 @@ load_from_url=async function(){
 				url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 				const reponse=await fetch(url);	
 	 			 nb=await reponse.json();
-  		}else if(url.split(":")[0].trim()=='gitlab'){
-  				const link=url.split(":")[1].trim();
-  				await gitlab_initialize_from_git(link);
-  				return;
   		}else {
 			const reponse=await fetch(url);	
 	 		nb=await reponse.json();
@@ -432,8 +428,6 @@ keyDown=function(e) {
 	    saveLocalFile();
 	  } else if (e.ctrlKey && e.key === 'g') {
 	    openModal(scrib.getDom('git-import-export'));
-	  } else if (e.ctrlKey && e.key === 'l') {
-	    openModal(scrib.getDom('gitlab-import-export'));
 	  } else if (e.ctrlKey && e.key === 'o') {
 	    openModal(scrib.getDom('fileNamesModal'));
 	    openFileNamesModal()
@@ -464,61 +458,65 @@ keyDown=function(e) {
 
   customElements.define('html-component', DynamicInclude);
 		  
+
 const DB_NAME = "ScribblerDB";
 const DB_VERSION = 1;
 let db;
 
-openDB=function(){
+function openDB() {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open("scribblerDB", 1);
 
         request.onupgradeneeded = (event) => {
-            const db_local = event.target.result; 
+            const db_local = event.target.result; // Use a local variable here to avoid confusion
             if (!db_local.objectStoreNames.contains("notebooks")) {
                 db_local.createObjectStore("notebooks", { keyPath: "id", autoIncrement: true });
                 console.log("📁 Created 'notebooks' object store");
             }
         };
 
+        // --- COMBINED AND CORRECTED ONSUCCESS HANDLER ---
         request.onsuccess = () => {
-            db = request.result; 
-            resolve(db);         
+            db = request.result; // ✨ CORRECT: Sets the global db variable.
+            resolve(db);         // ✨ CORRECT: Resolves the Promise.
         };
+        // ------------------------------------------------
 
-        request.onerror = () => reject(request.error);
+        request.onerror = () => reject(request.error); // Rejects the Promise on error
     });
 }
-  insitialize_page=async function(){
+
+
+
+
+insitialize_page=async function(){
 
 	window.onload = async function() {
-		try {
+    console.log("1")
+        try {
             await openDB();  // 1. Opens the DB and sets the global 'db' variable
             console.log("IndexedDB initialized successfully");
             
-			await loadAllVersions(); 
+            // ✨ 2. ADD THIS LINE: Load and display versions after the DB is open
+            await loadAllVersions(); 
             
         } catch (err) {
             console.error("Failed to initialize IndexedDB:", err);
         }
-		first_load=true;
-		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
-		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
-		scrib.waitForDom("break-sandbox").then(result=>result.style.display='inline');
-	      	initialize_git();
-	      	gitlab_initialize();
-	      	
-	      	
+        first_load=true;
+        // ... (rest of the code)
 
-		 scrib.waitForDom('sandbox').then(result=>{
-			sandbox_iframe=result;
+        // The rest of the logic remains the same:
+        scrib.waitForDom('sandbox').then(result=>{
+            sandbox_iframe=result;
 
-				console.log("Loading from URL");
-				load_from_url();
-				first_load=false;
+                console.log("Loading from URL");
+                load_from_url();
+                first_load=false;
 
-			
-		  	document.addEventListener('keydown', keyDown);
-		  });
+            
+            document.addEventListener('keydown', keyDown);
+          });
 
 		
 		// listen for messages from iframe(child)
@@ -540,10 +538,73 @@ openDB=function(){
 			}, event.origin);
 		  }
 		});
+	
+	
+		
+
+		
+		
 	};
+	
+	  	
+
+  
 }
 
-saveNotebookVersion=async function(name, notebookData) {
+appendVersionToList = function(version) {
+  const ul = document.getElementById("version-list");
+  if (!ul) return;
+  console.log("Appending version to list:", version);
+
+  const li = document.createElement("li");
+  const link = document.createElement("a");
+  link.textContent = `${version.name} - ${new Date(version.created).toLocaleString("en-GB", { hour12: false })}`;
+  link.style.cursor = "pointer";
+  link.href = "#";
+  
+  link.onclick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    loadNotebookEnhanced(version.data, version.name);
+    // Close the File menu after loading
+    const fileDetails = document.querySelector('#page-header details[role="list"]');
+    if (fileDetails) {
+      fileDetails.open = false;
+    }
+    // Hide versions submenu
+    const versionsSubmenu = document.getElementById('versions-submenu');
+    if (versionsSubmenu) {
+      versionsSubmenu.style.display = 'none';
+    }
+  };
+  
+  li.appendChild(link);
+  ul.prepend(li);
+}
+
+toggleVersionsMenu = function(event) {
+  console.log("🔘 toggleVersionsMenu called");
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const submenu = document.getElementById('versions-submenu');
+  console.log("📂 Versions submenu element:", submenu);
+  console.log("👁️ Current display:", submenu ? submenu.style.display : "not found");
+  
+  if (submenu) {
+    if (submenu.style.display === 'none' || submenu.style.display === '') {
+      submenu.style.display = 'block';
+      console.log("✅ Showing versions submenu");
+    } else {
+      submenu.style.display = 'none';
+      console.log("✅ Hiding versions submenu");
+    }
+  } else {
+    console.error("❌ versions-submenu element not found!");
+  }
+}
+
+async function saveNotebookVersion(name, notebookData) {
   if (!db) await openDB();
   console.log("Database opened:", db);
 
@@ -566,7 +627,7 @@ saveNotebookVersion=async function(name, notebookData) {
   });
 }
 
-saveNotebook=async function() {
+async function saveNotebook() {
   const input = document.getElementById("notebookName");
   if (!input) return;
 
@@ -578,7 +639,7 @@ saveNotebook=async function() {
   }
 
   let nb=await get_nb();
-  const notebookData = nb.cells;
+  const notebookData = nb.cells; // your array of cell objects
 
 
   try {
@@ -587,6 +648,7 @@ saveNotebook=async function() {
     alert(`Notebook ${name} saved!`);
     closeNotebookModal();
 
+    // Dynamically add to Versions list
     appendVersionToList({
       id: versionId,
       name,
@@ -598,22 +660,8 @@ saveNotebook=async function() {
   }
 }
 
-appendVersionToList=function(version) {
-  const ul = document.getElementById("version-list");
-  if (!ul) return;
-  console.log("Appending version to list:", version);
 
-  const li = document.createElement("li");
-  li.textContent = `${version.name} - ${new Date(version.created).toLocaleString("en-GB", { hour12: false })}`;
-  li.style.cursor = "pointer";
-  console.log(version.data);
-
-  li.onclick = () => loadNotebookEnhanced(version.data, version.name);
-
-  ul.prepend(li);
-}
-
-loadAllVersions=async function() {
+async function loadAllVersions() {
   if (!db) await openDB();
 
   const tx = db.transaction(["notebooks"], "readonly");
@@ -626,12 +674,12 @@ loadAllVersions=async function() {
   };
 }
 
-//Versioning functions
 
-openNotebookModal=function(){
+function openNotebookModal() {
   // Check if modal already exists
   let modal = document.getElementById("notebookModal");
 
+  // If not, create it dynamically
   if (!modal) {
     modal = document.createElement("div");
     modal.id = "notebookModal";
@@ -706,24 +754,105 @@ openNotebookModal=function(){
   }
 }
 
-closeNotebookModal=function(){
+function closeNotebookModal() {
   const modal = document.getElementById("notebookModal");
   if (!modal) return;
   modal.style.display = "none";
 }
 
+// Optional: close modal when clicking outside content
 window.onclick = (e) => {
   const modal = document.getElementById("notebookModal");
   if (modal && e.target === modal) closeNotebookModal();
 };
 
-loadNotebookEnhanced=async function(cellsData, versionName) {
+
+async function loadNotebook(versionData) {
+  if (!Array.isArray(versionData)) {
+    console.error("Invalid notebook data");
+    return;
+  }
+
+  console.log("🧩 Loading notebook version:", versionData);
+
+  // 1️⃣ Clear existing cells
+  if (window.scrib && typeof scrib.clearAllCells === "function") {
+    scrib.clearAllCells();
+  } else {
+    // fallback: remove all .cell elements manually
+    document.querySelectorAll(".cell").forEach(el => el.remove());
+  }
+
+  // 2️⃣ Load each cell from version data
+  for (const cell of versionData) {
+    const newCell = scrib.addCell(cell.type || "code"); // 'code' or 'html'
+    scrib.setCode(newCell, cell.code);
+    if (cell.output) scrib.setOutput(newCell, cell.output);
+    if (cell.status) scrib.setStatus(newCell, cell.status);
+  }
+
+  console.log("✅ Notebook version loaded");
+}
+
+async function loadNotebook(cellsData) {
+  try {
+    // Verify we have valid data
+    if (!cellsData || !Array.isArray(cellsData)) {
+      alert("Invalid notebook data");
+      return;
+    }
+
+    // Create a notebook structure matching the expected format
+    const notebookToLoad = {
+      metadata: {
+        name: "Loaded Version",
+        language_info: {
+          name: "JavaScript",
+          version: "8.0"
+        }
+      },
+      jsnbversion: "v0.1",
+      cells: cellsData,
+      source: "https://github.com/gopi-suvanam/scribbler",
+      run_on_load: false
+    };
+
+    // Send message to sandbox iframe to load the notebook
+    if (sandbox_iframe && sandbox_iframe.contentWindow) {
+      const message = {
+        action: "sandbox.loadJSNB",
+        data: notebookToLoad,
+        call_bk: ""
+      };
+      
+      sandbox_iframe.contentWindow.postMessage(message, '*');
+      
+      console.log("Notebook version loaded successfully");
+      
+      // Optional: Close the versions modal after loading
+      const modal = document.getElementById("notebookModal");
+      if (modal) {
+        closeNotebookModal();
+      }
+    } else {
+      throw new Error("Sandbox iframe not available");
+    }
+    
+  } catch (err) {
+    console.error("Error loading notebook version:", err);
+    alert("Failed to load notebook version: " + err.message);
+  }
+}
+
+// Enhanced version with more features
+async function loadNotebookEnhanced(cellsData, versionName) {
   try {
     if (!cellsData || !Array.isArray(cellsData)) {
       alert("Invalid notebook data");
       return;
     }
 
+    // Confirm before loading (optional - prevents accidental overwrites)
     const confirmLoad = confirm(
       `Load version "${versionName}"?\n\nThis will replace your current notebook content.`
     );
@@ -754,7 +883,7 @@ loadNotebookEnhanced=async function(cellsData, versionName) {
       sandbox_iframe.contentWindow.postMessage(message, '*');
       
       // Update the notebook name in the UI
-      scrib.getDom("nb_name").innerHTML = `Welcome To Your Saved Notebook : ${versionName}` || "Loaded Version";
+      scrib.getDom("nb_name").innerHTML = versionName || "Loaded Version";
       
       console.log("Notebook version loaded:", versionName);
       closeNotebookModal();
@@ -767,3 +896,22 @@ loadNotebookEnhanced=async function(cellsData, versionName) {
     alert("Failed to load notebook version: " + err.message);
   }
 }
+
+toggleVersionsMenu = function(event) {
+  console.log("🔘 toggleVersionsMenu called");
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const menu = document.getElementById('version-list');
+  console.log("📂 Version list element:", menu);
+  
+  if (menu) {
+    const isHidden = menu.style.display === 'none' || menu.style.display === '';
+    menu.style.display = isHidden ? 'block' : 'none';
+    console.log("✅", isHidden ? "Showing" : "Hiding", "versions menu");
+  } else {
+    console.error("❌ version-list element not found!");
+  }
+}
+
+
