@@ -488,7 +488,15 @@ openDB=function() {
 
 insitialize_page=async function(){
 
-	window.onload =  function() {
+	window.onload =async function() {
+    try {
+      await openDB();  // 1. Opens the DB and sets the global 'db' variable
+      console.log("IndexedDB initialized successfully");
+      await loadAllVersions(); 
+    } 
+    catch (err) {
+        console.error("Failed to initialize IndexedDB:", err);
+    }
 		first_load=true;
 		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
