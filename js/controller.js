@@ -95,10 +95,6 @@ load_from_url=async function(){
 				url=`https://raw.githubusercontent.com/${user}/${repo}/HEAD/${path}`;
 				const reponse=await fetch(url);	
 	 			 nb=await reponse.json();
-  		}else if(url.split(":")[0].trim()=='gitlab'){
-  				const link=url.split(":")[1].trim();
-  				await gitlab_initialize_from_git(link);
-  				return;
   		}else {
 			const reponse=await fetch(url);	
 	 		nb=await reponse.json();
@@ -131,7 +127,7 @@ load_from_url=async function(){
 /***** Downloading ************/
 // Sets up a new MessageChannel
 // so we can return a Promise with the nb
-function get_nb() {
+get_nb=function(){
   return new Promise((resolve) => {
     const channel = new MessageChannel();
     // this will fire when iframe will answer
@@ -432,8 +428,6 @@ keyDown=function(e) {
 	    saveLocalFile();
 	  } else if (e.ctrlKey && e.key === 'g') {
 	    openModal(scrib.getDom('git-import-export'));
-	  } else if (e.ctrlKey && e.key === 'l') {
-	    openModal(scrib.getDom('gitlab-import-export'));
 	  } else if (e.ctrlKey && e.key === 'o') {
 	    openModal(scrib.getDom('fileNamesModal'));
 	    openFileNamesModal()
@@ -464,9 +458,45 @@ keyDown=function(e) {
 
   customElements.define('html-component', DynamicInclude);
 		  
+
+const DB_NAME = "ScribblerDB";
+const DB_VERSION = 1;
+let db;
+
+openDB=function() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open("scribblerDB", 1);
+
+        request.onupgradeneeded = (event) => {
+            const db_local = event.target.result; // Use a local variable here to avoid confusion
+            if (!db_local.objectStoreNames.contains("notebooks")) {
+                db_local.createObjectStore("notebooks", { keyPath: "id", autoIncrement: true });
+                console.log("📁 Created 'notebooks' object store");
+            }
+        };
+
+        // --- COMBINED AND CORRECTED ONSUCCESS HANDLER ---
+        request.onsuccess = () => {
+            db = request.result; // ✨ CORRECT: Sets the global db variable.
+            resolve(db);         // ✨ CORRECT: Resolves the Promise.
+        };
+        // ------------------------------------------------
+
+        request.onerror = () => reject(request.error); // Rejects the Promise on error
+    });
+}
+
 insitialize_page=async function(){
 
-	window.onload =  function() {
+	window.onload =async function() {
+    try {
+      await openDB();  // 1. Opens the DB and sets the global 'db' variable
+      console.log("IndexedDB initialized successfully");
+      await loadAllVersions(); 
+    } 
+    catch (err) {
+        console.error("Failed to initialize IndexedDB:", err);
+    }
 		first_load=true;
 		//scrib.getDom("sandbox").setAttribute("sandbox","allow-scripts allow-downloads allow-top-navigation allow-popups allow-modals");
 		//scrib.getDom("sandbox").setAttribute("src","sandbox.html");
@@ -519,4 +549,341 @@ insitialize_page=async function(){
 
   
 }
+
+appendVersionToList = function(version) {
+  const ul = document.getElementById("version-list");
+  if (!ul) return;
+
+  const li = document.createElement("li");
+  const link = document.createElement("a");
+  link.textContent = `${version.name} - ${new Date(version.created).toLocaleString("en-GB", { hour12: false })}`;
+  link.style.cursor = "pointer";
+  link.href = "#";
+  
+  link.onclick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    loadNotebookEnhanced(version.data, version.name);
+    // Close the File menu after loading
+    const fileDetails = document.querySelector('#page-header details[role="list"]');
+    if (fileDetails) {
+      fileDetails.open = false;
+    }
+    // Hide versions submenu
+    const versionsSubmenu = document.getElementById('versions-submenu');
+    if (versionsSubmenu) {
+      versionsSubmenu.style.display = 'none';
+    }
+  };
+  
+  li.appendChild(link);
+  ul.prepend(li);
+}
+
+toggleVersionsMenu = function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const submenu = document.getElementById('versions-submenu');
+  
+  if (submenu) {
+    if (submenu.style.display === 'none' || submenu.style.display === '') {
+      submenu.style.display = 'block';
+    } else {
+      submenu.style.display = 'none';
+    }
+  }
+}
+
+saveNotebookVersion=async function(name, notebookData) {
+  if (!db) await openDB();
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(["notebooks"], "readwrite");
+    const store = tx.objectStore("notebooks");
+
+    const notebook = {
+      name,
+      data: notebookData,
+      created: new Date().toISOString()
+    };
+
+    const request = store.add(notebook);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject("Failed to save version");
+  });
+}
+
+saveNotebook=async function() {
+  const input = document.getElementById("notebookName");
+  if (!input) return;
+
+  const name = input.value.trim();
+  if (!name) {
+    alert("Please enter a notebook name.");
+    input.focus();
+    return;
+  }
+
+  let nb=await get_nb();
+  const notebookData = nb.cells; // your array of cell objects
+
+
+  try {
+    const versionId = await saveNotebookVersion(name, notebookData);
+    alert(`Notebook ${name} saved!`);
+    closeNotebookModal();
+
+    // Dynamically add to Versions list
+    appendVersionToList({
+      id: versionId,
+      name,
+      created: new Date().toISOString(),
+      data: notebookData
+    });
+  } catch (err) {
+    alert("Error saving notebook: " + err);
+  }
+}
+
+loadAllVersions=async function() {
+  if (!db) await openDB();
+
+  const tx = db.transaction(["notebooks"], "readonly");
+  const store = tx.objectStore("notebooks");
+  const request = store.getAll();
+
+  request.onsuccess = () => {
+    const versions = request.result.sort((a,b) => new Date(b.created) - new Date(a.created));
+    versions.forEach(v => appendVersionToList(v));
+  };
+}
+
+
+openNotebookModal=function() {
+  // Check if modal already exists
+  let modal = document.getElementById("notebookModal");
+
+  // If not, create it dynamically
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "notebookModal";
+    modal.style.cssText = `
+      display:flex;
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    `;
+
+    // Modal content
+    modal.innerHTML = `
+      <div style="
+        background:#1e1e1e;
+        padding:20px;
+        border-radius:8px;
+        width:320px;
+        position:relative;
+        box-shadow:0 4px 6px rgba(0,0,0,0.2);
+      ">
+        <button onclick="closeNotebookModal()" style="
+          position:absolute;
+          top:10px; right:15px;
+          background:none;
+          border:none;
+          color:#fff;
+          font-size:20px;
+          cursor:pointer;">&times;</button>
+        <h3 style="color:#fff; margin-top:0;">Enter Notebook Name</h3>
+        <input type="text" id="notebookName" placeholder="Notebook Name" style="
+          width:100%;
+          padding:10px;
+          margin:10px 0;
+          border-radius:4px;
+          border:1px solid #333;
+          background:#2c2c2c;
+          color:#fff;">
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button onclick="closeNotebookModal()" style="
+            background:#f44336;
+            color:white;
+            border:none;
+            padding:8px 16px;
+            border-radius:4px;
+            cursor:pointer;">Cancel</button>
+          <button onclick="saveNotebook()" style="
+            background:#4caf50;
+            color:white;
+            border:none;
+            padding:8px 16px;
+            border-radius:4px;
+            cursor:pointer;">Save</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  }
+
+  // Show the modal
+  modal.style.display = "flex";
+
+  // Focus input
+  const input = document.getElementById("notebookName");
+  if (input) {
+    input.value = "";
+    input.focus();
+  }
+}
+
+closeNotebookModal=function() {
+  const modal = document.getElementById("notebookModal");
+  if (!modal) return;
+  modal.style.display = "none";
+}
+
+// Optional: close modal when clicking outside content
+window.onclick = (e) => {
+  const modal = document.getElementById("notebookModal");
+  if (modal && e.target === modal) closeNotebookModal();
+};
+
+
+loadNotebook=async function(versionData) {
+  if (!Array.isArray(versionData)) {
+    return;
+  }
+
+  // Clear existing cells
+  if (window.scrib && typeof scrib.clearAllCells === "function") {
+    scrib.clearAllCells();
+  } else {
+    // fallback: remove all .cell elements manually
+    document.querySelectorAll(".cell").forEach(el => el.remove());
+  }
+
+  // Load each cell from version data
+  for (const cell of versionData) {
+    const newCell = scrib.addCell(cell.type || "code"); 
+    scrib.setCode(newCell, cell.code);
+    if (cell.output) scrib.setOutput(newCell, cell.output);
+    if (cell.status) scrib.setStatus(newCell, cell.status);
+  }
+
+}
+
+loadNotebook=async function(cellsData) {
+  try {
+    // Verify we have valid data
+    if (!cellsData || !Array.isArray(cellsData)) {
+      alert("Invalid notebook data");
+      return;
+    }
+
+    // Create a notebook structure matching the expected format
+    const notebookToLoad = {
+      metadata: {
+        name: "Loaded Version",
+        language_info: {
+          name: "JavaScript",
+          version: "8.0"
+        }
+      },
+      jsnbversion: "v0.1",
+      cells: cellsData,
+      source: "https://github.com/gopi-suvanam/scribbler",
+      run_on_load: false
+    };
+
+    // Send message to sandbox iframe to load the notebook
+    if (sandbox_iframe && sandbox_iframe.contentWindow) {
+      const message = {
+        action: "sandbox.loadJSNB",
+        data: notebookToLoad,
+        call_bk: ""
+      };
+      
+      sandbox_iframe.contentWindow.postMessage(message, '*');
+      
+      const modal = document.getElementById("notebookModal");
+      if (modal) {
+        closeNotebookModal();
+      }
+    } else {
+      throw new Error("Sandbox iframe not available");
+    }
+    
+  } catch (err) {
+    alert("Failed to load notebook version: " + err.message);
+  }
+}
+
+// Enhanced version with more features
+loadNotebookEnhanced=async function(cellsData, versionName) {
+  try {
+    if (!cellsData || !Array.isArray(cellsData)) {
+      alert("Invalid notebook data");
+      return;
+    }
+
+    // Confirm before loading
+    const confirmLoad = confirm(
+      `Load version "${versionName}"?\n\nThis will replace your current notebook content.`
+    );
+    
+    if (!confirmLoad) return;
+
+    const notebookToLoad = {
+      metadata: {
+        name: versionName || "Loaded Version",
+        language_info: {
+          name: "JavaScript",
+          version: "8.0"
+        }
+      },
+      jsnbversion: "v0.1",
+      cells: cellsData,
+      source: "https://github.com/gopi-suvanam/scribbler",
+      run_on_load: false
+    };
+
+    if (sandbox_iframe && sandbox_iframe.contentWindow) {
+      const message = {
+        action: "sandbox.loadJSNB",
+        data: notebookToLoad,
+        call_bk: ""
+      };
+      
+      sandbox_iframe.contentWindow.postMessage(message, '*');
+      
+      // Update the notebook name in the UI
+      scrib.getDom("nb_name").innerHTML = versionName || "Loaded Version";
+      
+      closeNotebookModal();
+    } else {
+      throw new Error("Sandbox iframe not available");
+    }
+    
+  } catch (err) {
+    alert("Failed to load notebook version: " + err.message);
+  }
+}
+
+toggleVersionsMenu = function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const menu = document.getElementById('version-list');
+  
+  if (menu) {
+    const isHidden = menu.style.display === 'none' || menu.style.display === '';
+    menu.style.display = isHidden ? 'block' : 'none';
+  } else {
+    console.error("version-list element not found!");
+  }
+}
+
 
