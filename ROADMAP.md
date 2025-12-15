@@ -6,19 +6,19 @@
 - Output could be saved as html
 - HTML output can be shown both as code and as html doc 
 - Add/delete cells
-- Cells can be code and comment cells.. Comment cells will be markdown display
+- Cells can be code and comment cells. Comment cells will be markdown display
 - Github integration for storing: done through Access Token. Can think of alternative authentication mechanisms.
 - Mimic static import (browser/deno style)
 - Dark mode enabled
 - Keyboard shortcuts
   
-### Feartures
+### Features
 - Ability to import .js files dynamically
 - Use global variables across the cells
 - Ability to save the whole notebook as a file.. with .jsnb extension
 - Code should run in the browser of the user
 - Show output using show(var)
-- Asynchronous code execution is halmark of javascript so each cell can be run parallelly. Any asynchronous code within a cell will have to dsiplay errors on its own.
+- Asynchronous code execution is halmark of javascript so each cell can be run parallelly. Any asynchronous code within a cell will have to display errors on its own.
 - Reload for restarting the kernel
 - Store files temporarily in browser cache (indexeddb)
 - Share a link of notebook
@@ -34,7 +34,7 @@
 
 ### Features
 - Use GPU where possible
-- Restart kernel/inturrept kernel features
+- Restart kernel/interrupt kernel features
 - More collaboration features (store in google drive etc.)
 - Improve auto-suggestion
 
